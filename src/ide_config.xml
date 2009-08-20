@@ -13,9 +13,9 @@
 					<filter type="folder" />
 					<filter type="project" />
 				</filters>
-				<action name="Gen ColdBox Handler" 	handlerid="GenHandler"	showResponse="true"></action>
-				<action name="Gen ColdBox Plugin" 	handlerid="GenPlugin"	showResponse="true"></action>
-				<action name="Gen App Skeleton"		handlerid="GenSkeleton"	showResponse="true"></action>
+				<action name="Generate ColdBox Handler" 	handlerid="GenHandler"	showResponse="true"></action>
+				<action name="Generate ColdBox Plugin" 		handlerid="GenPlugin"	showResponse="true"></action>
+				<action name="Generate App Skeleton"		handlerid="GenSkeleton"	showResponse="true"></action>
 			</menu>
 		</contribution>
 
