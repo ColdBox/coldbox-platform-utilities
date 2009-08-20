@@ -44,7 +44,7 @@ Description :
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
 <cfset pluginName		= data.event.user.input.xmlAttributes.value />
 		
-<cffile action="read" file="#ExpandPath('../')#/files/PluginContent.txt" variable="pluginContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/PluginContent.txt" variable="pluginContent">
 
 <cfset pluginContent = replaceNoCase(pluginContent,"|pluginName|",pluginName,"all") />
 

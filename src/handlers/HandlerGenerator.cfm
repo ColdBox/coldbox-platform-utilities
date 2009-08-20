@@ -12,7 +12,7 @@ Description :
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
 <cfset handlerName		= data.event.user.input.xmlAttributes.value />
 
-<cffile action="read" file="#ExpandPath('../')#/files/HandlerContent.txt" variable="handlerContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/HandlerContent.txt" variable="handlerContent">
 
 <cftry>
 	<cffile action="write" file="#expandLocation#/#handlerName#.cfc" mode ="777" output="#handlerContent#">
