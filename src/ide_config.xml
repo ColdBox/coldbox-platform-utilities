@@ -1,0 +1,30 @@
+<application>
+	<name>ColdBox Platform Utilities</name>
+	<author>Sana Ullah</author>
+	<email>sanaullah73@gmail.com</email>	
+	<description>Generate ColdBox App skeleton, handlers, plugins.</description>	
+	<version>1.0</version>
+	<license>Do whatever you like it:</license>
+    <menucontributions >
+
+		<contribution target="projectview">
+			<menu name="ColdBox">
+				<filters>
+					<filter type="folder" />
+					<filter type="project" />
+				</filters>
+				<action name="Gen ColdBox Handler" 	handlerid="GenHandler"	showResponse="true"></action>
+				<action name="Gen ColdBox Plugin" 	handlerid="GenPlugin"	showResponse="true"></action>
+				<action name="Gen App Skeleton"		handlerid="GenSkeleton"	showResponse="true"></action>
+			</menu>
+		</contribution>
+
+    </menucontributions>	
+
+	<handlers>		
+		<handler id="GenHandler"	type="CFM" filename="HandlerSetup.cfm" />
+		<handler id="GenPlugin"		type="CFM" filename="PluginSetup.cfm" />
+		<handler id="GenSkeleton"	type="CFM" filename="AppSkeleton.cfm" />
+	</handlers>
+
+</application>

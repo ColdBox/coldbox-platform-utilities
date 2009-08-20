@@ -1,0 +1,24 @@
+<cfcomponent hint="I am the new ColdBox Plugin"
+			 extends="coldbox.system.Plugin"
+			 output="false"
+			 cache="true"
+			 cacheTimeout="0">
+
+<!------------------------------------------- CONSTRUCTOR ------------------------------------------->
+
+	<cffunction name="init" access="public" returntype="Any" output="false" hint="constructor">
+		<!--- ************************************************************* --->
+		<cfargument name="controller" type="any" required="true" hint="coldbox.system.Controller">
+		<!--- ************************************************************* --->
+		<cfscript>
+			/* Super Init */
+			super.Init(arguments.controller);
+			
+			return this;
+		</cfscript>
+	</cffunction>
+
+<!------------------------------------------- PUBLIC ------------------------------------------->
+
+
+</cfcomponent>	
