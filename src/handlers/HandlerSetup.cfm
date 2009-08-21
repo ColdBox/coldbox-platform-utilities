@@ -14,7 +14,8 @@ Description :
 <response status="success" type="default">  
 	<ide handlerfile="HandlerGenerator.cfm"> 
 		<dialog width="450" height="450">  
-			<input name="HandlerName" Lable="Enter handler name"  type="string" default="" tooltip="Enter handler cfc name without .cfc" />					
+			<input name="Name" lable="Enter handler name"  type="string" default="" tooltip="Enter handler cfc name without .cfc" />
+			<input name="Description" lable="Enter handler description"  type="string" default="" tooltip="Enter handler description" />					
 		</dialog>
 	</ide>
 </response>  

@@ -14,10 +14,9 @@ Description :
 <cfset defaultCache			= "true" />
 
  
-<cfset data = xmlParse(ideeventinfo)>
-
-<cfset extxmlinput = xmlSearch(data, "/event/user/input")>
-<cfset inputstruct = StructNew()>
+<cfset data			= xmlParse(ideeventinfo)>
+<cfset extxmlinput	= xmlSearch(data, "/event/user/input")>
+<cfset inputstruct	= StructNew()>
 
 <cfloop index="i" from="1" to="#arrayLen(extxmlinput)#" >
 	<cfset StructInsert(inputstruct,"#extxmlinput[i].xmlAttributes.name#","#extxmlinput[i].xmlAttributes.value#")>
@@ -42,7 +41,7 @@ Description :
 
 <cfset message = "" />
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
-<cfset pluginName		= data.event.user.input.xmlAttributes.value />
+<cfset pluginName		= inputstruct.Name />
 		
 <cffile action="read" file="#ExpandPath('../')#/templates/PluginContent.txt" variable="pluginContent">
 
