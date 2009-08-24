@@ -34,7 +34,7 @@
 		
 	<target name="distribute" depends="build" description="Creates a zip archive of site for (re)distribution">
 		
-		<zip destfile="${dist.dir}/ColdboxPlatformUtilities_${build.version}.zip"
+		<zip destfile="${dist.dir}/ColdboxPlatformUtilities.zip"
 			 basedir="${build.dir}"
 			 update="true"/>
 		
