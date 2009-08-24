@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="ColdboxPlatformUtilities.build" default="distribute" basedir=".">
+
+	<description>ColdBoxPlatformUtilities Release Build</description>
+	
+	<!-- Properties -->
+	<property name="src.dir" 			value="src" />
+	<property name="build.dir" 			value="build" />
+	<property name="dist.dir" 			value="dist" />
+	<property name="ftp.server"  		value="ftp.coldbox.org" />
+	<property name="ftp.remotedir" 		value="/httpdocs/downloads" />
+		
+	<!-- dynamic values for build -->
+	<tstamp prefix="start"/>
+	
+	<target name="init" description="Initializes a project and all relevant data" depends="clean">
+		<input addproperty="build.version" message="Build Version" />
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+	</target>
+
+	<target name="clean" description="Remove all directories">
+		<delete dir="${build.dir}" verbose="true"/> 
+		<delete dir="${dist.dir}" verbose="true"/> 
+	</target>
+
+	<target name="build" depends="init" description="Copies fileset from source to build directory, adding a label file">
+		<copy todir="${build.dir}">
+			<fileset dir="${src.dir}" />
+		</copy>		
+		<!--Build Stuff -->	
+		<concat destfile="${build.dir}\${build.version}.txt">Built on ${start.TODAY}</concat>
+	</target>
+		
+	<target name="distribute" depends="build" description="Creates a zip archive of site for (re)distribution">
+		
+		<zip destfile="${dist.dir}/ColdboxPlatformUtilities_${build.version}.zip"
+			 basedir="${build.dir}"
+			 update="true"/>
+		
+		<delete dir="${build.dir}" />
+		
+	</target>
+	
+	<target name="ftp.deploy" depends="distribute" >
+		<input message="Please enter ftp server username:" addproperty="ftp.username" />
+		<input message="Please enter fpt server password:" addproperty="ftp.password" />
+		
+		<ftp action="send" server="${ftp.server}" userid="${ftp.username}" password="${ftp.password}" 
+			remotedir="${ftp.remotedir}" passive="yes" verbose="yes">
+			<fileset dir="${dist.dir}/ColdboxPlatformUtilities_${build.version}.zip" />
+		</ftp>
+		
+		<delete dir="${dist.dir}" />
+	</target>
+	
+</project>
