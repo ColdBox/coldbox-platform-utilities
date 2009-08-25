@@ -9,29 +9,12 @@ Description :
 <cfset message	= "" /> 
 <cfset data		= xmlParse(ideeventinfo)>
 
+<!--- Parse Input --->
 <cfset extxmlinput = xmlSearch(data, "/event/user/input")>
 <cfset inputstruct = StructNew()>
-
 <cfloop index="i" from="1" to="#arrayLen(extxmlinput)#" >
 	<cfset StructInsert(inputstruct,"#extxmlinput[i].xmlAttributes.name#","#extxmlinput[i].xmlAttributes.value#")>
 </cfloop>
-
-<!--- ======================================================================= --->
-<cfif not len(inputstruct.Name)>
-	<cfset message = "The handler name cannot be empty" />
-	<cfheader name="Content-Type" value="text/xml">  
-	<response status="success" showresponse="true">  
-		<ide>  
-			<dialog width="550" height="350" />  
-			<body>
-			<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
-			</body>
-		</ide>
-	</response>
-	
-	<cfabort>
-</cfif>
-<!--- ======================================================================= --->
 
 <!--- Expand Locations --->
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
@@ -46,7 +29,6 @@ Description :
 <cffile action="read" file="#ExpandPath('../')#/templates/HandlerContent#scriptPrefix#.txt" variable="handlerContent">
 <cffile action="read" file="#ExpandPath('../')#/templates/ActionContent#scriptPrefix#.txt"  variable="actionContent">
 
-
 <!--- Start Replacings --->
 <cfset handlerContent = replaceNoCase(handlerContent,"|Name|",inputstruct.Name,"all") />
 
@@ -59,8 +41,18 @@ Description :
 <!--- Handle Actions if passed --->
 <cfif len(inputstruct.Actions)>
 	<cfset allActions = "">
+	<!--- Loop Over actions generating their functions --->
 	<cfloop list="#inputStruct.Actions#" index="thisAction">
 		<cfset allActions = allActions & replaceNoCase(actionContent,"|action|",thisAction,"all") & chr(13) & chr(13)/>
+		<!--- Are we creating views? --->
+		<cfif inputStruct.GenerateViews>
+			<!--- Check if dir exists? --->
+			<cfif NOT directoryExists(inputStruct.ViewsDirectory & "/" & inputStruct.name)>
+				<cfdirectory action="create" directory="#inputStruct.ViewsDirectory & "/" & inputStruct.name#" mode="777">
+			</cfif>
+			<!--- Create View Stub --->
+			<cfset fileWrite(inputStruct.ViewsDirectory & "/" & inputStruct.name & "/" & thisAction & ".cfm","<h1>#inputStruct.name#.#thisAction#</h1>")>
+		</cfif>
 	</cfloop>
 	<!--- Replace Handler Name in all actions --->
 	<cfset allActions = replaceNoCase(allActions,"|name|",inputStruct.Name,"all") />
