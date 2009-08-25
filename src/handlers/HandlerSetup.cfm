@@ -12,7 +12,7 @@ Description :
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="HandlerGenerator.cfm"> 
-		<dialog width="450" height="450" title="ColdBox Event Handler Wizard">  
+		<dialog width="450" height="450" title="ColdBox Event Handler Wizard" image="images/ColdBox_Icon.png">  
 			<input name="Name" label="Enter handler name" required="true"  type="string" default="" tooltip="Enter handler cfc name without .cfc" />
 			<input name="Description" label="Enter handler description"  type="string" default="" tooltip="Enter handler description" />					
 		</dialog>

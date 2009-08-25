@@ -12,7 +12,7 @@ Description :
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="InterceptorGenerator.cfm"> 
-		<dialog width="450" height="450" title="ColdBox Interceptor Wizard">  
+		<dialog width="450" height="450" title="ColdBox Interceptor Wizard" image="images/ColdBox_Icon.png">  
 			<input name="Name" label="Enter interceptor name" required="true"  type="string" default="" tooltip="Enter interceptor cfc name without .cfc" />
 			<input name="Description" label="Enter interceptor description"  type="string" default="" tooltip="Enter interceptor description" />					
 		</dialog>

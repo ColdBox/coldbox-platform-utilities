@@ -13,7 +13,7 @@ Description :
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="ModelGenerator.cfm"> 
-		<dialog width="450" height="450" title="New ColdBox Model Wizard">  
+		<dialog width="450" height="450" title="New ColdBox Model Wizard" image="images/ColdBox_Icon.png">  
 			<input name="Name" required="true" label="Enter model object name"  type="string" default="" tooltip="Enter model cfc name without .cfc" />
 			<input name="Description" label="Enter model object description"  type="string" default="" tooltip="Enter model object description" />
 			<input name="Singleton" label="Singleton" type="Boolean" checked="false" tooltip="Select if the object is a singleton" />

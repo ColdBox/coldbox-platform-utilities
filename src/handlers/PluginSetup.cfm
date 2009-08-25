@@ -10,7 +10,7 @@ Description :
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="PluginGenerator.cfm"> 
-		<dialog width="450" height="450" title="ColdBox Plugin Wizard">  
+		<dialog width="450" height="450" title="ColdBox Plugin Wizard" image="images/ColdBox_Icon.png">  
 			<input name="Name" label="Enter plugin name" required="true"  type="string" default="" tooltip="Enter plugin cfc name without .cfc" />
 			<input name="Version" label="Enter plugin version"  type="string" default="1.0" tooltip="Enter plugin version" />
 			<input name="Description" label="Enter plugin description"  type="string" default="" tooltip="Enter plugin description" />
