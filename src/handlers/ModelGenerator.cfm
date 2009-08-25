@@ -73,7 +73,7 @@ Description :
 <cfheader name="Content-Type" value="text/xml">  
 <response status="success" showresponse="true">  
 	<ide>  
-		<dialog width="550" height="350" />  
+		<dialog width="550" height="350" title="New ColdBox Model Wizard" image="images/ColdBox_Icon.png"/>  
 		<body>
 		<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
 		</body>
