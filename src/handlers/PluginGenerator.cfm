@@ -40,8 +40,13 @@ Description :
 <cfset message = "" />
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
 <cfset pluginName		= inputstruct.Name />
+<cfset scriptPrefix = "">
+<!--- Script? --->
+<cfif inputStruct.Script>
+	<cfset scriptPrefix = "Script">
+</cfif>
 		
-<cffile action="read" file="#ExpandPath('../')#/templates/PluginContent.txt" variable="pluginContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/PluginContent#scriptPrefix#.txt" variable="pluginContent">
 
 <!--- Start Replacings --->
 <cfset pluginContent = replaceNoCase(pluginContent,"|pluginName|",pluginName,"all") />

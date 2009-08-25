@@ -36,9 +36,16 @@ Description :
 <!--- Expand Locations --->
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
 <cfset handlerName		= inputstruct.Name />
+<cfset scriptPrefix = "">
+<!--- Script? --->
+<cfif inputStruct.Script>
+	<cfset scriptPrefix = "Script">
+</cfif>
 
 <!--- Read in Template --->
-<cffile action="read" file="#ExpandPath('../')#/templates/HandlerContent.txt" variable="handlerContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/HandlerContent#scriptPrefix#.txt" variable="handlerContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/ActionContent#scriptPrefix#.txt"  variable="actionContent">
+
 
 <!--- Start Replacings --->
 <cfset handlerContent = replaceNoCase(handlerContent,"|Name|",inputstruct.Name,"all") />
@@ -47,6 +54,19 @@ Description :
 	<cfset handlerContent = replaceNoCase(handlerContent,"|Description|",inputstruct.Description,"all") />
 <cfelse>
 	<cfset handlerContent = replaceNoCase(handlerContent,"|Description|",defaultDescription,"all") />	
+</cfif>
+
+<!--- Handle Actions if passed --->
+<cfif len(inputstruct.Actions)>
+	<cfset allActions = "">
+	<cfloop list="#inputStruct.Actions#" index="thisAction">
+		<cfset allActions = allActions & replaceNoCase(actionContent,"|action|",thisAction,"all") & chr(13) & chr(13)/>
+	</cfloop>
+	<!--- Replace Handler Name in all actions --->
+	<cfset allActions = replaceNoCase(allActions,"|name|",inputStruct.Name,"all") />
+	<cfset handlerContent = replaceNoCase(handlerContent,"|EventActions|",allActions,"all") />	
+<cfelse>
+	<cfset handlerContent = replaceNoCase(handlerContent,"|EventActions|",'',"all") />	
 </cfif>
 
 <!--- Write it out. --->

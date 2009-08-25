@@ -36,9 +36,14 @@ Description :
 <!--- Expand Locations --->
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
 <cfset interceptorName		= inputstruct.Name />
+<cfset scriptPrefix = "">
+<!--- Script? --->
+<cfif inputStruct.Script>
+	<cfset scriptPrefix = "Script">
+</cfif>
 
 <!--- Read in Template --->
-<cffile action="read" file="#ExpandPath('../')#/templates/InterceptorContent.txt" variable="interceptorContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/InterceptorContent#scriptPrefix#.txt" variable="interceptorContent">
 
 <!--- Start Replacings --->
 <cfset interceptorContent = replaceNoCase(interceptorContent,"|Name|",inputstruct.Name,"all") />

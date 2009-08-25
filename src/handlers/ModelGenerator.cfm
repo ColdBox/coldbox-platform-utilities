@@ -37,8 +37,13 @@ Description :
 <cfset message = "" />
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
 <cfset modelName		= inputstruct.Name />
-		
-<cffile action="read" file="#ExpandPath('../')#/templates/ModelContent.txt" variable="modelContent">
+<cfset scriptPrefix = "">
+<!--- Script? --->
+<cfif inputStruct.Script>
+	<cfset scriptPrefix = "Script">
+</cfif>
+
+<cffile action="read" file="#ExpandPath('../')#/templates/ModelContent#scriptPrefix#.txt" variable="modelContent">
 
 <cfset modelContent = replaceNoCase(modelContent,"|modelName|",modelName,"all") />
 
