@@ -1,11 +1,12 @@
 <application>
 	<name>ColdBox Platform Utilities</name>
-	<author>Sana Ullah</author>
-	<email>sanaullah73@gmail.com</email>	
-	<description>Generate ColdBox App skeleton, handlers, plugins.</description>	
+	<author>Sana Ullah and Luis Majano</author>
+	<email>sanaullah73@gmail.com,info@coldbox.org</email>	
+	<description>A ColdFusion Builder companion to help build ColdBox Platform applications.</description>	
 	<version>1.0</version>
-	<license>Do whatever you like it:</license>
-    <menucontributions >
+	<license>Apache License, Version 2.0</license>
+    
+	<menucontributions >
 
 		<contribution target="projectview">
 			<menu name="ColdBox">
@@ -13,18 +14,26 @@
 					<filter type="folder" />
 					<filter type="project" />
 				</filters>
-				<action name="Generate ColdBox Handler" 	handlerid="GenHandler"	showResponse="true"></action>
-				<action name="Generate ColdBox Plugin" 		handlerid="GenPlugin"	showResponse="true"></action>
+				<action name="Generate Handler" 	handlerid="GenHandler"	showResponse="true"></action>
+				<action name="Generate Plugin" 		handlerid="GenPlugin"	showResponse="true"></action>
+				<action name="Generate Model" 		handlerid="GenModel"	showResponse="true"></action>
+				<action name="Generate Interceptor" 		handlerid="GenInterceptor"	showResponse="true"></action>
 				<action name="Generate App Skeleton"		handlerid="GenSkeleton"	showResponse="true"></action>
 			</menu>
 		</contribution>
 
     </menucontributions>	
 
+	<events>
+		<event type="onprojectcreate" handlerid="GenSkeleton" />
+	</events>	
+	
 	<handlers>		
 		<handler id="GenHandler"	type="CFM" filename="HandlerSetup.cfm" />
 		<handler id="GenPlugin"		type="CFM" filename="PluginSetup.cfm" />
 		<handler id="GenSkeleton"	type="CFM" filename="AppSkeleton.cfm" />
+		<handler id="GenModel"	    type="CFM" filename="ModelSetup.cfm" />
+		<handler id="GenInterceptor"	    type="CFM" filename="InterceptorSetup.cfm" />
 	</handlers>
 
 </application>

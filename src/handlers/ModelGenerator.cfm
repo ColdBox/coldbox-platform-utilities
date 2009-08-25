@@ -1,0 +1,82 @@
+<!-----------------------------------------------------------------------
+Author 	 :	Sana Ullah
+Date     :	August 1, 2009
+Description :
+---------------------------------------------------------------------->
+<!--- set plugin properties default values --->
+<cfset defaultDescription 	= "I am a new Model Object" />
+<cfset defaultSingleton 	= "false">
+<cfset defaultCache			= "false" />
+<cfset defaultCacheTimeout  = "" >
+ 
+<cfset data			= xmlParse(ideeventinfo)>
+<cfset extxmlinput	= xmlSearch(data, "/event/user/input")>
+<cfset inputstruct	= StructNew()>
+
+<cfloop index="i" from="1" to="#arrayLen(extxmlinput)#" >
+	<cfset StructInsert(inputstruct,"#extxmlinput[i].xmlAttributes.name#","#extxmlinput[i].xmlAttributes.value#")>
+</cfloop>
+
+<!--- ======================================================================= --->
+<cfif not len(inputstruct.Name)>
+	<cfset message = "The model name cannot be empty" />
+	<cfheader name="Content-Type" value="text/xml">  
+	<response status="error" showresponse="true">  
+		<ide>  
+			<dialog width="550" height="350" />  
+			<body>
+			<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
+			</body>
+		</ide>
+	</response>
+	
+	<cfabort>
+</cfif>
+<!--- ======================================================================= --->
+
+<cfset message = "" />
+<cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
+<cfset modelName		= inputstruct.Name />
+		
+<cffile action="read" file="#ExpandPath('../')#/templates/ModelContent.txt" variable="modelContent">
+
+<cfset modelContent = replaceNoCase(modelContent,"|modelName|",modelName,"all") />
+
+<cfif len(inputstruct.Description)>
+	<cfset modelContent = replaceNoCase(modelContent,"|modelDescription|",inputstruct.Description,"all") />
+<cfelse>
+	<cfset modelContent = replaceNoCase(modelContent,"|modelDescription|",defaultDescription,"all") />	
+</cfif>
+
+<cfif inputstruct.singleton>
+	<cfset modelContent = replaceNoCase(modelContent,"|modelPersistence|",'singleton="true"',"all") />
+<cfelseif inputStruct.cache>
+	<cfset cacheString = 'cache="true"'>
+	<cfif len(inputStruct.cacheTimeout)>
+		<cfset cacheString = cacheString & ' cacheTimeout="#inputStruct.cacheTimeout#"'>
+	</cfif>
+	<cfset modelContent = replaceNoCase(modelContent,"|modelPersistence|",cacheString,"all") />	
+<cfelse>
+	<cfset modelContent = replaceNoCase(modelContent,"|modelPersistence|","","all") />
+</cfif>
+
+<!--- Write it back out --->
+<cftry>
+	<cffile action="write" file="#expandLocation#/#modelName#.cfc" mode ="777" output="#modelContent#">
+	<cfset message = modelName & ".cfc Generated new model object" />
+	
+	<cfcatch type="any">
+		<cfset message = "There was problem creating model object: #cfcatch.message#" />
+	</cfcatch>
+</cftry>
+
+<cfheader name="Content-Type" value="text/xml">  
+<response status="success" showresponse="true">  
+	<ide>  
+		<dialog width="550" height="350" />  
+		<body>
+		<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
+		</body>
+	</ide>
+</response>
+

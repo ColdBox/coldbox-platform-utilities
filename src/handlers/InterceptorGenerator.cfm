@@ -4,7 +4,7 @@ Date     :	August 1, 2009
 Description :
 ---------------------------------------------------------------------->
 <!--- set handler properties default values --->
-<cfset defaultDescription 	= "I am a new handler" />
+<cfset defaultDescription 	= "I am a new interceptor" />
 <cfset defaultName			= "" />
 <cfset message	= "" /> 
 <cfset data		= xmlParse(ideeventinfo)>
@@ -17,8 +17,8 @@ Description :
 </cfloop>
 
 <!--- ======================================================================= --->
-<cfif not len(inputstruct.Name)>
-	<cfset message = "The handler name cannot be empty" />
+<cfif not len(inputstruct.name)>
+	<cfset message = "The interceptor name cannot be empty" />
 	<cfheader name="Content-Type" value="text/xml">  
 	<response status="success" showresponse="true">  
 		<ide>  
@@ -35,26 +35,26 @@ Description :
 
 <!--- Expand Locations --->
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
-<cfset handlerName		= inputstruct.Name />
+<cfset interceptorName		= inputstruct.Name />
 
 <!--- Read in Template --->
-<cffile action="read" file="#ExpandPath('../')#/templates/HandlerContent.txt" variable="handlerContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/InterceptorContent.txt" variable="interceptorContent">
 
 <!--- Start Replacings --->
-<cfset handlerContent = replaceNoCase(handlerContent,"|Name|",inputstruct.Name,"all") />
+<cfset interceptorContent = replaceNoCase(interceptorContent,"|Name|",inputstruct.Name,"all") />
 
 <cfif len(inputstruct.Description)>
-	<cfset handlerContent = replaceNoCase(handlerContent,"|Description|",inputstruct.Description,"all") />
+	<cfset interceptorContent = replaceNoCase(interceptorContent,"|Description|",inputstruct.Description,"all") />
 <cfelse>
-	<cfset handlerContent = replaceNoCase(handlerContent,"|Description|",defaultDescription,"all") />	
+	<cfset interceptorContent = replaceNoCase(interceptorContent,"|Description|",defaultDescription,"all") />	
 </cfif>
 
 <!--- Write it out. --->
 <cftry>
-	<cffile action="write" file="#expandLocation#/#handlerName#.cfc" mode ="777" output="#handlerContent#">
-	<cfset message = handlerName & ".cfc Generated new handler" />
+	<cffile action="write" file="#expandLocation#/#interceptorName#.cfc" mode ="777" output="#interceptorContent#">
+	<cfset message = interceptorName & ".cfc Generated new interceptor" />
 <cfcatch type="any">
-	<cfset message = "There was problem creating handler: #cfcatch.message#" />
+	<cfset message = "There was problem creating interceptor: #cfcatch.message#" />
 </cfcatch>
 </cftry>
 

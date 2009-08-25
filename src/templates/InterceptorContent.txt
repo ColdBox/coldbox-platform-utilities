@@ -1,0 +1,17 @@
+<cfcomponent hint="|description|"
+			 output="false"
+			 extends="coldbox.system.Interceptor">
+
+<!------------------------------------------- CONSTRUCTOR ------------------------------------------->
+
+	<cffunction name="configure" access="public" returntype="void" output="false" hint="Interceptor config">
+		<cfscript>
+			return this;
+		</cfscript>
+	</cffunction>
+
+<!------------------------------------------- INTERCEPTION POINTS ------------------------------------------->
+
+	
+
+</cfcomponent>	

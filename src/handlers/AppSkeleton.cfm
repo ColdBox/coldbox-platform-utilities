@@ -3,8 +3,6 @@ Author 	 :	Sana Ullah
 Date     :	August 1, 2009
 Description :
 ---------------------------------------------------------------------->
-<cflog file="ColdBoxCFBuilder" text="Executing AppSkeleton.cfm #timeFormat(now())#">
-<cfparam name="ideeventinfo"> 
 <cfset data = xmlParse(ideeventinfo)>
 
 <!--- List of all coldbox Application Templates (Simple, Advance, Flex )--->
@@ -14,8 +12,8 @@ Description :
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="ExpandAppSkeleton.cfm"> 
-		<dialog width="450" height="450">  
-			<input name="Select App Type" Lable="Select App Type" type="list">
+		<dialog width="450" height="450" title="ColdBox Application Generator">  
+			<input name="Select App Type" label="Select Application Type To Generate" type="list">
 			<cfloop query="appSkeletons">
 				<option value="#appSkeletons.name#" />
 			</cfloop> 

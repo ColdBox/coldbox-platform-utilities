@@ -11,10 +11,10 @@ Description :
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>  
 <response status="success" type="default">  
-	<ide handlerfile="HandlerGenerator.cfm"> 
-		<dialog width="450" height="450" title="ColdBox Event Handler Wizard">  
-			<input name="Name" label="Enter handler name" required="true"  type="string" default="" tooltip="Enter handler cfc name without .cfc" />
-			<input name="Description" label="Enter handler description"  type="string" default="" tooltip="Enter handler description" />					
+	<ide handlerfile="InterceptorGenerator.cfm"> 
+		<dialog width="450" height="450" title="ColdBox Interceptor Wizard">  
+			<input name="Name" label="Enter interceptor name" required="true"  type="string" default="" tooltip="Enter interceptor cfc name without .cfc" />
+			<input name="Description" label="Enter interceptor description"  type="string" default="" tooltip="Enter interceptor description" />					
 		</dialog>
 	</ide>
 </response>  

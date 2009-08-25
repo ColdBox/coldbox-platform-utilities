@@ -2,7 +2,7 @@
 			 extends="coldbox.system.Plugin"
 			 output="false"
 			 cache="|pluginCache|"
-			 cacheTimeout="0">
+			 |pluginCacheTimeout|>
 
 <!------------------------------------------- CONSTRUCTOR ------------------------------------------->
 

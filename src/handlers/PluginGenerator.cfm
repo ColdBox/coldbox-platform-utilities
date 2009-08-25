@@ -3,8 +3,6 @@ Author 	 :	Sana Ullah
 Date     :	August 1, 2009
 Description :
 ---------------------------------------------------------------------->
-
-<cflog file="ColdBoxCFBuilder" text="Running PluginGenerator.cfm #timeFormat(now())#">
 <cfparam name="ideeventinfo">
 <!--- set plugin properties default values --->
 <cfset defaultDescription 	= "I am new Plugin" />
@@ -12,8 +10,8 @@ Description :
 <cfset defaultAuthorURL		= "" />
 <cfset defaultVersion		= "1.0" />
 <cfset defaultCache			= "true" />
+<cfset defaultCacheTimeout	= "" />
 
- 
 <cfset data			= xmlParse(ideeventinfo)>
 <cfset extxmlinput	= xmlSearch(data, "/event/user/input")>
 <cfset inputstruct	= StructNew()>
@@ -24,15 +22,15 @@ Description :
 
 <!--- ======================================================================= --->
 <cfif not len(inputstruct.Name)>
-	<cfset message = "The plugin cannot be empty" />
+	<cfset message = "The plugin name cannot be empty" />
 	<cfheader name="Content-Type" value="text/xml">  
 	<response status="success" showresponse="true">  
-	<ide>  
-	<dialog width="550" height="350" />  
-	<body>
-	<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
-	</body>
-	</ide>
+		<ide>  
+			<dialog width="550" height="350" />  
+			<body>
+			<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
+			</body>
+		</ide>
 	</response>
 	
 	<cfabort>
@@ -45,6 +43,7 @@ Description :
 		
 <cffile action="read" file="#ExpandPath('../')#/templates/PluginContent.txt" variable="pluginContent">
 
+<!--- Start Replacings --->
 <cfset pluginContent = replaceNoCase(pluginContent,"|pluginName|",pluginName,"all") />
 
 <cfif len(inputstruct.Version)>
@@ -78,6 +77,12 @@ Description :
 	<cfset pluginContent = replaceNoCase(pluginContent,"|pluginCache|","false","all") />	
 </cfif>
 
+<cfif len(inputstruct.CacheTimeout)>
+	<cfset pluginContent = replaceNoCase(pluginContent,"|pluginCacheTimeout|",'cacheTimeout="#inputStruct.cacheTimeout#"',"all") />
+<cfelse>
+	<cfset pluginContent = replaceNoCase(pluginContent,"|pluginCacheTimeout|","","all") />
+</cfif>
+
 <cftry>
 	<cffile action="write" file="#expandLocation#/#pluginName#.cfc" mode ="777" output="#pluginContent#">
 	<cfset message = pluginName & ".cfc Generated new plugin" />
@@ -90,10 +95,10 @@ Description :
 <cfheader name="Content-Type" value="text/xml">  
 <response status="success" showresponse="true">  
 <ide>  
-<dialog width="550" height="350" />  
-<body>
-<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
-</body>
+	<dialog width="550" height="350" />  
+	<body>
+	<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
+	</body>
 </ide>
 </response>
 
