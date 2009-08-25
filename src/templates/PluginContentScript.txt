@@ -1,0 +1,19 @@
+/*
+|pluginDescription|
+*/
+component extends="coldbox.system.Plugin" output="false" cache="|pluginCache|" |pluginCacheTimeout|{
+	
+	|pluginName| function init(controller) output=false{
+		super.Init(arguments.controller);
+		
+		// Plugin Properties
+		setpluginName("|pluginName|");
+		setpluginVersion("|pluginVersion|");
+		setpluginDescription("|pluginDescription|");
+		setpluginAuthor("|pluginAuthor|");
+		setpluginAuthorURL("|pluginAuthorURL|");
+		
+		return this;
+	}
+	
+}

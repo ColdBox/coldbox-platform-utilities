@@ -1,0 +1,11 @@
+/*
+|modelDescription|
+*/
+component output="false" |modelPersistence|{
+	
+	|modelName| function init() output=false{
+		
+		return this;
+	}
+	
+}

@@ -1,7 +1,6 @@
 <cfcomponent name="|Name|" extends="coldbox.system.EventHandler" output="false" hint="|Description|">
 	
 	<cfscript>
-		this.event_cache_suffix = "";
 		this.prehandler_only 	= "";
 		this.prehandler_except 	= "";
 		this.posthandler_only 	= "";
@@ -46,23 +45,7 @@
 
 <!------------------------------------------- PUBLIC EVENTS ------------------------------------------>
 
-	<!--- Default Action --->
-	<cffunction name="index" returntype="void" output="false" hint="My main event">
-		<cfargument name="event" required="true">
-		<cfset var rc = event.getCollection()>
-		
-		<cfset Event.setValue("welcomeMessage","Welcome to ColdBox!")>	
-		
-		<cfset Event.setView("home")>
-	</cffunction>
-	
-	<!--- Do Something Action --->
-	<cffunction name="doSomething" returntype="void" output="false" hint="Do Something">
-		<cfargument name="event" required="true">
-		<cfset var rc = event.getCollection()>
-		
-		<cfset setNextEvent("general.index")>
-	</cffunction>
+|EventActions|
 
 <!------------------------------------------- PRIVATE EVENTS ------------------------------------------>
 

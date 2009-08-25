@@ -1,0 +1,5 @@
+void function |action|(event) output=false{
+	var rc = event.getCollection();
+	
+	event.setView("|Name|/|action|");
+}	

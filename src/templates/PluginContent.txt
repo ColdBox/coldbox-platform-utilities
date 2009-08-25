@@ -11,10 +11,9 @@
 		<cfargument name="controller" type="any" required="true" hint="coldbox.system.Controller">
 		<!--- ************************************************************* --->
 		<cfscript>
-			/* Super Init */
 			super.Init(arguments.controller);
 			
-			/* Plugin Properties */
+			// Plugin Properties
 			setpluginName("|pluginName|");
 			setpluginVersion("|pluginVersion|");
 			setpluginDescription("|pluginDescription|");

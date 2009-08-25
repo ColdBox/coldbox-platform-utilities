@@ -1,0 +1,28 @@
+/*
+|Description|
+*/
+component extends="coldbox.system.EventHandler" output="false"{
+	
+	// OPTIONAL HANDLER PROPERTIES
+	this.prehandler_only 	= "";
+	this.prehandler_except 	= "";
+	this.posthandler_only 	= "";
+	this.posthandler_except = "";
+	// Allowed HTTP Methods Ex: this.allowedMethods = {delete='POST,DELETE',index='GET'}
+	this.allowedMethods = {};
+	
+	/**
+	IMPLICIT FUNCTIONS: Uncomment to use
+	void function preHandler(event,action) output=false{
+		var rc = event.getCollection();
+	}
+	void function postHandler(event,action) output=false{
+		var rc = event.getCollection();
+	}
+	void function onMissingAction(event,missingAction) output=false{
+	}
+	*/
+		
+|EventActions|
+	
+}
