@@ -4,8 +4,6 @@ Date     :	August 1, 2009
 Description :
 ---------------------------------------------------------------------->
 <cftry>
-
-<cfparam name="ideeventinfo"> 
 <cfset data = xmlParse(ideeventinfo)>
 <cfset pluginDescription = "I am a new ColdBox Model" />
 
