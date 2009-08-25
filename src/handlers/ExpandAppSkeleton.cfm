@@ -28,7 +28,7 @@ Description :
 <cfheader name="Content-Type" value="text/xml">  
 <response status="success" showresponse="true">  
 <ide>  
-	<dialog width="550" height="350" />  
+	<dialog width="550" height="350" title="ColdBox Application Generator Wizard" image="images/ColdBox_Icon.png"/>  
 	<body><![CDATA[<p style="font-size:11px;"><cfoutput>#message#</cfoutput></p>]]></body>
 </ide>
 </response>

@@ -12,7 +12,7 @@ Description :
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="ExpandAppSkeleton.cfm"> 
-		<dialog width="450" height="450" title="ColdBox Application Generator">  
+		<dialog width="450" height="450" title="ColdBox Application Generator" image="images/ColdBox_Icon.png">  
 			<input name="Select App Type" label="Select Application Type To Generate" type="list">
 			<cfloop query="appSkeletons">
 				<option value="#appSkeletons.name#" />
