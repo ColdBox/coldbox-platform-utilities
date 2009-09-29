@@ -3,22 +3,22 @@
 	<author>Sana Ullah and Luis Majano</author>
 	<email>sanaullah73@gmail.com,info@coldbox.org</email>	
 	<description>A ColdFusion Builder companion to help build ColdBox Platform applications.</description>	
-	<version>1.0</version>
+	<version>1.1</version>
 	<license>Apache License, Version 2.0</license>
     
 	<menucontributions >
 
 		<contribution target="projectview">
-			<menu name="ColdBox">
+			<menu name="ColdBox Platform Utilities">
 				<filters>
 					<filter type="folder" />
 					<filter type="project" />
 				</filters>
-				<action name="Generate Handler" 	handlerid="GenHandler"	showResponse="true"></action>
-				<action name="Generate Plugin" 		handlerid="GenPlugin"	showResponse="true"></action>
-				<action name="Generate Model" 		handlerid="GenModel"	showResponse="true"></action>
-				<action name="Generate Interceptor" 		handlerid="GenInterceptor"	showResponse="true"></action>
-				<action name="Generate App Skeleton"		handlerid="GenSkeleton"	showResponse="true"></action>
+				<action name="New Handler" 	handlerid="GenHandler"	showResponse="true"></action>
+				<action name="New Plugin" 		handlerid="GenPlugin"	showResponse="true"></action>
+				<action name="New Model" 		handlerid="GenModel"	showResponse="true"></action>
+				<action name="New Interceptor" 		handlerid="GenInterceptor"	showResponse="true"></action>
+				<action name="New Application"		handlerid="GenSkeleton"	showResponse="true"></action>
 			</menu>
 		</contribution>
 
