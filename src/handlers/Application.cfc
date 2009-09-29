@@ -1,8 +1,12 @@
 <!-----------------------------------------------------------------------
-Author 	 :	Sana Ullah
-Date     :	August 1, 2009
-Description :
----------------------------------------------------------------------->
+********************************************************************************
+Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
+www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
+********************************************************************************
+
+Author      :	 Sana Ullah & Luis Majano
+Date        :	08/01/2009
+----------------------------------------------------------------------->
 <cfcomponent displayname="Application" output="false">
 	<cfscript>
 		this.name				= "ColdBoxCFBuilderExtension";
@@ -18,7 +22,6 @@ Description :
 		<!--- Log Request --->
 		<cflog file="ColdBoxCFBuilder" text="Executing #cgi.script_name# #timeFormat(now())#">
 		<cflog file="ColdBoxCFBuilder" text="ideeventinfo: #ideeventinfo.toString()#">
-		
 		
 	</cffunction>
 </cfcomponent>

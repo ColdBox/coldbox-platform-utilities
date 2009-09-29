@@ -1,9 +1,12 @@
 <!-----------------------------------------------------------------------
-Author 	 :	Sana Ullah
-Date     :	August 1, 2009
-Description :
----------------------------------------------------------------------->
-<cfset data = xmlParse(ideeventinfo)>
+********************************************************************************
+Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
+www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
+********************************************************************************
+
+Author      :	 Sana Ullah & Luis Majano
+Date        :	08/01/2009
+----------------------------------------------------------------------->
 
 <!--- List of all coldbox Application Templates (Simple, Advance, Flex )--->
 <cfdirectory action="list" directory="#expandPath('../skeletons')#" type="dir" name="appSkeletons" />

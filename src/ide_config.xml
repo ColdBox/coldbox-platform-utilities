@@ -14,11 +14,16 @@
 					<filter type="folder" />
 					<filter type="project" />
 				</filters>
-				<action name="New Handler" 	handlerid="GenHandler"	showResponse="true"></action>
-				<action name="New Plugin" 		handlerid="GenPlugin"	showResponse="true"></action>
-				<action name="New Model" 		handlerid="GenModel"	showResponse="true"></action>
-				<action name="New Interceptor" 		handlerid="GenInterceptor"	showResponse="true"></action>
-				<action name="New Application"		handlerid="GenSkeleton"	showResponse="true"></action>
+				<action name="New Handler" 		handlerid="GenHandler"		showResponse="true"></action>
+				<action name="New Plugin" 		handlerid="GenPlugin"		showResponse="true"></action>
+				<action name="New Model" 		handlerid="GenModel"		showResponse="true"></action>
+				<action name="New Interceptor" 	handlerid="GenInterceptor"	showResponse="true"></action>
+				<action name="New Application"	handlerid="GenSkeleton"		showResponse="true"></action>
+				
+				<!-- Config Actions -->
+				<action name="Setup Deploy Interceptor" 	handlerid="GenDeploy"	showResponse="true">
+					<filters><filter type="folder" pattern="config" /></filters>
+				</action>
 			</menu>
 		</contribution>
 
@@ -29,11 +34,12 @@
 	</events>	
 	
 	<handlers>		
-		<handler id="GenHandler"	type="CFM" filename="HandlerSetup.cfm" />
-		<handler id="GenPlugin"		type="CFM" filename="PluginSetup.cfm" />
-		<handler id="GenSkeleton"	type="CFM" filename="AppSkeleton.cfm" />
-		<handler id="GenModel"	    type="CFM" filename="ModelSetup.cfm" />
-		<handler id="GenInterceptor"	    type="CFM" filename="InterceptorSetup.cfm" />
+		<handler id="GenHandler"		type="CFM" filename="HandlerSetup.cfm" />
+		<handler id="GenPlugin"			type="CFM" filename="PluginSetup.cfm" />
+		<handler id="GenSkeleton"		type="CFM" filename="AppSkeleton.cfm" />
+		<handler id="GenModel"	    	type="CFM" filename="ModelSetup.cfm" />
+		<handler id="GenDeploy"	    	type="CFM" filename="DeploySetup.cfm" />		
+		<handler id="GenInterceptor"	type="CFM" filename="InterceptorSetup.cfm" />
 	</handlers>
 
 </application>

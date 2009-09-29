@@ -3,7 +3,6 @@ Author 	 :	Sana Ullah
 Date     :	August 1, 2009
 Description :
 ---------------------------------------------------------------------->
-<!--- Prepare Variables --->
 <cfset data = xmlParse(ideeventinfo)>
 <cfset message = "" />
 

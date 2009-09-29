@@ -1,0 +1,14 @@
+/*
+A deploy command object
+*/
+component output="false"{
+	
+	any function init(controller) output=false{
+		controller = arguments.controller;
+	}
+	
+	void function execute() output=false{
+		
+	}
+	
+}
