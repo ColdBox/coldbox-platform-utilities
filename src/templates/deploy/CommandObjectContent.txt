@@ -1,0 +1,14 @@
+<cfcomponent name="DeployCommand" output="false" hint="A deploy command object">
+
+	<cffunction name="init" access="public" returntype="any" hint="Constructor" output="false" >
+	    <cfargument name="controller" type="any" hint="The coldbox controller">
+	    
+	    <cfset controller = arguments.controller>
+		<cfreturn this>
+	</cffunction>
+	
+	<cffunction name="execute" access="public" returntype="void" hint="Execute Command" output="false" >
+        
+	</cffunction>
+	
+</cfcomponent>

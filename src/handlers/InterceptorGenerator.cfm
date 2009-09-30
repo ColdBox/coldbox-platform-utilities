@@ -11,27 +11,9 @@ Description :
 
 <cfset extxmlinput = xmlSearch(data, "/event/user/input")>
 <cfset inputstruct = StructNew()>
-
 <cfloop index="i" from="1" to="#arrayLen(extxmlinput)#" >
 	<cfset StructInsert(inputstruct,"#extxmlinput[i].xmlAttributes.name#","#extxmlinput[i].xmlAttributes.value#")>
 </cfloop>
-
-<!--- ======================================================================= --->
-<cfif not len(inputstruct.name)>
-	<cfset message = "The interceptor name cannot be empty" />
-	<cfheader name="Content-Type" value="text/xml">  
-	<response status="success" showresponse="true">  
-		<ide>  
-			<dialog width="550" height="350" />  
-			<body>
-			<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
-			</body>
-		</ide>
-	</response>
-	
-	<cfabort>
-</cfif>
-<!--- ======================================================================= --->
 
 <!--- Expand Locations --->
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
@@ -44,14 +26,27 @@ Description :
 
 <!--- Read in Template --->
 <cffile action="read" file="#ExpandPath('../')#/templates/InterceptorContent#scriptPrefix#.txt" variable="interceptorContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/InterceptorMethod#scriptPrefix#.txt" variable="interceptorMethod">
 
 <!--- Start Replacings --->
 <cfset interceptorContent = replaceNoCase(interceptorContent,"|Name|",inputstruct.Name,"all") />
 
+<!--- Description --->
 <cfif len(inputstruct.Description)>
 	<cfset interceptorContent = replaceNoCase(interceptorContent,"|Description|",inputstruct.Description,"all") />
 <cfelse>
 	<cfset interceptorContent = replaceNoCase(interceptorContent,"|Description|",defaultDescription,"all") />	
+</cfif>
+
+<!--- Interception Points --->
+<cfif len(inputstruct.InterceptionPoints)>
+	<cfset methodContent = "">
+	<cfloop list="#inputStruct.InterceptionPoints#" index="thisPoint">
+		<cfset methodContent = methodContent & replaceNoCase(interceptorMethod,"|interceptionPoint|",thisPoint,"all") & chr(13) & chr(13) />
+	</cfloop>
+	<cfset interceptorContent = replaceNoCase(interceptorContent,"|interceptionPoints|",methodContent,"all") />	
+<cfelse>
+	<cfset interceptorContent = replaceNoCase(interceptorContent,"|interceptionPoints|",'',"all") />	
 </cfif>
 
 <!--- Write it out. --->

@@ -1,9 +1,12 @@
 <!-----------------------------------------------------------------------
-Author 	 :	Sana Ullah
-Date     :	August 1, 2009
-Description :
----------------------------------------------------------------------->
-<cfset data = xmlParse(ideeventinfo)>
+********************************************************************************
+Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
+www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
+********************************************************************************
+
+Author      :	 Sana Ullah & Luis Majano
+Date        :	08/01/2009
+----------------------------------------------------------------------->
 
 <!--- List of all coldbox Application Templates (Simple, Advance, Flex )--->
 <cfdirectory action="list" directory="#expandPath('../skeletons')#" type="dir" name="appSkeletons" />
@@ -13,11 +16,15 @@ Description :
 <response status="success" type="default">  
 	<ide handlerfile="ExpandAppSkeleton.cfm"> 
 		<dialog width="450" height="450" title="ColdBox Application Generator" image="images/ColdBox_Icon.png">  
-			<input name="Select App Type" label="Select Application Type To Generate" type="list">
+			<input name="ApplicationType" label="Select Application Type To Generate" type="list">
 			<cfloop query="appSkeletons">
 				<option value="#appSkeletons.name#" />
 			</cfloop> 
-			</input>					
+			</input>
+			<input name="ApplicationCFCType" label="Application.cfc using inheritance" 
+				   tooltip="Whether to create the Application.cfc with inheritance or not"
+				   type="Boolean"
+				   checked="true" /> 					
 		</dialog>
 	</ide>
 </response>  

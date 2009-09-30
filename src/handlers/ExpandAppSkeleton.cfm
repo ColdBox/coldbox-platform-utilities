@@ -3,7 +3,6 @@ Author 	 :	Sana Ullah
 Date     :	August 1, 2009
 Description :
 ---------------------------------------------------------------------->
-<!--- Prepare Variables --->
 <cfset data = xmlParse(ideeventinfo)>
 <cfset message = "" />
 
@@ -13,16 +12,37 @@ Description :
 <cfelse>
 	<cfset expandLocation	= data.event.ide.eventinfo.xmlAttributes.projectLocation />
 </cfif>
-<cfset skeletonLocation	= data.event.user.input.xmlAttributes.value />
+
+<!--- Parse Input --->
+<cfset extXMLInput = xmlSearch(data, "/event/user/input")>
+<cfset inputStruct = StructNew()>
+<cfloop index="i" from="1" to="#arrayLen(extXMLInput)#" >
+	<cfset StructInsert(inputStruct,"#extXMLInput[i].xmlAttributes.name#","#extXMLInput[i].xmlAttributes.value#")>
+</cfloop>
 
 <!--- get the zip file under the skeleton location directory. I ignore any but the first one --->
-<cfdirectory action="list" directory="#expandPath('../skeletons/#skeletonLocation#')#" filter="*.zip" name="appSkeletonsZip" />
+<cfdirectory action="list" directory="#expandPath('../skeletons/#inputStruct.ApplicationType#')#" filter="*.zip" name="appSkeletonsZip" />
 
+<!--- Unzip it --->
 <cfif appSkeletonsZip.recordCount>
 	<cfzip action="unzip" destination="#expandLocation#" file="#appSkeletonsZip.directory#/#appSkeletonsZip.name#" storePath="true" recurse="yes" />
-	<cfset message = appSkeletonsZip.name & " unzipped to " & expandLocation />
+	<cfset message = appSkeletonsZip.name & " succesfully generated!" />
 <cfelse>
 	<cfset message = "No zip file was found in that directory." />
+</cfif>
+
+<!--- Which Application.cfc to use. --->
+<cfif inputStruct.ApplicationCFCType>
+	<!--- Remove non-ineritance cfc --->
+	<cfif fileExists(expandLocation & "/Application_noinheritance.cfc")>
+		<cfset fileDelete(expandLocation & "/Application_noinheritance.cfc")>
+	</cfif>
+<cfelse>
+	<!--- Remove ineritance cfc & rename it --->
+	<cfif fileExists(expandLocation & "/Application_noinheritance.cfc")>
+		<cfset fileDelete(expandLocation & "/Application.cfc")>
+		<cfset fileMove(expandLocation & "/Application_noinheritance.cfc", expandLocation & "/Application.cfc")>
+	</cfif>
 </cfif>
 
 <cfheader name="Content-Type" value="text/xml">  
