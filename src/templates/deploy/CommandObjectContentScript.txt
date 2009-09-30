@@ -5,6 +5,7 @@ component output="false"{
 	
 	any function init(controller) output=false{
 		controller = arguments.controller;
+		return this;
 	}
 	
 	void function execute() output=false{

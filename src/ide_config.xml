@@ -2,7 +2,14 @@
 	<name>ColdBox Platform Utilities</name>
 	<author>Sana Ullah and Luis Majano</author>
 	<email>sanaullah73@gmail.com,info@coldbox.org</email>	
-	<description>A ColdFusion Builder companion to help build ColdBox Platform applications.</description>	
+	<description><![CDATA[
+		A ColdFusion Builder companion to help build ColdBox Platform applications.
+		
+		Version 1.1
+		- Updates of application templates
+		- Addition of Deploy Interceptor Configuration
+		- Addition of Security Interceptor Configuration
+	]]></description>	
 	<version>1.1</version>
 	<license>Apache License, Version 2.0</license>
     
@@ -24,6 +31,9 @@
 				<action name="Setup Deploy Interceptor" 	handlerid="GenDeploy"	showResponse="true">
 					<filters><filter type="folder" pattern="config" /></filters>
 				</action>
+				<action name="Setup Security Interceptor" 	handlerid="GenSecurity"	showResponse="true">
+					<filters><filter type="folder" pattern="config" /></filters>
+				</action>
 			</menu>
 		</contribution>
 
@@ -38,7 +48,8 @@
 		<handler id="GenPlugin"			type="CFM" filename="PluginSetup.cfm" />
 		<handler id="GenSkeleton"		type="CFM" filename="AppSkeleton.cfm" />
 		<handler id="GenModel"	    	type="CFM" filename="ModelSetup.cfm" />
-		<handler id="GenDeploy"	    	type="CFM" filename="DeploySetup.cfm" />		
+		<handler id="GenDeploy"	    	type="CFM" filename="DeploySetup.cfm" />
+		<handler id="GenSecurity"    	type="CFM" filename="SecuritySetup.cfm" />		
 		<handler id="GenInterceptor"	type="CFM" filename="InterceptorSetup.cfm" />
 	</handlers>
 

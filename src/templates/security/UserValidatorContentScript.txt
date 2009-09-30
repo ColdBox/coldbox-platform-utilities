@@ -1,0 +1,14 @@
+/*
+A custom security object
+*/
+component output="false"{
+	
+	any function init() output=false{
+		return this;
+	}
+	
+	boolean function userValidator(required struct rule,required any messagebox, required any controller) output=false{
+		
+	}
+	
+}
