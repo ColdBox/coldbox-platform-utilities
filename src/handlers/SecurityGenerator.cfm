@@ -64,7 +64,7 @@ if( inputStruct.generateValidator ){
 // Add to interceptors Array
 arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);
 // Write it out
-fileWrite(configLocation, toString(configXML));
+fileWrite(configLocation, request.utility.prettifyXML(configXML));
 </cfscript>
 
 <cfheader name="Content-Type" value="text/xml">  

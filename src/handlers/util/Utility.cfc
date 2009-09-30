@@ -15,4 +15,14 @@
 	    <cfreturn theURL>
 	</cffunction>
 	
+	<!--- prettifyXML --->
+    <cffunction name="prettifyXML" output="false" access="public" returntype="any" hint="prettify xml">
+    	<cfargument name="inXML" type="any" required="true" default="" hint="The xml document to prettify"/>
+    	<cfscript>
+    		var formatterPath = getDirectoryFromPath(getMetadata(this).path) & "/xmlFormatter.xsl"; 
+			
+    		return xmlTransform(toString(arguments.inXML),FileRead(formatterPath));
+    	</cfscript>
+    </cffunction>
+	
 </cfcomponent>

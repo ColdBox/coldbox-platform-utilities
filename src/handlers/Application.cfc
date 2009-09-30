@@ -23,5 +23,8 @@ Date        :	08/01/2009
 		<cflog file="ColdBoxCFBuilder" text="Executing #cgi.script_name# #timeFormat(now())#">
 		<cflog file="ColdBoxCFBuilder" text="ideeventinfo: #ideeventinfo.toString()#">
 		
+		<!--- Utility --->
+		<cfset request.utility = createObject("component","util.Utility")>
+		
 	</cffunction>
 </cfcomponent>
