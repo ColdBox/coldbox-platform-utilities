@@ -10,6 +10,8 @@
 		- Addition of Deploy Interceptor Configuration
 		- Addition of Security Interceptor Configuration
 		- Additon of Environment Control Configuration
+		- Added Reactor ORM Configuration
+		- Added Transfer ORM Configuration
 	]]></description>	
 	<version>1.1</version>
 	<license>Apache License, Version 2.0</license>

@@ -22,43 +22,41 @@ for(i=1; i lte arrayLen(extXMLInput); i++){
 destinationLocation = data.event.ide.projectview.resource.xmlAttributes.path & "/";
 configLocation = destinationLocation & "coldbox.xml.cfm";
 projectLocation = data.event.ide.projectview.XMLAttributes.projectLocation & "/";
-templatesLocation = expandPath('../templates/transfer') & "/";
+templatesLocation = expandPath('../templates/reactor') & "/";
 
-// Move new transfer.xml
-fileCopy(templatesLocation & "transfer.xml.cfm", destinationLocation);
+// Move reactor.xml
+fileCopy(templatesLocation & "reactor.xml.cfm", destinationLocation);
 
-// Create definitions folder
-if( NOT directoryExists(destinationLocation & "definitions") ){
-	request.utility.createDirectory(destinationLocation & "definitions");
+// Create reactor model folder
+if( NOT directoryExists(projectLocation & "model/reactor") ){
+	request.utility.createDirectory(projectLocation & "model/reactor");
 }
 
 // Add interceptor to XML
 configXML = xmlParse(configLocation);
 // Create interceptor element
 interceptor = xmlElemNew(configXML,"Interceptor");
-interceptor.XMLAttributes["class"] = "coldbox.system.orm.transfer.TransferLoader";
-// Config File
+interceptor.XMLAttributes["class"] = "coldbox.system.orm.reactor.ReactorLoader";
+// Dsn Alias
 interceptor.XMLChildren[1] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[1].XMLAttributes["name"] = "configPath";
-interceptor.XMLChildren[1].xmlText = "${AppMapping}/config/transfer.xml.cfm";
-// Definitions Path
+interceptor.XMLChildren[1].XMLAttributes["name"] = "dsnAlias";
+interceptor.XMLChildren[1].xmlText = inputStruct.dsnAlias;
+// Config File
 interceptor.XMLChildren[2] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[2].XMLAttributes["name"] = "definitionPath";
-interceptor.XMLChildren[2].xmlText = "${AppMapping}/config/definitions";
-//DatasourceAlias
+interceptor.XMLChildren[2].XMLAttributes["name"] = "pathToConfigXML";
+interceptor.XMLChildren[2].xmlText = "${AppMapping}/config/reactor.xml.cfm";
+//Project
 interceptor.XMLChildren[3] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[3].XMLAttributes["name"] = "datasourceAlias";
-interceptor.XMLChildren[3].xmlText = inputStruct.dsnAlias;
-//BeanInjector
+interceptor.XMLChildren[3].XMLAttributes["name"] = "project";
+interceptor.XMLChildren[3].xmlText = inputStruct.projectName;
+//Mapping
 interceptor.XMLChildren[4] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[4].XMLAttributes["name"] = "loadBeanInjector";
-interceptor.XMLChildren[4].xmlText = inputStruct.loadBeanInjector;
-// BeanInjector props
-if( inputStruct.loadBeanInjector ){
-	interceptor.XMLChildren[5] = xmlElemNew(configXML,"Property");
-	interceptor.XMLChildren[5].XMLAttributes["name"] = "BeanInjectorProperties";
-	interceptor.XMLChildren[5].xmlText = "{'useSetterInjection':'#inputStruct.diSetterInjection#','stopRecursion':'#inputStruct.diStopRecursion#'}";
-}
+interceptor.XMLChildren[4].XMLAttributes["name"] = "mapping";
+interceptor.XMLChildren[4].xmlText = "${AppMapping}/model/reactor";
+// Mode
+interceptor.XMLChildren[5] = xmlElemNew(configXML,"Property");
+interceptor.XMLChildren[5].XMLAttributes["name"] = "mode";
+interceptor.XMLChildren[5].xmlText = "development";
 
 // Check if there are any datasources:
 if( NOT structKeyExists(configXML.config,"Datasources") ){
@@ -66,13 +64,16 @@ if( NOT structKeyExists(configXML.config,"Datasources") ){
 	configXML.config.datasources = datasources;
 }
 // Create Datasource
-dsn = xmlElemNew(configXML, "Datasource");
-dsn.XMLAttributes["name"] = inputStruct.dsnName;
-dsn.XMLAttributes["alias"] = inputStruct.dsnAlias;
-if( structKeyExists(inputStruct,"dsnType") ){
-	dsn.XMLAttributes["dbtype"] = inputStruct.dsnType;
+if( NOT arrayLen(xmlSearch(configXML,"//Datasource[@name='#inputStruct.dsnName#']")) ){
+	dsn = xmlElemNew(configXML, "Datasource");
+	dsn.XMLAttributes["name"] = inputStruct.dsnName;
+	dsn.XMLAttributes["alias"] = inputStruct.dsnAlias;
+	if( structKeyExists(inputStruct,"dsnType") ){
+		dsn.XMLAttributes["dbtype"] = inputStruct.dsnType;
+	}
+	arrayAppend(configXML.config.datasources.xmlChildren,dsn);
 }
-arrayAppend(configXML.config.datasources.xmlChildren,dsn);
+
 
 // Add to interceptors Array
 arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);
@@ -85,13 +86,13 @@ fileWrite(configLocation, request.utility.prettifyXML(configXML));
 <ide>  
 	<dialog width="550" height="450" title="ColdBox Deploy Tag Configurator" image="images/ColdBox_Icon.png"/>  
 	<body><![CDATA[
-	<h2>Transfer ORM Configured!</h2>
+	<h2>Reactor ORM Configured!</h2>
 	<p>
-	Transfer XML file created at : <em>config/transfer.xml.cfm</em> <br/>
-	Transfer definitioins folder created at : <em>config/definitions</em> <br/>
+	Reactor XML file created at : <em>config/reactor.xml.cfm</em> <br/>
+	Reactor model folder created at : <em>model/reactor</em> <br/>
 	Datasource added to config and interceptor configured. <br/>
 	</p>
-	<p><strong>Please make sure your datasource is created and you modify the transfer.xml</strong></p>
+	<p><strong>Please make sure your datasource is created in the CF server</strong></p>
 	]]></body>
 </ide>
 </response>

@@ -66,13 +66,16 @@ if( NOT structKeyExists(configXML.config,"Datasources") ){
 	configXML.config.datasources = datasources;
 }
 // Create Datasource
-dsn = xmlElemNew(configXML, "Datasource");
-dsn.XMLAttributes["name"] = inputStruct.dsnName;
-dsn.XMLAttributes["alias"] = inputStruct.dsnAlias;
-if( structKeyExists(inputStruct,"dsnType") ){
-	dsn.XMLAttributes["dbtype"] = inputStruct.dsnType;
+// Create Datasource
+if( NOT arrayLen(xmlSearch(configXML,"//Datasource[@name='#inputStruct.dsnName#']")) ){
+	dsn = xmlElemNew(configXML, "Datasource");
+	dsn.XMLAttributes["name"] = inputStruct.dsnName;
+	dsn.XMLAttributes["alias"] = inputStruct.dsnAlias;
+	if( structKeyExists(inputStruct,"dsnType") ){
+		dsn.XMLAttributes["dbtype"] = inputStruct.dsnType;
+	}
+	arrayAppend(configXML.config.datasources.xmlChildren,dsn);
 }
-arrayAppend(configXML.config.datasources.xmlChildren,dsn);
 
 // Add to interceptors Array
 arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);

@@ -10,8 +10,8 @@ Description :
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="ReactorGenerator.cfm"> 
-		<dialog width="500" height="400" title="ColdBox Reactor ORM Configurator" image="images/ColdBox_Icon.png">  
-			<input name="project" label="Project Name" required="true"  type="string" 
+		<dialog width="550" height="400" title="ColdBox Reactor ORM Configurator" image="images/ColdBox_Icon.png">  
+			<input name="projectName" label="Project Name" required="true"  type="string" 
 				   tooltip="The reactor project name"
 				   helpmessage="The database type used for metadata purposes" />
 			<input name="dsnName" label="Datasource Name" required="true"  type="string" 
@@ -20,6 +20,17 @@ Description :
 			<input name="dsnAlias" label="Datasource Alias" required="true"  type="string" 
 				   tooltip="The alias for this datasource"
 				   helpmessage="The alias for this datasource" />
+			<input name="dsnType" label="Datasource Type" required="true"  type="list" 
+				   tooltip="The database type"
+				   helpmessage="The database type used for metadata purposes">
+				<option value="mssql" />
+				<option value="mysql" />
+				<option value="mysql4" />
+				<option value="postgresql" />
+				<option value="oracle" />
+				<option value="db2" />				
+			</input>
+				   
 		</dialog>
 	</ide>
 </response>  

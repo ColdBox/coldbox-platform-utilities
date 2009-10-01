@@ -17,9 +17,16 @@ Description :
 			<input name="dsnAlias" label="Datasource Alias" required="true"  type="string" 
 				   tooltip="The alias for this datasource"
 				   helpmessage="The alias for this datasource" />
-			<input name="dsnType" label="Datasource Type" required="false"  type="string" 
+			<input name="dsnType" label="Datasource Type" required="false"  type="list" 
 				   tooltip="The database type"
-				   helpmessage="The database type used for metadata purposes" />
+				   helpmessage="The database type used for metadata purposes">
+				<option value="mssql">
+				<option value="mysql">
+				<option value="mysql4">
+				<option value="postgresql">
+				<option value="oracle">
+				<option value="db2">				
+			</input>
 			<input name="loadBeanInjector" label="Load Decorator Injector" type="boolean" checked="true"
 				   tooltip="Load the Transfer Decorator Injector"
 				   helpmessage="Load the Transfer Decorator Injector"
