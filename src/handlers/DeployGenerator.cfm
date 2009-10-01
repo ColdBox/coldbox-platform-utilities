@@ -49,8 +49,8 @@ interceptor.XMLChildren[1].xmlText = "config/_deploy.tag";
 if( inputStruct.GenerateCommandObject ){
 	// Deploy Command Object
 	interceptor.XMLChildren[2] = xmlElemNew(configXML,"Property");
-	interceptor.XMLChildren[2].XMLAttributes["name"] = "deployCommandObject";
-	interceptor.XMLChildren[2].xmlText = "model.DeployCommand";
+	interceptor.XMLChildren[2].XMLAttributes["name"] = "deployCommandModel";
+	interceptor.XMLChildren[2].xmlText = "DeployCommand";
 }
 // Add to interceptors Array
 arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);
