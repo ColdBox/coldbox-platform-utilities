@@ -17,7 +17,7 @@
 	<menucontributions >
 
 		<contribution target="projectview">
-			<menu name="ColdBox Platform Utilities">
+			<menu name="ColdBox Platform">
 				<filters>
 					<filter type="folder" />
 					<filter type="project" />
@@ -38,6 +38,12 @@
 				<action name="Setup Environment Control" 	handlerid="GenEnvironments"	showResponse="true">
 					<filters><filter type="folder" pattern="config" /></filters>
 				</action>
+				<action name="Setup Transfer ORM" 	handlerid="GenTransfer"	showResponse="true">
+					<filters><filter type="folder" pattern="config" /></filters>
+				</action>
+				<action name="Setup Reactor ORM" 	handlerid="GenReactor"	showResponse="true">
+					<filters><filter type="folder" pattern="config" /></filters>
+				</action>
 			</menu>
 		</contribution>
 
@@ -56,6 +62,8 @@
 		<handler id="GenSecurity"    	type="CFM" filename="SecuritySetup.cfm" />		
 		<handler id="GenInterceptor"	type="CFM" filename="InterceptorSetup.cfm" />
 		<handler id="GenEnvironments"	type="CFM" filename="EnvironmentSetup.cfm" />
+		<handler id="GenTransfer"		type="CFM" filename="TransferSetup.cfm" />
+		<handler id="GenReactor"		type="CFM" filename="ReactorSetup.cfm" />
 	</handlers>
 
 </application>
