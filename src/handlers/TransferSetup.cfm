@@ -20,12 +20,12 @@ Description :
 			<input name="dsnType" label="Datasource Type" required="false"  type="list" 
 				   tooltip="The database type"
 				   helpmessage="The database type used for metadata purposes">
-				<option value="mssql">
-				<option value="mysql">
-				<option value="mysql4">
-				<option value="postgresql">
-				<option value="oracle">
-				<option value="db2">				
+				<option value="mssql" />
+				<option value="mysql" />
+				<option value="mysql4" />
+				<option value="postgresql" />
+				<option value="oracle" />
+				<option value="db2" />				
 			</input>
 			<input name="loadBeanInjector" label="Load Decorator Injector" type="boolean" checked="true"
 				   tooltip="Load the Transfer Decorator Injector"

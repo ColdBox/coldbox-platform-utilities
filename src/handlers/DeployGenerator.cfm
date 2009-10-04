@@ -34,7 +34,7 @@ if( inputStruct.GenerateCommandObject ){
 	// Full script CFC?
 	if( inputStruct.Script ){ scriptPrefix = "Script"; }
 	// Copy template to model folder
-	fileCopy(templatesLocation & "CommandObjectContent#scriptPrefix#.txt", projectLocation & "model\DeployCommand.cfc");
+	fileCopy(templatesLocation & "CommandObjectContent#scriptPrefix#.txt", projectLocation & "model/DeployCommand.cfc");
 }
 
 // Add interceptor to XML
