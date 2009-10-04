@@ -1,6 +1,6 @@
-<cffunction name="|action|" returntype="void" output="false">
-	<cfargument name="event" required="true">
-	<cfset var rc = event.getCollection()>
-	
-	<cfset event.setView("|Name|/|action|")>
-</cffunction>
+	<cffunction name="|action|" returntype="void" output="false">
+		<cfargument name="event" required="true">
+		<cfset var rc = event.getCollection()>
+		
+		<cfset event.setView("|Name|/|action|")>
+	</cffunction>
