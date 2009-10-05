@@ -46,10 +46,24 @@ Description :
 </cfif>
 
 <cfheader name="Content-Type" value="text/xml">  
+<cfoutput>
 <response status="success" showresponse="true">  
-<ide>  
+<ide> 
+	<commands>
+		<command type="RefreshProject">
+			<params>
+			    <param key="projectname" value="#expandLocation#" />
+			</params>
+		</command>
+		<command type="openfile">
+			<params>
+			    <param key="filename" value="#expandLocation#/config/coldbox.xml.cfm" />
+			</params>
+		</command>
+	</commands>
 	<dialog width="550" height="350" title="ColdBox Application Generator Wizard" image="images/ColdBox_Icon.png"/>  
 	<body><![CDATA[<p style="font-size:11px;"><cfoutput>#message#</cfoutput></p>]]></body>
 </ide>
 </response>
+</cfoutput>
 

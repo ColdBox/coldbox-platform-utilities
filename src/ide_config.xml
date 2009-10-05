@@ -12,6 +12,8 @@
 		- Additon of Environment Control Configuration
 		- Added Reactor ORM Configuration
 		- Added Transfer ORM Configuration
+		- Added callback features
+		- Added rewrite configurations
 	]]></description>	
 	<version>1.1</version>
 	<license>Apache License, Version 2.0</license>
@@ -46,6 +48,11 @@
 				<action name="Setup Reactor ORM" 	handlerid="GenReactor"	showResponse="true">
 					<filters><filter type="folder" pattern="config" /></filters>
 				</action>
+				
+				<!--Project Only Actions-->
+				<action name="Setup URL Rewrites" 	handlerid="GenRewrites"	showResponse="true">
+					<filters><filter type="project" /></filters>
+				</action>
 			</menu>
 		</contribution>
 
@@ -66,6 +73,7 @@
 		<handler id="GenEnvironments"	type="CFM" filename="EnvironmentSetup.cfm" />
 		<handler id="GenTransfer"		type="CFM" filename="TransferSetup.cfm" />
 		<handler id="GenReactor"		type="CFM" filename="ReactorSetup.cfm" />
+		<handler id="GenRewrites"		type="CFM" filename="RewriteSetup.cfm" />
 	</handlers>
 
 </application>

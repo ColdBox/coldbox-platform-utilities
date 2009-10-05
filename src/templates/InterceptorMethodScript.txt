@@ -1,4 +1,4 @@
-void function |interceptionPoint|(event,interceptData) output=false{
-	var rc = event.getCollection();
-	
-}	
+	void function |interceptionPoint|(event,interceptData) output=false{
+		var rc = event.getCollection();
+		
+	}	

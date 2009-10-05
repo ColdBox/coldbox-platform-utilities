@@ -68,8 +68,28 @@ fileWrite(configLocation, request.utility.prettifyXML(configXML));
 </cfscript>
 
 <cfheader name="Content-Type" value="text/xml">  
+<cfoutput>
 <response status="success" showresponse="true">  
 <ide>  
+	<commands>
+		<command type="RefreshProject">
+			<params>
+			    <param key="projectname" value="#data.event.ide.projectview.xmlAttributes.projectname#" />
+			</params>
+		</command>
+		<command type="openfile">
+			<params>
+			    <param key="filename" value="#destinationLocation#security.xml.cfm" />
+			</params>
+		</command>
+		<cfif inputStruct.generateValidator>
+		<command type="openfile">
+			<params>
+			    <param key="filename" value="#projectLocation#model\UserValidator.cfc" />
+			</params>
+		</command>
+		</cfif>
+	</commands>
 	<dialog width="550" height="450" title="ColdBox Security Configurator" image="images/ColdBox_Icon.png"/>  
 	<body><![CDATA[
 	<h2>Security Interceptor Configured!</h2>
@@ -83,4 +103,5 @@ fileWrite(configLocation, request.utility.prettifyXML(configXML));
 	]]></body>
 </ide>
 </response>
+</cfoutput>
 
