@@ -25,4 +25,10 @@
     	</cfscript>
     </cffunction>
 	
+	<!--- createDirectory --->
+    <cffunction name="createDirectory" output="false" access="public" returntype="void" hint="">
+    	<cfargument name="path" type="string" required="true" />
+    	<cfdirectory action="create" directory="#arguments.path#">
+    </cffunction>
+	
 </cfcomponent>

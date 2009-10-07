@@ -34,7 +34,7 @@ if( inputStruct.GenerateCommandObject ){
 	// Full script CFC?
 	if( inputStruct.Script ){ scriptPrefix = "Script"; }
 	// Copy template to model folder
-	fileCopy(templatesLocation & "CommandObjectContent#scriptPrefix#.txt", projectLocation & "model\DeployCommand.cfc");
+	fileCopy(templatesLocation & "CommandObjectContent#scriptPrefix#.txt", projectLocation & "model/DeployCommand.cfc");
 }
 
 // Add interceptor to XML
@@ -49,8 +49,8 @@ interceptor.XMLChildren[1].xmlText = "config/_deploy.tag";
 if( inputStruct.GenerateCommandObject ){
 	// Deploy Command Object
 	interceptor.XMLChildren[2] = xmlElemNew(configXML,"Property");
-	interceptor.XMLChildren[2].XMLAttributes["name"] = "deployCommandObject";
-	interceptor.XMLChildren[2].xmlText = "model.DeployCommand";
+	interceptor.XMLChildren[2].XMLAttributes["name"] = "deployCommandModel";
+	interceptor.XMLChildren[2].xmlText = "DeployCommand";
 }
 // Add to interceptors Array
 arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);
@@ -59,8 +59,23 @@ fileWrite(configLocation, request.utility.prettifyXML(configXML));
 </cfscript>
 
 <cfheader name="Content-Type" value="text/xml">  
+<cfoutput>
 <response status="success" showresponse="true">  
 <ide>  
+	<commands>
+		<command type="RefreshProject">
+			<params>
+			    <param key="projectname" value="#data.event.ide.projectview.xmlAttributes.projectname#" />
+			</params>
+		</command>
+		<cfif inputStruct.GenerateCommandObject>
+		<command type="openfile">
+			<params>
+			    <param key="filename" value="#projectLocation#model/DeployCommand.cfc" />
+			</params>
+		</command>
+		</cfif>
+	</commands>
 	<dialog width="550" height="450" title="ColdBox Deploy Tag Configurator" image="images/ColdBox_Icon.png"/>  
 	<body><![CDATA[
 	<h2>Deploy Interceptor Configured!</h2>
@@ -75,4 +90,4 @@ fileWrite(configLocation, request.utility.prettifyXML(configXML));
 	]]></body>
 </ide>
 </response>
-
+</cfoutput>
