@@ -18,7 +18,9 @@ Date        :	08/01/2009
 		<dialog width="450" height="450" title="ColdBox Application Generator" image="images/ColdBox_Icon.png">  
 			<input name="ApplicationType" label="Select Application Type To Generate" type="list">
 			<cfloop query="appSkeletons">
+				<cfif left(appSkeletons.name,1) neq ".">
 				<option value="#appSkeletons.name#" />
+				</cfif>
 			</cfloop> 
 			</input>
 			<input name="ApplicationCFCType" label="Application.cfc using inheritance" 
