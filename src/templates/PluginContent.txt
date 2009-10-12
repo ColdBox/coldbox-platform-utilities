@@ -1,8 +1,7 @@
 <cfcomponent hint="|pluginDescription|"
 			 extends="coldbox.system.Plugin"
 			 output="false"
-			 cache="|pluginCache|"
-			 |pluginCacheTimeout|>
+			 |pluginPersistence|>
 
 <!------------------------------------------- CONSTRUCTOR ------------------------------------------->
 

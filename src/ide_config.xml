@@ -3,17 +3,23 @@
 	<author>Sana Ullah and Luis Majano</author>
 	<email>sanaullah73@gmail.com,info@coldbox.org</email>	
 	<description><![CDATA[
-		A ColdFusion Builder companion to help build ColdBox Platform applications.
+		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
+		<hr />
 		
-		Version 1.1
-		- Updates of application templates
-		- Addition of Deploy Interceptor Configuration
-		- Addition of Security Interceptor Configuration
-		- Additon of Environment Control Configuration
-		- Added Reactor ORM Configuration
-		- Added Transfer ORM Configuration
-		- Added callback features
-		- Added rewrite configurations
+		Version 1.2 <br/>
+		- Fix for security interceptor generation <br/>
+		- Better handling of persistence setup for plugins and model objects <br/>
+		<hr />
+		
+		Version 1.1 <br/>
+		- Updates of application templates <br/>
+		- Addition of Deploy Interceptor Configuration <br/>
+		- Addition of Security Interceptor Configuration <br/>
+		- Additon of Environment Control Configuration <br/>
+		- Added Reactor ORM Configuration <br/>
+		- Added Transfer ORM Configuration <br/>
+		- Added callback features <br/>
+		- Added rewrite configurations <br/>
 	]]></description>	
 	<version>1.1</version>
 	<license>Apache License, Version 2.0</license>

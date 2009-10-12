@@ -3,9 +3,9 @@
 */
 component extends="coldbox.system.Interceptor" output="false"{
 	
-void function configure() output=false{
-	
-}
+	void function configure() output=false{
+		
+	}
 	
 |interceptionPoints|
 	

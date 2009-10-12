@@ -13,8 +13,9 @@ Date        :	08/01/2009
 		this.sessionManagement	= true;
 	</cfscript>
 
-	<cffunction name="onRequestStart">
-		<cfsetting showdebugoutput="false">
+	<cffunction name="onRequest">
+		<cfargument name="targetPage" type="string" required="true" >
+   		<cfsetting showdebugoutput="false">
 		
 		<!--- Param the incoming ide event info --->
 		<cfparam name="ideeventinfo">
@@ -26,5 +27,7 @@ Date        :	08/01/2009
 		<!--- Utility --->
 		<cfset request.utility = createObject("component","util.Utility")>
 		
+		<!--- Include page requested --->
+		<cfinclude template=#arguments.targetPage#>
 	</cffunction>
 </cfcomponent>

@@ -33,7 +33,7 @@ if( inputStruct.generateValidator ){
 	// Full script CFC?
 	if( inputStruct.Script ){ scriptPrefix = "Script"; }
 	// Copy template to model folder
-	fileCopy(templatesLocation & "UserValidatorContent#scriptPrefix#.txt", projectLocation & "model\UserValidator.cfc");
+	fileCopy(templatesLocation & "UserValidatorContent#scriptPrefix#.txt", projectLocation & "model/UserValidator.cfc");
 }
 
 // Add interceptor to XML
@@ -42,24 +42,28 @@ configXML = xmlParse(configLocation);
 // Create interceptor element
 interceptor = xmlElemNew(configXML,"Interceptor");
 interceptor.XMLAttributes["class"] = "coldbox.system.interceptors.Security";
-// Config File
+// Rules Source
 interceptor.XMLChildren[1] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[1].XMLAttributes["name"] = "rulesFile";
-interceptor.XMLChildren[1].xmlText = "config/security.xml.cfm";
-// Regex
+interceptor.XMLChildren[1].XMLAttributes["name"] = "rulesSource";
+interceptor.XMLChildren[1].xmlText = "xml";
+// Config File
 interceptor.XMLChildren[2] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[2].XMLAttributes["name"] = "useRegex";
-interceptor.XMLChildren[2].xmlText = inputStruct.useRegex;
-// Use Routes
+interceptor.XMLChildren[2].XMLAttributes["name"] = "rulesFile";
+interceptor.XMLChildren[2].xmlText = "config/security.xml.cfm";
+// Regex
 interceptor.XMLChildren[3] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[3].XMLAttributes["name"] = "useRoutes";
-interceptor.XMLChildren[3].xmlText = inputStruct.useRoutes;
+interceptor.XMLChildren[3].XMLAttributes["name"] = "useRegex";
+interceptor.XMLChildren[3].xmlText = inputStruct.useRegex;
+// Use Routes
+interceptor.XMLChildren[4] = xmlElemNew(configXML,"Property");
+interceptor.XMLChildren[4].XMLAttributes["name"] = "useRoutes";
+interceptor.XMLChildren[4].xmlText = inputStruct.useRoutes;
 
 if( inputStruct.generateValidator ){
 	// Deploy Command Object
-	interceptor.XMLChildren[4] = xmlElemNew(configXML,"Property");
-	interceptor.XMLChildren[4].XMLAttributes["name"] = "validatorModel";
-	interceptor.XMLChildren[4].xmlText = "UserValidator";
+	interceptor.XMLChildren[5] = xmlElemNew(configXML,"Property");
+	interceptor.XMLChildren[5].XMLAttributes["name"] = "validatorModel";
+	interceptor.XMLChildren[5].xmlText = "UserValidator";
 }
 // Add to interceptors Array
 arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);

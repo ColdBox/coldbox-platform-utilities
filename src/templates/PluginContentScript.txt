@@ -1,7 +1,7 @@
 /*
 |pluginDescription|
 */
-component extends="coldbox.system.Plugin" output="false" cache="|pluginCache|" |pluginCacheTimeout|{
+component extends="coldbox.system.Plugin" output="false" |pluginPersistence|{
 	
 	|pluginName| function init(controller) output=false{
 		super.init(arguments.controller);

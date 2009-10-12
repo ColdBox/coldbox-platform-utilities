@@ -3,7 +3,7 @@ Author 	 :	Sana Ullah
 Date     :	August 1, 2009
 Description :
 ---------------------------------------------------------------------->
-<cfparam name="ideeventinfo">
+
 <!--- set plugin properties default values --->
 <cfset defaultDescription 	= "I am new Plugin" />
 <cfset defaultAuthor		= "" />
@@ -76,17 +76,19 @@ Description :
 	<cfset pluginContent = replaceNoCase(pluginContent,"|pluginAuthorURL|",defaultAuthorURL,"all") />	
 </cfif>
 
-<cfif inputstruct.Cache>
-	<cfset pluginContent = replaceNoCase(pluginContent,"|pluginCache|","true","all") />
-<cfelse>
-	<cfset pluginContent = replaceNoCase(pluginContent,"|pluginCache|","false","all") />	
-</cfif>
-
-<cfif len(inputstruct.CacheTimeout)>
-	<cfset pluginContent = replaceNoCase(pluginContent,"|pluginCacheTimeout|",'cacheTimeout="#inputStruct.cacheTimeout#"',"all") />
-<cfelse>
-	<cfset pluginContent = replaceNoCase(pluginContent,"|pluginCacheTimeout|","","all") />
-</cfif>
+<cfswitch expression="#inputStruct.Persistence#">
+	<cfcase value="Transient">
+		<cfset persistence = "">
+	</cfcase>
+	<cfcase value="Time Persisted">
+		<cfset persistence = 'cache="true" cacheTimeout="#inputStruct.CacheTimeout#"'>
+	</cfcase>
+	<cfcase value="Singleton">
+		<cfset persistence = 'singleton="true"'>
+	</cfcase>
+</cfswitch>
+<!--- Persistence Update --->
+<cfset pluginContent = replaceNoCase(pluginContent,"|pluginPersistence|",persistence) />
 
 <cftry>
 	<cffile action="write" file="#expandLocation#/#pluginName#.cfc" mode ="777" output="#pluginContent#">
