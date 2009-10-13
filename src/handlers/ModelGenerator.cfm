@@ -53,17 +53,21 @@ Description :
 	<cfset modelContent = replaceNoCase(modelContent,"|modelDescription|",defaultDescription,"all") />	
 </cfif>
 
-<cfif inputstruct.singleton>
-	<cfset modelContent = replaceNoCase(modelContent,"|modelPersistence|",'singleton="true"',"all") />
-<cfelseif inputStruct.cache>
-	<cfset cacheString = 'cache="true"'>
-	<cfif len(inputStruct.cacheTimeout)>
-		<cfset cacheString = cacheString & ' cacheTimeout="#inputStruct.cacheTimeout#"'>
-	</cfif>
-	<cfset modelContent = replaceNoCase(modelContent,"|modelPersistence|",cacheString,"all") />	
-<cfelse>
-	<cfset modelContent = replaceNoCase(modelContent,"|modelPersistence|","","all") />
-</cfif>
+<cfswitch expression="#inputStruct.Persistence#">
+	<cfcase value="Transient">
+		<cfset modelContent = replaceNoCase(modelContent,"|modelPersistence|","","all") />
+	</cfcase>
+	<cfcase value="Time Persisted">
+		<cfset cacheString = 'cache="true"'>
+		<cfif len(inputStruct.cacheTimeout)>
+			<cfset cacheString = cacheString & ' cacheTimeout="#inputStruct.cacheTimeout#"'>
+		</cfif>
+		<cfset modelContent = replaceNoCase(modelContent,"|modelPersistence|",cacheString,"all") />
+	</cfcase>
+	<cfcase value="Singleton">
+		<cfset modelContent = replaceNoCase(modelContent,"|modelPersistence|",'singleton="true"',"all") />
+	</cfcase>
+</cfswitch>
 
 <!--- Write it back out --->
 <cftry>

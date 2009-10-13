@@ -11,13 +11,27 @@ Description :
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="ModelGenerator.cfm"> 
-		<dialog width="450" height="450" title="New ColdBox Model Wizard" image="images/ColdBox_Icon.png">  
-			<input name="Name" required="true" label="Enter model object name"  type="string" default="" tooltip="Enter model cfc name without .cfc" />
-			<input name="Description" label="Enter model object description"  type="string" default="" tooltip="Enter model object description" />
+		<dialog width="500" height="450" title="New ColdBox Model Wizard" image="images/ColdBox_Icon.png">  
+			
+			<input name="Name" required="true" label="Model Name"  type="string" default="" 
+				   tooltip="Enter model cfc name without .cfc"
+				   helpmessage="Enter model cfc name without .cfc" />
+				   
+			<input name="Description" label="Description"  type="string" default="" 
+				   tooltip="Enter model object description"
+				   helpmessage="Enter model object description for hints" />
+			
 			<input name="Script" label="Script Based CFC" type="boolean" checked="false" tooltip="Choose whether to create the cfc in pure script or not." />
-			<input name="Singleton" label="Singleton" type="Boolean" checked="false" tooltip="Select if the object is a singleton" />
-			<input name="Cache" label="Time Persisted Object" tooltip="Select if you want the object to be time persisted" type="Boolean" checked="false" />
-			<input name="CacheTimeout" label="Minutes to persist" type="string" default="" />
+			
+			<input name="Persistence" label="Persistence Type" type="list" default="Singleton">
+				<option value="Transient" />
+				<option value="Time Persisted" />
+				<option value="Singleton" />
+			</input>	
+			<input name="CacheTimeout" label="Minutes to persist" type="string" default="" pattern="[0-9]+"
+			       errormessage="Numeric values only."
+				   helpmessage="Minutes to persist if using Time Persisted type."
+				   tooltip="Minutes to persist if using Time Persisted type."/>
 		</dialog>
 	</ide>
 </response>  

@@ -23,8 +23,9 @@ Description :
 				<option value="Time Persisted" />
 				<option value="Singleton" />
 			</input>	
-			<input name="CacheTimeout" label="Minutes to persist" type="string" default="" 
-			       helpmessage="Minutes to persist if using Time Persisted type."
+			<input name="CacheTimeout" label="Minutes to persist" type="string" default="" pattern="[0-9]+"
+			       errormessage="Numeric values only."
+				   helpmessage="Minutes to persist if using Time Persisted type."
 				   tooltip="Minutes to persist if using Time Persisted type."/>
 		</dialog>
 	</ide>
