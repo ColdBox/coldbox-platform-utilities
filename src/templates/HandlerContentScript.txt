@@ -21,6 +21,8 @@ component extends="coldbox.system.EventHandler" output="false"{
 	}
 	void function onMissingAction(event,missingAction) output=false{
 	}
+	void function onError(event,faultAction,exception) output=false{
+	}
 	*/
 		
 |EventActions|

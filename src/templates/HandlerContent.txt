@@ -41,6 +41,16 @@
 		</cfscript>
 	</cffunction>
 	
+	<!--- onError --->
+	<cffunction name="onError" returntype="void" output="false" hint="Executes if ANY action causes an exception">
+		<cfargument name="event">
+		<cfargument name="faultAction" hint="The action that caused the error"/>
+		<cfargument name="exception" hint="The exception structure"/>
+		<cfscript>	
+			
+		</cfscript>
+	</cffunction>
+	
 	--->
 
 <!------------------------------------------- PUBLIC EVENTS ------------------------------------------>

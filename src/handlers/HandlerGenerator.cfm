@@ -19,18 +19,23 @@ Description :
 <!--- Expand Locations --->
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
 <cfset handlerName		= inputstruct.Name />
-<cfset scriptPrefix = "">
+
 <!--- Script? --->
+<cfset scriptPrefix = "">
 <cfif inputStruct.Script>
 	<cfset scriptPrefix = "Script">
 </cfif>
 
-<!--- Read in Template --->
+<!--- Read in Templates --->
 <cffile action="read" file="#ExpandPath('../')#/templates/HandlerContent#scriptPrefix#.txt" variable="handlerContent">
 <cffile action="read" file="#ExpandPath('../')#/templates/ActionContent#scriptPrefix#.txt"  variable="actionContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/HandlerTestContent#scriptPrefix#.txt" variable="handlerTestContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/HandlerTestCaseContent#scriptPrefix#.txt" variable="handlerTestCaseContent">
 
-<!--- Start Replacings --->
+
+<!--- Start text replacements --->
 <cfset handlerContent = replaceNoCase(handlerContent,"|Name|",inputstruct.Name,"all") />
+<cfset handlerTestContent = replaceNoCase(handlerTestContent,"|appMapping|",inputstruct.appMapping,"all") />
 
 <cfif len(inputstruct.Description)>
 	<cfset handlerContent = replaceNoCase(handlerContent,"|Description|",inputstruct.Description,"all") />
@@ -41,9 +46,13 @@ Description :
 <!--- Handle Actions if passed --->
 <cfif len(inputstruct.Actions)>
 	<cfset allActions = "">
+	<cfset allTestsCases = "">
+	<cfset thisTestCase = "">
+	
 	<!--- Loop Over actions generating their functions --->
 	<cfloop list="#inputStruct.Actions#" index="thisAction">
 		<cfset allActions = allActions & replaceNoCase(actionContent,"|action|",thisAction,"all") & chr(13) & chr(13)/>
+		
 		<!--- Are we creating views? --->
 		<cfif inputStruct.GenerateViews>
 			<!--- Check if dir exists? --->
@@ -53,22 +62,31 @@ Description :
 			<!--- Create View Stub --->
 			<cfset fileWrite(inputStruct.ViewsDirectory & "/" & inputStruct.name & "/" & thisAction & ".cfm","<h1>#inputStruct.name#.#thisAction#</h1>")>
 		</cfif>
+		
+		<!--- Are we creating tests cases on actions --->
+		<cfif inputStruct.GenerateTest>
+			<cfset thisTestCase = replaceNoCase(handlerTestCaseContent,"|action|",thisAction,"all")>
+			<cfset thisTestCase = replaceNoCase(thisTestCase,"|event|",inputstruct.Name & "." & thisAction,"all")>
+			<cfset allTestsCases = allTestsCases & thisTestCase & chr(13) & chr(13)/>
+		</cfif>
+		
 	</cfloop>
-	<!--- Replace Handler Name in all actions --->
+	
+	
 	<cfset allActions = replaceNoCase(allActions,"|name|",inputStruct.Name,"all") />
 	<cfset handlerContent = replaceNoCase(handlerContent,"|EventActions|",allActions,"all") />	
+	<cfset handlerTestContent = replaceNoCase(handlerTestContent,"|TestCases|",allTestsCases,"all") />	
 <cfelse>
-	<cfset handlerContent = replaceNoCase(handlerContent,"|EventActions|",'',"all") />	
+	<cfset handlerContent = replaceNoCase(handlerContent,"|EventActions|",'',"all") />
+	<cfset handlerTestContent = replaceNoCase(handlerTestContent,"|TestCases|",'',"all") />	
 </cfif>
 
-<!--- Write it out. --->
-<cftry>
-	<cffile action="write" file="#expandLocation#/#handlerName#.cfc" mode ="777" output="#handlerContent#">
-	<cfset message = handlerName & ".cfc Generated new handler" />
-<cfcatch type="any">
-	<cfset message = "There was problem creating handler: #cfcatch.message#" />
-</cfcatch>
-</cftry>
+<!--- Write out the files --->
+
+<cffile action="write" file="#expandLocation#/#handlerName#.cfc" mode ="777" output="#handlerContent#">
+<cfif inputStruct.GenerateTest>
+	<cffile action="write" file="#inputStruct.TestsDirectory#/#handlerName#Test.cfc" mode ="777" output="#handlerTestContent#">
+</cfif>	
 
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>
@@ -85,9 +103,24 @@ Description :
 			    <param key="filename" value="#expandLocation#/#handlerName#.cfc" />
 			</params>
 		</command>
+		<cfif inputStruct.generateTest>
+		<command type="openfile">
+			<params>
+			    <param key="filename" value="#inputStruct.TestsDirectory#/#handlerName#Test.cfc" />
+			</params>
+		</command>
+		</cfif>
 	</commands>
 	<dialog width="550" height="350" title="ColdBox Event Handler Wizard" image="images/ColdBox_Icon.png"/>  
-	<body><![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]></body>
+	<body><![CDATA[
+	<h2>Generated New Handler!</h2>
+	<p>
+	Generated new handler called: #handlerName#.cfc<br/>
+	<cfif inputStruct.generateTest>
+	Generated new integration test called: #handlerName#Test.cfc
+	</cfif>
+	</p>
+	]]></body>
 </ide>
 </response>
 </cfoutput>

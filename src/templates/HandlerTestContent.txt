@@ -1,0 +1,20 @@
+<cfcomponent extends="coldbox.system.testing.BaseTestCase" 
+			 output="false"
+			 appMapping="|appMapping|">
+	
+	<cffunction name="setUp" returntype="void" output="false">
+		<cfscript>
+		//Call the super setup method to setup the app.
+		super.setup();
+		
+		//EXECUTE THE APPLICATION START HANDLER: UNCOMMENT IF NEEDED AND FILL IT OUT.
+		//getController().runEvent("main.onAppInit");
+
+		//EXECUTE THE ON REQUEST START HANDLER: UNCOMMENT IF NEEDED AND FILL IT OUT
+		//getController().runEvent("main.onRequestStart");
+		</cfscript>
+	</cffunction>
+	
+|TestCases|
+	
+</cfcomponent>
