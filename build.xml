@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="ColdboxPlatformUtilities.build" default="distribute" basedir=".">
+<project name="ColdboxPlatformUtilities.build" default="ftp.deploy" basedir=".">
 
 	<description>ColdBoxPlatformUtilities Release Build</description>
 	
