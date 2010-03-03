@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="ColdboxPlatformUtilities.CopyAppTemplates" default="copy" basedir=".">
+
+	<description>App Template Copies</description>
+	
+	<!-- Properties -->
+	<property name="target.dir" 		value="src/skeletons" />
+	<property name="src.dir" 			value="/Users/lmajano/Sites/cboxdev/core/coldbox/ApplicationTemplates" />
+		
+	<!-- dynamic values for build -->
+	<tstamp prefix="start"/>
+	
+	<target name="clean" description="Remove all directories">
+		<delete verbose="true">
+			<fileset dir="${target.dir}" includes="**/*.zip" />
+		</delete>
+	</target>
+	
+	<target name="copy" depends="clean">
+		<copy todir="${target.dir}">
+			<fileset dir="${src.dir}" />
+		</copy>
+		
+		<zip basedir="${target.dir}/Advanced" destfile="${target.dir}/Advanced/Advanced.zip" />
+		<zip basedir="${target.dir}/FlexAirRemote" destfile="${target.dir}/FlexAirRemote/FlexAirRemote.zip" />
+		<zip basedir="${target.dir}/Simple" destfile="${target.dir}/Simple/Simple.zip" />
+		
+		<delete includeemptydirs="true">
+			<fileset dir="${target.dir}" excludes="**/*.zip" />
+		</delete>
+	</target>
+	
+</project>
