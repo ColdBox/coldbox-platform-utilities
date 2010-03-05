@@ -1,9 +1,9 @@
-/*
-|Description|
+/**
+* |Description|
 */
-component extends="coldbox.system.Interceptor" output="false"{
+component {
 	
-	void function configure() output=false{
+	void function configure(){
 		
 	}
 	

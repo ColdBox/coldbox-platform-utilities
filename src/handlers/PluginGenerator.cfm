@@ -1,8 +1,16 @@
 <!-----------------------------------------------------------------------
-Author 	 :	Sana Ullah
-Date     :	August 1, 2009
-Description :
----------------------------------------------------------------------->
+********************************************************************************
+Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
+www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
+********************************************************************************
+
+Author      :	Sana Ullah & Luis Majano
+Date        :	08/01/2009
+
+All handlers receive the following:
+- data 		  : The data parsed
+- inputStruct : A parsed input structure
+----------------------------------------------------------------------->
 
 <!--- set plugin properties default values --->
 <cfset defaultDescription 	= "I am new Plugin" />
@@ -11,14 +19,6 @@ Description :
 <cfset defaultVersion		= "1.0" />
 <cfset defaultCache			= "true" />
 <cfset defaultCacheTimeout	= "" />
-
-<cfset data			= xmlParse(ideeventinfo)>
-<cfset extxmlinput	= xmlSearch(data, "/event/user/input")>
-<cfset inputstruct	= StructNew()>
-
-<cfloop index="i" from="1" to="#arrayLen(extxmlinput)#" >
-	<cfset StructInsert(inputstruct,"#extxmlinput[i].xmlAttributes.name#","#extxmlinput[i].xmlAttributes.value#")>
-</cfloop>
 
 <!--- ======================================================================= --->
 <cfif not len(inputstruct.Name)>

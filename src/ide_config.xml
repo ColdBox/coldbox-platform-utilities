@@ -8,7 +8,8 @@
 		
 		Version 1.4 <br/>
 		- Updated Application template versions
-		- 
+		- Lots of syntax updates and fixes
+		- Compatiblity of generated content to ColdBox 3.0.0
 		<hr />
 		
 		Version 1.3 <br/>
@@ -31,7 +32,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>1.3</version>
+	<version>1.4</version>
 	<license>Apache License, Version 2.0</license>
     
 	<menucontributions >
@@ -42,11 +43,13 @@
 					<filter type="folder" />
 					<filter type="project" />
 				</filters>
+				
+				<!-- Global Folder/Project Actions -->
+				<action name="New Application"	handlerid="GenSkeleton"		showResponse="true"></action>
 				<action name="New Handler" 		handlerid="GenHandler"		showResponse="true"></action>
 				<action name="New Plugin" 		handlerid="GenPlugin"		showResponse="true"></action>
 				<action name="New Model" 		handlerid="GenModel"		showResponse="true"></action>
 				<action name="New Interceptor" 	handlerid="GenInterceptor"	showResponse="true"></action>
-				<action name="New Application"	handlerid="GenSkeleton"		showResponse="true"></action>
 				
 				<!-- Config Actions -->
 				<action name="Setup Deploy Interceptor" 	handlerid="GenDeploy"	showResponse="true">

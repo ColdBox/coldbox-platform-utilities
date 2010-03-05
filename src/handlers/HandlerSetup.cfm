@@ -1,16 +1,22 @@
 <!-----------------------------------------------------------------------
-Author 	 :	Sana Ullah
-Date     :	August 1, 2009
-Description :
----------------------------------------------------------------------->
-<cftry>
-<cfset data = xmlParse(ideeventinfo)>
+********************************************************************************
+Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
+www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
+********************************************************************************
+
+Author      :	Sana Ullah & Luis Majano
+Date        :	08/01/2009
+
+All handlers receive the following:
+- data 		  : The data parsed
+- inputStruct : A parsed input structure
+----------------------------------------------------------------------->
 
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="HandlerGenerator.cfm"> 
-		<dialog width="700" height="500" title="ColdBox Event Handler Wizard" image="images/ColdBox_Icon.png">  
+		<dialog width="700" height="550" title="ColdBox Event Handler Wizard" image="images/ColdBox_Icon.png">  
 			
 			<input name="Name" label="Handler Name" required="true"  type="string" default="" 
 				   tooltip="Enter handler cfc name without .cfc"
@@ -54,11 +60,5 @@ Description :
 	</ide>
 </response>  
 </cfoutput>
-
-<cfcatch type="any">
-	<cflog file="ColdBoxCFBuilder" text="#cfcatch.message#">
-</cfcatch>
-</cftry>
-
 
  

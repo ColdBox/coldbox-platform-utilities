@@ -1,10 +1,9 @@
-/*
-|pluginDescription|
+/**
+* |pluginDescription|
 */
-component extends="coldbox.system.Plugin" output="false" |pluginPersistence|{
+component |pluginPersistence|{
 	
-	|pluginName| function init(controller) output=false{
-		super.init(arguments.controller);
+	|pluginName| function init(){
 		
 		// Plugin Properties
 		setPluginName("|pluginName|");

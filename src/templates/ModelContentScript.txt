@@ -1,9 +1,9 @@
-/*
-|modelDescription|
+/**
+* |modelDescription|
 */
-component output="false" |modelPersistence|{
+component |modelPersistence|{
 	
-	|modelName| function init() output=false{
+	|modelName| function init(){
 		
 		return this;
 	}

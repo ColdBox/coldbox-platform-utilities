@@ -1,4 +1,4 @@
-<cfcomponent name="|Name|" extends="coldbox.system.EventHandler" output="false" hint="|Description|">
+<cfcomponent output="false" hint="|Description|">
 	
 	<cfscript>
 		this.prehandler_only 	= "";
@@ -7,7 +7,7 @@
 		this.posthandler_except = "";
 		/* HTTP Methods Allowed for actions. */
 		/* Ex: this.allowedMethods = {delete='POST,DELETE',index='GET'} */
-		this.allowedMethods = structnew();
+		this.allowedMethods 	= {};
 	</cfscript>
 
 <!----------------------------------------- IMPLICIT EVENTS ------------------------------------------>
@@ -16,7 +16,7 @@
 	
 	<!--- preHandler --->
 	<cffunction name="preHandler" returntype="void" output="false" hint="Executes before any event in this handler">
-		<cfargument name="event" required="true">
+		<cfargument name="event">
 		<cfargument name="action" hint="The intercepted action"/>
 		<cfscript>	
 			var rc = event.getCollection();
@@ -25,7 +25,7 @@
 	
 	<!--- postHandler --->
 	<cffunction name="postHandler" returntype="void" output="false" hint="Executes after any event in this handler">
-		<cfargument name="event" required="true">
+		<cfargument name="event">
 		<cfargument name="action" hint="The intercepted action"/>
 		<cfscript>	
 			var rc = event.getCollection();
@@ -34,8 +34,8 @@
 	
 	<!--- onMissingAction --->
 	<cffunction name="onMissingAction" returntype="void" output="false" hint="Executes if a request action (method) is not found in this handler">
-		<cfargument name="event" 		 required="true">
-		<cfargument name="MissingAction" required="true" hint="The requested action string"/>
+		<cfargument name="event">
+		<cfargument name="MissingAction" hint="The requested action string"/>
 		<cfscript>	
 			var rc = event.getCollection();
 		</cfscript>
@@ -45,7 +45,7 @@
 	<cffunction name="onError" returntype="void" output="false" hint="Executes if ANY action causes an exception">
 		<cfargument name="event">
 		<cfargument name="faultAction" hint="The action that caused the error"/>
-		<cfargument name="exception" hint="The exception structure"/>
+		<cfargument name="exception"   hint="The exception structure"/>
 		<cfscript>	
 			
 		</cfscript>

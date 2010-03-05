@@ -1,9 +1,16 @@
 <!-----------------------------------------------------------------------
-Author 	 :	Sana Ullah
-Date     :	August 1, 2009
-Description :
----------------------------------------------------------------------->
-<cfset data = xmlParse(ideeventinfo)>
+********************************************************************************
+Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
+www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
+********************************************************************************
+
+Author      :	Sana Ullah & Luis Majano
+Date        :	08/01/2009
+
+All handlers receive the following:
+- data 		  : The data parsed
+- inputStruct : A parsed input structure
+----------------------------------------------------------------------->
 <cfset message = "" />
 
 <!--- Check if is an event or normal project view location? --->
@@ -12,13 +19,6 @@ Description :
 <cfelse>
 	<cfset expandLocation	= data.event.ide.eventinfo.xmlAttributes.projectLocation />
 </cfif>
-
-<!--- Parse Input --->
-<cfset extXMLInput = xmlSearch(data, "/event/user/input")>
-<cfset inputStruct = StructNew()>
-<cfloop index="i" from="1" to="#arrayLen(extXMLInput)#" >
-	<cfset StructInsert(inputStruct,"#extXMLInput[i].xmlAttributes.name#","#extXMLInput[i].xmlAttributes.value#")>
-</cfloop>
 
 <!--- get the zip file under the skeleton location directory. I ignore any but the first one --->
 <cfdirectory action="list" directory="#expandPath('../skeletons/#inputStruct.ApplicationType#')#" filter="*.zip" name="appSkeletonsZip" />
