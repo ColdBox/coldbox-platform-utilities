@@ -19,7 +19,8 @@ structures to create for configuration
 - settings : struct
 - datasources : struct (will append and override parent)
 - webservices : struct (will append and override parent)
-- customInterceptionPoints : string list of custom interception points
+- interceptorSettings : struct of the following keys ATM
+	- customInterceptionPoints : string list of custom interception points
 - interceptors : array
 - routes : array Allowed keys are same as the addRoute() method of the SES interceptor.
 - modelMappings : structure of model mappings. Allowed keys are the alias and path, same as normal model mappings.
@@ -81,7 +82,9 @@ Optional Methods
 		];		
 		
 		// Custom Declared Points
-		customInterceptionPoints = "";
+		interceptorSettings = {
+			customInterceptionPoints = ""
+		};
 		
 		// Custom Declared Interceptors
 		interceptors = [
