@@ -1,5 +1,34 @@
 <cfcomponent output="false">
 
+<cfscript>
+	function isNewVersion(cVersion,nVersion){
+		var cMajor 		= getToken(arguments.cVersion,1,".");
+		var cMinor		= getToken(arguments.cVersion,2,".");
+		var cRevision	= getToken(arguments.cVersion,3,".");
+		// new version info
+		var nMajor 		= getToken(arguments.nVersion,1,".");
+		var nMinor		= getToken(arguments.nVersion,2,".");
+		var nRevision	= getToken(arguments.nVersion,3,".");
+		
+		// Major check
+		if( nMajor gt cMajor ){
+			return true;				
+		}
+		
+		// Minor Check
+		if( nMajor eq cMajor AND nMinor gt cMinor ){
+			return true;
+		}
+		
+		// Revision Check
+		if( nMajor eq cMajor AND nMinor eq cMinor AND nRevision gt cRevision){
+			return true;
+		}
+		
+		return false;
+	}
+</cfscript>
+
 	<!---
 	Returns the current URL for the page.
 	@return Returns a string.
@@ -7,11 +36,19 @@
 	@version 1, September 5, 2008
 	--->
 	<cffunction name="getCurrentURL" output="No" access="public" returnType="string">
+		<cfargument name="removeTemplate" type="boolean" required="false" default="false"/>
+		
 	    <cfset var theURL = getPageContext().getRequest().GetRequestUrl().toString()>
 	    <cfif len( CGI.query_string )><cfset theURL = theURL & "?" & CGI.query_string></cfif>
 	    <!--- Hack by Raymond, remove any CFID CFTOKEN --->
 		<cfset theUrl = reReplaceNoCase(theUrl, "[&?]*cfid=[0-9]+", "")>
 		<cfset theUrl = reReplaceNoCase(theUrl, "[&?]*cftoken=[^&]+", "")>
+	    
+	    <!--- LM: If currentTemplate --->
+		<cfif removeTemplate>
+			<cfset theURL = replaceNoCase(theURL, getFileFromPath(theURL), "")>
+		</cfif>
+	    
 	    <cfreturn theURL>
 	</cffunction>
 	

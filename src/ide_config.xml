@@ -8,6 +8,7 @@
 		Version 1.5 <br/>
 		- Updated the application templates<br/>
 		- Updated the modules templates <br/>
+		- Auto-Update features<br/>
 		
 		Version 1.4 <br/>
 		- Updated Application template versions<br/>
@@ -36,7 +37,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>1.4</version>
+	<version>1.5</version>
 	<license>Apache License, Version 2.0</license>
     
 	<menucontributions >
@@ -81,6 +82,8 @@
 				<action name="Setup URL Rewrites" 	handlerid="GenRewrites"	showResponse="true">
 					<filters><filter type="project" /></filters>
 				</action>
+				
+				<action name="Check For Extension Updates..." 	handlerid="GenAutoUpdateCheck"	showResponse="true"></action>
 			</menu>
 		</contribution>
 
@@ -103,6 +106,7 @@
 		<handler id="GenReactor"		type="CFM" filename="ReactorSetup.cfm" />
 		<handler id="GenRewrites"		type="CFM" filename="RewriteSetup.cfm" />
 		<handler id="GenModule"			type="CFM" filename="ModuleSetup.cfm" />
+		<handler id="GenAutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />
 	</handlers>
 
 </application>

@@ -20,10 +20,12 @@ Date        :	08/01/2009
    		<cfsetting showdebugoutput="false">
 		
 		<!--- Param the incoming ide event info --->
-		<cfparam name="ideeventinfo">
+		<cfparam name="ideeventinfo" default="">
 		
 		<!--- Utility Class --->
 		<cfset request.utility = createObject("component","util.Utility")>
+		<!--- Location --->
+		<cfset request.extensionLocation = expandPath("../")>
 		
 		<!--- Log Request 
 		<cflog file="ColdBoxCFBuilder" text="Executing #cgi.script_name# #timeFormat(now())#">
@@ -31,10 +33,11 @@ Date        :	08/01/2009
 		--->
 		
 		<!--- Parse incoming event info --->
-		<cfset data = xmlParse(ideeventinfo)>
-		
-		<!--- Parse the incoming input values --->
-		<cfset inputStruct = request.utility.parseInput(data)>
+		<cfif isXML(ideeventinfo)>
+			<cfset data = xmlParse(ideeventinfo)>
+			<!--- Parse the incoming input values --->
+			<cfset inputStruct = request.utility.parseInput(data)>
+		</cfif>
 		
 		<!--- Include page requested --->
 		<cfinclude template="#arguments.targetPage#">
