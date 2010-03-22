@@ -39,6 +39,7 @@ All handlers receive the following:
 <div class="messagebox">Error Installing Update, please see log below!</div>
 <cfelse>
 <h2>Update Installed Successfully</h2>
+<p>Please make sure that you reload the CFBuilder Extensions for the changes to take effect</p>
 </cfif>
 
 <p><strong>Install Log</strong><p>
