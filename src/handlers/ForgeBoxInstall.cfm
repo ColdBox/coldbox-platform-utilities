@@ -17,9 +17,9 @@ All handlers receive the following:
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="ForgeBoxInstaller.cfm"> 
-		<dialog width="500" height="200" title="ColdBox ForgeBox Installer" image="includes/images/ColdBox_Icon.png">  
-			<input name="forgeBoxSlug" label="Enter the ForgeBox Entry Slug" 
-				   tooltip="Enter the ForgeBox Entry Slug to instal"
+		<dialog width="500" height="300" title="ColdBox ForgeBox Installer" image="includes/images/ColdBox_Icon.png">  
+			<input name="forgeBoxSlug" label="ForgeBox Entry Slug To Install:" 
+				   tooltip="Enter the ForgeBox Entry Slug to install"
 				   type="string"
 				   required="true" /> 					
 		</dialog>
