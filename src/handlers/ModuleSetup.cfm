@@ -16,7 +16,7 @@ All handlers receive the following:
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="ModuleGenerator.cfm"> 
-		<dialog width="600" height="450" title="ColdBox Module Wizard" image="images/ColdBox_Icon.png">  
+		<dialog width="600" height="450" title="ColdBox Module Wizard" image="includes/images/ColdBox_Icon.png">  
 		
 			<input name="Title" label="Module Name" required="true"  type="string" tooltip="Enter a web safe module title (no spaces)" />
 			<input name="Script" label="Script Based CFC" type="boolean" checked="false" tooltip="Choose whether to create the cfc in pure script or not." />

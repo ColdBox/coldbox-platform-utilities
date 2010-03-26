@@ -8,16 +8,6 @@ Author      :	 Sana Ullah & Luis Majano
 Date        :	08/01/2009
 ----------------------------------------------------------------------->
 <cfscript>
-// Parse incoming event
-data = xmlParse(ideeventinfo);
-		
-// Parse Input
-extXMLInput = xmlSearch(data, "/event/user/input");
-inputStruct = StructNew();
-for(i=1; i lte arrayLen(extXMLInput); i++){
-	StructInsert(inputStruct,"#extXMLInput[i].xmlAttributes.name#","#extXMLInput[i].xmlAttributes.value#");	
-}
-
 // Destinations
 destinationLocation = data.event.ide.projectview.resource.xmlAttributes.path & "/";
 configLocation = destinationLocation & "coldbox.xml.cfm";
@@ -37,38 +27,36 @@ if( inputStruct.generateValidator ){
 }
 
 // Add interceptor to XML
-configXML = xmlParse(configLocation);
-
-// Create interceptor element
-interceptor = xmlElemNew(configXML,"Interceptor");
-interceptor.XMLAttributes["class"] = "coldbox.system.interceptors.Security";
-// Rules Source
-interceptor.XMLChildren[1] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[1].XMLAttributes["name"] = "rulesSource";
-interceptor.XMLChildren[1].xmlText = "xml";
-// Config File
-interceptor.XMLChildren[2] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[2].XMLAttributes["name"] = "rulesFile";
-interceptor.XMLChildren[2].xmlText = "config/security.xml.cfm";
-// Regex
-interceptor.XMLChildren[3] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[3].XMLAttributes["name"] = "useRegex";
-interceptor.XMLChildren[3].xmlText = inputStruct.useRegex;
-// Use Routes
-interceptor.XMLChildren[4] = xmlElemNew(configXML,"Property");
-interceptor.XMLChildren[4].XMLAttributes["name"] = "useRoutes";
-interceptor.XMLChildren[4].xmlText = inputStruct.useRoutes;
-
-if( inputStruct.generateValidator ){
-	// Deploy Command Object
-	interceptor.XMLChildren[5] = xmlElemNew(configXML,"Property");
-	interceptor.XMLChildren[5].XMLAttributes["name"] = "validatorModel";
-	interceptor.XMLChildren[5].xmlText = "UserValidator";
+if( fileExists(configLocation) ){
+	configXML = xmlParse(configLocation);
+	
+	// Create interceptor element
+	interceptor = xmlElemNew(configXML,"Interceptor");
+	interceptor.XMLAttributes["class"] = "coldbox.system.interceptors.Security";
+	// Rules Source
+	interceptor.XMLChildren[1] = xmlElemNew(configXML,"Property");
+	interceptor.XMLChildren[1].XMLAttributes["name"] = "rulesSource";
+	interceptor.XMLChildren[1].xmlText = "xml";
+	// Config File
+	interceptor.XMLChildren[2] = xmlElemNew(configXML,"Property");
+	interceptor.XMLChildren[2].XMLAttributes["name"] = "rulesFile";
+	interceptor.XMLChildren[2].xmlText = "config/security.xml.cfm";
+	// Regex
+	interceptor.XMLChildren[3] = xmlElemNew(configXML,"Property");
+	interceptor.XMLChildren[3].XMLAttributes["name"] = "useRegex";
+	interceptor.XMLChildren[3].xmlText = inputStruct.useRegex;
+	
+	if( inputStruct.generateValidator ){
+		// Deploy Command Object
+		interceptor.XMLChildren[4] = xmlElemNew(configXML,"Property");
+		interceptor.XMLChildren[4].XMLAttributes["name"] = "validatorModel";
+		interceptor.XMLChildren[4].xmlText = "UserValidator";
+	}
+	// Add to interceptors Array
+	arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);
+	// Write it out
+	fileWrite(configLocation, request.utility.prettifyXML(configXML));
 }
-// Add to interceptors Array
-arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);
-// Write it out
-fileWrite(configLocation, request.utility.prettifyXML(configXML));
 </cfscript>
 
 <cfheader name="Content-Type" value="text/xml">  
@@ -93,17 +81,62 @@ fileWrite(configLocation, request.utility.prettifyXML(configXML));
 			</params>
 		</command>
 		</cfif>
-	</commands>
-	<dialog width="550" height="450" title="ColdBox Security Configurator" image="images/ColdBox_Icon.png"/>  
-	<body><![CDATA[
-	<h2>Security Interceptor Configured!</h2>
-	<p>
-		Security Rules File Created at : config/security.xml.cfm	
-		<cfif inputStruct.generateValidator>
-		<br/>
-		Custom User Validator created in your model folder as <strong>UserValidator.cfc</strong>
+		<cfif fileExists(destinationLocation & "Coldbox.cfc")>
+		<command type="openfile">
+			<params>
+			    <param key="filename" value="#destinationLocation#Coldbox.cfc" />
+			</params>
+		</command>
 		</cfif>
-	</p>
+	</commands>
+	<dialog width="550" height="450" title="ColdBox Security Configurator" image="includes/images/ColdBox_Icon.png"/>  
+	<body><![CDATA[
+	<html>
+		<head>
+			<base href="#request.baseURL#" />
+			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
+			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
+		</head>
+		<body>
+			<div class="messagebox-green">
+				Security Interceptor Configured!
+			</div>
+			
+			<h2>Install Log</h2>
+			<div class="consoleLog">
+				<p>
+					Security Rules File Created at : config/security.xml.cfm	
+					<cfif inputStruct.generateValidator>
+						<br/>
+						Custom User Validator created in your model folder as <strong>UserValidator.cfc</strong>
+					</cfif>
+				</p>
+			</div>			
+			
+			<cfif NOT fileExists(configLocation) >
+				<div class="messagebox">
+					You are using the programmatic Coldbox.cfc, so we will open it for you, so you can add
+					the interceptor declaration.  You can use the generated code below:
+				</div>
+				
+<code><pre>
+interceptors = [
+  { class="coldbox.system.interceptors.Security",
+    properties = {
+	  rulesSource = "xml",
+	  rulesFile = "config/security.xml.cfm",
+	  useRegex = "#inputStruct.useRegex#"<cfif inputStruct.generateValidator>,
+	  UserValidator = "UserValidator"
+	  </cfif>
+	}	
+  }
+]
+</pre></code>
+			
+			</cfif>
+				
+		</body>
+	</html>
 	]]></body>
 </ide>
 </response>

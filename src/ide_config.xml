@@ -4,11 +4,19 @@
 	<email>sanaullah73@gmail.com,info@coldbox.org</email>	
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
+		
+		Version 1.6 <br/>
+		- Lots syntax updates and refactoring<br/>
+		- Addition of css/js and jquery assets<br/>
+		- Install from ForgeBox by slug entry<br/>
+		- Lots of updates for setting up interceptors with or without programmatic config<br/>
 		<hr />
+		
 		Version 1.5 <br/>
 		- Updated the application templates<br/>
 		- Updated the modules templates <br/>
 		- Auto-Update features<br/>
+		<hr />
 		
 		Version 1.4 <br/>
 		- Updated Application template versions<br/>
@@ -37,7 +45,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>1.5</version>
+	<version>1.6</version>
 	<license>Apache License, Version 2.0</license>
     
 	<menucontributions >
@@ -57,9 +65,7 @@
 				<action name="New Interceptor" 	handlerid="GenInterceptor"	showResponse="true"></action>
 				
 				<!-- Module Actions -->
-				<action name="New Module" 	handlerid="GenModule"	showResponse="true">
-					<filters><filter type="folder" pattern="modules" /></filters>
-				</action>
+				<action name="New Module" 	handlerid="GenModule"	showResponse="true"></action>
 				
 				<!-- Config Actions -->
 				<action name="Setup Deploy Interceptor" 	handlerid="GenDeploy"	showResponse="true">
@@ -83,7 +89,11 @@
 					<filters><filter type="project" /></filters>
 				</action>
 				
-				<action name="Check For Extension Updates..." 	handlerid="GenAutoUpdateCheck"	showResponse="true"></action>
+				<!-- ForgeBox -->
+				<action name="Install From ForgeBox..." 	handlerid="ForgeBoxInstall"	showResponse="true"></action>
+				
+				<!--AutoUpdate -->
+				<action name="Check For Extension Updates..." 	handlerid="AutoUpdateCheck"	showResponse="true"></action>
 			</menu>
 		</contribution>
 
@@ -106,7 +116,9 @@
 		<handler id="GenReactor"		type="CFM" filename="ReactorSetup.cfm" />
 		<handler id="GenRewrites"		type="CFM" filename="RewriteSetup.cfm" />
 		<handler id="GenModule"			type="CFM" filename="ModuleSetup.cfm" />
-		<handler id="GenAutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />
+		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />
+		<handler id="ForgeBoxInstall" type="CFM" filename="ForgeBoxInstall.cfm" />
+		
 	</handlers>
 
 </application>

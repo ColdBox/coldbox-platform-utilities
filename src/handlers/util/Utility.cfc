@@ -29,6 +29,16 @@
 	}
 </cfscript>
 
+	<cffunction name="getURLBasePath" output="false" >
+		<cfset var scriptPath = CGI.script_name>
+		<cfset var javaStrObj = createObject("java", "java.lang.String").init(scriptPath)>
+		<cfset var index = javaStrObj.lastIndexOf("/")>
+		
+		<cfset scriptPath = javaStrObj.subString(0,index)>
+		
+		<cfreturn "http://"&#CGI.SERVER_NAME# &":" &#CGI.SERVER_PORT# & scriptPath>
+    </cffunction>
+	
 	<!---
 	Returns the current URL for the page.
 	@return Returns a string.

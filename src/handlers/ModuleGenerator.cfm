@@ -88,7 +88,7 @@ All handlers receive the following:
 			</params>
 		</command>
 	</commands>
-	<dialog width="550" height="350" title="ColdBox Module Wizard" image="images/ColdBox_Icon.png"/>  
+	<dialog width="550" height="350" title="ColdBox Module Wizard" image="includes/images/ColdBox_Icon.png"/>  
 	<body>
 	<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
 	</body>

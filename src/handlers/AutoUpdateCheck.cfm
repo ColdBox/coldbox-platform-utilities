@@ -22,7 +22,6 @@ All handlers receive the following:
 	
 	// Check if versions are new.
 	updateFound = request.utility.isNewVersion(cVersion=extensionVersion,nVersion=extensionEntry.version);
-	
 	// AutoUpdate URL
 	updateURL = URLSessionFormat( request.utility.getCurrentURL(removeTemplate=true) & "AutoUpdate.cfm" );
 	// Destination Dir
@@ -34,54 +33,57 @@ All handlers receive the following:
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput> 
 <response showresponse="true"> 
-<ide > 
-<dialog width="550" height="450" title="ColdBox Extension Auto Update" image="images/ColdBox_Icon.png" />  
+<ide> 
+<dialog width="600" height="500" title="ColdBox Extension Auto Update" image="includes/images/ColdBox_Icon.png" />  
 <body> 
 <![CDATA[ 
-<script language="javascript">
-function onSubmitForm(){
-	document.getElementById('installNow').style.display = "block";
-	document.getElementById('updateButton').disabled = true;
-}
-</script>
-<style type="text/css">
-.consoleLog{
-	border:2px solid ##eaeaea;
-	padding:5px;
-	font-size:12px;
-	font-family: courier;
-	background-color:black;
-	color:##66E10D	
-}
-</style>
-
-<p>Checking if there is a newer version of this extension in the
-ColdBox ForgeBox Repository...
-<ul>
-	<li>Your Version is: <b>#extensionVersion#</b></li>
-	<li>Current Version is: <b>#extensionEntry.version#</b></li>
-</ul> 
-
-<cfif updateFound>
-<form name="updateForm" id="updateForm" action="#updateURL#" method="POST" onsubmit="onSubmitForm()">
-<input type="hidden" name="destinationDir" value="#destinationDir#" />
-<input type="hidden" name="downloadFile"   value="#extensionEntry.downloadURL#" />
-
-<h2><span style="color:red">New Version Found!</span></h2>
-
-<p><input id="updateButton" type="submit" value="Update Now!"/></p>
-
-<div id="installNow" style="display:none">
-<img src="#request.utility.getCurrentURL(removeTemplate=true)#/../../images/ajax-loader-horizontal.gif" alt=""> Installing Please Wait...
-</div>
-
-
-<p><strong>Version Changelog</strong><p>
-<div class="consoleLog">
-#extensionEntry.changelog#
-</div>
-</form>
-</cfif>
+<html>
+<head>
+	<base href="#request.baseURL#" />
+	
+	<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
+		
+	<script language="javascript">
+	function onSubmitForm(){
+		document.getElementById('installNow').style.display = "block";
+		document.getElementById('updateButton').disabled = true;
+	}
+	</script>
+	
+</head>
+<body>
+	<p>Checking if there is a newer version of this extension in the
+	ColdBox ForgeBox Repository...
+	<ul>
+		<li>Your Version is: <b>#extensionVersion#</b></li>
+		<li>Current Version is: <b>#extensionEntry.version#</b></li>
+	</ul> 
+	
+	<cfif updateFound>
+		<form name="updateForm" id="updateForm" action="#updateURL#" method="POST" onsubmit="onSubmitForm()">
+		<input type="hidden" name="destinationDir" value="#destinationDir#" />
+		<input type="hidden" name="downloadFile"   value="#extensionEntry.downloadURL#" />
+		
+		<div class="messagebox-green">
+			New Extension Version Found!
+			<p class="align-center"><input id="updateButton" type="submit" value="Update Now!"/></p>
+		</div>
+	
+		<div id="installNow" style="display:none" class="align-center">
+			<img src="images/ajax-loader-horizontal.gif" alt=""> Installing Please Wait...
+		</div>
+		
+		<p><strong>Version Changelog</strong><p>
+		<div class="consoleLog">
+			#extensionEntry.changelog#
+		</div>
+	</form>
+	<cfelse>
+		<div class="messagebox">You have the latest version installed!</div>
+	</cfif>
+</body>
+</html>
 ]]> 
 </body>
 </ide> 

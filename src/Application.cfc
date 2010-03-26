@@ -7,10 +7,10 @@ www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
 Author      :	 Sana Ullah & Luis Majano
 Date        :	08/01/2009
 ----------------------------------------------------------------------->
-<cfcomponent displayname="Application" output="false">
+<cfcomponent output="false">
 	
 	<cfscript>
-		this.name				= "ColdBoxCFBuilderExtension";
+		this.name				= "ColdBoxCFBuilderExtension_#hash(getCurrentTemplatePath())#";
 		this.sessionManagement	= true;
 	</cfscript>
 
@@ -24,15 +24,17 @@ Date        :	08/01/2009
 		
 		<!--- Utility Class --->
 		<cfset request.utility = createObject("component","util.Utility")>
-		<!--- Location --->
+		<!--- Extension Location --->
 		<cfset request.extensionLocation = expandPath("../")>
+		<!--- Base URL --->
+		<cfset request.baseURL = replacenoCase( request.utility.getURLBasePath(),"handlers","")>
 		
 		<!--- Log Request 
 		<cflog file="ColdBoxCFBuilder" text="Executing #cgi.script_name# #timeFormat(now())#">
 		<cflog file="ColdBoxCFBuilder" text="ideeventinfo: #ideeventinfo.toString()#">
 		--->
 		
-		<!--- Parse incoming event info --->
+		<!--- Parse incoming event info if available? --->
 		<cfif isXML(ideeventinfo)>
 			<cfset data = xmlParse(ideeventinfo)>
 			<!--- Parse the incoming input values --->

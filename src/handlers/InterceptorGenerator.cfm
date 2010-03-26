@@ -76,8 +76,19 @@ All handlers receive the following:
 			</params>
 		</command>
 	</commands>
-	<dialog width="550" height="350" title="ColdBox Interceptor Wizard" image="images/ColdBox_Icon.png"/>  
-	<body><![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]></body>
+	<dialog width="550" height="350" title="ColdBox Interceptor Wizard" image="includes/images/ColdBox_Icon.png"/>  
+	<body><![CDATA[
+	<html>
+		<head>
+			<base href="#request.baseURL#" />
+			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
+			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
+		</head>
+		<body>
+			<div class="messagebox-green">#message#</div>
+		</body>
+	</html>	
+	]]></body>
 </ide>
 </response>
 </cfoutput>

@@ -112,15 +112,24 @@ All handlers receive the following:
 		</command>
 		</cfif>
 	</commands>
-	<dialog width="550" height="350" title="ColdBox Event Handler Wizard" image="images/ColdBox_Icon.png"/>  
+	<dialog width="550" height="350" title="ColdBox Event Handler Wizard" image="includes/images/ColdBox_Icon.png"/>  
 	<body><![CDATA[
-	<h2>Generated New Handler!</h2>
-	<p>
-	Generated new handler called: #handlerName#.cfc<br/>
-	<cfif inputStruct.generateTest>
-	Generated new integration test called: #handlerName#Test.cfc
-	</cfif>
-	</p>
+	<html>
+		<head>
+			<base href="#request.baseURL#" />
+			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
+			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
+		</head>
+		<body>
+			<div class="messagebox-green">Generated New Handler!</div>
+			<p>
+			Generated new handler called: #handlerName#.cfc<br/>
+			<cfif inputStruct.generateTest>
+				Generated new integration test called: #handlerName#Test.cfc
+			</cfif>
+			</p>
+		</body>
+	</html>	
 	]]></body>
 </ide>
 </response>

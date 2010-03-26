@@ -17,34 +17,28 @@ All handlers receive the following:
 	results = forgeBox.install(downloadURL=form.downloadFile,destinationDir=form.destinationDir);
 </cfscript>
 <cfoutput>
-<style type="text/css">
-.messagebox{
-	border:solid 1px ##CB2026;
-	background:##F6CBCA 8px 6px no-repeat;
-	color:##CB2026;
-	padding:4px;
-	text-align:center;
-}
-.consoleLog{
-	border:2px solid ##eaeaea;
-	padding:5px;
-	font-size:12px;
-	font-family: courier;
-	background-color:black;
-	color:##66E10D	
-}
-</style>
-
-<cfif results.error>
-<div class="messagebox">Error Installing Update, please see log below!</div>
-<cfelse>
-<h2>Update Installed Successfully</h2>
-<p>Please make sure that you reload the CFBuilder Extensions for the changes to take effect</p>
-</cfif>
-
-<p><strong>Install Log</strong><p>
-
-<div class="consoleLog">
-#results.logInfo#
-</div>
+<html>
+<head>
+	<base href="#request.baseURL#" />
+	
+	<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
+</head>
+<body>
+	<cfif results.error>
+		<div class="messagebox">Error Installing Update, please see log below!</div>
+	<cfelse>
+		<div class="messagebox-green">
+			Update Installed Successfully!
+			<p>Please make sure that you reload the CFBuilder Extensions for the changes to take effect</p>
+		</div>		
+	</cfif>
+	
+	<h2>Install Log</h2>
+	
+	<div class="consoleLog">
+	#results.logInfo#
+	</div>
+</body>
+</html>
 </cfoutput>

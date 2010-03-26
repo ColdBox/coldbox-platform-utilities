@@ -12,26 +12,16 @@ All handlers receive the following:
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
 
-<!--- List of all coldbox Application Templates (Simple, Advance, Flex )--->
-<cfdirectory action="list" directory="#expandPath('../skeletons')#" type="dir" name="appSkeletons" />
-
 <!--- Output --->
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>  
 <response status="success" type="default">  
-	<ide handlerfile="ExpandAppSkeleton.cfm"> 
-		<dialog width="450" height="450" title="ColdBox Application Generator" image="includes/images/ColdBox_Icon.png">  
-			<input name="ApplicationType" label="Select Application Type To Generate" type="list">
-			<cfloop query="appSkeletons">
-				<cfif left(appSkeletons.name,1) neq ".">
-				<option value="#appSkeletons.name#" />
-				</cfif>
-			</cfloop> 
-			</input>
-			<input name="ApplicationCFCType" label="Application.cfc using inheritance" 
-				   tooltip="Whether to create the Application.cfc with inheritance or not"
-				   type="Boolean"
-				   checked="true" /> 					
+	<ide handlerfile="ForgeBoxInstaller.cfm"> 
+		<dialog width="500" height="200" title="ColdBox ForgeBox Installer" image="includes/images/ColdBox_Icon.png">  
+			<input name="forgeBoxSlug" label="Enter the ForgeBox Entry Slug" 
+				   tooltip="Enter the ForgeBox Entry Slug to instal"
+				   type="string"
+				   required="true" /> 					
 		</dialog>
 	</ide>
 </response>  

@@ -64,14 +64,28 @@ fileWrite(routesLocation,routes);
 			</params>
 		</command>
 	</commands>
-	<dialog width="550" height="450" title="ColdBox URL Rewrite Rules Created" image="images/ColdBox_Icon.png"/>  
+	<dialog width="550" height="450" title="ColdBox URL Rewrite Rules Created" image="includes/images/ColdBox_Icon.png"/>  
 	<body><![CDATA[
-	<h2>Rewrite Rules File Created!</h2>
-	<p>
-	The <em>#inputStruct.rewriteEngine#</em> URL rewrite rules have been created in your root folder as
-	<strong>#copiedFile#</strong>. <br/>
-	Your <em>Routes.cfm</em> file has been modified to remove any <em>index.cfm</em> references.
-	</p>
+	<html>
+		<head>
+			<base href="#request.baseURL#" />
+			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
+			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
+		</head>
+		<body>
+			<div class="messagebox-green">Rewrite Rules File Created!</div>
+			
+			<h2>Install Log</h2>
+			<div class="consoleLog">
+				<p>
+				The <em>#inputStruct.rewriteEngine#</em> URL rewrite rules have been created in your root folder as
+				<strong>#copiedFile#</strong>. <br/>
+				Your <em>Routes.cfm</em> file has been modified to remove any <em>index.cfm</em> references.
+				</p>
+			</div>
+		</body>
+	</html>	
+	
 	]]></body>
 </ide>
 </cfoutput>

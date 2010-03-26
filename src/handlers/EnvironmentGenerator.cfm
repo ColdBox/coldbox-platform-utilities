@@ -8,16 +8,6 @@ Author      :	 Sana Ullah & Luis Majano
 Date        :	08/01/2009
 ----------------------------------------------------------------------->
 <cfscript>
-// Parse incoming event
-data = xmlParse(ideeventinfo);
-		
-// Parse Input
-extXMLInput = xmlSearch(data, "/event/user/input");
-inputStruct = StructNew();
-for(i=1; i lte arrayLen(extXMLInput); i++){
-	StructInsert(inputStruct,"#extXMLInput[i].xmlAttributes.name#","#extXMLInput[i].xmlAttributes.value#");	
-}
-
 // Destinations
 destinationLocation = data.event.ide.projectview.resource.xmlAttributes.path & "/";
 configLocation = destinationLocation & "coldbox.xml.cfm";
@@ -61,12 +51,25 @@ fileWrite(configLocation, request.utility.prettifyXML(configXML));
 			</params>
 		</command>
 	</commands>
-	<dialog width="550" height="450" title="ColdBox Environment Control Configurator" image="images/ColdBox_Icon.png"/>  
+	<dialog width="550" height="450" title="ColdBox Environment Control Configurator" image="includes/images/ColdBox_Icon.png"/>  
 	<body><![CDATA[
-	<h2>Environment Control Configured!</h2>
-	<p>
-		Environment control file created at : config/environments.xml.cfm
-	</p>
+	<html>
+		<head>
+			<base href="#request.baseURL#" />
+			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
+			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
+		</head>
+		<body>
+			<div class="messagebox-green">
+				Environment Interceptor Configured!
+			</div>
+			
+			<h2>Install Log</h2>
+			<div class="consoleLog">
+				Environment control file created at : <strong>config/environments.xml.cfm</strong>
+			</div>
+		</body>
+	</html>	
 	]]></body>
 </ide>
 </response>

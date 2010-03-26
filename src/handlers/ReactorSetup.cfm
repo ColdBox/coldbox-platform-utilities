@@ -3,14 +3,16 @@ Author 	 :	Sana Ullah
 Date     :	August 1, 2009
 Description :
 ---------------------------------------------------------------------->
-<cftry>
-<cfset data = xmlParse(ideeventinfo)>
+<cfscript>
+destinationLocation = data.event.ide.projectview.resource.xmlAttributes.path & "/";
+</cfscript>
 
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>  
+<cfif fileExists(destinationLocation & "coldbox.xml.cfm")>
 <response status="success" type="default">  
 	<ide handlerfile="ReactorGenerator.cfm"> 
-		<dialog width="550" height="400" title="ColdBox Reactor ORM Configurator" image="images/ColdBox_Icon.png">  
+		<dialog width="550" height="400" title="ColdBox Reactor ORM Configurator" image="includes/images/ColdBox_Icon.png">  
 			<input name="projectName" label="Project Name" required="true"  type="string" 
 				   tooltip="The reactor project name"
 				   helpmessage="The database type used for metadata purposes" />
@@ -34,12 +36,26 @@ Description :
 		</dialog>
 	</ide>
 </response>  
+<cfelse>
+<response status="success" type="default" showresponse="true">  
+<ide> 
+<dialog width="550" height="250" title="ColdBox Environment Control Configurator" image="includes/images/ColdBox_Icon.png"/>  
+	<body><![CDATA[
+	<html>
+		<head>
+			<base href="#request.baseURL#" />
+			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
+			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
+		</head>
+		<body>
+			<div class="messagebox">
+				Setup the Reactor Loader Interceptor in the programmatic configuration manually.
+			</div>
+		</body>
+	</html>
+	]]></body>
+</ide>
+</response>
+</cfif>
 </cfoutput>
-
-<cfcatch type="any">
-	<cflog file="ColdBoxCFBuilder" text="#cfcatch.message#">
-</cfcatch>
-</cftry>
-
-
  

@@ -16,7 +16,7 @@ All handlers receive the following:
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="HandlerGenerator.cfm"> 
-		<dialog width="700" height="550" title="ColdBox Event Handler Wizard" image="images/ColdBox_Icon.png">  
+		<dialog width="700" height="550" title="ColdBox Event Handler Wizard" image="includes/images/ColdBox_Icon.png">  
 			
 			<input name="Name" label="Handler Name" required="true"  type="string" default="" 
 				   tooltip="Enter handler cfc name without .cfc"

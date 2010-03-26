@@ -8,16 +8,6 @@ Author      :	 Sana Ullah & Luis Majano
 Date        :	08/01/2009
 ----------------------------------------------------------------------->
 <cfscript>
-// Parse incoming event
-data = xmlParse(ideeventinfo);
-		
-// Parse Input
-extXMLInput = xmlSearch(data, "/event/user/input");
-inputStruct = StructNew();
-for(i=1; i lte arrayLen(extXMLInput); i++){
-	StructInsert(inputStruct,"#extXMLInput[i].xmlAttributes.name#","#extXMLInput[i].xmlAttributes.value#");	
-}
-
 // Destinations
 destinationLocation = data.event.ide.projectview.resource.xmlAttributes.path & "/";
 configLocation = destinationLocation & "coldbox.xml.cfm";
@@ -104,15 +94,29 @@ fileWrite(configLocation, request.utility.prettifyXML(configXML));
 			</params>
 		</command>
 	</commands>
-	<dialog width="550" height="450" title="ColdBox Deploy Tag Configurator" image="images/ColdBox_Icon.png"/>  
+	<dialog width="550" height="450" title="ColdBox Deploy Tag Configurator" image="includes/images/ColdBox_Icon.png"/>  
 	<body><![CDATA[
-	<h2>Transfer ORM Configured!</h2>
-	<p>
-	Transfer XML file created at : <em>config/transfer.xml.cfm</em> <br/>
-	Transfer definitioins folder created at : <em>config/definitions</em> <br/>
-	Datasource added to config and interceptor configured. <br/>
-	</p>
-	<p><strong>Please make sure your datasource is created and you modify the transfer.xml</strong></p>
+	<html>
+		<head>
+			<base href="#request.baseURL#" />
+			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
+			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
+		</head>
+		<body>
+			<div class="messagebox-green">Transfer ORM Configured!</div>
+			
+			<h2>Install Log</h2>
+			<div class="consoleLog">
+				<p>
+				Transfer XML file created at : <em>config/transfer.xml.cfm</em> <br/>
+				Transfer definitioins folder created at : <em>config/definitions</em> <br/>
+				Datasource added to config and interceptor configured. <br/>
+				</p>
+				<p><strong>Please make sure your datasource is created and you modify the transfer.xml</strong></p>
+			</div>
+		</body>
+	</html>	
+	
 	]]></body>
 </ide>
 </response>
