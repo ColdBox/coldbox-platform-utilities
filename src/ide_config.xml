@@ -5,6 +5,10 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
+		Version 1.7 <br/>
+		- Critical Fix for Application Builder<br/>
+		<hr />
+		
 		Version 1.6 <br/>
 		- Lots syntax updates and refactoring<br/>
 		- Addition of css/js and jquery assets<br/>
@@ -45,7 +49,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>1.6</version>
+	<version>1.7</version>
 	<license>Apache License, Version 2.0</license>
     
 	<menucontributions >

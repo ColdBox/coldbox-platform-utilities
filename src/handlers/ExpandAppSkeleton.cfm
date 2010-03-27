@@ -18,7 +18,7 @@ All handlers receive the following:
 	<cfset projectname		= data.event.ide.projectview.xmlAttributes.projectname>
 <cfelse>
 	<cfset expandLocation	= data.event.ide.eventinfo.xmlAttributes.projectLocation >
-	<cfset projectname		= data.event.ide.eventinfo.xmlAttribute.projectname >
+	<cfset projectname		= data.event.ide.eventinfo.xmlAttributes.projectname >
 </cfif>
 
 <!--- get the zip file under the skeleton location directory. I ignore any but the first one --->
