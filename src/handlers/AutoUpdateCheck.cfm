@@ -23,7 +23,7 @@ All handlers receive the following:
 	// Check if versions are new.
 	updateFound = request.utility.isNewVersion(cVersion=extensionVersion,nVersion=extensionEntry.version);
 	// AutoUpdate URL
-	updateURL = URLSessionFormat( request.utility.getCurrentURL(removeTemplate=true) & "AutoUpdate.cfm" );
+	updateURL = request.utility.getCurrentURL(removeTemplate=true) & "AutoUpdate.cfm";
 	// Destination Dir
 	destinationDir = request.extensionLocation;
 </cfscript>
