@@ -1,6 +1,6 @@
 	<cffunction name="|interceptionPoint|" returntype="void" output="false" access="public">
-		<cfargument name="event" required="true" type="any" hint="The event object">
-	    <cfargument name="interceptData" required="true" type="struct" hint="A structure containing intercepted information.">
+		<cfargument name="event">
+	    <cfargument name="interceptData" type="struct" hint="A structure containing intercepted information.">
 	    <cfset var rc = event.getCollection()>
 		
 	</cffunction>

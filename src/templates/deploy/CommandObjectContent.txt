@@ -1,10 +1,12 @@
-<cfcomponent name="DeployCommand" output="false" hint="A deploy command object">
+<cfcomponent output="false" hint="A deploy command object">
 
+	<!--- Constructor --->
 	<cffunction name="init" access="public" returntype="any" hint="Constructor" output="false" >
 	    <cfreturn this>
 	</cffunction>
 	
-	<cffunction name="execute" access="public" returntype="void" hint="Execute Command" output="false" >
+	<!--- Execute --->
+	<cffunction name="execute" access="public" returntype="void" hint="Execute Command upon deployment" output="false" >
         
 	</cffunction>
 	

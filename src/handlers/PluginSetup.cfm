@@ -16,7 +16,7 @@ All handlers receive the following:
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="PluginGenerator.cfm"> 
-		<dialog width="600" height="450" title="ColdBox Plugin Wizard" image="includes/images/ColdBox_Icon.png">  
+		<dialog width="600" height="550" title="ColdBox Plugin Wizard" image="includes/images/ColdBox_Icon.png">  
 			<input name="Name" label="Plugin Name" required="true"  type="string" default="" tooltip="Enter plugin cfc name without .cfc" />
 			<input name="Script" label="Script Based CFC" type="boolean" checked="false" tooltip="Choose whether to create the cfc in pure script or not." />
 			<input name="Version" label="Plugin version"  type="string" default="1.0" tooltip="Enter plugin version" />

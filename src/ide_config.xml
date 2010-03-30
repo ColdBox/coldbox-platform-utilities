@@ -5,6 +5,14 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
+		Version 1.8 <br/>
+		- Update to application templates<br/>
+		- Update to code generation templates with some fixes<br/>
+		- Generation of ColdBox Integration tests<br/>
+		- Fixes for security generator <br/>
+		- New menu contribution: ColdBox ForgeBox <br/>
+		<hr />
+		
 		Version 1.7 <br/>
 		- Critical Fix for Application Builder<br/>
 		- Critical Fix for Auto Update Features<br/>
@@ -50,7 +58,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>1.7</version>
+	<version>1.8</version>
 	<license>Apache License, Version 2.0</license>
     
 	<menucontributions >
@@ -68,6 +76,7 @@
 				<action name="New Plugin" 		handlerid="GenPlugin"		showResponse="true"></action>
 				<action name="New Model" 		handlerid="GenModel"		showResponse="true"></action>
 				<action name="New Interceptor" 	handlerid="GenInterceptor"	showResponse="true"></action>
+				<action name="New Integration Test" 	handlerid="GenIntegrationTest"	showResponse="true"></action>
 				
 				<!-- Module Actions -->
 				<action name="New Module" 	handlerid="GenModule"	showResponse="true"></action>
@@ -94,11 +103,18 @@
 					<filters><filter type="project" /></filters>
 				</action>
 				
+				<!--AutoUpdate -->
+				<action name="*Check For Extension Updates..." 	handlerid="AutoUpdateCheck"	showResponse="true"></action>
+			</menu>
+			<menu name="ColdBox ForgeBox">
+				<filters>
+					<filter type="folder" />
+					<filter type="project" />
+				</filters>
+				
 				<!-- ForgeBox -->
 				<action name="Install From ForgeBox..." 	handlerid="ForgeBoxInstall"	showResponse="true"></action>
 				
-				<!--AutoUpdate -->
-				<action name="Check For Extension Updates..." 	handlerid="AutoUpdateCheck"	showResponse="true"></action>
 			</menu>
 		</contribution>
 
@@ -123,6 +139,7 @@
 		<handler id="GenModule"			type="CFM" filename="ModuleSetup.cfm" />
 		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />
 		<handler id="ForgeBoxInstall" type="CFM" filename="ForgeBoxInstall.cfm" />
+		<handler id="GenIntegrationTest" type="CFM" filename="IntegrationTestSetup.cfm" />
 		
 	</handlers>
 

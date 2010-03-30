@@ -1,13 +1,16 @@
-/*
-A deploy command object
+/**
+* A deploy command object
 */
-component output="false"{
+component{
 	
-	any function init() output=false{
+	any function init(){
 		return this;
 	}
 	
-	void function execute() output=false{
+	/**
+	* Executes when the deploy is detected
+	*/	
+	void function execute(){
 		
 	}
 	

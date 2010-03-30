@@ -21,5 +21,6 @@ that can be found in an event.
         <roles></roles>
 		<permissions></permissions>
         <redirect></redirect>
+		<useSSL>false</useSSL>
     </rule>
 </rules>

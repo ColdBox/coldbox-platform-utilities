@@ -126,7 +126,7 @@ interceptors = [
 	  rulesSource = "xml",
 	  rulesFile = "config/security.xml.cfm",
 	  useRegex = "#inputStruct.useRegex#"<cfif inputStruct.generateValidator>,
-	  UserValidator = "UserValidator"
+	  validatorModel = "UserValidator"
 	  </cfif>
 	}	
   }

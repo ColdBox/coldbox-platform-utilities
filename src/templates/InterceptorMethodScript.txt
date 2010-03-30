@@ -1,4 +1,4 @@
-	void function |interceptionPoint|(event,interceptData){
+	void function |interceptionPoint|(event,struct interceptData){
 		var rc = event.getCollection();
 		
 	}	

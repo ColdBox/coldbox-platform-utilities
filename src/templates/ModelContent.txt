@@ -1,6 +1,4 @@
-<cfcomponent hint="|modelDescription|"
-			 output="false"
-			 |modelPersistence|>
+<cfcomponent hint="|modelDescription|" output="false" |modelPersistence|>
 
 <!------------------------------------------- CONSTRUCTOR ------------------------------------------->
 

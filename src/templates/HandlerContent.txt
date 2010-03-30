@@ -5,8 +5,8 @@
 		this.prehandler_except 	= "";
 		this.posthandler_only 	= "";
 		this.posthandler_except = "";
-		/* HTTP Methods Allowed for actions. */
-		/* Ex: this.allowedMethods = {delete='POST,DELETE',index='GET'} */
+		// REST HTTP Methods Allowed for actions.
+		// Ex: this.allowedMethods = {delete='POST,DELETE',index='GET'} */
 		this.allowedMethods 	= {};
 	</cfscript>
 
@@ -15,7 +15,7 @@
 	<!--- UNCOMMENT HANDLER IMPLICIT EVENTS
 	
 	<!--- preHandler --->
-	<cffunction name="preHandler" returntype="void" output="false" hint="Executes before any event in this handler">
+	<cffunction name="preHandler" output="false" hint="Executes before any event in this handler">
 		<cfargument name="event">
 		<cfargument name="action" hint="The intercepted action"/>
 		<cfscript>	
@@ -24,7 +24,7 @@
 	</cffunction>
 	
 	<!--- postHandler --->
-	<cffunction name="postHandler" returntype="void" output="false" hint="Executes after any event in this handler">
+	<cffunction name="postHandler" output="false" hint="Executes after any event in this handler">
 		<cfargument name="event">
 		<cfargument name="action" hint="The intercepted action"/>
 		<cfscript>	
@@ -33,7 +33,7 @@
 	</cffunction>
 	
 	<!--- onMissingAction --->
-	<cffunction name="onMissingAction" returntype="void" output="false" hint="Executes if a request action (method) is not found in this handler">
+	<cffunction name="onMissingAction" output="false" hint="Executes if a request action (method) is not found in this handler">
 		<cfargument name="event">
 		<cfargument name="MissingAction" hint="The requested action string"/>
 		<cfscript>	
@@ -42,7 +42,7 @@
 	</cffunction>
 	
 	<!--- onError --->
-	<cffunction name="onError" returntype="void" output="false" hint="Executes if ANY action causes an exception">
+	<cffunction name="onError" output="false" hint="Executes if ANY action causes an exception">
 		<cfargument name="event">
 		<cfargument name="faultAction" hint="The action that caused the error"/>
 		<cfargument name="exception"   hint="The exception structure"/>

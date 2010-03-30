@@ -1,10 +1,10 @@
 <cfcomponent hint="|description|" output="false">
 
-<!------------------------------------------- CONSTRUCTOR ------------------------------------------->
+<!------------------------------------------- CONFIGURATOR ------------------------------------------->
 
 	<cffunction name="configure" access="public" returntype="void" output="false" hint="Interceptor config">
 		<cfscript>
-			return this;
+			
 		</cfscript>
 	</cffunction>
 

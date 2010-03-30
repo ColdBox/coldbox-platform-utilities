@@ -1,6 +1,4 @@
-<cfcomponent hint="|pluginDescription|"
-			 output="false"
-			 |pluginPersistence|>
+<cfcomponent hint="|pluginDescription|" output="false" |pluginPersistence|>
 
 <!------------------------------------------- CONSTRUCTOR ------------------------------------------->
 

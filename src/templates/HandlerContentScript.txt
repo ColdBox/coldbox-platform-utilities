@@ -8,20 +8,22 @@ component{
 	this.prehandler_except 	= "";
 	this.posthandler_only 	= "";
 	this.posthandler_except = "";
-	// Allowed HTTP Methods Ex: this.allowedMethods = {delete='POST,DELETE',index='GET'}
+	// REST Allowed HTTP Methods Ex: this.allowedMethods = {delete='POST,DELETE',index='GET'}
 	this.allowedMethods = {};
 	
 	/**
 	IMPLICIT FUNCTIONS: Uncomment to use
-	void function preHandler(event,action) output=false{
+	function preHandler(event,action) output=false{
 		var rc = event.getCollection();
 	}
-	void function postHandler(event,action) output=false{
+	function postHandler(event,action) output=false{
 		var rc = event.getCollection();
 	}
-	void function onMissingAction(event,missingAction) output=false{
+	function onMissingAction(event,missingAction) output=false{
+		var rc = event.getCollection();
 	}
-	void function onError(event,faultAction,exception) output=false{
+	function onError(event,faultAction,exception) output=false{
+		var rc = event.getCollection();
 	}
 	*/
 		

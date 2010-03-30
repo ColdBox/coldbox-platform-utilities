@@ -1,14 +1,13 @@
-component extends="coldbox.system.testing.BaseTestCase" output="false" appMapping="|appMapping|"{
+component extends="coldbox.system.testing.BaseTestCase" appMapping="|appMapping|"{
 	
+	/**
+	* You can remove this setup method if you do not have anything to setup
+	*/
 	void function setup(){
 		//Call the super setup method to setup the app.
 		super.setup();
 		
-		//EXECUTE THE APPLICATION START HANDLER: UNCOMMENT IF NEEDED AND FILL IT OUT.
-		//getController().runEvent("main.onAppInit");
-
-		//EXECUTE THE ON REQUEST START HANDLER: UNCOMMENT IF NEEDED AND FILL IT OUT
-		//getController().runEvent("main.onRequestStart");
+		// Your own setup here if needed
 	}
 
 |TestCases|

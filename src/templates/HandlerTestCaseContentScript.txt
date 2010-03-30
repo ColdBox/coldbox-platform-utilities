@@ -1,8 +1,10 @@
-	void function test|action|(){
+	function test|action|(){
 		var event = "";
 		
 		//Place any variables on the form or URL scope to test the handler.
 		//URL.name = "luis"
+		
+		// Execute Event
 		event = execute("|event|");
 		
 		//Do your asserts below
