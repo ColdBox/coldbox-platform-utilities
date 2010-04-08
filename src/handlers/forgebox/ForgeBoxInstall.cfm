@@ -16,7 +16,7 @@ All handlers receive the following:
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>  
 <response status="success" type="default">  
-	<ide handlerfile="ForgeBoxInstaller.cfm"> 
+	<ide handlerfile="forgebox/ForgeBoxInstaller.cfm"> 
 		<dialog width="500" height="300" title="ColdBox ForgeBox Installer" image="includes/images/ColdBox_Icon.png">  
 			<input name="forgeBoxSlug" label="ForgeBox Entry Slug To Install:" 
 				   tooltip="Enter the ForgeBox Entry Slug to install"

@@ -17,7 +17,7 @@ All handlers receive the following:
 	extensionVersion = xml.application.version.xmlText;
 	
 	// Check for forgebox item
-	forgeBox		 = createObject("component","util.ForgeBox").init();
+	forgeBox		 = createObject("component","coldboxExtension.handlers.util.ForgeBox").init();
 	extensionEntry   = forgeBox.getEntry(slug="ColdBox-Platform-Utilities");
 	
 	// Check if versions are new.

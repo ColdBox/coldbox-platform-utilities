@@ -12,6 +12,8 @@ Date        :	08/01/2009
 	<cfscript>
 		this.name				= "ColdBoxCFBuilderExtension_#hash(getCurrentTemplatePath())#";
 		this.sessionManagement	= true;
+		
+		this.mappings["/coldboxExtension"] = getDirectoryFromPath(getCurrentTemplatePath()) ;
 	</cfscript>
 
 	<cffunction name="onRequest">
@@ -23,7 +25,7 @@ Date        :	08/01/2009
 		<cfparam name="ideeventinfo" default="">
 		
 		<!--- Utility Class --->
-		<cfset request.utility = createObject("component","util.Utility")>
+		<cfset request.utility = createObject("component","coldboxExtension.handlers.util.Utility")>
 		<!--- Extension Location --->
 		<cfset request.extensionLocation = expandPath("../")>
 		<!--- Base URL --->

@@ -5,6 +5,11 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
+		Version 1. <br/>
+		- Some menu refactorings<br/>
+		- 
+		<hr />
+		
 		Version 1.8 <br/>
 		- Update to application templates<br/>
 		- Update to code generation templates with some fixes<br/>
@@ -65,37 +70,31 @@
 
 		<contribution target="projectview">
 			<menu name="ColdBox Platform">
-				<filters>
-					<filter type="folder" />
-					<filter type="project" />
-				</filters>
 				
-				<!-- Global Folder/Project Actions -->
-				<action name="New Application"	handlerid="GenSkeleton"		showResponse="true"></action>
-				<action name="New Handler" 		handlerid="GenHandler"		showResponse="true"></action>
-				<action name="New Plugin" 		handlerid="GenPlugin"		showResponse="true"></action>
-				<action name="New Model" 		handlerid="GenModel"		showResponse="true"></action>
-				<action name="New Interceptor" 	handlerid="GenInterceptor"	showResponse="true"></action>
-				<action name="New Integration Test" 	handlerid="GenIntegrationTest"	showResponse="true"></action>
-				
-				<!-- Module Actions -->
-				<action name="New Module" 	handlerid="GenModule"	showResponse="true"></action>
-				
-				<!-- Config Actions -->
-				<action name="Setup Deploy Interceptor" 	handlerid="GenDeploy"	showResponse="true">
-					<filters><filter type="folder" pattern="config" /></filters>
+				<!-- Global Actions -->
+				<action name="New Application"	handlerid="GenSkeleton"		showResponse="true">
+					<filters>
+						<filter type="project" />
+						<filter type="folder" />
+					</filters>
 				</action>
-				<action name="Setup Security Interceptor" 	handlerid="GenSecurity"	showResponse="true">
-					<filters><filter type="folder" pattern="config" /></filters>
+				<action name="New Handler" 		handlerid="GenHandler"		showResponse="true">
+					<filters><filter type="folder" /></filters>
 				</action>
-				<action name="Setup Environment Control" 	handlerid="GenEnvironments"	showResponse="true">
-					<filters><filter type="folder" pattern="config" /></filters>
+				<action name="New Plugin" 		handlerid="GenPlugin"		showResponse="true">
+					<filters><filter type="folder" /></filters>
 				</action>
-				<action name="Setup Transfer ORM" 	handlerid="GenTransfer"	showResponse="true">
-					<filters><filter type="folder" pattern="config" /></filters>
+				<action name="New Model" 		handlerid="GenModel"		showResponse="true">
+					<filters><filter type="folder" /></filters>
 				</action>
-				<action name="Setup Reactor ORM" 	handlerid="GenReactor"	showResponse="true">
-					<filters><filter type="folder" pattern="config" /></filters>
+				<action name="New Interceptor" 	handlerid="GenInterceptor"	showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
+				<action name="New Integration Test" 	handlerid="GenIntegrationTest"	showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
+				<action name="New Module" 	handlerid="GenModule"	showResponse="true">
+					<filters><filter type="folder" /></filters>
 				</action>
 				
 				<!--Project Only Actions-->
@@ -103,9 +102,23 @@
 					<filters><filter type="project" /></filters>
 				</action>
 				
+				<!-- Config Folder Aspects -->
+				<menu name="Setup Aspects">
+					<filters><filter type="folder" pattern="config" /></filters>
+					<action name="Setup Deploy Interceptor" 	handlerid="GenDeploy"	showResponse="true"></action>
+					<action name="Setup Security Interceptor" 	handlerid="GenSecurity"	showResponse="true"></action>
+					<action name="Setup Environment Control" 	handlerid="GenEnvironments"	showResponse="true"></action>
+					<action name="Setup Transfer ORM" 	handlerid="GenTransfer"	showResponse="true"></action>
+					<action name="Setup Reactor ORM" 	handlerid="GenReactor"	showResponse="true"></action>
+				</menu>
+				
+				<!-- Divider -->
+				<action name="----------------------------------"></action>
 				<!--AutoUpdate -->
-				<action name="*Check For Extension Updates..." 	handlerid="AutoUpdateCheck"	showResponse="true"></action>
+				<action name="Check For Extension Updates..." 	handlerid="AutoUpdateCheck"	showResponse="true"></action>
 			</menu>
+			
+			<!-- ForgeBox Menu -->
 			<menu name="ColdBox ForgeBox">
 				<filters>
 					<filter type="folder" />
@@ -114,7 +127,6 @@
 				
 				<!-- ForgeBox -->
 				<action name="Install From ForgeBox..." 	handlerid="ForgeBoxInstall"	showResponse="true"></action>
-				
 			</menu>
 		</contribution>
 
@@ -138,9 +150,11 @@
 		<handler id="GenRewrites"		type="CFM" filename="RewriteSetup.cfm" />
 		<handler id="GenModule"			type="CFM" filename="ModuleSetup.cfm" />
 		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />
-		<handler id="ForgeBoxInstall" type="CFM" filename="ForgeBoxInstall.cfm" />
 		<handler id="GenIntegrationTest" type="CFM" filename="IntegrationTestSetup.cfm" />
+		<handler id="ExtensionHelp" type="CFM" filename="ExtensionHelp.cfm" />
 		
+		<!-- ForgeBox -->
+		<handler id="ForgeBoxInstall" type="CFM" filename="forgebox/ForgeBoxInstall.cfm" />
 	</handlers>
 
 </application>

@@ -12,7 +12,7 @@ All handlers receive the following:
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
 <cfscript>
-	forgeBox = createObject("component","util.ForgeBox").init();
+	forgeBox = createObject("component","coldboxExtension.handlers.util.ForgeBox").init();
 	// Install the Update
 	results = forgeBox.install(downloadURL=form.downloadFile,destinationDir=form.destinationDir);
 </cfscript>

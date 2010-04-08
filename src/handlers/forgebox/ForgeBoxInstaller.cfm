@@ -14,7 +14,7 @@ All handlers receive the following:
 
 <cfscript>
 	expandLocation	 = data.event.ide.projectview.resource.xmlAttributes.path;
-	forgeBox		 = createObject("component","util.ForgeBox").init();
+	forgeBox		 = createObject("component","coldboxExtension.handlers.util.ForgeBox").init();
 	entry		     = forgeBox.getEntry(slug=inputStruct.forgeBoxSlug);
 	
 	if( NOT structIsEmpty(entry) ){
