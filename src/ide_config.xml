@@ -7,7 +7,7 @@
 		
 		Version 1. <br/>
 		- Some menu refactorings<br/>
-		- 
+		- Addition of a new resources menu for live search, help and live API docs.<br/>
 		<hr />
 		
 		Version 1.8 <br/>
@@ -114,6 +114,14 @@
 				
 				<!-- Divider -->
 				<action name="----------------------------------"></action>
+				
+				<!-- Resources -->
+				<menu name="Resources">
+					<action name="ColdBox Live Search" 	handlerid="ColdBoxSearch"	showResponse="true"></action>
+					<action name="ColdBox Live API" 	handlerid="ColdBoxAPI"	showResponse="true"></action>
+					<action name="Extension Help" 	handlerid="ExtensionHelp"	showResponse="true"></action>
+				</menu>
+				
 				<!--AutoUpdate -->
 				<action name="Check For Extension Updates..." 	handlerid="AutoUpdateCheck"	showResponse="true"></action>
 			</menu>
@@ -137,6 +145,7 @@
 	</events>	
 	
 	<handlers>		
+		<!-- Generators -->
 		<handler id="GenHandler"		type="CFM" filename="HandlerSetup.cfm" />
 		<handler id="GenPlugin"			type="CFM" filename="PluginSetup.cfm" />
 		<handler id="GenSkeleton"		type="CFM" filename="AppSkeleton.cfm" />
@@ -149,9 +158,15 @@
 		<handler id="GenReactor"		type="CFM" filename="ReactorSetup.cfm" />
 		<handler id="GenRewrites"		type="CFM" filename="RewriteSetup.cfm" />
 		<handler id="GenModule"			type="CFM" filename="ModuleSetup.cfm" />
-		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />
 		<handler id="GenIntegrationTest" type="CFM" filename="IntegrationTestSetup.cfm" />
-		<handler id="ExtensionHelp" type="CFM" filename="ExtensionHelp.cfm" />
+		
+		<!-- AutoUpdate -->
+		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />
+		
+		<!-- Resources -->
+		<handler id="ExtensionHelp" type="CFM" filename="resources/ExtensionHelp.cfm" />
+		<handler id="ColdBoxAPI" type="CFM" filename="resources/ColdBoxAPI.cfm" />
+		<handler id="ColdBoxSearch" type="CFM" filename="resources/ColdBoxSearch.cfm" />
 		
 		<!-- ForgeBox -->
 		<handler id="ForgeBoxInstall" type="CFM" filename="forgebox/ForgeBoxInstall.cfm" />
