@@ -64,7 +64,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>1.8</version>
+	<version>1.9</version>
 	<license>Apache License, Version 2.0</license>
     
 	<menucontributions >
