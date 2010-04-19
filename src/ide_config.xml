@@ -5,9 +5,10 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
-		Version 1. <br/>
+		Version 1.9 <br/>
 		- Some menu refactorings<br/>
 		- Addition of a new resources menu for live search, help and live API docs.<br/>
+		- New creation of ORM Event Handler<br/>
 		<hr />
 		
 		Version 1.8 <br/>
@@ -96,6 +97,9 @@
 				<action name="New Module" 	handlerid="GenModule"	showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
+				<action name="New ORM Event Handler" 	handlerid="GenORMEventHandler"	showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
 				
 				<!--Project Only Actions-->
 				<action name="Setup URL Rewrites" 	handlerid="GenRewrites"	showResponse="true">
@@ -159,6 +163,7 @@
 		<handler id="GenRewrites"		type="CFM" filename="RewriteSetup.cfm" />
 		<handler id="GenModule"			type="CFM" filename="ModuleSetup.cfm" />
 		<handler id="GenIntegrationTest" type="CFM" filename="IntegrationTestSetup.cfm" />
+		<handler id="GenORMEventHandler" type="CFM" filename="ORMEventHandlerSetup.cfm" />
 		
 		<!-- AutoUpdate -->
 		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />
