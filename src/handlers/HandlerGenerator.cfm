@@ -61,7 +61,7 @@ All handlers receive the following:
 				<cfdirectory action="create" directory="#inputStruct.ViewsDirectory & "/" & inputStruct.name#" mode="777">
 			</cfif>
 			<!--- Create View Stub --->
-			<cfset fileWrite(inputStruct.ViewsDirectory & "/" & inputStruct.name & "/" & thisAction & ".cfm","<h1>#inputStruct.name#.#thisAction#</h1>")>
+			<cfset fileWrite(inputStruct.ViewsDirectory & "/" & inputStruct.name & "/" & thisAction & ".cfm","<cfoutput>#chr(13)#<h1>#inputStruct.name#.#thisAction#</h1>#chr(13)#</cfoutput>")>
 		</cfif>
 		
 		<!--- Are we creating tests cases on actions --->

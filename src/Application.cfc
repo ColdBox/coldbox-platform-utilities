@@ -12,14 +12,14 @@ Date        :	08/01/2009
 	<cfscript>
 		this.name				= "ColdBoxCFBuilderExtension_#hash(getCurrentTemplatePath())#";
 		this.sessionManagement	= true;
-		
+		// Local Mappings for Extension
 		this.mappings["/coldboxExtension"] = getDirectoryFromPath(getCurrentTemplatePath()) ;
 	</cfscript>
 
+	<!--- onRequest --->
 	<cffunction name="onRequest">
 		<cfargument name="targetPage">
-		
-   		<cfsetting showdebugoutput="false">
+		<cfsetting showdebugoutput="false">
 		
 		<!--- Param the incoming ide event info --->
 		<cfparam name="ideeventinfo" default="">
@@ -46,4 +46,5 @@ Date        :	08/01/2009
 		<!--- Include page requested --->
 		<cfinclude template="#arguments.targetPage#">
 	</cffunction>
+	
 </cfcomponent>

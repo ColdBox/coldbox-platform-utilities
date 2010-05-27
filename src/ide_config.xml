@@ -5,6 +5,12 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
+		Version 2.0 <br/>
+		- Updated look and feel<br/>
+		- Creation of virtual entity services <br/>
+		
+		<hr />
+		
 		Version 1.9 <br/>
 		- Some menu refactorings<br/>
 		- Addition of a new resources menu for live search, help and live API docs.<br/>
@@ -64,7 +70,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>1.9</version>
+	<version>2.0</version>
 	<license>Apache License, Version 2.0</license>
     
 	<menucontributions >
@@ -98,6 +104,9 @@
 					<filters><filter type="folder" /></filters>
 				</action>
 				<action name="New ORM Event Handler" 	handlerid="GenORMEventHandler"	showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
+				<action name="New Virtual Entity Service" 	handlerid="GenVirtualEntityService"	showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
 				
@@ -164,6 +173,7 @@
 		<handler id="GenModule"			type="CFM" filename="ModuleSetup.cfm" />
 		<handler id="GenIntegrationTest" type="CFM" filename="IntegrationTestSetup.cfm" />
 		<handler id="GenORMEventHandler" type="CFM" filename="ORMEventHandlerSetup.cfm" />
+		<handler id="GenVirtualEntityService" type="CFM" filename="VirtualEntityServiceSetup.cfm" />
 		
 		<!-- AutoUpdate -->
 		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />

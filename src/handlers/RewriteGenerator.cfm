@@ -64,7 +64,7 @@ fileWrite(routesLocation,routes);
 			</params>
 		</command>
 	</commands>
-	<dialog width="550" height="450" title="ColdBox URL Rewrite Rules Created" image="includes/images/ColdBox_Icon.png"/>  
+	<dialog width="650" height="450" title="ColdBox URL Rewrite Rules Created" image="includes/images/ColdBox_Icon.png"/>  
 	<body><![CDATA[
 	<html>
 		<head>

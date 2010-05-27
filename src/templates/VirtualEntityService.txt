@@ -1,0 +1,21 @@
+/**
+* A ColdBox Enabled virtual entity service
+* @singleton
+*/
+component extends="coldbox.system.orm.hibernate.VirtualEntityService"{
+	
+	/**
+	* Constructor
+	*/
+	public |serviceName| function init(){
+		// Entity Name
+		setEntityName('|entityName|');
+		// Use Query Caching
+	    setUseQueryCaching( |QueryCaching| );
+	    // Query Cache Region
+	    setQueryCacheRegion( '|cacheRegion|' );
+	    
+	    return this;
+	}
+	
+}
