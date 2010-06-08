@@ -8,6 +8,7 @@
 		Version 2.0 <br/>
 		- Updated look and feel<br/>
 		- Creation of virtual entity services <br/>
+		- Updated the ORM Event Handler for injector annotations< br/>
 		
 		<hr />
 		

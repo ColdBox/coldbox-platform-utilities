@@ -12,12 +12,23 @@ All handlers receive the following:
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
 
-<cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
-<cfset objectName		= inputstruct.Name />
+<cfscript>
+expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path;
+objectName		= inputstruct.Name;
 
-<cffile action="read" file="#ExpandPath('../')#/templates/ORMEventHandler.txt" variable="content">
-<cffile action="write" file="#expandLocation#/#objectName#.cfc" mode ="777" output="#content#">
-	
+// Read template
+content = fileRead("#ExpandPath('../')#/templates/ORMEventHandler.txt");
+
+// Replacements
+content = replaceNoCase(content,"|injector|",inputStruct.Injector,"all");
+content = replaceNoCase(content,"|setterInjection|",inputStruct.setterInjection,"all");
+content = replaceNoCase(content,"|stopRecursion|",inputStruct.stopRecursion,"all");
+content = replaceNoCase(content,"|injectorInclude|",inputStruct.injectorInclude,"all");
+content = replaceNoCase(content,"|InjectorExclude|",inputStruct.InjectorExclude,"all");
+
+// Write it out
+fileWrite("#expandLocation#/#objectName#.cfc", content);
+</cfscript>
 
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>
@@ -62,7 +73,7 @@ All handlers receive the following:
 		<pre>
 this.ormSettings = {
 	eventhandling = true,
-	eventhandler = "UPDATE PATH HERE.#objectName#"
+	eventhandler = "PATH_HERE.#objectName#"
 };
 		</pre>
 		</code>
