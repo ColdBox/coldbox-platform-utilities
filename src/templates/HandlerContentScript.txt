@@ -13,16 +13,16 @@ component{
 	
 	/**
 	IMPLICIT FUNCTIONS: Uncomment to use
-	function preHandler(event,action) output=false{
+	function preHandler(event,action){
 		var rc = event.getCollection();
 	}
-	function postHandler(event,action) output=false{
+	function postHandler(event,action){
 		var rc = event.getCollection();
 	}
-	function onMissingAction(event,missingAction) output=false{
+	function onMissingAction(event,missingAction){
 		var rc = event.getCollection();
 	}
-	function onError(event,faultAction,exception) output=false{
+	function onError(event,faultAction,exception){
 		var rc = event.getCollection();
 	}
 	*/

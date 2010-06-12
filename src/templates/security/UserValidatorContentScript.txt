@@ -1,13 +1,13 @@
 /*
 A custom security object
 */
-component output="false"{
+component{
 	
-	any function init() output=false{
+	any function init(){
 		return this;
 	}
 	
-	boolean function userValidator(struct rule,messagebox,controller) output=false{
+	boolean function userValidator(struct rule,messagebox,controller){
 		
 	}
 	

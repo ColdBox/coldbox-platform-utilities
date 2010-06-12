@@ -15,17 +15,8 @@ All handlers receive the following:
 <cfscript>
 expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path;
 objectName		= inputstruct.Name;
-
 // Read template
 content = fileRead("#ExpandPath('../')#/templates/ORMEventHandler.txt");
-
-// Replacements
-content = replaceNoCase(content,"|injector|",inputStruct.Injector,"all");
-content = replaceNoCase(content,"|setterInjection|",inputStruct.setterInjection,"all");
-content = replaceNoCase(content,"|stopRecursion|",inputStruct.stopRecursion,"all");
-content = replaceNoCase(content,"|injectorInclude|",inputStruct.injectorInclude,"all");
-content = replaceNoCase(content,"|InjectorExclude|",inputStruct.InjectorExclude,"all");
-
 // Write it out
 fileWrite("#expandLocation#/#objectName#.cfc", content);
 </cfscript>
@@ -77,6 +68,27 @@ this.ormSettings = {
 };
 		</pre>
 		</code>
+		
+		<h2>Entity Injector</h2>
+		<p>
+		If you would like to enable the entity injector you will need to activate it via the Autowire interceptor in your ColdBox configuration file.
+		Below are the typical properties for this interceptor:
+		</p>
+		
+		<code>
+		<pre>
+interceptors = [
+	{class="coldbox.system.interceptors.Autowire",
+	 properties={
+	 	entityInjection = true,
+		entityInclude   = "",
+		entityExclude   = ""
+	 }
+	}
+]
+		</pre>
+		</code>
+		
 	</body>
 </html>	
 	]]>

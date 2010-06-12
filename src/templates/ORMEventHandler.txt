@@ -8,13 +8,7 @@ Author     :	Luis Majano
 Date        :	10/16/2007
 Description :
 	A ColdBox Enabled Hibernate Event Handler that ties to the ColdBox proxy for ColdBox Operations.
-	Below are the annotations to customize the behavior of the Event Handler:
 	
-@injector |injector|
-@injectorSetterInjection |setterInjection|
-@injectorStopRecursion '|stopRecursion|'
-@injectorInclude '|injectorInclude|'
-@injectorExclude '|injectorExclude|'
 */
 component extends="coldbox.system.orm.hibernate.EventHandler"{
 	
