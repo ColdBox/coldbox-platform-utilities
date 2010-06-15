@@ -1,6 +1,20 @@
 <cfcomponent output="false">
 
 <cfscript>
+
+	function getInjectionDSLArray(){
+		var injectionDSL = [
+		"ioc","ocm","model","webservice","coldbox","coldbox:setting:","coldbox:plugin",
+		"coldbox:myplugin","coldbox:datasource","coldbox:configBean","coldbox:mailSettingsBean",
+		"coldbox:loaderService","coldbox:requestService","coldbox:debuggerService",
+		"coldbox:pluginService","coldbox:handlerService","coldbox:moduleService",
+		"coldbox:interceptor","coldbox:cacheManager","coldbox:fwConfigBean","coldbox:fwSetting:",
+		"entityService","javaLoader","logBox","logBox:root","logBox:logger:"
+		];
+		arraySort(injectionDSL,"textnocase");
+		return injectionDSL;
+	}
+	
 	function isNewVersion(cVersion,nVersion){
 		var cMajor 		= getToken(arguments.cVersion,1,".");
 		var cMinor		= getToken(arguments.cVersion,2,".");

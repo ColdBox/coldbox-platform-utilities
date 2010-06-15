@@ -14,6 +14,8 @@ component extends="coldbox.system.orm.hibernate.VirtualEntityService"{
 	    setUseQueryCaching( |QueryCaching| );
 	    // Query Cache Region
 	    setQueryCacheRegion( '|cacheRegion|' );
+	    // EventHandling
+	    setEventHandling( |eventHandling| );
 	    
 	    return this;
 	}

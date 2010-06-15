@@ -9,6 +9,8 @@
 		- Updated look and feel<br/>
 		- Creation of virtual entity services <br/>
 		- Updated the ORM Event Handler for injector annotations< br/>
+		- New WireBox contributions: Property Injection< br/>
+		- New WireBox contributions: Setter Injection< br/>
 		
 		<hr />
 		
@@ -77,8 +79,8 @@
 	<menucontributions >
 
 		<contribution target="projectview">
+			<!--  ColdBox Menu -->
 			<menu name="ColdBox Platform">
-				
 				<!-- Global Actions -->
 				<action name="New Application"	handlerid="GenSkeleton"		showResponse="true">
 					<filters>
@@ -104,12 +106,16 @@
 				<action name="New Module" 	handlerid="GenModule"	showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
-				<action name="New ORM Event Handler" 	handlerid="GenORMEventHandler"	showResponse="true">
-					<filters><filter type="folder" /></filters>
-				</action>
-				<action name="New Virtual Entity Service" 	handlerid="GenVirtualEntityService"	showResponse="true">
-					<filters><filter type="folder" /></filters>
-				</action>
+				
+				<!-- ORM -->
+				<menu name="ORM">
+					<action name="New ORM Event Handler" 	handlerid="GenORMEventHandler"	showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
+					<action name="New Virtual Entity Service" 	handlerid="GenVirtualEntityService"	showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
+				</menu>
 				
 				<!--Project Only Actions-->
 				<action name="Setup URL Rewrites" 	handlerid="GenRewrites"	showResponse="true">
@@ -151,9 +157,18 @@
 				<action name="Install From ForgeBox..." 	handlerid="ForgeBoxInstall"	showResponse="true"></action>
 			</menu>
 		</contribution>
+		
+		<!--  Editor  -->
+		<contribution target="editor">
+			<menu name="WireBox DI">
+				<action name="Property Injection" 	handlerid="WireBoxPropertyInjection"	showResponse="true"></action>
+				<action name="Setter Injection" 	handlerid="WireBoxSetterInjection"		showResponse="true"></action>
+			</menu>
+		</contribution>
 
     </menucontributions>	
 
+	<!-- Project Creation Events -->
 	<events>
 		<event type="onprojectcreate" handlerid="GenSkeleton" />
 	</events>	
@@ -186,6 +201,11 @@
 		
 		<!-- ForgeBox -->
 		<handler id="ForgeBoxInstall" type="CFM" filename="forgebox/ForgeBoxInstall.cfm" />
+		
+		<!-- WireBox -->
+		<handler id="WireBoxPropertyInjection" 	type="CFM" filename="WireBoxPropertyInjection.cfm" />
+		<handler id="WireBoxSetterInjection" 	type="CFM" filename="WireBoxSetterInjection.cfm" />
+		
 	</handlers>
 
 </application>
