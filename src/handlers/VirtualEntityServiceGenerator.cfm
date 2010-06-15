@@ -23,6 +23,7 @@ serviceContent = replaceNoCase( serviceContent, "|entityName|", inputStruct.Enti
 serviceContent = replaceNoCase( serviceContent, "|QueryCaching|", inputStruct.QueryCaching, "all");
 serviceContent = replaceNoCase( serviceContent, "|CacheRegion|", inputStruct.CacheRegion, "all");
 serviceContent = replaceNoCase( serviceContent, "|serviceName|", inputStruct.entityName & "Service", "all");
+serviceContent = replaceNoCase( serviceContent, "|eventHandling|", inputStruct.EventHandling, "all");
 // Write it out
 fileWrite(serviceLocation, serviceContent);
 </cfscript>
