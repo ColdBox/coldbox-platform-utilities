@@ -46,7 +46,7 @@ if( fileExists(configLocation) ){
 	// Add to interceptors Array
 	arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);
 	// Write it out
-	fileWrite(configLocation, request.utility.prettifyXML(configXML));
+	fileWrite(configLocation, controller.getUtility().prettifyXML(configXML));
 }
 </cfscript>
 
@@ -79,7 +79,7 @@ if( fileExists(configLocation) ){
 	<body><![CDATA[
 	<html>
 		<head>
-			<base href="#request.baseURL#" />
+			<base href="#controller.getBaseURL()#" />
 			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
 			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
 		</head>

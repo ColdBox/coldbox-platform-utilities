@@ -12,6 +12,7 @@ Date        :	08/01/2009
 	<cfscript>
 		this.name				= "ColdBoxCFBuilderExtension_#hash(getCurrentTemplatePath())#";
 		this.sessionManagement	= true;
+		
 		// Local Mappings for Extension
 		this.mappings["/coldboxExtension"] = getDirectoryFromPath(getCurrentTemplatePath()) ;
 	</cfscript>
@@ -21,15 +22,11 @@ Date        :	08/01/2009
 		<cfargument name="targetPage">
 		<cfsetting showdebugoutput="false">
 		
+		<!--- place the ExtensionController on scope --->
+		<cfset controller = getExtensionController()>
+		
 		<!--- Param the incoming ide event info --->
 		<cfparam name="ideeventinfo" default="">
-		
-		<!--- Utility Class --->
-		<cfset request.utility = createObject("component","coldboxExtension.handlers.util.Utility")>
-		<!--- Extension Location --->
-		<cfset request.extensionLocation = expandPath("../")>
-		<!--- Base URL --->
-		<cfset request.baseURL = replacenoCase( request.utility.getURLBasePath(),"handlers","")>
 		
 		<!--- Log Request 
 		<cflog file="ColdBoxCFBuilder" text="Executing #cgi.script_name# #timeFormat(now())#">
@@ -46,5 +43,19 @@ Date        :	08/01/2009
 		<!--- Include page requested --->
 		<cfinclude template="#arguments.targetPage#">
 	</cffunction>
+	
+	<!--- getExtensionController --->
+    <cffunction name="getExtensionController" output="false" access="private" returntype="any" hint="Get the extension controller">
+    	<cfif NOT structKeyExists(application, "extensionController")>
+    		<cflock name="extension.controller" type="exclusive" timeout="20">
+    			<cfif NOT structKeyExists(application, "extensionController")>
+    				<cfset application["extensionController"] = createObject("component","coldboxExtension.model.ExtensionController").init()>
+    			</cfif>
+			</cflock>
+		</cfif>
+		
+		<cfreturn application["extensionController"]>
+    </cffunction>
+
 	
 </cfcomponent>

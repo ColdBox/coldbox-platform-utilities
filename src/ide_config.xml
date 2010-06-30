@@ -203,8 +203,8 @@
 		<handler id="ForgeBoxInstall" type="CFM" filename="forgebox/ForgeBoxInstall.cfm" />
 		
 		<!-- WireBox -->
-		<handler id="WireBoxPropertyInjection" 	type="CFM" filename="WireBoxPropertyInjection.cfm" />
-		<handler id="WireBoxSetterInjection" 	type="CFM" filename="WireBoxSetterInjection.cfm" />
+		<handler id="WireBoxPropertyInjection" 	type="CFM" filename="wirebox/WireBoxPropertyInjection.cfm" />
+		<handler id="WireBoxSetterInjection" 	type="CFM" filename="wirebox/WireBoxSetterInjection.cfm" />
 		
 	</handlers>
 

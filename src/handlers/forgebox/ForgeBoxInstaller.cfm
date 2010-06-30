@@ -14,7 +14,7 @@ All handlers receive the following:
 
 <cfscript>
 	expandLocation	 = data.event.ide.projectview.resource.xmlAttributes.path;
-	forgeBox		 = createObject("component","coldboxExtension.handlers.util.ForgeBox").init();
+	forgeBox		 = createObject("component","coldboxExtension.model.util.ForgeBox").init();
 	entry		     = forgeBox.getEntry(slug=inputStruct.forgeBoxSlug);
 	
 	if( NOT structIsEmpty(entry) ){
@@ -33,7 +33,7 @@ All handlers receive the following:
 		<![CDATA[ 
 		<html>
 		<head>
-			<base href="#request.baseURL#" />
+			<base href="#controller.getBaseURL()#" />
 			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
 			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
 		</head>

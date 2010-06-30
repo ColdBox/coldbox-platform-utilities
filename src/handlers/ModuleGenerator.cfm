@@ -51,7 +51,7 @@ All handlers receive the following:
 
 <cftry>
 	<!--- Copy module template --->	
-	<cfset request.utility.directoryCopy("#ExpandPath('../')#/templates/modules/", expandLocation & "/#moduleName#")>
+	<cfset controller.getUtility().directoryCopy("#ExpandPath('../')#/templates/modules/", expandLocation & "/#moduleName#")>
 	
 	<!--- Clean Files Out --->
 	<cfif inputStruct.Script>

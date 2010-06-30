@@ -17,15 +17,15 @@ All handlers receive the following:
 	extensionVersion = xml.application.version.xmlText;
 	
 	// Check for forgebox item
-	forgeBox		 = createObject("component","coldboxExtension.handlers.util.ForgeBox").init();
+	forgeBox		 = createObject("component","coldboxExtension.model.util.ForgeBox").init();
 	extensionEntry   = forgeBox.getEntry(slug="ColdBox-Platform-Utilities");
 	
 	// Check if versions are new.
-	updateFound = request.utility.isNewVersion(cVersion=extensionVersion,nVersion=extensionEntry.version);
+	updateFound = controller.getUtility().isNewVersion(cVersion=extensionVersion,nVersion=extensionEntry.version);
 	// AutoUpdate URL
-	updateURL = request.utility.getCurrentURL(removeTemplate=true) & "AutoUpdate.cfm";
+	updateURL = controller.getUtility().getCurrentURL(removeTemplate=true) & "AutoUpdate.cfm";
 	// Destination Dir
-	destinationDir = request.extensionLocation;
+	destinationDir = controller.getExtensionLocation();
 </cfscript>
 
 
@@ -39,7 +39,7 @@ All handlers receive the following:
 <![CDATA[ 
 <html>
 <head>
-	<base href="#request.baseURL#" />
+	<base href="#controller.getBaseURL()#" />
 	
 	<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
 	<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>

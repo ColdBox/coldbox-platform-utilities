@@ -54,10 +54,7 @@
     </cffunction>
 	
 	<!---
-	Returns the current URL for the page.
-	@return Returns a string.
 	@author Topper (topper@cftopper.com)
-	@version 1, September 5, 2008
 	--->
 	<cffunction name="getCurrentURL" output="No" access="public" returnType="string">
 		<cfargument name="removeTemplate" type="boolean" required="false" default="false"/>
@@ -109,16 +106,9 @@
     </cffunction>
 	
 	<!---
-	Copies a directory.
-	
-	@param source      Source directory. (Required)
-	@param destination      Destination directory. (Required)
-	@param nameConflict      What to do when a conflict occurs (skip, overwrite, makeunique). Defaults to overwrite. (Optional)
-	@return Returns nothing. 
 	@author Joe Rinehart (joe.rinehart@gmail.com) 
-	@version 2, February 4, 2010 
 	--->
-	<cffunction name="directoryCopy" output="true">
+	<cffunction name="directoryCopy" output="true" hint="copy a directory" returntype="void">
 	    <cfargument name="source" 		required="true" type="string">
 	    <cfargument name="destination" 	required="true" type="string">
 	    <cfargument name="nameconflict" required="true" default="overwrite">
@@ -139,6 +129,5 @@
 	        </cfif>
 	    </cfloop>
 	</cffunction>
-
 	
 </cfcomponent>

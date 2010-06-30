@@ -19,7 +19,7 @@ fileCopy(templatesLocation & "transfer.xml.cfm", destinationLocation);
 
 // Create definitions folder
 if( NOT directoryExists(destinationLocation & "definitions") ){
-	request.utility.createDirectory(destinationLocation & "definitions");
+	controller.getUtility().createDirectory(destinationLocation & "definitions");
 }
 
 // Add interceptor to XML
@@ -70,7 +70,7 @@ if( NOT arrayLen(xmlSearch(configXML,"//Datasource[@name='#inputStruct.dsnName#'
 // Add to interceptors Array
 arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);
 // Write it out
-fileWrite(configLocation, request.utility.prettifyXML(configXML));
+fileWrite(configLocation, controller.getUtility().prettifyXML(configXML));
 </cfscript>
 
 <cfheader name="Content-Type" value="text/xml">  
@@ -98,7 +98,7 @@ fileWrite(configLocation, request.utility.prettifyXML(configXML));
 	<body><![CDATA[
 	<html>
 		<head>
-			<base href="#request.baseURL#" />
+			<base href="#controller.getBaseURL()#" />
 			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
 			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
 		</head>

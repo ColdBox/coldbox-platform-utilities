@@ -19,7 +19,7 @@ fileCopy(templatesLocation & "reactor.xml.cfm", destinationLocation);
 
 // Create reactor model folder
 if( NOT directoryExists(projectLocation & "model/reactor") ){
-	request.utility.createDirectory(projectLocation & "model/reactor");
+	controller.getUtility().createDirectory(projectLocation & "model/reactor");
 }
 
 // Add interceptor to XML
@@ -68,7 +68,7 @@ if( NOT arrayLen(xmlSearch(configXML,"//Datasource[@name='#inputStruct.dsnName#'
 // Add to interceptors Array
 arrayAppend(configXML.config.interceptors.xmlChildren,interceptor);
 // Write it out
-fileWrite(configLocation, request.utility.prettifyXML(configXML));
+fileWrite(configLocation, controller.getUtility().prettifyXML(configXML));
 </cfscript>
 
 <cfheader name="Content-Type" value="text/xml">  
@@ -96,7 +96,7 @@ fileWrite(configLocation, request.utility.prettifyXML(configXML));
 	<body><![CDATA[
 	<html>
 		<head>
-			<base href="#request.baseURL#" />
+			<base href="#controller.getBaseURL()#" />
 			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
 			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
 		</head>
