@@ -19,7 +19,7 @@ injectionDSL = controller.getUtility().getInjectionDSLArray();
 			<input name="name" label="Property Name" type="string" required="true" 
 				   tooltip="The name of the property"/>
 			
-			<input name="Script" label="Script Based Property" type="boolean" checked="false" 
+			<input name="Script" label="Script Based Property" type="boolean" checked="true" 
 				   tooltip="Choose whether to create the cfproperty in pure script or tag." />
 				   
 			<input name="DSLNamespace" label="DSL Namespace" type="list" default="model">

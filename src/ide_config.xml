@@ -6,7 +6,6 @@
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
 		Version 2.0 <br/>
-		- Updated look and feel<br/>
 		- Creation of virtual entity services <br/>
 		- Updated the ORM Event Handler for injector annotations< br/>
 		- New WireBox contributions: Property Injection< br/>
@@ -115,6 +114,9 @@
 					<action name="New Virtual Entity Service" 	handlerid="GenVirtualEntityService"	showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
+					<action name="New Templated ORM Service" 	handlerid="GenTemplatedEntityService"	showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
 				</menu>
 				
 				<!--Project Only Actions-->
@@ -188,8 +190,11 @@
 		<handler id="GenRewrites"		type="CFM" filename="RewriteSetup.cfm" />
 		<handler id="GenModule"			type="CFM" filename="ModuleSetup.cfm" />
 		<handler id="GenIntegrationTest" type="CFM" filename="IntegrationTestSetup.cfm" />
+		
+		<!-- ORM -->
 		<handler id="GenORMEventHandler" type="CFM" filename="ORMEventHandlerSetup.cfm" />
 		<handler id="GenVirtualEntityService" type="CFM" filename="VirtualEntityServiceSetup.cfm" />
+		<handler id="GenTemplatedEntityService" type="CFM" filename="TemplatedEntityServiceSetup.cfm" />
 		
 		<!-- AutoUpdate -->
 		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />

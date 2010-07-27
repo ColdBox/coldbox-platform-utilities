@@ -22,7 +22,7 @@ injectionDSL = controller.getUtility().getInjectionDSLArray();
 			<input name="getter" label="Create Getter" type="boolean" checked="false" 
 				   tooltip="Generate a getter?" />
 			
-			<input name="Script" label="Script Based Function" type="boolean" checked="false" 
+			<input name="Script" label="Script Based Function" type="boolean" checked="true" 
 				   tooltip="Choose whether to create the function in pure script or tag." />
 			
 			<input name="annotationType" label="Annotation Type" type="list" default="Inline"
