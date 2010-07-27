@@ -8,6 +8,8 @@
 		Version 2.0 <br/>
 		- Creation of virtual entity services <br/>
 		- Updated the ORM Event Handler for injector annotations< br/>
+		- New ORM Templated Services<br/>
+		- New ORM Virtual Entity Services <br/>
 		- New WireBox contributions: Property Injection< br/>
 		- New WireBox contributions: Setter Injection< br/>
 		
