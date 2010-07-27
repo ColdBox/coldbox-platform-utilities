@@ -1,14 +1,12 @@
 /**
-* A ColdBox Enabled virtual entity service
+* A ColdBox Enabled Templated entity service
 */
-component extends="coldbox.system.orm.hibernate.VirtualEntityService" singleton{
+component extends="coldbox.system.orm.hibernate.BaseORMService" singleton{
 	
 	/**
 	* Constructor
 	*/
 	public |serviceName| function init(){
-		// Entity Name
-		setEntityName('|entityName|');
 		// Use Query Caching
 	    setUseQueryCaching( |QueryCaching| );
 	    // Query Cache Region

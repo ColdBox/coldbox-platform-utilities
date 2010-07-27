@@ -37,7 +37,7 @@ Date        :	08/01/2009
 		<cfif isXML(ideeventinfo)>
 			<cfset data = xmlParse(ideeventinfo)>
 			<!--- Parse the incoming input values --->
-			<cfset inputStruct = request.utility.parseInput(data)>
+			<cfset inputStruct = controller.getUtility().parseInput(data)>
 		</cfif>
 		
 		<!--- Include page requested --->
