@@ -77,6 +77,10 @@ All handlers receive the following:
 		</head>
 		<body>
 			<div class="messagebox-green">#message#</div>
+			<h2>Important Note</h2>
+			<p>If you generated a Flex/Air Remote application, please make sure that you open the Application.cfc and modifty
+				the <strong>COLDBOX_APP_MAPPING</strong> variable.  This is what your application needs in order to load itself remotely.
+			</p>
 		</body>
 	</html>	
 	]]></body>
