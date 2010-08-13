@@ -5,10 +5,22 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
+		Version 2.2 <br/>
+		- Application template fixes <br/>
+		
+		<hr/>
+		
+		Version 2.1 <br/>
+		- Application template updates to M6< br/>
+		- Small typos <br/>
+		
+		<hr />
+		
 		Version 2.0 <br/>
-		- Updated look and feel<br/>
 		- Creation of virtual entity services <br/>
 		- Updated the ORM Event Handler for injector annotations< br/>
+		- New ORM Templated Services<br/>
+		- New ORM Virtual Entity Services <br/>
 		- New WireBox contributions: Property Injection< br/>
 		- New WireBox contributions: Setter Injection< br/>
 		
@@ -73,7 +85,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>2.0</version>
+	<version>2.2</version>
 	<license>Apache License, Version 2.0</license>
     
 	<menucontributions >
@@ -113,6 +125,9 @@
 						<filters><filter type="folder" /></filters>
 					</action>
 					<action name="New Virtual Entity Service" 	handlerid="GenVirtualEntityService"	showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
+					<action name="New Templated ORM Service" 	handlerid="GenTemplatedEntityService"	showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
 				</menu>
@@ -188,8 +203,11 @@
 		<handler id="GenRewrites"		type="CFM" filename="RewriteSetup.cfm" />
 		<handler id="GenModule"			type="CFM" filename="ModuleSetup.cfm" />
 		<handler id="GenIntegrationTest" type="CFM" filename="IntegrationTestSetup.cfm" />
+		
+		<!-- ORM -->
 		<handler id="GenORMEventHandler" type="CFM" filename="ORMEventHandlerSetup.cfm" />
 		<handler id="GenVirtualEntityService" type="CFM" filename="VirtualEntityServiceSetup.cfm" />
+		<handler id="GenTemplatedEntityService" type="CFM" filename="TemplatedEntityServiceSetup.cfm" />
 		
 		<!-- AutoUpdate -->
 		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />

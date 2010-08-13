@@ -37,7 +37,7 @@ Date        :	08/01/2009
 		<cfif isXML(ideeventinfo)>
 			<cfset data = xmlParse(ideeventinfo)>
 			<!--- Parse the incoming input values --->
-			<cfset inputStruct = request.utility.parseInput(data)>
+			<cfset inputStruct = controller.getUtility().parseInput(data)>
 		</cfif>
 		
 		<!--- Include page requested --->
@@ -46,15 +46,7 @@ Date        :	08/01/2009
 	
 	<!--- getExtensionController --->
     <cffunction name="getExtensionController" output="false" access="private" returntype="any" hint="Get the extension controller">
-    	<cfif NOT structKeyExists(application, "extensionController")>
-    		<cflock name="extension.controller" type="exclusive" timeout="20">
-    			<cfif NOT structKeyExists(application, "extensionController")>
-    				<cfset application["extensionController"] = createObject("component","coldboxExtension.model.ExtensionController").init()>
-    			</cfif>
-			</cflock>
-		</cfif>
-		
-		<cfreturn application["extensionController"]>
+    	<cfreturn createObject("component","coldboxExtension.model.ExtensionController").init()>
     </cffunction>
 
 	
