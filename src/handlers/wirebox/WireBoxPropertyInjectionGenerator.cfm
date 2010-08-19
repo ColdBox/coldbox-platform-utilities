@@ -20,7 +20,7 @@ if( len(inputStruct.scope) and inputStruct.scope neq "variables" ){
 // injectionDSL
 injectionDSL = inputStruct.DSLNamespace;
 if( len(inputStruct.DSLContext) ){
-	injectionDSL &= inputStruct.DSLContext;
+	injectionDSL &= ":" & inputStruct.DSLContext;
 }
 
 // CFproperty Tag

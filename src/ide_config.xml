@@ -5,6 +5,11 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
+		Version 2.3 <br/>
+		- Fix for wirebox property injection : appending <br/>
+		
+		<hr/>
+		
 		Version 2.2 <br/>
 		- Application template fixes <br/>
 		
