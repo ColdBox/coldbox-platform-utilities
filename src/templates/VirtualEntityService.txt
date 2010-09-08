@@ -7,8 +7,10 @@ component extends="coldbox.system.orm.hibernate.VirtualEntityService" singleton{
 	* Constructor
 	*/
 	public |serviceName| function init(){
-		// Entity Name
-		setEntityName('|entityName|');
+		
+		// init super class
+		super.init(entityName="|entityName|");
+		
 		// Use Query Caching
 	    setUseQueryCaching( |QueryCaching| );
 	    // Query Cache Region

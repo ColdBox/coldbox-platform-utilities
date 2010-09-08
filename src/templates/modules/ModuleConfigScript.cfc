@@ -20,6 +20,7 @@ structures to create for configuration
 - interceptorSettings : struct of the following keys ATM
 	- customInterceptionPoints : string list of custom interception points
 - interceptors : array
+- layoutSettings : struct (will allow to define a defaultLayout for the module)
 - routes : array Allowed keys are same as the addRoute() method of the SES interceptor.
 - modelMappings : structure of model mappings. Allowed keys are the alias and path, same as normal model mappings.
 
@@ -63,6 +64,11 @@ component {
 		// module settings - stored in modules.name.settings
 		settings = {
 		
+		};
+		
+		// Layout Settings
+		layoutSettings = {
+			defaultLayout = ""
 		};
 		
 		// datasources

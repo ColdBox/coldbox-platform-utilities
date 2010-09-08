@@ -7,6 +7,10 @@ component extends="coldbox.system.orm.hibernate.BaseORMService" singleton{
 	* Constructor
 	*/
 	public |serviceName| function init(){
+		
+		// init super class
+		super.init();
+		
 		// Use Query Caching
 	    setUseQueryCaching( |QueryCaching| );
 	    // Query Cache Region
