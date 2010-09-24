@@ -1,7 +1,10 @@
 A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 
 Version 2.3 <br/>
-- Fix for wirebox property injection : appending <br/>
+ #1	update the module templates to conform to new 3.0.0 standards
+ #2	Update the base ORM service templates to comply with standards
+ #3	update wirebox DSL injections missing : on generation
+ #4	Update application templates to conform to latest 3.0
 
 <hr/>
 
