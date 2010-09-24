@@ -6,7 +6,10 @@
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
 		Version 2.3 <br/>
-		- Fix for wirebox property injection : appending <br/>
+		 #1	update the module templates to conform to new 3.0.0 standards
+		 #2	Update the base ORM service templates to comply with standards
+		 #3	update wirebox DSL injections missing : on generation
+		 #4	Update application templates to conform to latest 3.0
 		
 		<hr/>
 		
@@ -210,9 +213,9 @@
 		<handler id="GenIntegrationTest" type="CFM" filename="IntegrationTestSetup.cfm" />
 		
 		<!-- ORM -->
-		<handler id="GenORMEventHandler" type="CFM" filename="ORMEventHandlerSetup.cfm" />
-		<handler id="GenVirtualEntityService" type="CFM" filename="VirtualEntityServiceSetup.cfm" />
-		<handler id="GenTemplatedEntityService" type="CFM" filename="TemplatedEntityServiceSetup.cfm" />
+		<handler id="GenORMEventHandler" type="CFM" filename="orm/ORMEventHandlerSetup.cfm" />
+		<handler id="GenVirtualEntityService" type="CFM" filename="orm/VirtualEntityServiceSetup.cfm" />
+		<handler id="GenTemplatedEntityService" type="CFM" filename="orm/TemplatedEntityServiceSetup.cfm" />
 		
 		<!-- AutoUpdate -->
 		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />

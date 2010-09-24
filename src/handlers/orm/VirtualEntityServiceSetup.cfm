@@ -11,15 +11,15 @@ All handlers receive the following:
 - data 		  : The data parsed
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
-
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>  
 <response status="success" type="default">  
-	<ide handlerfile="ORMEventHandlerGenerator.cfm"> 
-		<dialog width="600" height="550" title="ColdBox ORM Event Handler Wizard" image="includes/images/ColdBox_Icon.png">  
-		
-			<input name="Name" label="Event Handler File Name" required="true"  type="string" default="EventHandler" 
-					tooltip="The name of your ORM Event Handler Object (no .cfc)" />
+	<ide handlerfile="orm/VirtualEntityServiceGenerator.cfm"> 
+		<dialog width="600" height="350" title="ColdBox Virtual Entity Service Wizard" image="includes/images/ColdBox_Icon.png">  
+			<input name="EntityName" label="Entity Name" required="true"  type="string" tooltip="The name of entity to bind to" />
+			<input name="QueryCaching" label="Use Query Caching" type="boolean" checked="false"  tooltip="Use query caching?" />
+			<input name="EventHandling" label="Enable Event Handling" checked="true"  type="boolean" tooltip="Enables the virtual service to announce ColdBox Interception ORM Events" />
+			<input name="CacheRegion" label="Query Cache Region" required="false"  type="string" default="ORMService.defaultCache" tooltip="The name of the secondary cache region" />
 		</dialog>
 	</ide>
 </response>  

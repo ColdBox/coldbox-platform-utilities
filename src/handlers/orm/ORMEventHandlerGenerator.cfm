@@ -16,7 +16,7 @@ All handlers receive the following:
 expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path;
 objectName		= inputstruct.Name;
 // Read template
-content = fileRead("#ExpandPath('../')#/templates/ORMEventHandler.txt");
+content = fileRead("#ExpandPath('../../')#/templates/orm/ORMEventHandler.txt");
 // Write it out
 fileWrite("#expandLocation#/#objectName#.cfc", content);
 </cfscript>
