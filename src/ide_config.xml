@@ -1,9 +1,11 @@
 <application>
 	<name>ColdBox Platform Utilities</name>
-	<author>Sana Ullah and Luis Majano</author>
+	<author>Ortus Solutions, Corp</author>
 	<email>sanaullah73@gmail.com,info@coldbox.org</email>	
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
+		Version 2.4 <br/>
+		#5 Ability to modify the builder settings.xml to add ColdBox variable mappings
 		
 		Version 2.3 <br/>
 		 #1	update the module templates to conform to new 3.0.0 standards
@@ -93,7 +95,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>2.3</version>
+	<version>2.4</version>
 	<license>Apache License, Version 2.0</license>
     
 	<menucontributions >
@@ -142,6 +144,9 @@
 				
 				<!--Project Only Actions-->
 				<action name="Setup URL Rewrites" 	handlerid="GenRewrites"	showResponse="true">
+					<filters><filter type="project" /></filters>
+				</action>
+				<action name="Setup Project ColdBox Variable Mappings" 	handlerid="GenVariableMappings"	showResponse="true">
 					<filters><filter type="project" /></filters>
 				</action>
 				
@@ -198,19 +203,20 @@
 	
 	<handlers>		
 		<!-- Generators -->
-		<handler id="GenHandler"		type="CFM" filename="HandlerSetup.cfm" />
-		<handler id="GenPlugin"			type="CFM" filename="PluginSetup.cfm" />
-		<handler id="GenSkeleton"		type="CFM" filename="AppSkeleton.cfm" />
-		<handler id="GenModel"	    	type="CFM" filename="ModelSetup.cfm" />
-		<handler id="GenDeploy"	    	type="CFM" filename="DeploySetup.cfm" />
-		<handler id="GenSecurity"    	type="CFM" filename="SecuritySetup.cfm" />		
-		<handler id="GenInterceptor"	type="CFM" filename="InterceptorSetup.cfm" />
-		<handler id="GenEnvironments"	type="CFM" filename="EnvironmentSetup.cfm" />
-		<handler id="GenTransfer"		type="CFM" filename="TransferSetup.cfm" />
-		<handler id="GenReactor"		type="CFM" filename="ReactorSetup.cfm" />
-		<handler id="GenRewrites"		type="CFM" filename="RewriteSetup.cfm" />
-		<handler id="GenModule"			type="CFM" filename="ModuleSetup.cfm" />
-		<handler id="GenIntegrationTest" type="CFM" filename="IntegrationTestSetup.cfm" />
+		<handler id="GenHandler"			type="CFM" filename="HandlerSetup.cfm" />
+		<handler id="GenPlugin"				type="CFM" filename="PluginSetup.cfm" />
+		<handler id="GenSkeleton"			type="CFM" filename="AppSkeleton.cfm" />
+		<handler id="GenModel"	    		type="CFM" filename="ModelSetup.cfm" />
+		<handler id="GenDeploy"	    		type="CFM" filename="DeploySetup.cfm" />
+		<handler id="GenSecurity"    		type="CFM" filename="SecuritySetup.cfm" />		
+		<handler id="GenInterceptor"		type="CFM" filename="InterceptorSetup.cfm" />
+		<handler id="GenEnvironments"		type="CFM" filename="EnvironmentSetup.cfm" />
+		<handler id="GenTransfer"			type="CFM" filename="TransferSetup.cfm" />
+		<handler id="GenReactor"			type="CFM" filename="ReactorSetup.cfm" />
+		<handler id="GenRewrites"			type="CFM" filename="RewriteSetup.cfm" />
+		<handler id="GenModule"				type="CFM" filename="ModuleSetup.cfm" />
+		<handler id="GenIntegrationTest" 	type="CFM" filename="IntegrationTestSetup.cfm" />
+		<handler id="GenVariableMappings"	type="CFM" filename="VariableMappings.cfm" />
 		
 		<!-- ORM -->
 		<handler id="GenORMEventHandler" type="CFM" filename="orm/ORMEventHandlerSetup.cfm" />

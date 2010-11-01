@@ -25,8 +25,8 @@ if( NOT directoryExists(destinationLocation & "definitions") ){
 // Add interceptor to XML
 configXML = xmlParse(configLocation);
 // Create interceptor element
-interceptor = xmlElemNew(configXML,"Interceptor");
-interceptor.XMLAttributes["class"] = "coldbox.system.orm.transfer.TransferLoader";
+varName = xmlElemNew(configXML,"VariableName");
+varName.XMLText = "";
 // Config File
 interceptor.XMLChildren[1] = xmlElemNew(configXML,"Property");
 interceptor.XMLChildren[1].XMLAttributes["name"] = "configPath";
