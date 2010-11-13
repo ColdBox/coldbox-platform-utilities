@@ -193,6 +193,27 @@
 				<action name="Property Injection" 	handlerid="WireBoxPropertyInjection"	showResponse="true"></action>
 				<action name="Setter Injection" 	handlerid="WireBoxSetterInjection"		showResponse="true"></action>
 			</menu>
+			<menu name="ColdBox">
+				<action name="Generate Implicit Handler Methods" handlerid="GenHandlerMethods" showResponse="true"></action>
+			</menu>
+		</contribution>
+		
+		<!--  Outline View -->
+		<contribution target="outlineview">
+			<menu name="ColdBox">
+				<action name="Generate Handler Implicit Advices" handlerid="GenActionImplicitMethods" showResponse="true">
+					<filters> 
+						<filter type="cffunction" />
+					</filters>
+				</action>
+			</menu>
+			<menu name="WireBox DI">
+				<action name="Add Persistence Metadata" handlerid="WireBoxComponentPersitence" showResponse="true">
+					<filters> 
+						<filter type="cfcomponent" />
+					</filters>
+				</action>
+			</menu>
 		</contribution>
 
     </menucontributions>	
@@ -219,6 +240,9 @@
 		<handler id="GenIntegrationTest" 	type="CFM" filename="IntegrationTestSetup.cfm" />
 		<handler id="GenVariableMappings"	type="CFM" filename="VariableMappings.cfm" />
 		
+		<!-- Editor Handlers -->
+		<handler id="GenHandlerMethods"			type="CFM" filename="editor/HandlerMethodsSetup.cfm" />
+		
 		<!-- ORM -->
 		<handler id="GenORMEventHandler" type="CFM" filename="orm/ORMEventHandlerSetup.cfm" />
 		<handler id="GenVirtualEntityService" type="CFM" filename="orm/VirtualEntityServiceSetup.cfm" />
@@ -229,15 +253,16 @@
 		
 		<!-- Resources -->
 		<handler id="ExtensionHelp" type="CFM" filename="resources/ExtensionHelp.cfm" />
-		<handler id="ColdBoxAPI" type="CFM" filename="resources/ColdBoxAPI.cfm" />
+		<handler id="ColdBoxAPI" 	type="CFM" filename="resources/ColdBoxAPI.cfm" />
 		<handler id="ColdBoxSearch" type="CFM" filename="resources/ColdBoxSearch.cfm" />
 		
 		<!-- ForgeBox -->
 		<handler id="ForgeBoxInstall" type="CFM" filename="forgebox/ForgeBoxInstall.cfm" />
 		
 		<!-- WireBox -->
-		<handler id="WireBoxPropertyInjection" 	type="CFM" filename="wirebox/WireBoxPropertyInjection.cfm" />
-		<handler id="WireBoxSetterInjection" 	type="CFM" filename="wirebox/WireBoxSetterInjection.cfm" />
+		<handler id="WireBoxPropertyInjection" 		type="CFM" filename="wirebox/WireBoxPropertyInjection.cfm" />
+		<handler id="WireBoxSetterInjection" 		type="CFM" filename="wirebox/WireBoxSetterInjection.cfm" />
+		<handler id="WireBoxComponentPersitence" 	type="CFM" filename="wirebox/WireBoxComponentPersitence.cfm" />
 		
 	</handlers>
 
