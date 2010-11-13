@@ -6,6 +6,7 @@
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		Version 2.4 <br/>
 		#5 Ability to modify the builder settings.xml to add ColdBox variable mappings
+		#6 Updates to all application templates and handler templates
 		
 		Version 2.3 <br/>
 		 #1	update the module templates to conform to new 3.0.0 standards
