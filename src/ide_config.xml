@@ -7,6 +7,7 @@
 		Version 2.4 <br/>
 		#5 Ability to modify the builder settings.xml to add ColdBox variable mappings
 		#6 Updates to all application templates and handler templates
+		#7 Ability to generate implicit handler methods from editor context menu.
 		
 		Version 2.3 <br/>
 		 #1	update the module templates to conform to new 3.0.0 standards
@@ -97,7 +98,19 @@
 		- Added rewrite configurations <br/>
 	]]></description>	
 	<version>2.4</version>
-	<license>Apache License, Version 2.0</license>
+	<license> Copyright since [2009] [Ortus Solutions, Corp - Luis Majano]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.</license>
     
 	<menucontributions >
 
@@ -193,15 +206,15 @@
 				<action name="Property Injection" 	handlerid="WireBoxPropertyInjection"	showResponse="true"></action>
 				<action name="Setter Injection" 	handlerid="WireBoxSetterInjection"		showResponse="true"></action>
 			</menu>
-			<menu name="ColdBox">
-				<action name="Generate Implicit Handler Methods" handlerid="GenHandlerMethods" showResponse="true"></action>
+			<menu name="ColdBox Platform">
+				<action name="Generate Implicit Handler Methods" handlerid="GenImplicitHandlerMethods" showResponse="true"></action>
 			</menu>
 		</contribution>
 		
 		<!--  Outline View -->
 		<contribution target="outlineview">
-			<menu name="ColdBox">
-				<action name="Generate Handler Implicit Advices" handlerid="GenActionImplicitMethods" showResponse="true">
+			<menu name="ColdBox Platform">
+				<action name="Generate Implicit Actions" handlerid="GenActionImplicitMethods" showResponse="true">
 					<filters> 
 						<filter type="cffunction" />
 					</filters>
@@ -241,7 +254,7 @@
 		<handler id="GenVariableMappings"	type="CFM" filename="VariableMappings.cfm" />
 		
 		<!-- Editor Handlers -->
-		<handler id="GenHandlerMethods"			type="CFM" filename="editor/HandlerMethodsSetup.cfm" />
+		<handler id="GenImplicitHandlerMethods"		type="CFM" filename="editor/ImplicitHandlerMethodsSetup.cfm" />
 		
 		<!-- ORM -->
 		<handler id="GenORMEventHandler" type="CFM" filename="orm/ORMEventHandlerSetup.cfm" />
