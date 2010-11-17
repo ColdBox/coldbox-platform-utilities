@@ -15,6 +15,10 @@
 		return injectionDSL;
 	}
 	
+	function capFirstLetter(str){
+		return rereplace(lcase(arguments.str), "(\b\w)", "\u\1", "all");
+	}
+	
 	function isNewVersion(cVersion,nVersion){
 		var cMajor 		= getToken(arguments.cVersion,1,".");
 		var cMinor		= getToken(arguments.cVersion,2,".");

@@ -5,9 +5,10 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		Version 2.4 <br/>
-		#5 Ability to modify the builder settings.xml to add ColdBox variable mappings
-		#6 Updates to all application templates and handler templates
-		#7 Ability to generate implicit handler methods from editor context menu.
+		#6 Ability to modify the builder settings.xml to add ColdBox variable mappings
+		#7 Updates to all application templates and handler templates
+		#8 Ability to generate implicit handler methods from editor context menu.
+		#9 Ability to generate implicit action methods from outline view by choosing the method action
 		
 		Version 2.3 <br/>
 		 #1	update the module templates to conform to new 3.0.0 standards
@@ -214,16 +215,9 @@
 		<!--  Outline View -->
 		<contribution target="outlineview">
 			<menu name="ColdBox Platform">
-				<action name="Generate Implicit Actions" handlerid="GenActionImplicitMethods" showResponse="true">
+				<action name="Generate Implicit Actions" handlerid="GenImplicitActions" showResponse="true">
 					<filters> 
 						<filter type="cffunction" />
-					</filters>
-				</action>
-			</menu>
-			<menu name="WireBox DI">
-				<action name="Add Persistence Metadata" handlerid="WireBoxComponentPersitence" showResponse="true">
-					<filters> 
-						<filter type="cfcomponent" />
 					</filters>
 				</action>
 			</menu>
@@ -255,6 +249,9 @@
 		
 		<!-- Editor Handlers -->
 		<handler id="GenImplicitHandlerMethods"		type="CFM" filename="editor/ImplicitHandlerMethodsSetup.cfm" />
+		
+		<!-- Outline Handlers -->
+		<handler id="GenImplicitActions"		type="CFM" filename="outline/ImplicitActionsSetup.cfm" />
 		
 		<!-- ORM -->
 		<handler id="GenORMEventHandler" type="CFM" filename="orm/ORMEventHandlerSetup.cfm" />
