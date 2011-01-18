@@ -4,11 +4,14 @@
 	<email>sanaullah73@gmail.com,info@coldbox.org</email>	
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
+		
 		Version 2.4 <br/>
-		#6 Ability to modify the builder settings.xml to add ColdBox variable mappings, requires IDE restart until CFBuilder 2.0 comes out.
-		#7 Updates to all application templates and handler templates
-		#8 Ability to generate implicit handler methods from editor context menu.
-		#9 Ability to generate implicit action methods from outline view by choosing the method action
+		#6 Ability to modify the builder settings.xml to add ColdBox variable mappings, requires IDE restart until CFBuilder 2.0 comes out.<br/>
+		#7 Updates to all application templates and handler templates<br/>
+		#8 Ability to generate implicit handler methods from editor context menu.<br/>
+		#9 Ability to generate implicit action methods from outline view by choosing the method action<br/>
+		
+		<hr/>
 		
 		Version 2.3 <br/>
 		 #1	update the module templates to conform to new 3.0.0 standards
