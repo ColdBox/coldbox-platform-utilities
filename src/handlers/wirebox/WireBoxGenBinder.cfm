@@ -13,17 +13,10 @@ All handlers receive the following:
 ----------------------------------------------------------------------->
 <cfscript>
 // CSFile
-csFile 	= data.event.ide.projectview.resource.XMLAttributes.path;
-wbFile	= getDirectoryFromPath(csFile) & "/WireBox.cfc";
-converter 		= createObject("component","coldboxExtension.model.util.CSToWireBox").init();
-// start conversion
-results = converter.convert(csFile);
-// Create WireBox Binder
-if( NOT len(results.errorMessages) ){
-	template = fileRead("#ExpandPath('../../')#templates/wirebox/WireBox.txt");
-	template = replacenocase(template,"|mapBindings|",results.data);
-	fileWrite(wbFile, template);
-}
+wbFile		= data.event.ide.projectview.resource.xmlAttributes.path & "/WireBox.cfc";
+template	= fileRead("#ExpandPath('../../')#templates/wirebox/WireBox.txt");
+template 	= replacenocase(template,"|mapBindings|","");
+fileWrite(wbFile, template);
 </cfscript>
 
 <!--- Display --->
@@ -31,7 +24,6 @@ if( NOT len(results.errorMessages) ){
 <cfoutput>
 <response status="success" showresponse="true">  
 <ide> 
-	<cfif not len(results.errorMessages)> 
 	<commands>
 		<command type="RefreshProject">
 			<params>
@@ -44,7 +36,6 @@ if( NOT len(results.errorMessages) ){
 			</params>
 		</command>
 	</commands>
-	</cfif>
 	<dialog width="600" height="250" title="WireBox ColdSpring Converter" image="includes/images/ColdBox_Icon.png"/>  
 	<body> 
 	<![CDATA[ 
@@ -55,16 +46,9 @@ if( NOT len(results.errorMessages) ){
 			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
 		</head>
 		<body>
-			<cfif len(results.errorMessages)>
-				<div class="messagebox">
-				#results.errorMessages#
-				</div>
-			<cfelse>
-				<div class="messagebox-green">
-					ColdSprint To WireBox conversion finalized! We have created a WireBox 
-					configuration binder for you and opened it!
-				</div>
-			</cfif>
+			<div class="messagebox-green">
+			We have created a WireBox configuration binder for you and opened it!
+			</div>
 		</body>
 	</html>
 	]]> 

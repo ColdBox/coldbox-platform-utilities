@@ -32,28 +32,100 @@ CS Converter to WireBox
 			try{
 				csXML = XMLParse(arguments.filePath);
 				beans = XMLSearch(csXML,'/beans/bean');
+			
+				// If no beans
+				if( NOT arrayLen(beans) ){
+					results.errorMessages = "No bean definitions found";
+					return results;
+				}			
+				
+				// loop over beans to create definitions from XML
+				for(i = 1; i lte arrayLen(beans); i++){
+					translateBean(beans[i], beanData);
+				}			
+				
+				// process into wirebox notation.
+				results.data = toWireBox(beanData);
+				
 			}
 			catch(any e){
 				results.errorMessages = "Error parsing bean definitions: #e.message# #e.detail# #e.stacktrace#";
-				return results;
 			}
-			
-			// If no beans
-			if( NOT arrayLen(beans) ){
-				results.errorMessages = "No bean definitions found";
-				return results;
-			}			
-			
-			// loop over beans to create definitions from XML
-			for(i = 1; i lte arrayLen(beans); i++){
-				translateBean(beans[i], beanData);
-			}			
-			
-			writeDump(beanData);abort;
 			
 			return results;
 		</cfscript>
 	</cffunction>
+	
+	<!--- toWireBox --->
+    <cffunction name="toWireBox" output="false" access="public" returntype="any" hint="Convert to wirebox">
+    	<cfargument name="beanData"/>
+		<cfscript>
+			var buf = createObject("java","java.lang.StringBuffer").init('');
+			var cr  = chr(13) & chr(10);
+			var tab = repeatString(chr(9),3);
+			var beans = arguments.beanData;
+			var x	= 1;
+			var j	= 1;
+			
+			for( x=1; x lte arrayLen(beans); x++){
+				buf.append('#repeatString(chr(9),2)#map("#beans[x].beanName#")');
+				// class?
+				if( len(beans[x].fullClassPath) ){ 
+					buf.append('.to("#beans[x].fullClassPath#")'); 
+					// constructor dependencies
+					for(j=1; j lte arrayLen(beans[x].constructorProperties); j++){
+						buf.append('#cr##tab#.initArg(name="#beans[x].constructorProperties[j].name#"');
+						if( len(beans[x].constructorProperties[j].ref) ){
+							buf.append(',ref="#beans[x].constructorProperties[j].ref#"');
+						}
+						else{
+							buf.append(',value="#beans[x].constructorProperties[j].value#"');
+						}
+						buf.append(")");
+					}
+					// setter dependencies
+					for(j=1; j lte arrayLen(beans[x].setterProperties); j++){
+						buf.append('#cr##tab#.setter(name="#beans[x].setterProperties[j].name#"');
+						if( len(beans[x].setterProperties[j].ref) ){
+							buf.append(',ref="#beans[x].setterProperties[j].ref#"');
+						}
+						else{
+							buf.append(',value="#beans[x].setterProperties[j].value#"');
+						}
+						buf.append(")");
+					}
+				}
+				// factory methods?
+				if( len(beans[x].factoryBean) ){
+					buf.append('.toFactoryMethod(factory="#beans[x].factoryBean#",method="#beans[x].factoryMethod#")');
+					// dependencies
+					for(j=1; j lte arrayLen(beans[x].constructorProperties); j++){
+						buf.append('#cr##tab#.methodArg(name="#beans[x].constructorProperties[j].name#"');
+						if( len(beans[x].constructorProperties[j].ref) ){
+							buf.append(',ref="#beans[x].constructorProperties[j].ref#"');
+						}
+						else{
+							buf.append(',value="#beans[x].constructorProperties[j].value#"');
+						}
+						buf.append(")");
+					}
+				}
+				// singleton?
+				if( beans[x].singleton ){ buf.append('#cr##tab#.asSingleton()'); }
+				// Autowire?
+				if( NOT beans[x].autowire ){ buf.append('#cr##tab#.noAutowire()'); }
+				// Constructor?
+				if( len(beans[x].initMethod) ){ buf.append('#cr##tab#.constructor("#beans[x].initMethod#")'); }
+				// Lazy?
+				if( NOT beans[x].lazy ){ buf.append('#cr##tab#.asEagerInit()'); }
+				
+				// end declaration;
+				buf.append(";#cr#");
+			}
+		
+			return buf.toString();
+		</cfscript>    	
+    </cffunction>	
 	
 	<!--- Translate a bean definition --->
 	<cffunction name="translateBean" access="private" output="false" returntype="void" hint="I translate ColdSpring XML bean definitiions to LightWire config.">

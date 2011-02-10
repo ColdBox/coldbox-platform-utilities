@@ -12,9 +12,9 @@
 		<constructor-arg name="plugin">
 			<value>feedReader</value>
 		</constructor-arg>
-		<property name="plugin">
+		<constructor-arg name="plugin">
 			<value>feedReader</value>
-		</property>	
+		</constructor-arg>	
 	</bean>
 	
 	<!-- transfer -->

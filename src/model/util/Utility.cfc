@@ -9,7 +9,8 @@
 		"coldbox:loaderService","coldbox:requestService","coldbox:debuggerService",
 		"coldbox:pluginService","coldbox:handlerService","coldbox:moduleService",
 		"coldbox:interceptor","coldbox:cacheManager","coldbox:fwConfigBean","coldbox:fwSetting:",
-		"entityService","javaLoader","logBox","logBox:root","logBox:logger:"
+		"entityService","javaLoader","logBox","logBox:root","logBox:logger:","id",
+		"provider"
 		];
 		arraySort(injectionDSL,"textnocase");
 		return injectionDSL;

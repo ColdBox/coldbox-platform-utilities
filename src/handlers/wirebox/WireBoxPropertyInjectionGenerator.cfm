@@ -19,6 +19,9 @@ if( len(inputStruct.scope) and inputStruct.scope neq "variables" ){
 }
 // injectionDSL
 injectionDSL = inputStruct.DSLNamespace;
+// check custom
+if( len(inputStruct.customDSLNamespace) ){ injectionDSL = inputStruct.customDSLNamespace; }
+// DSL context
 if( len(inputStruct.DSLContext) ){
 	injectionDSL &= ":" & inputStruct.DSLContext;
 }

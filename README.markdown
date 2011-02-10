@@ -1,10 +1,24 @@
 A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
+		
+Version 2.5 <br/>
+#coldbox-platform-utilities-10	ColdSpring XML file to WireBox binder conversion tool<br/>
+#coldbox-platform-utilities-11	create a new wirebox binder template<br/>		
+#coldbox-platform-utilities-12	Update wirebox integrations to new standards<br/>
+#coldbox-platform-utilities-13	wirebox generation of provider methods via editor</br>
+
+Version 2.4 <br/>
+#6 Ability to modify the builder settings.xml to add ColdBox variable mappings, requires IDE restart until CFBuilder 2.0 comes out.<br/>
+#7 Updates to all application templates and handler templates<br/>
+#8 Ability to generate implicit handler methods from editor context menu.<br/>
+#9 Ability to generate implicit action methods from outline view by choosing the method action<br/>
+
+<hr/>
 
 Version 2.3 <br/>
- #1	update the module templates to conform to new 3.0.0 standards
- #2	Update the base ORM service templates to comply with standards
- #3	update wirebox DSL injections missing : on generation
- #4	Update application templates to conform to latest 3.0
+ #1	update the module templates to conform to new 3.0.0 standards<br/>
+ #2	Update the base ORM service templates to comply with standards<br/>
+ #3	update wirebox DSL injections missing : on generation<br/>
+ #4	Update application templates to conform to latest 3.0<br/>
 
 <hr/>
 

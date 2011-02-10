@@ -5,6 +5,12 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
+		Version 2.5 <br/>
+		#coldbox-platform-utilities-10	ColdSpring XML file to WireBox binder conversion tool<br/>
+		#coldbox-platform-utilities-11	create a new wirebox binder template<br/>		
+		#coldbox-platform-utilities-12	Update wirebox integrations to new standards<br/>
+		#coldbox-platform-utilities-13	wirebox generation of provider methods via editor</br>
+		
 		Version 2.4 <br/>
 		#6 Ability to modify the builder settings.xml to add ColdBox variable mappings, requires IDE restart until CFBuilder 2.0 comes out.<br/>
 		#7 Updates to all application templates and handler templates<br/>
@@ -14,10 +20,10 @@
 		<hr/>
 		
 		Version 2.3 <br/>
-		 #1	update the module templates to conform to new 3.0.0 standards
-		 #2	Update the base ORM service templates to comply with standards
-		 #3	update wirebox DSL injections missing : on generation
-		 #4	Update application templates to conform to latest 3.0
+		 #1	update the module templates to conform to new 3.0.0 standards<br/>
+		 #2	Update the base ORM service templates to comply with standards<br/>
+		 #3	update wirebox DSL injections missing : on generation<br/>
+		 #4	Update application templates to conform to latest 3.0<br/>
 		
 		<hr/>
 		
@@ -101,7 +107,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>2.4</version>
+	<version>2.5</version>
 	<license> Copyright since [2009] [Ortus Solutions, Corp - Luis Majano]
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -196,6 +202,9 @@
 					<action name="Convert ColdSpring To WireBox" 	handlerid="WireBoxCSToWireBox"	showResponse="true">
 						<filters><filter type="file" pattern=".*\.(xml\.cfm|xml)" /></filters>
 					</action>
+					<action name="New Binder" 		handlerid="WireBoxGenBinder"		showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
 				</menu>
 			</menu>
 			
@@ -216,6 +225,7 @@
 			<menu name="WireBox DI">
 				<action name="Property Injection" 	handlerid="WireBoxPropertyInjection"	showResponse="true"></action>
 				<action name="Setter Injection" 	handlerid="WireBoxSetterInjection"		showResponse="true"></action>
+				<action name="Provider Method" 		handlerid="WireBoxProviderMethod"		showResponse="true"></action>
 			</menu>
 			<menu name="ColdBox Platform">
 				<action name="Generate Implicit Handler Methods" handlerid="GenImplicitHandlerMethods" showResponse="true"></action>
@@ -284,6 +294,8 @@
 		<handler id="WireBoxSetterInjection" 		type="CFM" filename="wirebox/WireBoxSetterInjection.cfm" />
 		<handler id="WireBoxComponentPersitence" 	type="CFM" filename="wirebox/WireBoxComponentPersitence.cfm" />
 		<handler id="WireBoxCSToWireBox" 			type="CFM" filename="wirebox/WireBoxCSToWireBox.cfm" />
+		<handler id="WireBoxGenBinder" 				type="CFM" filename="wirebox/WireBoxGenBinder.cfm" />
+		<handler id="WireBoxProviderMethod" 		type="CFM" filename="wirebox/WireBoxProviderMethod.cfm" />
 		
 	</handlers>
 
