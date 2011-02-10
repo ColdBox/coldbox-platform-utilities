@@ -190,6 +190,13 @@
 				
 				<!--AutoUpdate -->
 				<action name="Check For Extension Updates..." 	handlerid="AutoUpdateCheck"	showResponse="true"></action>
+				
+				<!-- WireBox -->
+				<menu name="WireBox">
+					<action name="Convert ColdSpring To WireBox" 	handlerid="WireBoxCSToWireBox"	showResponse="true">
+						<filters><filter type="file" pattern=".*\.(xml\.cfm|xml)" /></filters>
+					</action>
+				</menu>
 			</menu>
 			
 			<!-- ForgeBox Menu -->
@@ -276,6 +283,7 @@
 		<handler id="WireBoxPropertyInjection" 		type="CFM" filename="wirebox/WireBoxPropertyInjection.cfm" />
 		<handler id="WireBoxSetterInjection" 		type="CFM" filename="wirebox/WireBoxSetterInjection.cfm" />
 		<handler id="WireBoxComponentPersitence" 	type="CFM" filename="wirebox/WireBoxComponentPersitence.cfm" />
+		<handler id="WireBoxCSToWireBox" 			type="CFM" filename="wirebox/WireBoxCSToWireBox.cfm" />
 		
 	</handlers>
 

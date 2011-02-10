@@ -134,4 +134,30 @@
 	    </cfloop>
 	</cffunction>
 	
+	<!--- throw it --->
+	<cffunction name="throwit" access="public" hint="Facade for cfthrow" output="false">
+		<cfargument name="message" 	required="true">
+		<cfargument name="detail" 	required="false" default="">
+		<cfargument name="type"  	required="false" default="Framework">
+		<cfthrow type="#arguments.type#" message="#arguments.message#"  detail="#arguments.detail#">
+	</cffunction>
+	
+	<!--- rethrowit --->
+	<cffunction name="rethrowit" access="public" returntype="void" hint="Rethrow an exception" output="false" >
+		<cfargument name="throwObject" required="true" hint="The exception object">
+		<cfthrow object="#arguments.throwObject#">
+	</cffunction>
+		
+	<!--- dump it --->
+	<cffunction name="dumpit" access="public" hint="Facade for cfmx dump" returntype="void" output="true">
+		<cfargument name="var" 		required="true">
+		<cfargument name="isAbort"  type="boolean" default="false" required="false" hint="Abort also"/>
+		<cfdump var="#var#"><cfif arguments.isAbort><cfabort></cfif>
+	</cffunction>
+	
+	<!--- abort it --->
+	<cffunction name="abortit" access="public" hint="Facade for cfabort" returntype="void" output="false">
+		<cfabort>
+	</cffunction>
+	
 </cfcomponent>
