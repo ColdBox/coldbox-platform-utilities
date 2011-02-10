@@ -22,7 +22,7 @@ structures to create for configuration
 - interceptors : array
 - layoutSettings : struct (will allow to define a defaultLayout for the module)
 - routes : array Allowed keys are same as the addRoute() method of the SES interceptor.
-- modelMappings : structure of model mappings. Allowed keys are the alias and path, same as normal model mappings.
+- wirebox : The wirebox DSL to load and use
 
 Available objects in variable scope
 - controller
@@ -30,6 +30,7 @@ Available objects in variable scope
 - moduleMapping (include,cf path)
 - modulePath (absolute path)
 - log (A pre-configured logBox logger object for this object)
+- binder (The wirebox configuration binder)
 
 Required Methods
 - configure() : The method ColdBox calls to configure the module.
