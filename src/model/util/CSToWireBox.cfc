@@ -145,7 +145,7 @@ CS Converter to WireBox
 				lazy = true,
 				constructorProperties = [],
 				setterProperties = [],
-				autowire = true
+				autowire = false
 			};
 			
 			// loop over bean tag attributes and create beanStruct keys
