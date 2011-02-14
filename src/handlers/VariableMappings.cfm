@@ -10,10 +10,11 @@ mappings = {
 	flash = "coldbox.system.web.flash.AbstractFlashScope",
 	event = "coldbox.system.web.context.RequestContext",
 	controller = "coldbox.system.web.Controller",
-	wireBox = "coldbox.system.ioc.Injector",
 	logBox = "coldbox.system.logging.LogBox",
 	log = "coldbox.system.logging.log",
-	cacheBox = "coldbox.system.cache.CacheFactory"
+	cacheBox = "coldbox.system.cache.CacheFactory",
+	binder = "coldbox.system.ioc.config.Binder",
+	wirebox = "coldbox.system.ioc.Injector"
 };
 
 
@@ -78,6 +79,7 @@ fileWrite(settingsLocation, controller.getUtility().prettifyXML(settingsXML));
 					<li>log</li>
 					<li>cacheBox</li>
 					<li>wireBox</li>
+					<li>binder</li>
 				</ul>
 				</p>
 			</div>
