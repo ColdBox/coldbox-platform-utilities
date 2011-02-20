@@ -55,78 +55,109 @@ Description :
 			.asSingleton()
 			.noAutowire();
 		map("ColdBoxController").toFactoryMethod(factory="ColdBoxFactory",method="getColdBox")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("InterceptorService").toFactoryMethod(factory="ColdBoxController",method="getinterceptorService")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("ConfigBean").toFactoryMethod(factory="ColdBoxFactory",method="getConfigBean")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("ColdboxOCM").toFactoryMethod(factory="ColdboxFactory",method="getColdBoxOCM")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("BeanInjector").toFactoryMethod(factory="ColdBoxFactory",method="getPlugin")
 			.methodArg(name="plugin",value="beanFactory")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("sessionstorage").toFactoryMethod(factory="ColdboxFactory",method="getPlugin")
 			.methodArg(name="plugin",value="sessionstorage")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("TransferConfigFactory").to("coldbox.system.extras.transfer.TransferConfigFactory")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("TDOBeanInjectorObserver").to("coldbox.system.extras.transfer.TDOBeanInjectorObserver")
 			.initArg(name="Transfer",ref="Transfer")
 			.initArg(name="ColdBoxBeanFactory",ref="BeanInjector")
 			.asSingleton()
+			.noAutowire()
 			.asEagerInit();
 		map("CodexDatasource").toFactoryMethod(factory="ColdBoxFactory",method="getDatasource")
 			.methodArg(name="alias",value="codex")
-			.asSingleton();
-		map("anonBean:5E46D4E73B").toFactoryMethod(factory="TransferConfigFactory",method="getTransferConfig")
+			.asSingleton()
+			.noAutowire();
+		map("anonBean:7048848621").toFactoryMethod(factory="TransferConfigFactory",method="getTransferConfig")
 			.methodArg(name="configPath",value="${Transfer_configPath}")
 			.methodArg(name="definitionPath",value="${Transfer_definitionPath}")
 			.methodArg(name="dsnBean",ref="CodexDatasource")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("TransferFactory").to("transfer.TransferFactory")
-			.initArg(name="configuration",ref="anonBean:5E46D4E73B")
-			.asSingleton();
+			.initArg(name="configuration",ref="anonBean:7048848621")
+			.asSingleton()
+			.noAutowire();
 		map("Transfer").toFactoryMethod(factory="TransferFactory",method="getTransfer")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("Datasource").toFactoryMethod(factory="TransferFactory",method="getDatasource")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("Transaction").toFactoryMethod(factory="TransferFactory",method="getTransaction")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("BeanPopulator").to("codex.model.transfer.BeanPopulator")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("JavaLoader").to("codex.model.util.JavaLoader")
 			.asSingleton()
+			.noAutowire()
 			.asEagerInit();
 		map("WikiService").to("codex.model.wiki.WikiService")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("HTML2WikiConverter").to("codex.model.wiki.HTML2WikiConverter")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("CommentsService").to("codex.model.comments.CommentsService")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("ConfigService").to("codex.model.wiki.ConfigService")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("SearchFactory").to("codex.model.search.SearchFactory")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("SearchEngine").toFactoryMethod(factory="SearchFactory",method="getSearchEngine")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("WikiText").to("codex.model.wiki.parser.WikiText")
-			.asSingleton();
-		map("WikiPlugins").to("codex.model.wiki.parser.WikiPlugins");
+			.asSingleton()
+			.noAutowire();
+		map("WikiPlugins").to("codex.model.wiki.parser.WikiPlugins")
+			.noAutowire();
 		map("Feed").to("codex.model.wiki.parser.Feed")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("MessageBox").to("codex.model.wiki.parser.MessageBox")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("RSSManager").to("codex.model.rss.RSSManager")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("DataManager").to("codex.model.data.DataManager")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("SecurityService").to("codex.model.security.SecurityService")
 			.setter(name="sessionstorage",ref="sessionstorage")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("UserService").to("codex.model.security.UserService")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 		map("LookupService").to("codex.model.lookups.LookupService")
-			.asSingleton();
+			.asSingleton()
+			.noAutowire();
 
 	}	
 </cfscript>
