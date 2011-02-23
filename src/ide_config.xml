@@ -10,6 +10,7 @@
 		#coldbox-platform-utilities-11	create a new wirebox binder template<br/>		
 		#coldbox-platform-utilities-12	Update wirebox integrations to new standards<br/>
 		#coldbox-platform-utilities-13	wirebox generation of provider methods via editor</br>
+		#coldbox-platform-utilities-14  updated variable mappings to include wirebox classes</br>
 		
 		Version 2.4 <br/>
 		#6 Ability to modify the builder settings.xml to add ColdBox variable mappings, requires IDE restart until CFBuilder 2.0 comes out.<br/>
