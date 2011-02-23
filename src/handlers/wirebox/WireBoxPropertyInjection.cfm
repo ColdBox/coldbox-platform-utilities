@@ -29,7 +29,7 @@ injectionDSL = controller.getUtility().getInjectionDSLArray();
 			</cfloop> 
 			</input>
 			
-			<input name="customDSLNamespace" label="Custom DSL" type="string" required="true" 
+			<input name="customDSLNamespace" label="Custom DSL" type="string" required="false" 
 				   tooltip="The custom DSL namespace or use the DSL Namespace dropdown"/>
 				   
 			<input name="DSLContext" label="DSL Context" type="string" required="false" 

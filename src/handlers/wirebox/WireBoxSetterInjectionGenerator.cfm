@@ -14,6 +14,9 @@ All handlers receive the following:
 <cfscript>
 // injectionDSL
 injectionDSL = inputStruct.DSLNamespace;
+// check custom
+if( len(inputStruct.customDSLNamespace) ){ injectionDSL = inputStruct.customDSLNamespace; }
+// DSL Context
 if( len(inputStruct.DSLContext) ){
 	injectionDSL &= inputStruct.DSLContext;
 }

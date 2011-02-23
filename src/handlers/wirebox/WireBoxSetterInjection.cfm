@@ -31,11 +31,15 @@ injectionDSL = controller.getUtility().getInjectionDSLArray();
 				<option value="Inline" />
 			</input>
 				   
-			<input name="DSLNamespace" label="DSL Namespace" type="list" default="model">
+			<input name="DSLNamespace" label="DSL Namespace" type="list" default="Choose one or Custom DSL Namespace">
+				<option value="Choose one or Custom DSL Namespace" />
 			<cfloop array="#injectionDSL#" index="dsl">
 				<option value="#dsl#" />
 			</cfloop> 
 			</input>
+			
+			<input name="customDSLNamespace" label="Custom DSL" type="string" required="false" 
+				   tooltip="The custom DSL namespace or use the DSL Namespace dropdown"/>
 			
 			<input name="DSLContext" label="DSL Context" type="string" required="false" 
 				   tooltip="The DSL context or remainder of the injection DSL (ex:MyModel). This value is concatenated to the DSL Namespace"/>
