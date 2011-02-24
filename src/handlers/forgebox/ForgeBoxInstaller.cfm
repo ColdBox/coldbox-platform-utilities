@@ -43,7 +43,7 @@ All handlers receive the following:
 			<cfelse>
 			
 				<cfif  results.error>
-					<div class="messagebox">Error Intaling Entry please see log below!</div>
+					<div class="messagebox">Error Installing Entry please see log below!</div>
 				<cfelse>
 					<div class="messagebox-green">#entry.slug# Installed!</div>
 				</cfif>
