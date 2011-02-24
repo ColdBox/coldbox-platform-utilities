@@ -71,7 +71,7 @@ All handlers receive the following:
 		</div>
 	
 		<div id="installNow" style="display:none" class="align-center">
-			<img src="images/ajax-loader-horizontal.gif" alt=""> Installing Please Wait...
+			<img src="includes/images/ajax-loader-horizontal.gif" alt=""> Installing Please Wait...
 		</div>
 		
 		<p><strong>Version Changelog</strong><p>

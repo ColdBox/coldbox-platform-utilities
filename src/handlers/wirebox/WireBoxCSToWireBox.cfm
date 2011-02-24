@@ -61,7 +61,7 @@ if( NOT len(results.errorMessages) ){
 				</div>
 			<cfelse>
 				<div class="messagebox-green">
-					ColdSprint To WireBox conversion finalized! We have created a WireBox 
+					ColdSpring To WireBox conversion finalized! We have created a WireBox 
 					configuration binder for you and opened it!
 				</div>
 			</cfif>
