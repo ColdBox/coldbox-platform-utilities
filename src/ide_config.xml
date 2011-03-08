@@ -203,6 +203,9 @@
 					<action name="Convert ColdSpring To WireBox" 	handlerid="WireBoxCSToWireBox"	showResponse="true">
 						<filters><filter type="file" pattern=".*\.(xml\.cfm|xml)" /></filters>
 					</action>
+					<action name="Convert Legacy Model Mappings To WireBox" 	handlerid="WireBoxMMToWireBox"	showResponse="true">
+						<filters><filter type="file" pattern="modelMappings.cfm" /></filters>
+					</action>
 					<action name="New Binder" 		handlerid="WireBoxGenBinder"		showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
@@ -295,6 +298,7 @@
 		<handler id="WireBoxSetterInjection" 		type="CFM" filename="wirebox/WireBoxSetterInjection.cfm" />
 		<handler id="WireBoxComponentPersitence" 	type="CFM" filename="wirebox/WireBoxComponentPersitence.cfm" />
 		<handler id="WireBoxCSToWireBox" 			type="CFM" filename="wirebox/WireBoxCSToWireBox.cfm" />
+		<handler id="WireBoxMMToWireBox" 			type="CFM" filename="wirebox/WireBoxMMToWireBox.cfm" />
 		<handler id="WireBoxGenBinder" 				type="CFM" filename="wirebox/WireBoxGenBinder.cfm" />
 		<handler id="WireBoxProviderMethod" 		type="CFM" filename="wirebox/WireBoxProviderMethod.cfm" />
 		
