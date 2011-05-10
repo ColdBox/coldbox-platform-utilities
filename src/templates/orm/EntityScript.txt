@@ -1,0 +1,17 @@
+/**
+* A cool |entityName| entity
+*/
+component persistent="true" table="|table|"{
+
+	// Primary Key
+	property name="|primaryKey|" fieldtype="id" column="|primaryKeyColumn|" generator="|generator|";
+	
+	// Properties
+	|properties|
+	
+	// Constructor
+	function init(){
+	
+		return this;
+	}
+}

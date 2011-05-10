@@ -1,0 +1,18 @@
+<cfcomponent persistent="true" table="|table|" output="false" hint="A cool |entity|">
+
+	<!--- Primary Key --->
+	<cfproperty name="|primaryKey|" fieldtype="id" column="|primaryKeyColumn|" generator="|generator|">
+	
+	<!--- Properties --->
+	|properties|
+	
+	<!--- init --->
+    <cffunction name="init" output="false" access="public" returntype="any">
+    	<cfscript>
+    		
+    		return this;
+    	</cfscript>
+    </cffunction>
+
+	
+</cfcomponent>

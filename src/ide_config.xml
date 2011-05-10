@@ -5,6 +5,11 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
+		Version 2.6 <br/>
+		# Updated application templates</br>
+		# Ability to create ORM entities</br>
+		# Aded more of WireBox dsl namespaces</br>
+		
 		Version 2.5 <br/>
 		#coldbox-platform-utilities-10	ColdSpring XML file to WireBox binder conversion tool<br/>
 		#coldbox-platform-utilities-11	create a new wirebox binder template<br/>		
@@ -156,6 +161,9 @@
 				
 				<!-- ORM -->
 				<menu name="ORM">
+					<action name="New ORM Entity" 	handlerid="GenORMEntity"	showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
 					<action name="New ORM Event Handler" 	handlerid="GenORMEventHandler"	showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
@@ -278,6 +286,7 @@
 		<handler id="GenImplicitActions"		type="CFM" filename="outline/ImplicitActionsSetup.cfm" />
 		
 		<!-- ORM -->
+		<handler id="GenORMEntity" type="CFM" filename="orm/ORMEntitySetup.cfm" />
 		<handler id="GenORMEventHandler" type="CFM" filename="orm/ORMEventHandlerSetup.cfm" />
 		<handler id="GenVirtualEntityService" type="CFM" filename="orm/VirtualEntityServiceSetup.cfm" />
 		<handler id="GenTemplatedEntityService" type="CFM" filename="orm/TemplatedEntityServiceSetup.cfm" />

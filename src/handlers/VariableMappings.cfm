@@ -14,7 +14,8 @@ mappings = {
 	log = "coldbox.system.logging.log",
 	cacheBox = "coldbox.system.cache.CacheFactory",
 	binder = "coldbox.system.ioc.config.Binder",
-	wirebox = "coldbox.system.ioc.Injector"
+	wirebox = "coldbox.system.ioc.Injector",
+	html	= "coldbox.system.plugins.HTMLHelper"
 };
 
 
@@ -72,14 +73,16 @@ fileWrite(settingsLocation, controller.getUtility().prettifyXML(settingsXML));
 				to your project. You should now be able to get introspection on
 				the following variables:
 				<ul>
-					<li>event</li>
+					<li>binder</li>
+					<li>cacheBox</li>
 					<li>controller</li>
+					<li>event</li>
 					<li>flash</li>
+					<li>html</li>
 					<li>logBox</li>
 					<li>log</li>
-					<li>cacheBox</li>
 					<li>wireBox</li>
-					<li>binder</li>
+					
 				</ul>
 				</p>
 			</div>
