@@ -8,7 +8,10 @@
 		Version 2.6 <br/>
 		# Updated application templates</br>
 		# Ability to create ORM entities</br>
-		# Aded more of WireBox dsl namespaces</br>
+		# Added more of WireBox dsl namespaces</br>
+		# Updated variable mappings to include the HTML Helper</br>
+		# Internal updates and refactorings</br>
+		# Deprecated old XML configurations</br>
 		
 		Version 2.5 <br/>
 		#coldbox-platform-utilities-10	ColdSpring XML file to WireBox binder conversion tool<br/>
@@ -113,7 +116,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>2.5</version>
+	<version>2.6</version>
 	<license> Copyright since [2009] [Ortus Solutions, Corp - Luis Majano]
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -133,6 +136,7 @@
 		<contribution target="projectview">
 			<!--  ColdBox Menu -->
 			<menu name="ColdBox Platform">
+				
 				<!-- Global Actions -->
 				<action name="New Application"	handlerid="GenSkeleton"		showResponse="true">
 					<filters>
@@ -140,13 +144,10 @@
 						<filter type="folder" />
 					</filters>
 				</action>
+				<action name="New CRUD For Entity" 	handlerid="GenCrud"	showResponse="true">
+					<filters><filter type="file" /></filters>
+				</action>
 				<action name="New Handler" 		handlerid="GenHandler"		showResponse="true">
-					<filters><filter type="folder" /></filters>
-				</action>
-				<action name="New Plugin" 		handlerid="GenPlugin"		showResponse="true">
-					<filters><filter type="folder" /></filters>
-				</action>
-				<action name="New Model" 		handlerid="GenModel"		showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
 				<action name="New Interceptor" 	handlerid="GenInterceptor"	showResponse="true">
@@ -155,7 +156,13 @@
 				<action name="New Integration Test" 	handlerid="GenIntegrationTest"	showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
+				<action name="New Model" 		handlerid="GenModel"		showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
 				<action name="New Module" 	handlerid="GenModule"	showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
+				<action name="New Plugin" 		handlerid="GenPlugin"		showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
 				
@@ -188,9 +195,8 @@
 					<filters><filter type="folder" pattern="config" /></filters>
 					<action name="Setup Deploy Interceptor" 	handlerid="GenDeploy"	showResponse="true"></action>
 					<action name="Setup Security Interceptor" 	handlerid="GenSecurity"	showResponse="true"></action>
-					<action name="Setup Environment Control" 	handlerid="GenEnvironments"	showResponse="true"></action>
-					<action name="Setup Transfer ORM" 	handlerid="GenTransfer"	showResponse="true"></action>
-					<action name="Setup Reactor ORM" 	handlerid="GenReactor"	showResponse="true"></action>
+					<action name="Setup Transfer ORM" 			handlerid="GenTransfer"	showResponse="true"></action>
+					<action name="Setup Reactor ORM" 			handlerid="GenReactor"	showResponse="true"></action>
 				</menu>
 				
 				<!-- Divider -->
@@ -228,7 +234,7 @@
 				</filters>
 				
 				<!-- ForgeBox -->
-				<action name="Install From ForgeBox..." 	handlerid="ForgeBoxInstall"	showResponse="true"></action>
+				<action name="Install Entry" 	handlerid="ForgeBoxInstallCategory"	showResponse="true"></action>
 			</menu>
 		</contribution>
 		
@@ -263,7 +269,7 @@
 	</events>	
 	
 	<handlers>		
-		<!-- Generators -->
+		<!-- Global Generators -->
 		<handler id="GenHandler"			type="CFM" filename="HandlerSetup.cfm" />
 		<handler id="GenPlugin"				type="CFM" filename="PluginSetup.cfm" />
 		<handler id="GenSkeleton"			type="CFM" filename="AppSkeleton.cfm" />
@@ -271,13 +277,13 @@
 		<handler id="GenDeploy"	    		type="CFM" filename="DeploySetup.cfm" />
 		<handler id="GenSecurity"    		type="CFM" filename="SecuritySetup.cfm" />		
 		<handler id="GenInterceptor"		type="CFM" filename="InterceptorSetup.cfm" />
-		<handler id="GenEnvironments"		type="CFM" filename="EnvironmentSetup.cfm" />
-		<handler id="GenTransfer"			type="CFM" filename="TransferSetup.cfm" />
-		<handler id="GenReactor"			type="CFM" filename="ReactorSetup.cfm" />
-		<handler id="GenRewrites"			type="CFM" filename="RewriteSetup.cfm" />
 		<handler id="GenModule"				type="CFM" filename="ModuleSetup.cfm" />
 		<handler id="GenIntegrationTest" 	type="CFM" filename="IntegrationTestSetup.cfm" />
-		<handler id="GenVariableMappings"	type="CFM" filename="VariableMappings.cfm" />
+		<handler id="GenCrud"				type="CFM" filename="CrudSetup.cfm" />
+		
+		<!-- Project Handlers -->
+		<handler id="GenRewrites"			type="CFM" filename="project/RewriteSetup.cfm" />
+		<handler id="GenVariableMappings"	type="CFM" filename="project/VariableMappings.cfm" />
 		
 		<!-- Editor Handlers -->
 		<handler id="GenImplicitHandlerMethods"		type="CFM" filename="editor/ImplicitHandlerMethodsSetup.cfm" />
@@ -286,10 +292,12 @@
 		<handler id="GenImplicitActions"		type="CFM" filename="outline/ImplicitActionsSetup.cfm" />
 		
 		<!-- ORM -->
-		<handler id="GenORMEntity" type="CFM" filename="orm/ORMEntitySetup.cfm" />
-		<handler id="GenORMEventHandler" type="CFM" filename="orm/ORMEventHandlerSetup.cfm" />
-		<handler id="GenVirtualEntityService" type="CFM" filename="orm/VirtualEntityServiceSetup.cfm" />
+		<handler id="GenORMEntity" 				type="CFM" filename="orm/ORMEntitySetup.cfm" />
+		<handler id="GenORMEventHandler" 		type="CFM" filename="orm/ORMEventHandlerSetup.cfm" />
+		<handler id="GenVirtualEntityService" 	type="CFM" filename="orm/VirtualEntityServiceSetup.cfm" />
 		<handler id="GenTemplatedEntityService" type="CFM" filename="orm/TemplatedEntityServiceSetup.cfm" />
+		<handler id="GenTransfer"				type="CFM" filename="orm/TransferSetup.cfm" />
+		<handler id="GenReactor"				type="CFM" filename="orm/ReactorSetup.cfm" />
 		
 		<!-- AutoUpdate -->
 		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />
@@ -300,7 +308,7 @@
 		<handler id="ColdBoxSearch" type="CFM" filename="resources/ColdBoxSearch.cfm" />
 		
 		<!-- ForgeBox -->
-		<handler id="ForgeBoxInstall" type="CFM" filename="forgebox/ForgeBoxInstall.cfm" />
+		<handler id="ForgeBoxInstallCategory" 	type="CFM" filename="forgebox/ForgeBoxInstallCategory.cfm" />
 		
 		<!-- WireBox -->
 		<handler id="WireBoxPropertyInjection" 		type="CFM" filename="wirebox/WireBoxPropertyInjection.cfm" />

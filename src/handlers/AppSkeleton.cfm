@@ -19,7 +19,7 @@ All handlers receive the following:
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>  
 <response status="success" type="default">  
-	<ide handlerfile="ExpandAppSkeleton.cfm"> 
+	<ide handlerfile="AppSkeletonGenerate.cfm"> 
 		<dialog width="450" height="450" title="ColdBox Application Generator" image="includes/images/ColdBox_Icon.png">  
 			<input name="ApplicationType" label="Select Application Type To Generate" type="list">
 			<cfloop query="appSkeletons">

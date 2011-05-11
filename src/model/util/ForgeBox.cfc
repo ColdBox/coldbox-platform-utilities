@@ -37,6 +37,7 @@ Settings:
 			
 			// Setup Properties
 			instance.APIURL = "http://www.coldbox.org/index.cfm/api/forgebox";
+			instance.JSON	= createObject("component","JSON").init();
 			
 			return this;
 		</cfscript>
@@ -221,8 +222,8 @@ Settings:
 			if( len(HTTPResults.errorDetail) ){ results.error = true; }
 			
 			// Try to inflate JSON
-			//results.response = getPlugin("JSON").decode(results.rawResponse);
-			results.response = deserializeJSON(results.rawResponse);
+			results.response = instance.JSON.decode(results.rawResponse);
+			//results.response = deserializeJSON(results.rawResponse);
 			
 			return results;
 		</cfscript>	

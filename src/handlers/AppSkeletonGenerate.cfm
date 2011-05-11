@@ -67,7 +67,7 @@ All handlers receive the following:
 			</params>
 		</command>
 	</commands>
-	<dialog width="600" height="250" title="ColdBox Application Generator Wizard" image="includes/images/ColdBox_Icon.png"/>  
+	<dialog width="600" height="350" title="ColdBox Application Generator Wizard" image="includes/images/ColdBox_Icon.png"/>  
 	<body><![CDATA[
 	<html>
 		<head>

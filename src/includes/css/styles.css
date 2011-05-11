@@ -199,7 +199,7 @@ input.invalidLookupInput, textarea.invalidLookupInput, .invalidLookupInput{
 .float-right { float: right; }
 .align-left  { text-align: left; }
 .align-right { text-align: right; }
-.align-center  { text-align: center; }
+.align-center  { text-align: center; margin: auto }
 .hidden { display: none; }
 .show { display:block; }
 .inline { display: inline; }
@@ -208,3 +208,66 @@ input.invalidLookupInput, textarea.invalidLookupInput, .invalidLookupInput{
 .green { color: green ;}
 .blue   { color: #003366; }
 .bold { font-weight: bold; }
+
+/**============================== Table Listings ==============================**/
+.tablelisting{
+	background-color: #CDCDCD;
+	margin: 5px 0pt 5px;
+	border-spacing: 1px;
+	font-size: 8pt;
+	border-collapse: inherit !important;
+}
+.tablelisting tr{
+	background-color: #F7F7F7;
+}
+.tablelisting tr.even{
+	background-color: #ffffff;
+}
+.tablelisting tr:hover { background: #d7eafe}
+.tablelisting th {
+	text-align: left;
+	background-color: #E0EFEF;
+	padding: 3px;
+}
+.tablelisting th.center{
+	text-align:center;
+}
+.tablelisting th a {
+	color: #000;
+	background-color: inherit;
+	text-decoration: none;
+	border-bottom: none;
+}
+.tablelisting th a:hover {
+	color: #CC0001; 
+	background-color: inherit;	
+}
+.tablelisting a {
+	text-decoration: none;
+	border-bottom: none;
+}
+.tablelisting a:hover {
+	color: #CC0001; 
+	background-color: inherit;	
+}
+.tablelisting a {
+	text-decoration: none;
+	border-bottom: none;
+}
+.tablelisting a:hover {
+	color: #CC0001; 
+	background-color: inherit;	
+}
+.tablelisting td{
+	padding: 3px;
+}
+.tablelisting td.center{
+	text-align: center;
+}
+.tablelisting #checkboxHolder{
+	width: 20px;
+}
+.tablelisting #status{
+	text-align: center;
+	width: 60px;
+}

@@ -26,8 +26,4 @@
 		</cfscript>
     </cffunction>
 
-
-
-
-
 </cfcomponent>

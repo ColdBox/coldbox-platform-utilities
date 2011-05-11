@@ -18,7 +18,6 @@ mappings = {
 	html	= "coldbox.system.plugins.HTMLHelper"
 };
 
-
 // Destinations
 projectLocation = data.event.ide.projectview.XMLAttributes.projectLocation & "/";
 settingsLocation = projectLocation & "settings.xml";
@@ -82,7 +81,6 @@ fileWrite(settingsLocation, controller.getUtility().prettifyXML(settingsXML));
 					<li>logBox</li>
 					<li>log</li>
 					<li>wireBox</li>
-					
 				</ul>
 				</p>
 			</div>

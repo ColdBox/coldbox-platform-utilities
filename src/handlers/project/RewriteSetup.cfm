@@ -10,7 +10,7 @@ Date        :	08/01/2009
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>  
 <response status="success" type="default">  
-	<ide handlerfile="RewriteGenerator.cfm"> 
+	<ide handlerfile="project/RewriteGenerator.cfm"> 
 		<dialog width="650" height="450" title="ColdBox URL Rewrite Configuration" image="includes/images/ColdBox_Icon.png">  
 			<input name="rewriteEngine" label="Choose Rewrite Engine Rules" type="list" default="mod_rewrite"
 				   tooltip="Choose the rewrite engine to create rules for"

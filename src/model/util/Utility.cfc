@@ -1,5 +1,4 @@
 <cfcomponent output="false">
-
 <cfscript>
 
 	function getInjectionDSLArray(){

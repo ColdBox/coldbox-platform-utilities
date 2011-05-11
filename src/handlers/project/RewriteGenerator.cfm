@@ -8,20 +8,10 @@ Author      :	 Sana Ullah & Luis Majano
 Date        :	08/01/2009
 ----------------------------------------------------------------------->
 <cfscript>
-// Parse incoming event
-data = xmlParse(ideeventinfo);
-		
-// Parse Input
-extXMLInput = xmlSearch(data, "/event/user/input");
-inputStruct = StructNew();
-for(i=1; i lte arrayLen(extXMLInput); i++){
-	StructInsert(inputStruct,"#extXMLInput[i].xmlAttributes.name#","#extXMLInput[i].xmlAttributes.value#");	
-}
-
 // Destinations
-projectLocation = data.event.ide.projectview.XMLAttributes.projectLocation & "/";
-routesLocation = projectLocation & "config/Routes.cfm";
-templatesLocation = expandPath('../templates/ses') & "/";
+projectLocation 	= data.event.ide.projectview.XMLAttributes.projectLocation & "/";
+routesLocation 		= projectLocation & "config/Routes.cfm";
+templatesLocation 	= expandPath('../templates/ses') & "/";
 
 // Move rewrite engine
 switch(inputStruct.rewriteEngine){
