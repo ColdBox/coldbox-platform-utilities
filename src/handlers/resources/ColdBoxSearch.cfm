@@ -4,7 +4,7 @@
 <cfoutput> 
 <response showresponse="true"> 
 <ide> 
-<dialog width="900" height="600" title="ColdBox Live Search" image="includes/images/ColdBox_Icon.png" />  
+<view id="cbox_livesearch" title="ColdBox Live Search" icon="includes/images/coldbox_logo.jpg" />
 <body> 
 <![CDATA[ 
 <html>

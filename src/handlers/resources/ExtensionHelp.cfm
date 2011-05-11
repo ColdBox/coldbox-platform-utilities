@@ -2,7 +2,7 @@
 <cfoutput> 
 <response showresponse="true"> 
 <ide url="http://wiki.coldbox.org/wiki/CFBuilderExtensions/HTML.cfm" > 
-<dialog width="900" height="600" /> 
+	<view id="cbox_extensionhelp" title="ColdBox Extension Help" icon="includes/images/coldbox_logo.jpg" />
 </ide> 
 </response> 
 </cfoutput>

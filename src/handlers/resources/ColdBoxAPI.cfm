@@ -2,7 +2,7 @@
 <cfoutput> 
 <response showresponse="true"> 
 <ide url="http://coldbox.org/api?plain" > 
-<dialog width="900" height="700" /> 
+	<view id="cbox_apidocs" title="ColdBox API Docs" icon="includes/images/coldbox_logo.jpg" />
 </ide> 
 </response> 
 </cfoutput>

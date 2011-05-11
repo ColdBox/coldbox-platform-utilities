@@ -131,6 +131,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.</license>
     
+	<viewcontributions> 
+	    <view id="cbox_apidocs" title="ColdBox API Docs" icon="includes/images/ColdBox_Icon.png" handlerid="ViewApiDocs" > 
+	        
+	    </view> 
+	</viewcontributions>
+
 	<menucontributions >
 
 		<contribution target="projectview">
@@ -204,9 +210,10 @@
 				
 				<!-- Resources -->
 				<menu name="Resources">
+					<action name="ColdBox Wiki Docs" 	handlerid="ColdBoxDocs"		showResponse="true"></action>
 					<action name="ColdBox Live Search" 	handlerid="ColdBoxSearch"	showResponse="true"></action>
-					<action name="ColdBox Live API" 	handlerid="ColdBoxAPI"	showResponse="true"></action>
-					<action name="Extension Help" 	handlerid="ExtensionHelp"	showResponse="true"></action>
+					<action name="ColdBox Live API" 	handlerid="ColdBoxAPI"		showResponse="true"></action>
+					<action name="Extension Help" 		handlerid="ExtensionHelp"	showResponse="true"></action>
 				</menu>
 				
 				<!--AutoUpdate -->
@@ -306,6 +313,7 @@
 		<handler id="ExtensionHelp" type="CFM" filename="resources/ExtensionHelp.cfm" />
 		<handler id="ColdBoxAPI" 	type="CFM" filename="resources/ColdBoxAPI.cfm" />
 		<handler id="ColdBoxSearch" type="CFM" filename="resources/ColdBoxSearch.cfm" />
+		<handler id="ColdBoxDocs" 	type="CFM" filename="resources/ColdBoxDocs.cfm" />
 		
 		<!-- ForgeBox -->
 		<handler id="ForgeBoxInstallCategory" 	type="CFM" filename="forgebox/ForgeBoxInstallCategory.cfm" />
@@ -319,6 +327,8 @@
 		<handler id="WireBoxGenBinder" 				type="CFM" filename="wirebox/WireBoxGenBinder.cfm" />
 		<handler id="WireBoxProviderMethod" 		type="CFM" filename="wirebox/WireBoxProviderMethod.cfm" />
 		
+		<!-- Views -->
+		<handler id="ViewApiDocs"  type="CFM" filename="views/APIDocs.cfm" />
 	</handlers>
 
 </application>
