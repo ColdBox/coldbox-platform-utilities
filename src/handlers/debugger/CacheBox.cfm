@@ -1,4 +1,7 @@
 <cfscript>
+if( NOT structKeyExists(data.event.ide.projectView,"server") ){
+	writeDump("Server not active in this project. Please activate this first in the project properties");abort;
+}
 serverInfo = data.event.ide.projectView.server.XMLAttributes;
 rootURL = replaceNoCase( data.event.ide.projectView.resource.xmlAttributes.path, serverInfo.wwwroot ,"" ) & "/index.cfm";
 </cfscript>
