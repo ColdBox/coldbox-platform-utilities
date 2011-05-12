@@ -12,6 +12,7 @@
 		# Updated variable mappings to include the HTML Helper</br>
 		# Internal updates and refactorings</br>
 		# Deprecated old XML configurations</br>
+		# Different views for docs, api, search and more</br>
 		
 		Version 2.5 <br/>
 		#coldbox-platform-utilities-10	ColdSpring XML file to WireBox binder conversion tool<br/>
