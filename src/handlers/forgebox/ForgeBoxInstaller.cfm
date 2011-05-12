@@ -31,7 +31,6 @@ All handlers receive the following:
 		results.logInfo = "The entry requested was not found";
 	}
 </cfscript>
-
 <!--- Output --->
 <cfoutput>  
 <html>

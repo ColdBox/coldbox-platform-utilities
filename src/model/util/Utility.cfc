@@ -94,22 +94,6 @@
     	<cfdirectory action="create" directory="#arguments.path#">
     </cffunction>
 	
-	<!--- parseInput --->
-    <cffunction name="parseInput" output="false" access="public" returntype="any" hint="Parse Input">
-    	<cfargument name="eventData" type="any" required="true" />
-    	<cfscript>
-	    	var extXMLInput = xmlSearch(arguments.eventData, "/event/user/input");
-			var inputStruct = StructNew();
-			var i = 1;
-			
-			for(i=1; i lte arrayLen(extXMLInput); i++){
-				StructInsert(inputStruct,"#extXMLInput[i].xmlAttributes.name#","#extXMLInput[i].xmlAttributes.value#");	
-			}
-			
-			return inputStruct;
-		</cfscript>
-    </cffunction>
-	
 	<!---
 	@author Joe Rinehart (joe.rinehart@gmail.com) 
 	--->

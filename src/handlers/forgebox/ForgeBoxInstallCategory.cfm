@@ -19,7 +19,6 @@ function getTypes(){
 	}
 	return application["cache-forgebox-types"];
 }
-
 // get Types
 types = getTypes();
 	

@@ -2,10 +2,74 @@
 
 	<!--- init --->
     <cffunction name="init" output="false" access="public" returntype="any" hint="Constructor">
+    	<cfargument name="data">
     	<cfscript>
     		utility = createObject("component","coldboxExtension.model.util.Utility");
-		
+			
+			variables.data = arguments.data;
+			
 			return this;
+		</cfscript>
+    </cffunction>
+    
+    <!--- getCallBackURL --->    
+    <cffunction name="getCallBackURL" output="false" access="public" returntype="any" hint="">    
+    	<cfscript>
+			if( NOT structIsEmpty(data) AND structKeyExists(data.event.ide,"callbackURL")){
+				return data.event.ide.callbackURL.XMLText;
+			}
+			return "";
+		</cfscript>	
+    </cffunction>
+    
+    <!--- sendCommand --->    
+    <cffunction name="sendCommand" output="false" access="public" returntype="any" hint="">    
+    	<cfargument name="xml" 		type="any" required="true"/>
+		<cfargument name="callBack" type="any" required="false" default="#getCallBackURL()#"/>
+		<cfset var commandresponse = "">
+		
+		<cfhttp method="post" url="#arguments.callBack#" result="commandresponse" > 
+		    <cfhttpparam type="body" value="#arguments.xml#" > 
+		</cfhttp>
+		
+		<cfreturn commandresponse>
+	
+    </cffunction>
+    
+    <!--- parseInput --->
+    <cffunction name="parseInput" output="false" access="public" returntype="any" hint="Parse Input">
+    	<cfargument name="eventData" type="any" required="true" />
+    	<cfscript>
+	    	var extXMLInput = "";
+			var inputStruct = StructNew();
+			var i = 1;
+			
+			// check if empty
+			if( isStruct(arguments.eventData) ){
+				return inputStruct;
+			}
+			
+			extXMLInput = xmlSearch(arguments.eventData, "/event/user/input");
+			
+			for(i=1; i lte arrayLen(extXMLInput); i++){
+				StructInsert(inputStruct,"#extXMLInput[i].xmlAttributes.name#","#extXMLInput[i].xmlAttributes.value#");	
+			}
+			
+			return inputStruct;
+		</cfscript>
+    </cffunction>
+	
+	<!--- getProjectInfo --->    
+    <cffunction name="getProjectInfo" output="false" access="public" returntype="any" hint="Get projectlocation and projectname in a struct">    
+    	<cfscript>
+			var p = {
+				projectLocation = "", projectName = ""
+			};
+			if( structKeyExists(data.event.ide,"projectView") ){
+				p = data.event.ide.projectView.XMLAttributes;
+			}
+			
+			return p;
 		</cfscript>
     </cffunction>
 	

@@ -131,12 +131,7 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.</license>
-    
-	<viewcontributions> 
-	    <view id="cbox_apidocs" title="ColdBox API Docs" icon="includes/images/ColdBox_Icon.png" handlerid="ViewApiDocs" > 
-	        
-	    </view> 
-	</viewcontributions>
+ 
 
 	<menucontributions >
 
@@ -196,6 +191,13 @@
 				<action name="Setup Project ColdBox Variable Mappings" 	handlerid="GenVariableMappings"	showResponse="true">
 					<filters><filter type="project" /></filters>
 				</action>
+				
+				<!-- Resources -->
+				<menu name="Debugger Monitors">
+					<filters><filter type="project" /></filters>
+					<action name="Profile Monitor" 		handlerid="DebuggerProfiler"	showResponse="true"></action>
+					<action name="CacheBox Monitor" 	handlerid="DebuggerCacheBox"	showResponse="true"></action>
+				</menu>
 				
 				<!-- Config Folder Aspects -->
 				<menu name="Setup Aspects">
@@ -315,6 +317,10 @@
 		<handler id="ColdBoxAPI" 	type="CFM" filename="resources/ColdBoxAPI.cfm" />
 		<handler id="ColdBoxSearch" type="CFM" filename="resources/ColdBoxSearch.cfm" />
 		<handler id="ColdBoxDocs" 	type="CFM" filename="resources/ColdBoxDocs.cfm" />
+		
+		<!-- Debugger -->
+		<handler id="DebuggerProfiler" 	type="CFM" filename="debugger/Profiler.cfm" />
+		<handler id="DebuggerCacheBox" 	type="CFM" filename="debugger/CacheBox.cfm" />
 		
 		<!-- ForgeBox -->
 		<handler id="ForgeBoxInstallCategory" 	type="CFM" filename="forgebox/ForgeBoxInstallCategory.cfm" />

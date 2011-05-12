@@ -22,11 +22,9 @@ Date        :	08/01/2009
 		<cfargument name="targetPage">
 		<cfsetting showdebugoutput="false">
 		
-		<!--- place the ExtensionController on scope --->
-		<cfset controller = getExtensionController()>
-		
 		<!--- Param the incoming ide event info --->
 		<cfparam name="ideeventinfo" default="">
+		<cfparam name="data" 		 default="#structnew()#">
 		
 		<!--- Log Request 
 		<cflog file="ColdBoxCFBuilder" text="Executing #cgi.script_name# #timeFormat(now())#">
@@ -34,11 +32,14 @@ Date        :	08/01/2009
 		--->
 		
 		<!--- Parse incoming event info if available? --->
-		<cfif isXML(ideeventinfo)>
+		<cfif isXML( ideeventinfo )>
 			<cfset data = xmlParse(ideeventinfo)>
-			<!--- Parse the incoming input values --->
-			<cfset inputStruct = controller.getUtility().parseInput(data)>
 		</cfif>
+		
+		<!--- place the ExtensionController on scope --->
+		<cfset controller = getExtensionController(data)>
+		<!--- Parse the incoming input values --->
+		<cfset inputStruct = controller.parseInput(data)>
 		
 		<!--- Include page requested --->
 		<cfinclude template="#arguments.targetPage#">
@@ -46,7 +47,8 @@ Date        :	08/01/2009
 	
 	<!--- getExtensionController --->
     <cffunction name="getExtensionController" output="false" access="private" returntype="any" hint="Get the extension controller">
-    	<cfreturn createObject("component","coldboxExtension.model.ExtensionController").init()>
+    	<cfargument name="data">
+    	<cfreturn createObject("component","coldboxExtension.model.ExtensionController").init(arguments.data)>
     </cffunction>
 
 	

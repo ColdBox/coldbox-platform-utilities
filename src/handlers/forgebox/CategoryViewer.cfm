@@ -19,7 +19,6 @@ entries = forgeBox.getEntries(typeSlug=inputStruct.category,orderBy=inputStruct.
 // Destination Dir
 updateURL 		= controller.getUtility().getCurrentURL(removeTemplate=true) & "ForgeBoxInstaller.cfm";
 destinationDir 	= data.event.ide.projectview.resource.xmlAttributes.path;
-	
 </cfscript>
 <!--- Output --->
 <cfheader name="Content-Type" value="text/xml">  
@@ -82,6 +81,8 @@ destinationDir 	= data.event.ide.projectview.resource.xmlAttributes.path;
 							<input type="hidden" name="destinationDir" value="#destinationDir#" />
 							<input type="hidden" name="downloadFile"   value="#entries.downloadURL#" />
 							<input type="hidden" name="slug"  		   value="#entries.slug#" />
+							<input type="hidden" name="projectName"	   value="#controller.getProjectInfo().projectName#" />
+							<input type="hidden" name="callBackURL"	   value="#controller.getCallBackURL()#" />
 							
 							<div class="align-center">
 								<input id="updateButton#entries.currentRow#" type="submit" value="Install"/>
