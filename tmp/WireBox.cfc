@@ -51,56 +51,6 @@ Description :
 		};
 		
 		// Map Bindings below
-		map("ColdboxFactory").to("coldbox.system.ioc.ColdboxFactory")
-			.asSingleton()
-			.noAutowire();
-		map("datasourceBean").toFactoryMethod(factory="ColdBoxFactory",method="getDatasource")
-			.methodArg(name="alias",value="coldboxreader")
-			.asSingleton()
-			.noAutowire();
-		map("feedReader").toFactoryMethod(factory="ColdBoxFactory",method="getPlugin")
-			.methodArg(name="plugin",value="feedReader")
-			.methodArg(name="plugin",value="feedReader")
-			.asSingleton()
-			.noAutowire();
-		map("anonBean:E609998BAF").toFactoryMethod(factory="TransferConfigFactory",method="getTransferConfig")
-			.methodArg(name="configPath",value="${Transfer_configPath}")
-			.methodArg(name="definitionPath",value="${Transfer_definitionPath}")
-			.methodArg(name="dsnBean",ref="CodexDatasource")
-			.asSingleton()
-			.noAutowire();
-		map("TransferFactory").to("transfer.TransferFactory")
-			.initArg(name="configuration",ref="anonBean:E609998BAF")
-			.asSingleton()
-			.noAutowire();
-		map("feedDAO").to("coldbox.samples.applications.ColdBoxReader.components.dao.feed")
-			.initArg(name="dsnBean",ref="datasourceBean")
-			.noAutowire();
-		map("feedService").to("coldbox.samples.applications.ColdBoxReader.components.services.feedService")
-			.initArg(name="feedDAO",ref="feedDAO")
-			.initArg(name="ModelBasePath",value="${ModelBasePath}")
-			.initArg(name="feedReader",ref="feedReader")
-			.asSingleton()
-			.noAutowire();
-		map("tagDAO").to("coldbox.samples.applications.ColdBoxReader.components.dao.tags")
-			.initArg(name="dsnBean",ref="datasourceBean")
-			.noAutowire();
-		map("tagService").to("coldbox.samples.applications.ColdBoxReader.components.services.tagService")
-			.initArg(name="tagDAO",ref="tagDAO")
-			.initArg(name="ModelBasePath",value="${ModelBasePath}")
-			.asSingleton()
-			.noAutowire();
-		map("usersDAO").to("coldbox.samples.applications.ColdBoxReader.components.dao.users")
-			.initArg(name="dsnBean",ref="datasourceBean")
-			.noAutowire();
-		map("userBean").to("coldbox.samples.applications.ColdBoxReader.components.beans.userBean")
-			.noAutowire();
-		map("userService").to("coldbox.samples.applications.ColdBoxReader.components.services.userService")
-			.initArg(name="usersDAO",ref="usersDAO")
-			.initArg(name="ModelBasePath",value="${ModelBasePath}")
-			.initArg(name="OwnerEmail",value="${OwnerEmail}")
-			.asSingleton()
-			.noAutowire();
 
 	}	
 </cfscript>

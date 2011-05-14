@@ -36,6 +36,36 @@
 	
     </cffunction>
     
+    <!--- refreshProject --->    
+    <cffunction name="refreshProject" output="false" access="public" returntype="any" hint="Refresh a project via command URL">    
+    	<cfargument name="projectName">
+		<cfargument name="callBackURL" type="any" required="false" default="#getCallBackURL()#"/>
+			
+		<cfset var commandXML = "">
+		
+		<!--- Project Refresh Command --->
+		<cfsavecontent variable="commandXML">
+		<cfoutput>
+		<response> 
+		<ide> 
+		    <commands> 
+		        <command type="refreshProject"> 
+					 <params> 
+					  	<param key="projectname" value="#arguments.projectName#" /> 
+					 </params> 
+					</command> 
+		    </commands>     
+		</ide> 
+		</response> 
+		</cfoutput> 	
+		</cfsavecontent>
+		
+		<!--- Send Command --->
+		<cfthread name="callbackCommandThread" commandXML="#commandXML#" callbackURL="#arguments.callBackURL#">
+			<cfset sendCommand(attributes.commandXMl,attributes.callBackURL)>
+		</cfthread>
+    </cffunction>
+    
     <!--- parseInput --->
     <cffunction name="parseInput" output="false" access="public" returntype="any" hint="Parse Input">
     	<cfargument name="eventData" type="any" required="true" />

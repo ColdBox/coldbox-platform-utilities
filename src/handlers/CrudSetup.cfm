@@ -29,19 +29,15 @@ All handlers receive the following:
 				   tooltip="The plural name of the entity to manage for display purposes"
 				   helpmessage="The plural name of the entity to manage for display purposes" />
 		
-			<input name="GenerateRest" label="RESTful Handlers" type="boolean" 
-				   helpmessage="Generate the handlers as RESTful enabled"
-				   tooltip="Generate the handlers as RESTful enabled" />
-				   
+			<input name="HandlersDirectory" label="Handlers Directory" type="projectdir" 
+				   default="#data.event.ide.projectview.xmlattributes.projectlocation#/handlers" 
+				   helpmessage="Your handlers root directory"
+				   tooltip="Your handlers root directory" />
+			
 			<input name="ViewsDirectory" label="Views Directory" type="projectdir" 
 				   default="#data.event.ide.projectview.xmlattributes.projectlocation#/views" 
 				   helpmessage="Your views root directory"
 				   tooltip="Your views root directory" />
-			
-			<input name="TestsDirectory" label="Integration Tests Directory" type="projectdir" 
-				   default="#data.event.ide.projectview.xmlattributes.projectlocation#/test/integration" 
-				   tooltip="Your integration tests directory"
-				   helpmessage="Your integration tests directory" />
 			
 		</dialog>
 	</ide>

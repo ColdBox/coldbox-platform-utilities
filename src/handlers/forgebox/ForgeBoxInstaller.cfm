@@ -30,9 +30,14 @@ All handlers receive the following:
 		results.error = true;
 		results.logInfo = "The entry requested was not found";
 	}
+	
+	// refresh project
+	controller.refreshProject(form.projectName,form.callBackURL);
 </cfscript>
-<!--- Output --->
-<cfoutput>  
+
+<!--- instructions --->
+<cfsavecontent variable="instructions">
+<cfoutput>
 <html>
 <head>
 	<base href="#controller.getBaseURL()#" />
@@ -42,8 +47,6 @@ All handlers receive the following:
 <body>
 	<cfif results.error>
 		<div class="messagebox">Error Installing Entry please see log below!</div>
-	<cfelse>
-		<div class="messagebox-green">#entry.slug# Installed!</div>
 	</cfif>
 
 	<h2>Install Log</h2>
@@ -70,5 +73,13 @@ All handlers receive the following:
 	<br/><br/>
 </body>
 </html>
-</cfoutput> 
+</cfoutput>
+</cfsavecontent>
 
+<!--- Write Out Instructions --->
+<cfif NOT results.error>
+	<cfset fileWrite(expandLocation & "/#form.slug#-instructions.html", instructions)>
+</cfif>
+
+<!--- Output --->
+<cfoutput>#instructions#</cfoutput>

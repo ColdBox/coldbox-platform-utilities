@@ -7,12 +7,16 @@
 		
 		Version 2.6 <br/>
 		# Updated application templates</br>
-		# Ability to create ORM entities</br>
+		# Ability to create ORM entities. ORM > New ORM Entity</br>
 		# Added more of WireBox dsl namespaces</br>
 		# Updated variable mappings to include the HTML Helper</br>
 		# Internal updates and refactorings</br>
 		# Deprecated old XML configurations</br>
-		# Different views for docs, api, search and more</br>
+		# Different views for docs, api, search and more: Debuggers and Resources</br>
+		# Ability to create base CRUD templates for an ORM entity</br>
+		# on Editor ColdBox: New Action</br>
+		
+		<hr/>
 		
 		Version 2.5 <br/>
 		#coldbox-platform-utilities-10	ColdSpring XML file to WireBox binder conversion tool<br/>
@@ -20,6 +24,8 @@
 		#coldbox-platform-utilities-12	Update wirebox integrations to new standards<br/>
 		#coldbox-platform-utilities-13	wirebox generation of provider methods via editor</br>
 		#coldbox-platform-utilities-14  updated variable mappings to include wirebox classes</br>
+		
+		<hr/>
 		
 		Version 2.4 <br/>
 		#6 Ability to modify the builder settings.xml to add ColdBox variable mappings, requires IDE restart until CFBuilder 2.0 comes out.<br/>
@@ -256,6 +262,7 @@
 				<action name="Provider Method" 		handlerid="WireBoxProviderMethod"		showResponse="true"></action>
 			</menu>
 			<menu name="ColdBox Platform">
+				<action name="Generate Action" handlerid="GenAction" showResponse="true" />
 				<action name="Generate Implicit Handler Methods" handlerid="GenImplicitHandlerMethods" showResponse="true"></action>
 			</menu>
 		</contribution>
@@ -297,6 +304,7 @@
 		
 		<!-- Editor Handlers -->
 		<handler id="GenImplicitHandlerMethods"		type="CFM" filename="editor/ImplicitHandlerMethodsSetup.cfm" />
+		<handler id="GenAction"						type="CFM" filename="editor/ActionSetup.cfm" />
 		
 		<!-- Outline Handlers -->
 		<handler id="GenImplicitActions"		type="CFM" filename="outline/ImplicitActionsSetup.cfm" />

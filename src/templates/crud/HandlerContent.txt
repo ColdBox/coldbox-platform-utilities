@@ -1,80 +1,149 @@
-<cfcomponent output="false" hint="|Description|">
+/**
+* Manage |entityPlural|
+* It will be your responsibility to fine tune this template, add validations, try/catch blocks, logging, etc.
+*/
+component{
 	
-	<cfscript>
-		this.prehandler_only 		= "";
-		this.prehandler_except 		= "";
-		this.posthandler_only 		= "";
-		this.posthandler_except 	= "";
-		this.aroundHandler_only 	= "";
-		this.aroundHandler_except 	= "";		
-		// REST HTTP Methods Allowed for actions.
-		// Ex: this.allowedMethods = {delete='POST,DELETE',index='GET'} */
-		this.allowedMethods 	= {};
-	</cfscript>
-
-<!----------------------------------------- IMPLICIT EVENTS ------------------------------------------>
-
-	<!--- UNCOMMENT HANDLER IMPLICIT EVENTS
+	// DI Virtual Entity Service
+	property name="ormService" inject="entityService:|entity|";
 	
-	<!--- preHandler --->
-	<cffunction name="preHandler" returntype="void" output="false" hint="Executes before any event in this handler">
-		<cfargument name="event">
-		<cfargument name="action" hint="The intercepted action"/>
-		<cfargument name="eventArguments" hint="The event arguments an event is executed with (if any)"/>
-		<cfscript>
-			var rc = event.getCollection();
-		</cfscript>
-	</cffunction>
-
-	<!--- postHandler --->
-	<cffunction name="postHandler" returntype="void" output="false" hint="Executes after any event in this handler">
-		<cfargument name="event">
-		<cfargument name="action" 			hint="The intercepted action"/>
-		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
-		<cfscript>
-			var rc = event.getCollection();
-		</cfscript>
-	</cffunction>
+	// HTTP Method Security
+	this.allowedMethods = {
+		index = "GET", new = "GET", edit = "GET", delete = "POST,DELETE", save = "POST,PUT"
+	};
 	
-	<!--- aroundHandler --->
-	<cffunction name="aroundHandler" returntype="void" output="false" hint="Executes around any event in this handler">
-		<cfargument name="event">
-		<cfargument name="targetAction" 	hint="The intercepted action UDF method"/>
-		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
-		<cfscript>
-			var rc = event.getCollection();
-			// process targeted action
-			argument.targetAction(event);
-		</cfscript>
-	</cffunction>
-
-	<!--- onMissingAction --->
-	<cffunction name="onMissingAction" returntype="void" output="false" hint="Executes if a request action (method) is not found in this handler">
-		<cfargument name="event" >
-		<cfargument name="missingAction" 	hint="The requested action string"/>
-		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
-		<cfscript>
-			var rc = event.getCollection();
-		</cfscript>
-	</cffunction>
+	/**
+	* preHandler()
+	*/
+	function preHandler(event){
+		event.paramValue("format","html");
+	}
+		
+	/**
+	* Listing
+	*/
+	function index(event){
+		var rc = event.getCollection();
+		
+		// Get all |entityPlural|
+		rc.|entityPlural| = ormService.getAll();
+		
+		// RESTful Switch
+		switch(rc.format){
+			// xml,json,jsont,wddx are by default.  Add your own or remove
+			case "xml" : case "json" : case "jsont" : case "wddx" :{
+				event.renderData(data=rc.|entityPlural|,type=rc.format);
+				break;
+			}
+			// HTML
+			default:{
+				event.setView("|entityPlural|/index");
+			}
+		}
+	}	
 	
-	<!--- onError --->
-	<cffunction name="onError" output="false" hint="Executes if ANY action causes an exception">
-		<cfargument name="event">
-		<cfargument name="faultAction" 		hint="The action that caused the error"/>
-		<cfargument name="exception"  		hint="The exception structure"/>
-		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
-		<cfscript>	
-			
-		</cfscript>
-	</cffunction>
+	/**
+	* New Form
+	*/
+	function new(event){
+		var rc = event.getCollection();
+		
+		// get new |entity|
+		rc.|entity| = ormService.new();
+		
+		event.setView("|entityPlural|/new");
+	}	
+
+	/**
+	* Edit Form
+	*/
+	function edit(event){
+		var rc = event.getCollection();
+		
+		// get persisted |entity|
+		rc.|entity| = ormService.get( rc.|pk| );
+		
+		event.setView("|entityPlural|/edit");
+	}	
 	
-	--->
+	/**
+	* View |entity| mostly used for RESTful services only.
+	*/
+	function show(event){
+		var rc = event.getCollection();
+		
+		// Get requested entity by id
+		rc.|entity| = ormService.get( rc.|pk| );
+		
+		switch(rc.format){
+			// xml,json,jsont,wddx are by default.  Add your own or remove
+			case "xml" : case "json" : case "jsont" : case "wddx" :{
+				event.renderData(data=rc.|entity|,type=rc.format);
+				break;
+			}
+			// HTML
+			default:{
+				setNextEvent('|entityPlural|');
+			}
+		}
+	}
 
-<!------------------------------------------- PUBLIC EVENTS ------------------------------------------>
+	/**
+	* Save and Update
+	*/
+	function save(event){
+		var rc = event.getCollection();
+		
+		// get |entity| to persist or update and populate it with incoming form
+		rc.|entity| = populateModel(model=ormService.get( rc.|pk| ),excludes="rc.|pk|");
+		
+		// Do your validations here
+		
+		// Save it
+		ormService.save( rc.|entity| );
+		
+		// RESTful Handler
+		switch(rc.format){
+			// xml,json,jsont,wddx are by default.  Add your own or remove
+			case "xml" : case "json" : case "jsont" : case "wddx" :{
+				event.renderData(data=rc.|entity|,type=rc.format,location="/|entityPlural|/show/#rc.|entity|.get|pk|()#");
+				break;
+			}
+			// HTML
+			default:{
+				// Show a nice messagebox
+				getplugin("MessageBox").info("|entity| Created!");
+				// Redirect to listing
+				setNextEvent('|entityPlural|');
+			}
+		}
+	}	
 
-|EventActions|
-
-<!------------------------------------------- PRIVATE EVENTS ------------------------------------------>
-
-</cfcomponent>
+	/**
+	* Delete
+	*/
+	function delete(event){
+		var rc = event.getCollection();
+		
+		// Delete record by ID
+		var removed = ormService.deleteById( rc.|pk| );
+		
+		// RESTful Handler
+		switch(rc.format){
+			// xml,json,jsont,wddx are by default.  Add your own or remove
+			case "xml" : case "json" : case "jsont" : case "wddx" :{
+				var restData = {deleted=removed};
+				event.renderData(data=restData,type=rc.format);
+				break;
+			}
+			// HTML
+			default:{
+				// Show a nice messagebox
+				getplugin("MessageBox").warn("|entity| Poofed!");
+				// Redirect to listing
+				setNextEvent('|entityPlural|');
+			}
+		}
+	}	
+	
+}

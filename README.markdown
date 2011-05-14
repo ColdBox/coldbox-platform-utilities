@@ -1,4 +1,17 @@
 A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
+
+Version 2.6 <br/>
+# Updated application templates</br>
+# Ability to create ORM entities. ORM > New ORM Entity</br>
+# Added more of WireBox dsl namespaces</br>
+# Updated variable mappings to include the HTML Helper</br>
+# Internal updates and refactorings</br>
+# Deprecated old XML configurations</br>
+# Different views for docs, api, search and more: Debuggers and Resources</br>
+# Ability to create base CRUD templates for an ORM entity</br>
+# on Editor ColdBox: New Action</br>
+
+<hr/>
 		
 Version 2.5 <br/>
 #coldbox-platform-utilities-10	ColdSpring XML file to WireBox binder conversion tool<br/>

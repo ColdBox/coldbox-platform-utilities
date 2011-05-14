@@ -1,6 +1,35 @@
 <cfcomponent output="false">
 <cfscript>
-
+	
+	function entityPropertyToStruct(str){
+		var x =1;
+		var map = {};
+		var propertyList = "";
+		
+		arguments.str = REReplaceNoCase(arguments.str,"(cf)?property","");
+		arguments.str = REReplaceNoCase(arguments.str," {2,}"," ");			
+		
+		propertyList = listToArray(arguments.str," ");
+		
+		for(x=1; x lte arrayLen(propertyList);x++){
+			map[ getToken( propertyList[x], 1, "=") ] = reREplace( getToken( propertyList[x], 2, "="), "'|#chr(34)#","","all");
+		}
+		
+		// add defaults to it
+		if( NOT structKeyExists(map,"fieldType") ){ map.fieldType = "column"; }
+		if( NOT structKeyExists(map,"persistent") ){ map.persistent = true; }
+		if( NOT structKeyExists(map,"formula") ){ map.formula = ""; }
+		if( NOT structKeyExists(map,"readonly") ){ map.readonly = false; }
+		
+		// Add column isValid depending if it is persistable
+		map.isPersistable = true;
+		if( NOT map.persistent OR len(map.formula) OR map.readonly ){
+			map.isPersistable = false;
+		}
+		
+		return map;
+	}
+	
 	function getInjectionDSLArray(){
 		var injectionDSL = [
 		"ioc","ocm","model","webservice","coldbox","coldbox:setting:","coldbox:plugin",
