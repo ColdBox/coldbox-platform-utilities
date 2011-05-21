@@ -323,7 +323,7 @@
 		<!-- Resources -->
 		<handler id="ExtensionHelp" type="CFM" filename="resources/ExtensionHelp.cfm" />
 		<!-- <handler id="ColdBoxAPI" 	type="CFM" filename="resources/ColdBoxAPI.cfm" /> -->
-		<handler id="ColdBoxAPI" 	type="CFM" filename="test.cfm" />
+		<handler id="ColdBoxAPI" 	type="CFM" filename="resources/ColdBoxAPI.cfm" />
 		<handler id="ColdBoxSearch" type="CFM" filename="resources/ColdBoxSearch.cfm" />
 		<handler id="ColdBoxDocs" 	type="CFM" filename="resources/ColdBoxDocs.cfm" />
 		
