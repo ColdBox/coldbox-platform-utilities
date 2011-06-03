@@ -87,14 +87,14 @@ Description :
 			.methodArg(name="alias",value="codex")
 			.asSingleton()
 			.noAutowire();
-		map("anonBean:BFC2E47809").toFactoryMethod(factory="TransferConfigFactory",method="getTransferConfig")
+		map("anonBean:E8E7CE0427").toFactoryMethod(factory="TransferConfigFactory",method="getTransferConfig")
 			.methodArg(name="configPath",value="${Transfer_configPath}")
 			.methodArg(name="definitionPath",value="${Transfer_definitionPath}")
 			.methodArg(name="dsnBean",ref="CodexDatasource")
 			.asSingleton()
 			.noAutowire();
 		map("TransferFactory").to("transfer.TransferFactory")
-			.initArg(name="configuration",ref="anonBean:BFC2E47809")
+			.initArg(name="configuration",ref="anonBean:E8E7CE0427")
 			.asSingleton()
 			.noAutowire();
 		map("Transfer").toFactoryMethod(factory="TransferFactory",method="getTransfer")

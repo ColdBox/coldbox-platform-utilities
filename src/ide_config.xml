@@ -5,6 +5,13 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
+		Version 2.7 <br/>
+		# Updated application templates</br>
+		# Creation of WireBox Aspects</br>
+		# Fixes for API Live Views</br>
+		
+		<hr/>
+		
 		Version 2.6 <br/>
 		# Updated application templates</br>
 		# Ability to create ORM entities. ORM > New ORM Entity</br>
@@ -239,6 +246,9 @@
 					<action name="New Binder" 		handlerid="WireBoxGenBinder"		showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
+					<action name="New AOP Aspect" 		handlerid="wireBoxGenAspect"		showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
 				</menu>
 			</menu>
 			
@@ -342,6 +352,8 @@
 		<handler id="WireBoxMMToWireBox" 			type="CFM" filename="wirebox/WireBoxMMToWireBox.cfm" />
 		<handler id="WireBoxGenBinder" 				type="CFM" filename="wirebox/WireBoxGenBinder.cfm" />
 		<handler id="WireBoxProviderMethod" 		type="CFM" filename="wirebox/WireBoxProviderMethod.cfm" />
+		<handler id="wireBoxGenAspect" 				type="CFM" filename="wirebox/WireBoxGenAspect.cfm" />
+		
 		
 		<!-- Views -->
 		<handler id="ViewApiDocs"  type="CFM" filename="views/APIDocs.cfm" />
