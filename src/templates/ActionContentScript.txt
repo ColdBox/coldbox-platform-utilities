@@ -1,5 +1,3 @@
-	function |action|(event){
-		var rc = event.getCollection();
-		
+	function |action|(event,rc,prc){
 		event.setView("|Name|/|action|");
 	}	

@@ -1,6 +1,6 @@
 	<cffunction name="|action|" output="false" hint="|action|">
 		<cfargument name="event">
-		<cfset var rc = event.getCollection()>
-		
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfset event.setView("|Name|/|action|")>
 	</cffunction>
