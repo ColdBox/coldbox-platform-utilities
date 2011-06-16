@@ -54,7 +54,7 @@ if( NOT inputStruct.script ){
 		<cfscript>
 			var rc = event.getCollection();
 			// process targeted action
-			argument.targetAction(event);
+			argument.targetAction(event,event.getCollection(),event.getCollection(private=true));
 		</cfscript>
 	</cffunction>
 	');
@@ -83,7 +83,7 @@ else{
 	function around#action#(event,targetAction,eventArguments){
 		var rc 	= event.getCollection();
 		// executed targeted action
-		arguments.targetAction(event);
+		arguments.targetAction(event,event.getCollection(),event.getCollection(private=true));
 	}
 	');
 	}

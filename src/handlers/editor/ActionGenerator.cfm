@@ -19,6 +19,8 @@ if( NOT inputStruct.script ){
 	<!--- #inputStruct.name# --->
 	<cffunction name="#inputStruct.name#" returntype="any" output="false">
 		<cfargument name="event">
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfscript>
 			var rc = event.getCollection();
 			var prc = event.getCollection(private=true);
@@ -49,7 +51,7 @@ if( inputStruct.generateViews ){
 	/**
 	* #inputStruct.name#
 	*/
-	function #inputStruct.name#(event){
+	function #inputStruct.name#(event,rc,prc){
 		var rc = event.getCollection();
 		var prc = event.getCollection(private=true);
 	}
