@@ -6,6 +6,8 @@
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
 		Version 2.7 <br/>
+		# Added apidocs.coldbox.org quick view
+		# Updated code generation to 3.1 standards </br>
 		# Updated application templates</br>
 		# Creation of WireBox Aspects</br>
 		# Fixes for API Live Views</br>
@@ -130,7 +132,7 @@
 		- Added callback features <br/>
 		- Added rewrite configurations <br/>
 	]]></description>	
-	<version>2.6</version>
+	<version>2.7</version>
 	<license> Copyright since [2009] [Ortus Solutions, Corp - Luis Majano]
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -226,10 +228,11 @@
 				
 				<!-- Resources -->
 				<menu name="Resources">
-					<action name="ColdBox Wiki Docs" 	handlerid="ColdBoxDocs"		showResponse="true"></action>
-					<action name="ColdBox Live Search" 	handlerid="ColdBoxSearch"	showResponse="true"></action>
-					<action name="ColdBox Live API" 	handlerid="ColdBoxAPI"		showResponse="true"></action>
-					<action name="Extension Help" 		handlerid="ExtensionHelp"	showResponse="true"></action>
+					<action name="ColdBox Quick Docs" 	handlerid="ColdBoxQuickDocs"	showResponse="true"></action>
+					<action name="ColdBox Wiki Docs" 	handlerid="ColdBoxDocs"			showResponse="true"></action>
+					<action name="ColdBox Live Search" 	handlerid="ColdBoxSearch"		showResponse="true"></action>
+					<action name="ColdBox Live API" 	handlerid="ColdBoxAPI"			showResponse="true"></action>
+					<action name="Extension Help" 		handlerid="ExtensionHelp"		showResponse="true"></action>
 				</menu>
 				
 				<!--AutoUpdate -->
@@ -331,11 +334,11 @@
 		<handler id="AutoUpdateCheck" type="CFM" filename="AutoUpdateCheck.cfm" />
 		
 		<!-- Resources -->
-		<handler id="ExtensionHelp" type="CFM" filename="resources/ExtensionHelp.cfm" />
-		<!-- <handler id="ColdBoxAPI" 	type="CFM" filename="resources/ColdBoxAPI.cfm" /> -->
-		<handler id="ColdBoxAPI" 	type="CFM" filename="resources/ColdBoxAPI.cfm" />
-		<handler id="ColdBoxSearch" type="CFM" filename="resources/ColdBoxSearch.cfm" />
-		<handler id="ColdBoxDocs" 	type="CFM" filename="resources/ColdBoxDocs.cfm" />
+		<handler id="ExtensionHelp" 	type="CFM" filename="resources/ExtensionHelp.cfm" />
+		<handler id="ColdBoxAPI" 		type="CFM" filename="resources/ColdBoxAPI.cfm" />
+		<handler id="ColdBoxQuickDocs" 	type="CFM" filename="resources/ColdBoxQuickDocs.cfm" />
+		<handler id="ColdBoxSearch"	 	type="CFM" filename="resources/ColdBoxSearch.cfm" />
+		<handler id="ColdBoxDocs" 		type="CFM" filename="resources/ColdBoxDocs.cfm" />
 		
 		<!-- Debugger -->
 		<handler id="DebuggerProfiler" 	type="CFM" filename="debugger/Profiler.cfm" />

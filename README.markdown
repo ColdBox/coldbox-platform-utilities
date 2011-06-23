@@ -1,5 +1,12 @@
 A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 
+Version 2.7 <br/>
+# Updated application templates</br>
+# Creation of WireBox Aspects</br>
+# Fixes for API Live Views</br>
+
+<hr/>
+		
 Version 2.6 <br/>
 # Updated application templates</br>
 # Ability to create ORM entities. ORM > New ORM Entity</br>
