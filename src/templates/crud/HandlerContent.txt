@@ -22,9 +22,7 @@ component{
 	/**
 	* Listing
 	*/
-	function index(event){
-		var rc = event.getCollection();
-		
+	function index(event,rc,prc){
 		// Get all |entityPlural|
 		rc.|entityPlural| = ormService.getAll();
 		
@@ -45,8 +43,7 @@ component{
 	/**
 	* New Form
 	*/
-	function new(event){
-		var rc = event.getCollection();
+	function new(event,rc,prc){
 		
 		// get new |entity|
 		rc.|entity| = ormService.new();
@@ -57,8 +54,7 @@ component{
 	/**
 	* Edit Form
 	*/
-	function edit(event){
-		var rc = event.getCollection();
+	function edit(event,rc,prc){
 		
 		// get persisted |entity|
 		rc.|entity| = ormService.get( rc.|pk| );
@@ -69,8 +65,7 @@ component{
 	/**
 	* View |entity| mostly used for RESTful services only.
 	*/
-	function show(event){
-		var rc = event.getCollection();
+	function show(event,rc,prc){
 		
 		// Get requested entity by id
 		rc.|entity| = ormService.get( rc.|pk| );
@@ -91,11 +86,10 @@ component{
 	/**
 	* Save and Update
 	*/
-	function save(event){
-		var rc = event.getCollection();
+	function save(event,rc,prc){
 		
 		// get |entity| to persist or update and populate it with incoming form
-		rc.|entity| = populateModel(model=ormService.get( rc.|pk| ),excludes="rc.|pk|");
+		rc.|entity| = populateModel(model=ormService.get( rc.|pk| ),exclude="|pk|");
 		
 		// Do your validations here
 		
@@ -122,8 +116,7 @@ component{
 	/**
 	* Delete
 	*/
-	function delete(event){
-		var rc = event.getCollection();
+	function delete(event,rc,prc){
 		
 		// Delete record by ID
 		var removed = ormService.deleteById( rc.|pk| );
