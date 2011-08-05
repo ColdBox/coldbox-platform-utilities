@@ -22,8 +22,6 @@ if( NOT inputStruct.script ){
 		<cfargument name="rc">
 		<cfargument name="prc">
 		<cfscript>
-			var rc = event.getCollection();
-			var prc = event.getCollection(private=true);
 			
 			
 		</cfscript>
@@ -52,8 +50,7 @@ if( inputStruct.generateViews ){
 	* #inputStruct.name#
 	*/
 	function #inputStruct.name#(event,rc,prc){
-		var rc = event.getCollection();
-		var prc = event.getCollection(private=true);
+	
 	}
 </cfoutput>
 </cfsavecontent>
