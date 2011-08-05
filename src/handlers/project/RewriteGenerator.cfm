@@ -11,7 +11,7 @@ Date        :	08/01/2009
 // Destinations
 projectLocation 	= data.event.ide.projectview.XMLAttributes.projectLocation & "/";
 routesLocation 		= projectLocation & "config/Routes.cfm";
-templatesLocation 	= expandPath('../templates/ses') & "/";
+templatesLocation 	= expandPath('/coldboxExtension/templates/ses') & "/";
 
 // Move rewrite engine
 switch(inputStruct.rewriteEngine){
