@@ -30,8 +30,8 @@ All handlers receive the following:
 <!--- Read in Templates --->
 <cffile action="read" file="#ExpandPath('../')#/templates/HandlerContent#scriptPrefix#.txt" variable="handlerContent">
 <cffile action="read" file="#ExpandPath('../')#/templates/ActionContent#scriptPrefix#.txt"  variable="actionContent">
-<cffile action="read" file="#ExpandPath('../')#/templates/HandlerTestContent#scriptPrefix#.txt" variable="handlerTestContent">
-<cffile action="read" file="#ExpandPath('../')#/templates/HandlerTestCaseContent#scriptPrefix#.txt" variable="handlerTestCaseContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/testing/HandlerTestContent#scriptPrefix#.txt" variable="handlerTestContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/testing/HandlerTestCaseContent#scriptPrefix#.txt" variable="handlerTestCaseContent">
 
 
 <!--- Start text replacements --->

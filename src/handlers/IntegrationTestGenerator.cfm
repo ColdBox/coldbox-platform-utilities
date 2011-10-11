@@ -24,8 +24,8 @@ All handlers receive the following:
 </cfif>
 
 <!--- Read in Templates --->
-<cffile action="read" file="#ExpandPath('../')#/templates/HandlerTestContent#scriptPrefix#.txt"     variable="handlerTestContent">
-<cffile action="read" file="#ExpandPath('../')#/templates/HandlerTestCaseContent#scriptPrefix#.txt" variable="handlerTestCaseContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/testing/HandlerTestContent#scriptPrefix#.txt"     variable="handlerTestContent">
+<cffile action="read" file="#ExpandPath('../')#/templates/testing/HandlerTestCaseContent#scriptPrefix#.txt" variable="handlerTestCaseContent">
 
 <!--- Start text replacements --->
 <cfset handlerTestContent = replaceNoCase(handlerTestContent,"|appMapping|",inputstruct.appMapping,"all") />
