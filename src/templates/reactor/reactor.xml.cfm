@@ -1,5 +1,0 @@
-<reactor>
- <objects>
-   
- </objects>
-</reactor>
