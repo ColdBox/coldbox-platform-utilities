@@ -66,7 +66,7 @@ All handlers receive the following:
 <cfif inputStruct.GenerateTest>
 	<!--- Read test template --->
 	<cffile action="read" file="#ExpandPath('../')#/templates/testing/ModelTestContent#scriptPrefix#.txt" variable="modelTestContent">
-	<cfset modelTestContent = replaceNoCase(modelTestContent,"|modelName|","{AppMapping.}model.#modelName#","all") />
+	<cfset modelTestContent = replaceNoCase(modelTestContent,"|modelName|","{PATH_TO.}#modelName#","all") />
 	<!--- Write it back out --->
 	<cftry>
 		<cffile action="write" file="#inputStruct.TestsDirectory#/#modelName#Test.cfc" mode ="777" output="#modelTestContent#">

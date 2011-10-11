@@ -8,6 +8,8 @@
 		Version 2.8 <br/>
 		# Module generation, ask for entry point and create entry point + /:handler/:action? route.
 		# Updated application templates</br>
+		# Model generation now generatest tests</br>
+		# Interceptor generation now generatest tests</br>
 		
 		<hr/>
 		
