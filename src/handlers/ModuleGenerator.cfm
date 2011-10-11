@@ -5,29 +5,11 @@ www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
 ********************************************************************************
 
 Author      :	Sana Ullah & Luis Majano
-Date        :	08/01/2009
 
 All handlers receive the following:
 - data 		  : The data parsed
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
-
-<!--- ======================================================================= --->
-<cfif not len(inputstruct.title)>
-	<cfset message = "The module name cannot be empty" />
-	<cfheader name="Content-Type" value="text/xml">  
-	<response status="success" showresponse="true">  
-		<ide>  
-			<dialog width="550" height="350" />  
-			<body>
-			<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
-			</body>
-		</ide>
-	</response>
-	
-	<cfabort>
-</cfif>
-<!--- ======================================================================= --->
 
 <cfset message 			= "" />
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />

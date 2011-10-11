@@ -54,7 +54,7 @@ Optional Methods
 	// If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
 	this.layoutParentLookup = true;
 	// Module Entry Point
-	this.entryPoint			= "@title@:home.index";
+	this.entryPoint			= "@title@";
 	
 	function configure(){
 		
@@ -85,7 +85,10 @@ Optional Methods
 		
 		// SES Routes
 		routes = [
-			//{pattern="/api-docs", handler="api",action="index"}		
+			// Module Entry Point
+			{pattern="/", handler="home",action="index"},
+			// Convention Route
+			{pattern="/:handler/:action?"}		
 		];		
 		
 		// Custom Declared Points
@@ -96,6 +99,9 @@ Optional Methods
 		// Custom Declared Interceptors
 		interceptors = [
 		];
+		
+		// Binder Mappings
+		// binder.map("Alias").to("#moduleMapping#.model.MyService");
 		
 	}
 	

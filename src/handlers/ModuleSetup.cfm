@@ -5,13 +5,11 @@ www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
 ********************************************************************************
 
 Author      :	Sana Ullah & Luis Majano
-Date        :	08/01/2009
 
 All handlers receive the following:
 - data 		  : The data parsed
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
-
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>  
 <response status="success" type="default">  
@@ -24,6 +22,7 @@ All handlers receive the following:
 			<input name="AuthorURL" label="Module Author Url"  type="string" required="true" default="http://" tooltip="Enter Module Author website URL" />
 			<input name="Description" label="Module description"  type="string" required="true" default="" tooltip="Enter module description" />
 			<input name="Version" label="Module version"  type="string" required="true" default="1.0" tooltip="Enter module version" />
+			
 		</dialog>
 	</ide>
 </response>  
