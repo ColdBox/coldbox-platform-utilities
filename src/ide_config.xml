@@ -9,7 +9,8 @@
 		# Module generation, ask for entry point and create entry point + /:handler/:action? route.
 		# Updated application templates</br>
 		# Model generation now generatest tests</br>
-		# Interceptor generation now generatest tests</br>
+		# Interceptor generation now generates tests</br>
+		# Plugin generation now generates tests</br>
 		
 		<hr/>
 		

@@ -16,7 +16,7 @@ All handlers receive the following:
 <cfoutput>  
 <response status="success" type="default">  
 	<ide handlerfile="PluginGenerator.cfm"> 
-		<dialog width="600" height="550" title="ColdBox Plugin Wizard" image="includes/images/ColdBox_Icon.png">  
+		<dialog width="700" height="550" title="ColdBox Plugin Wizard" image="includes/images/ColdBox_Icon.png">  
 			<input name="Name" label="Plugin Name" required="true"  type="string" default="" tooltip="Enter plugin cfc name without .cfc" />
 			<input name="Script" label="Script Based CFC" type="boolean" checked="false" tooltip="Choose whether to create the cfc in pure script or not." />
 			<input name="Version" label="Plugin version"  type="string" default="1.0" tooltip="Enter plugin version" />
@@ -29,10 +29,19 @@ All handlers receive the following:
 				<option value="Time Persisted" />
 				<option value="Singleton" />
 			</input>	
-			<input name="CacheTimeout" label="Minutes to persist (Time Persisted Only)" type="string" default="" pattern="[0-9]+"
+			<input name="CacheTimeout" label="Timeout (Time Persisted Only)" type="string" default="" pattern="[0-9]+"
 			       errormessage="Numeric values only."
 				   helpmessage="Minutes to persist if using Time Persisted type."
 				   tooltip="Minutes to persist if using Time Persisted type."/>
+			
+			<input name="GenerateTest" label="Generate Unit Test" type="boolean" 
+				   tooltip="Generate the unit test component"
+				   helpmessage="Generate the unit test component" />
+			
+			<input name="TestsDirectory" label="Unit Tests Directory" type="projectdir" 
+				   default="#data.event.ide.projectview.xmlattributes.projectlocation#/test/unit" 
+				   tooltip="Your unit tests directory"
+				   helpmessage="Your unit tests directory" />
 		</dialog>
 	</ide>
 </response>  

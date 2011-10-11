@@ -1,0 +1,18 @@
+<!---
+* The base plugin test case will use the 'plugin' annotation as the instantiation path
+* and then create it, prepare it for mocking and then place it in the variables scope as 'plugin'. It is your
+* responsibility to update the plugin annotation instantiation path and init your plugin.
+--->
+<cfcomponent extends="coldbox.system.testing.BasePluginTest" plugin="|pluginName|">
+	
+	<cffunction name="setUp" returntype="void" output="false" hint="Remove if not needed.">
+		<cfscript>
+		super.setup();
+		
+		// init the plugin object
+		plugin.init();	
+		
+		</cfscript>
+	</cffunction>
+	
+</cfcomponent>

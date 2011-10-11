@@ -1,0 +1,17 @@
+/**
+* The base plugin test case will use the 'plugin' annotation as the instantiation path
+* and then create it, prepare it for mocking and then place it in the variables scope as 'plugin'. It is your
+* responsibility to update the plugin annotation instantiation path and init your plugin.
+*/
+component extends="coldbox.system.testing.BasePluginTest" plugin="|pluginName|"{
+	
+	void function setup(){
+		super.setup();
+		
+		// init the plugin object
+		plugin.init();	
+		
+	}
+
+
+}

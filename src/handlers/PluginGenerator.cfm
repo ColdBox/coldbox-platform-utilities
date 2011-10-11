@@ -5,7 +5,6 @@ www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
 ********************************************************************************
 
 Author      :	Sana Ullah & Luis Majano
-Date        :	08/01/2009
 
 All handlers receive the following:
 - data 		  : The data parsed
@@ -19,28 +18,10 @@ All handlers receive the following:
 <cfset defaultVersion		= "1.0" />
 <cfset defaultCache			= "true" />
 <cfset defaultCacheTimeout	= "" />
-
-<!--- ======================================================================= --->
-<cfif not len(inputstruct.Name)>
-	<cfset message = "The plugin name cannot be empty" />
-	<cfheader name="Content-Type" value="text/xml">  
-	<response status="success" showresponse="true">  
-		<ide>  
-			<dialog width="550" height="350" />  
-			<body>
-			<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
-			</body>
-		</ide>
-	</response>
-	
-	<cfabort>
-</cfif>
-<!--- ======================================================================= --->
-
-<cfset message = "" />
-<cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
-<cfset pluginName		= inputstruct.Name />
-<cfset scriptPrefix = "">
+<cfset message 				= "" />
+<cfset expandLocation		= data.event.ide.projectview.resource.xmlAttributes.path />
+<cfset pluginName			= inputstruct.Name />
+<cfset scriptPrefix 		= "">
 <!--- Script? --->
 <cfif inputStruct.Script>
 	<cfset scriptPrefix = "Script">
@@ -87,6 +68,7 @@ All handlers receive the following:
 		<cfset persistence = 'singleton="true"'>
 	</cfcase>
 </cfswitch>
+
 <!--- Persistence Update --->
 <cfset pluginContent = replaceNoCase(pluginContent,"|pluginPersistence|",persistence) />
 
@@ -98,6 +80,21 @@ All handlers receive the following:
 		<cfset message = "There was problem creating plugin: #cfcatch.message#" />
 	</cfcatch>
 </cftry>
+
+<!--- Testing? --->
+<cfif inputStruct.GenerateTest>
+	<!--- Read test template --->
+	<cffile action="read" file="#ExpandPath('../')#/templates/testing/PluginTestContent#scriptPrefix#.txt" variable="pluginTestContent">
+	<cfset pluginTestContent = replaceNoCase(pluginTestContent,"|pluginName|","{PATH_TO.}#pluginName#","all") />
+	<!--- Write it back out --->
+	<cftry>
+		<cffile action="write" file="#inputStruct.TestsDirectory#/#pluginName#Test.cfc" mode ="777" output="#pluginTestContent#">
+		<cfset message &= "<br/>Generated new test plugin object." />
+		<cfcatch type="any">
+			<cfset message &= "<br/>There was problem creating plugin test object: #cfcatch.message#" />
+		</cfcatch>
+	</cftry>
+</cfif>
 
 <cfheader name="Content-Type" value="text/xml">  
 <cfoutput>
@@ -114,6 +111,13 @@ All handlers receive the following:
 			    <param key="filename" value="#expandLocation#/#pluginName#.cfc" />
 			</params>
 		</command>
+		<cfif inputStruct.GenerateTest>
+		<command type="openfile">
+			<params>
+			    <param key="filename" value="#inputStruct.TestsDirectory#/#pluginName#Test.cfc" />
+			</params>
+		</command>
+		</cfif>
 	</commands>
 	<dialog width="550" height="350" title="ColdBox Plugin Wizard" image="includes/images/ColdBox_Icon.png"/>  
 	<body>
