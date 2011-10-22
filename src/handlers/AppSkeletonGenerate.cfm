@@ -20,7 +20,6 @@ All handlers receive the following:
 	<cfset expandLocation	= data.event.ide.eventinfo.xmlAttributes.projectLocation >
 	<cfset projectname		= data.event.ide.eventinfo.xmlAttributes.projectname >
 </cfif>
-
 <!--- get the zip file under the skeleton location directory. I ignore any but the first one --->
 <cfdirectory action="list" directory="#expandPath('../skeletons/#inputStruct.ApplicationType#')#" filter="*.zip" name="appSkeletonsZip" />
 
