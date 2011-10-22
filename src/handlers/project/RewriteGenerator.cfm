@@ -17,12 +17,12 @@ templatesLocation 	= expandPath('/coldboxExtension/templates/ses') & "/";
 switch(inputStruct.rewriteEngine){
 	case "mod_rewrite" : {
 		copiedFile = ".htaccess";
-		fileCopy(templatesLocation & ".htaccess", projectLocation);
+		fileCopy(templatesLocation & ".htaccess", projectLocation  & ".htaccess");
 		break;
 	}
 	case "ISAPI" : {
 		copiedFile = "IsapiRewrite4.ini";
-		fileCopy(templatesLocation & "IsapiRewrite4.ini", projectLocation);
+		fileCopy(templatesLocation & "IsapiRewrite4.ini", projectLocation & "IsapiRewrite4.ini");
 		break;
 	}
 }
