@@ -75,7 +75,7 @@
 			var i = 1;
 			
 			// check if empty
-			if( NOT isSimpleValue(arguments.eventData) AND NOT isXML(arguments.eventData) ){
+			if( isStruct(arguments.eventData) ){
 				return inputStruct;
 			}
 			
