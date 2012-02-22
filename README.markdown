@@ -1,6 +1,7 @@
 A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 
 Version 2.8 <br/>
+# Updated to use new ForgeBox API<br/>
 # Ability to generate ActiveEntity's in our ORM modeler<br/>
 # ColdBox 3.5 Companion, no more xml configuration considerations<br/>
 # Module generation, ask for entry point and create entry point + /:handler/:action? route.<br/>
