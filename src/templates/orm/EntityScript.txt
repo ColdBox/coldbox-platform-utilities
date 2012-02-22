@@ -1,7 +1,7 @@
 /**
 * A cool |entityName| entity
 */
-component persistent="true" table="|table|"{
+component persistent="true" table="|table|"|activeEntity|{
 
 	// Primary Key
 	property name="|primaryKey|" fieldtype="id" column="|primaryKeyColumn|" generator="|generator|";

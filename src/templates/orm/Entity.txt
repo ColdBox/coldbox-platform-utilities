@@ -1,4 +1,4 @@
-<cfcomponent persistent="true" table="|table|" output="false" hint="A cool |entity|">
+<cfcomponent persistent="true" table="|table|" output="false" hint="A cool |entity|"|activeEntity|>
 
 	<!--- Primary Key --->
 	<cfproperty name="|primaryKey|" fieldtype="id" column="|primaryKeyColumn|" generator="|generator|">

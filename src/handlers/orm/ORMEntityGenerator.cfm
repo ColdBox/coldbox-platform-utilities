@@ -28,6 +28,14 @@ if( NOT len(inputStruct.table) ){
 }
 entityContent = replaceNoCase( entityContent, "|table|", inputStruct.table,"all" );
 
+// Active Entity
+if( inputStruct.activeEntity ){
+	entityContent = replaceNoCase( entityContent, "|activeEntity|",' extends="coldbox.system.orm.hibernate.ActiveEntity"',"all" );
+}
+else{
+	entityContent = replaceNoCase( entityContent, "|activeEntity|","","all" );
+}
+
 // Primary key
 entityContent = replaceNoCase( entityContent, "|primaryKey|", inputStruct.primaryKey,"all" );
 // Primary Key Column

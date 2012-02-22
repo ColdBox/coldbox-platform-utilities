@@ -30,6 +30,10 @@ generators = [
 				   tooltip="Enter the name of the mapped table or empty for same as entity name"
 				   helpmessage="Enter the name of the mapped table or empty for same as entity name" />					
 			
+			<input name="activeEntity" label="Inherit ActiveEntity" type="boolean" checked="false" 
+				   tooltip="Make is extend from the ColdBox ActiveEntity class."
+				   helpmessage="Make is extend from the ColdBox ActiveEntity class." />
+			
 			<input name="Script" label="Script Based CFC" type="boolean" checked="true" 
 				   tooltip="Choose whether to create the cfc in pure script or not."
 				   helpmessage="Choose whether to create the cfc in pure script or not." />

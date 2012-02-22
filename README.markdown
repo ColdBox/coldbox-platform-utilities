@@ -1,5 +1,19 @@
 A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 
+Version 2.8 <br/>
+# Ability to generate ActiveEntity's in our ORM modeler<br/>
+# ColdBox 3.5 Companion, no more xml configuration considerations<br/>
+# Module generation, ask for entry point and create entry point + /:handler/:action? route.<br/>
+# Updated application templates for version 3.5 release</br>
+# Model generation now generatest tests</br>
+# Interceptor generation now generates tests</br>
+# Plugin generation now generates tests</br>
+# Some ORM generator cleanups</br>
+# Standalone Integration Test Generator</br>
+# Standalone Model Test Generator</br>
+# Standalone Interceptor Test Generator</br>
+# Standalone Plugin Test Generator</br>	
+
 Version 2.7 <br/>
 # Updated application templates</br>
 # Creation of WireBox Aspects</br>
