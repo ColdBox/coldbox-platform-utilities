@@ -6,6 +6,11 @@
 	<!--- Properties --->
 	|properties|
 	
+	<!--- Validation --->
+	<cfset this.constraints = {
+		<!--- Example: age = { required=true, min="18", type="numeric" --->
+	}>
+	
 	<!--- init --->
     <cffunction name="init" output="false" access="public" returntype="any">
     	<cfscript>
