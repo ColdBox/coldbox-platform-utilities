@@ -38,6 +38,7 @@
 		"coldbox:pluginService","coldbox:handlerService","coldbox:moduleService",
 		"coldbox:moduleSettings:","coldbox:moduleConfig:","coldbox:flash",
 		"coldbox:interceptor","coldbox:cacheManager","coldbox:fwConfigBean","coldbox:fwSetting:",
+		"coldbox:validationManager",
 		"entityService","javaLoader","logBox","logBox:root","logBox:logger:","id",
 		"provider",
 		"wirebox","wirebox:parent","wirebox:eventmanager","wirebox:binder","wirebox:populator","wirebox:properties","wirebox:scope:","wirebox:property:"

@@ -1,5 +1,14 @@
 A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 
+Version 2.9 <br/>
+# Updated trim operations on certain values <br/>
+# Updated WireBox injections DSL<br/>
+# Updated ORM entity with validation information<br/>
+# Updated all templates to 3.5 release </br/>
+# Updated ORM property trimming, so spaces are trimmed.<br/>
+# Railo compatible for running extesion<br/>
+	
+	
 Version 2.8 <br/>
 # Updated to use new ForgeBox API<br/>
 # Ability to generate ActiveEntity's in our ORM modeler<br/>
