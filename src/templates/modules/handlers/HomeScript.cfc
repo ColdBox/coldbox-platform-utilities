@@ -3,7 +3,7 @@
 */
 component{
 
-	function index(event){
+	function index(event,rc,prc){
 		event.setView("home/index");
 	}
 

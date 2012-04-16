@@ -142,7 +142,7 @@
 
 	    <cfloop query="contents">
 	        <cfif contents.type eq "file">
-	            <cffile action="copy" source="#arguments.source#/#name#" destination="#arguments.destination#/#name#" nameconflict="#arguments.nameConflict#">
+	            <cffile action="copy" source="#arguments.source#/#name#" destination="#arguments.destination#/#name#">
 	        <cfelseif contents.type eq "dir">
 	            <cfset directoryCopy(arguments.source & "/" & name, arguments.destination & "/" & name, arguments.nameconflict) />
 	        </cfif>

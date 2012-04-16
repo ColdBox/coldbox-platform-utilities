@@ -1,23 +1,22 @@
-<cfcomponent persistent="true" table="test" output="false" hint="A cool |entity|" extends="coldbox.system.orm.hibernate.ActiveEntity">
+/**
+* A cool Test entity
+*/
+component persistent="true" table="tests" extends="coldbox.system.orm.hibernate.ActiveEntity"{
 
-	<!--- Primary Key --->
-	<cfproperty name="id" fieldtype="id" column="id" generator="native">
+	// Primary Key
+	property name="dd" fieldtype="id" column="dd" generator="native";
 	
-	<!--- Properties --->
+	// Properties
+	property name="asf" ormtype="string";	
 	
+	// Validation
+	this.constraints = {
+		// Example: age = { required=true, min="18", type="numeric" }
+	};
 	
-	<!--- Validation --->
-	<cfset this.constraints = {
-		<!--- Example: age = { required=true, min="18", type="numeric" --->
-	}>
+	// Constructor
+	function init(){
 	
-	<!--- init --->
-    <cffunction name="init" output="false" access="public" returntype="any">
-    	<cfscript>
-    		
-    		return this;
-    	</cfscript>
-    </cffunction>
-
-	
-</cfcomponent>
+		return this;
+	}
+}
