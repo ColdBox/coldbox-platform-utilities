@@ -23,7 +23,7 @@ entityContent = fileRead( ExpandPath("/coldboxExtension/templates/orm/Entity#scr
 // entityName
 entityContent = replaceNoCase( entityContent, "|entityName|", inputStruct.name, "all");
 // table
-if( NOT len(inputStruct.table) ){ 
+if( NOT len(inputStruct.table) ){
 	inputStruct.table = inputStruct.name;
 }
 entityContent = replaceNoCase( entityContent, "|table|", inputStruct.table,"all" );
@@ -48,13 +48,13 @@ entityContent = replaceNoCase( entityContent, "|generator|", inputStruct.primary
 
 // Properties
 properties 	= listToArray( inputStruct.properties );
-buffer 		= createObject("java","java.lang.StringBuffer").init(); 
+buffer 		= createObject("java","java.lang.StringBuffer").init();
 for(x=1; x lte arrayLen(properties); x++){
-	
-	propName = getToken( properties[x], 1, ":");
-	propType = getToken( properties[x], 2, ":");
+
+	propName = getToken( trim(properties[x]), 1, ":");
+	propType = getToken( trim(properties[x]), 2, ":");
 	if( NOT len(propType) ){ propType = "string"; }
-	
+
 	if( inputStruct.script ){
 		buffer.append('property name="#propName#" ormtype="#propType#";#chr(13) & chr(9)#');
 	}
@@ -68,10 +68,10 @@ entityContent = replaceNoCase( entityContent, "|properties|", buffer.toString() 
 fileWrite( expandLocation & "/#inputStruct.name#.cfc", entityContent );
 </cfscript>
 
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide>  
+<response status="success" showresponse="true">
+<ide>
 	<commands>
 		<command type="RefreshProject">
 			<params>
@@ -84,7 +84,7 @@ fileWrite( expandLocation & "/#inputStruct.name#.cfc", entityContent );
 			</params>
 		</command>
 	</commands>
-	<dialog width="550" height="350" title="ColdFusion ORM Entity Wizard" image="includes/images/ColdBox_Icon.png"/>  
+	<dialog width="550" height="350" title="ColdFusion ORM Entity Wizard" image="includes/images/ColdBox_Icon.png"/>
 	<body><![CDATA[
 	<html>
 		<head>
@@ -98,7 +98,7 @@ fileWrite( expandLocation & "/#inputStruct.name#.cfc", entityContent );
 			Generated new entity called: #inputStruct.name#.cfc<br/>
 			</p>
 		</body>
-	</html>	
+	</html>
 	]]></body>
 </ide>
 </response>

@@ -74,8 +74,13 @@
 			var inputStruct = StructNew();
 			var i = 1;
 			
-			// check if empty
+			/**
 			if( isStruct(arguments.eventData) ){
+				return inputStruct;
+			}
+			*/
+
+			if( !isXML(arguments.eventData) ){
 				return inputStruct;
 			}
 			
