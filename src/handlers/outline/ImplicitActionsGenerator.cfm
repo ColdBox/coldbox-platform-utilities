@@ -26,6 +26,8 @@ if( NOT inputStruct.script ){
 	buffer.append('
 	<cffunction name="pre#action#" returntype="void" output="false" hint="Executes before the #action# method action">
 		<cfargument name="event">
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfargument name="eventArguments" hint="The event arguments an event is executed with (if any)"/>
 		<cfscript>
 			var rc = event.getCollection();
@@ -38,6 +40,8 @@ if( NOT inputStruct.script ){
 	<cffunction name="post#action#" returntype="void" output="false" hint="Executes after the #action# method action">
 		<cfargument name="event">
 		<cfargument name="action" 			hint="The intercepted action"/>
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
 		<cfscript>
 			var rc = event.getCollection();
@@ -49,6 +53,8 @@ if( NOT inputStruct.script ){
 	buffer.append('
 	<cffunction name="around#action#" returntype="void" output="false" hint="Executes around the #action# method action">
 		<cfargument name="event">
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfargument name="targetAction" 	hint="The intercepted action UDF method"/>
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
 		<cfscript>
@@ -66,21 +72,21 @@ if( NOT inputStruct.script ){
 else{
 	if( inputStruct.preHandler ){
 	buffer.append('
-	function pre#action#(event,action,eventArguments){
+	function pre#action#(event,rc,prc,action,eventArguments){
 		var rc = event.getCollection();
 	}
 	');
 	}
 	if( inputStruct.postHandler ){
 	buffer.append('
-	function post#action#(event,action,eventArguments){
+	function post#action#(event,rc,prc,action,eventArguments){
 		var rc = event.getCollection();
 	}
 	');
 	}
 	if( inputStruct.aroundHandler ){
 	buffer.append('
-	function around#action#(event,targetAction,eventArguments){
+	function around#action#(event,rc,prc,targetAction,eventArguments){
 		var rc 	= event.getCollection();
 		// executed targeted action
 		arguments.targetAction(event,event.getCollection(),event.getCollection(private=true));
@@ -97,18 +103,18 @@ fileWrite(filePath, contents);
 </cfscript>
 
 <!--- Display --->
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide>  
-	<commands> 
-        <command type="refreshfile"> 
-        <params> 
-	        <param key="filename" value="#filePath#" /> 
-        </params> 
-        </command> 
-    </commands> 
-	<dialog width="550" height="350" title="ColdBox Implicit Actions Wizard" image="includes/images/ColdBox_Icon.png"/>  
+<response status="success" showresponse="true">
+<ide>
+	<commands>
+        <command type="refreshfile">
+        <params>
+	        <param key="filename" value="#filePath#" />
+        </params>
+        </command>
+    </commands>
+	<dialog width="550" height="350" title="ColdBox Implicit Actions Wizard" image="includes/images/ColdBox_Icon.png"/>
 	<body><![CDATA[
 	<html>
 		<head>
@@ -122,7 +128,7 @@ fileWrite(filePath, contents);
 			The generated methods have been placed at the bottom of the CFC
 			</p>
 		</body>
-	</html>	
+	</html>
 	]]></body>
 </ide>
 </response>

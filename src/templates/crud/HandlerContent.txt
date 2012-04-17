@@ -15,7 +15,7 @@ component{
 	/**
 	* preHandler()
 	*/
-	function preHandler(event){
+	function preHandler(event,rc,prc){
 		event.paramValue("format","html");
 	}
 		

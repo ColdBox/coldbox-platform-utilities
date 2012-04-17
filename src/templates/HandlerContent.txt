@@ -19,6 +19,8 @@
 	<!--- preHandler --->
 	<cffunction name="preHandler" returntype="void" output="false" hint="Executes before any event in this handler">
 		<cfargument name="event">
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfargument name="action" hint="The intercepted action"/>
 		<cfargument name="eventArguments" hint="The event arguments an event is executed with (if any)"/>
 		<cfscript>
@@ -29,6 +31,8 @@
 	<!--- postHandler --->
 	<cffunction name="postHandler" returntype="void" output="false" hint="Executes after any event in this handler">
 		<cfargument name="event">
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfargument name="action" 			hint="The intercepted action"/>
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
 		<cfscript>
@@ -39,6 +43,8 @@
 	<!--- aroundHandler --->
 	<cffunction name="aroundHandler" returntype="void" output="false" hint="Executes around any event in this handler">
 		<cfargument name="event">
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfargument name="targetAction" 	hint="The intercepted action UDF method"/>
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
 		<cfscript>
@@ -51,6 +57,8 @@
 	<!--- onMissingAction --->
 	<cffunction name="onMissingAction" returntype="void" output="false" hint="Executes if a request action (method) is not found in this handler">
 		<cfargument name="event" >
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfargument name="missingAction" 	hint="The requested action string"/>
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
 		<cfscript>
@@ -61,6 +69,8 @@
 	<!--- onError --->
 	<cffunction name="onError" output="false" hint="Executes if ANY action causes an exception">
 		<cfargument name="event">
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfargument name="faultAction" 		hint="The action that caused the error"/>
 		<cfargument name="exception"  		hint="The exception structure"/>
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
