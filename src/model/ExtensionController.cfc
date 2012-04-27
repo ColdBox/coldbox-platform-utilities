@@ -80,7 +80,10 @@
 			}
 			*/
 
-			if( !isXML(arguments.eventData) ){
+			if( server.coldfusion.productname eq "Railo" and !isXML( arguments.eventData ) ){
+				return inputStruct;
+			}
+			else if( server.coldfusion.productname neq "Railo" and isStruct( arguments.eventData ) ){
 				return inputStruct;
 			}
 			
