@@ -20,6 +20,11 @@ switch(inputStruct.rewriteEngine){
 		fileCopy(templatesLocation & ".htaccess", projectLocation  & ".htaccess");
 		break;
 	}
+	case "IIS 7 Rewrite Module" :{
+		copiedFile = "web.config";
+		fileCopy(templatesLocation & "web.config", projectLocation  & "web.config");
+		break;
+	}
 	case "ISAPI" : {
 		copiedFile = "IsapiRewrite4.ini";
 		fileCopy(templatesLocation & "IsapiRewrite4.ini", projectLocation & "IsapiRewrite4.ini");
@@ -33,10 +38,10 @@ fileWrite(routesLocation,routes);
 
 </cfscript>
 
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide>  
+<response status="success" showresponse="true">
+<ide>
 	<commands>
 		<command type="RefreshProject">
 			<params>
@@ -54,7 +59,7 @@ fileWrite(routesLocation,routes);
 			</params>
 		</command>
 	</commands>
-	<dialog width="650" height="450" title="ColdBox URL Rewrite Rules Created" image="includes/images/ColdBox_Icon.png"/>  
+	<dialog width="650" height="450" title="ColdBox URL Rewrite Rules Created" image="includes/images/ColdBox_Icon.png"/>
 	<body><![CDATA[
 	<html>
 		<head>
@@ -64,7 +69,7 @@ fileWrite(routesLocation,routes);
 		</head>
 		<body>
 			<div class="messagebox-green">Rewrite Rules File Created!</div>
-			
+
 			<h2>Install Log</h2>
 			<div class="consoleLog">
 				<p>
@@ -74,8 +79,8 @@ fileWrite(routesLocation,routes);
 				</p>
 			</div>
 		</body>
-	</html>	
-	
+	</html>
+
 	]]></body>
 </ide>
 </cfoutput>
