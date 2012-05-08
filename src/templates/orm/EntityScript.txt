@@ -16,7 +16,7 @@ component persistent="true" table="|table|"|activeEntity|{
 	
 	// Constructor
 	function init(){
-	
+		|activeEntityInit|
 		return this;
 	}
 }

@@ -4,10 +4,10 @@
 component persistent="true" table="tests" extends="coldbox.system.orm.hibernate.ActiveEntity"{
 
 	// Primary Key
-	property name="dd" fieldtype="id" column="dd" generator="native";
+	property name="id" fieldtype="id" column="id" generator="native";
 	
 	// Properties
-	property name="asf" ormtype="string";	
+	property name="fname" ormtype="string";	
 	
 	// Validation
 	this.constraints = {
@@ -16,7 +16,7 @@ component persistent="true" table="tests" extends="coldbox.system.orm.hibernate.
 	
 	// Constructor
 	function init(){
-	
+		super.init(useQueryCaching="false");
 		return this;
 	}
 }

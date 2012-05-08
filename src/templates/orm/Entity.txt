@@ -14,7 +14,7 @@
 	<!--- init --->
     <cffunction name="init" output="false" access="public" returntype="any">
     	<cfscript>
-    		
+    		|activeEntityInit|
     		return this;
     	</cfscript>
     </cffunction>

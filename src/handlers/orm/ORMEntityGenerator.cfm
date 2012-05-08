@@ -31,9 +31,11 @@ entityContent = replaceNoCase( entityContent, "|table|", inputStruct.table,"all"
 // Active Entity
 if( inputStruct.activeEntity ){
 	entityContent = replaceNoCase( entityContent, "|activeEntity|",' extends="coldbox.system.orm.hibernate.ActiveEntity"',"all" );
+	entityContent = replaceNoCase( entityContent, "|activeEntityInit|",'super.init(useQueryCaching="false");',"all" );
 }
 else{
 	entityContent = replaceNoCase( entityContent, "|activeEntity|","","all" );
+	entityContent = replaceNoCase( entityContent, "|activeEntityInit|","","all" );
 }
 
 // Primary key
