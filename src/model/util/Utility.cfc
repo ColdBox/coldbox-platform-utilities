@@ -131,7 +131,6 @@
 	<cffunction name="directoryCopy" output="true" hint="copy a directory" returntype="void">
 	    <cfargument name="source" 		required="true" type="string">
 	    <cfargument name="destination" 	required="true" type="string">
-	    <cfargument name="nameconflict" required="true" default="overwrite">
 
 	    <cfset var contents = "" />
 
@@ -145,7 +144,7 @@
 	        <cfif contents.type eq "file">
 	            <cffile action="copy" source="#arguments.source#/#name#" destination="#arguments.destination#/#name#">
 	        <cfelseif contents.type eq "dir">
-	            <cfset directoryCopy(arguments.source & "/" & name, arguments.destination & "/" & name, arguments.nameconflict) />
+	            <cfset directoryCopy(arguments.source & "/" & name, arguments.destination & "/" & name) />
 	        </cfif>
 	    </cfloop>
 	</cffunction>
