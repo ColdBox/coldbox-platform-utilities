@@ -1,5 +1,10 @@
 A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 
+Version 2.10 <br/>
+# Included ColdBox Lite Package <br/>
+# Railo compatibility issues<br/>
+	
+
 Version 2.9 <br/>
 # Updated trim operations on certain values <br/>
 # Updated WireBox injections DSL<br/>

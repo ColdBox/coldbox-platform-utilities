@@ -4,9 +4,11 @@
 	<description>ColdBoxPlatformUtilities Release Build</description>
 	
 	<!-- Properties -->
+	<property name="dir.userlocation"	value="/Users/lmajano" />
+	<property name="dir.exports"		value="${dir.userlocation}/exports" />
 	<property name="src.dir" 			value="src" />
 	<property name="build.dir" 			value="build" />
-	<property name="dist.dir" 			value="dist" />
+	<property name="dist.dir" 			value="${dir.exports}/coldbox-platform-utilities" />
 	<property name="ftp.server"  		value="ftp.coldbox.org" />
 	<property name="ftp.remotedir" 		value="/httpdocs/downloads" />
 		
