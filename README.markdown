@@ -1,5 +1,9 @@
 A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 
+
+Version 3.0 <br/>
+	
+
 Version 2.10 <br/>
 # Included ColdBox Lite Package <br/>
 # Railo compatibility issues<br/>

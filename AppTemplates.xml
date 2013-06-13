@@ -22,6 +22,7 @@
 		</copy>
 		
 		<zip basedir="${target.dir}/Advanced" destfile="${target.dir}/Advanced/Advanced.zip" />
+		<zip basedir="${target.dir}/AdvancedScript" destfile="${target.dir}/AdvancedScript/AdvancedScript.zip" />
 		<zip basedir="${target.dir}/FlexAirRemote" destfile="${target.dir}/FlexAirRemote/FlexAirRemote.zip" />
 		<zip basedir="${target.dir}/lite" destfile="${target.dir}/lite/lite.zip" />
 		<zip basedir="${target.dir}/Simple" destfile="${target.dir}/Simple/Simple.zip" />
