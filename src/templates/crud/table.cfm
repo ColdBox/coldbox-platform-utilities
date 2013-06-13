@@ -1,5 +1,5 @@
 <cfoutput>
-<table cellpadding="5" cellspacing="0" width="98%" border="1">
+<table class="table table-hover table-striped">
 	<thead>
 		<tr>
 		<cfloop array="#metadata.properties#" index="thisProp">
@@ -7,7 +7,7 @@
 			<th>#thisProp.name#</th>
 			</cfif>
 		</cfloop>
-			<th width="110">Actions</th>
+			<th width="150">Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,9 +21,9 @@
 			<!--- Actions --->
 			<td>
 				##html.startForm(action="#inputStruct.pluralname#.delete")##
-					##html.hiddenField(name="#metadata.pk#",bind=thisRecord)##
-					##html.submitButton(value="Delete",onclick="return confirm('Really Delete Record?')")##
-					##html.href(href="#inputStruct.pluralName#.edit",queryString="#metadata.pk#=##thisRecord.get#metadata.pk#()##",text=html.button(value="Edit"))##
+					##html.hiddenField(name="#metadata.pk#", bind=thisRecord)##
+					##html.submitButton(value="Delete", onclick="return confirm('Really Delete Record?')", class="btn btn-danger")##
+					##html.href(href="#inputStruct.pluralName#.edit", queryString="#metadata.pk#=##thisRecord.get#metadata.pk#()##", text="Edit", class="btn btn-info")##
 				##html.endForm()##
 			</td>
 		</tr>

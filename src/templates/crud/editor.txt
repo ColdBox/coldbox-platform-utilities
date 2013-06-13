@@ -19,7 +19,7 @@
 	
 	<!--- Convert Entity To Fields --->
 	#html.entityFields(entity=rc.|entity|,
-					   fieldWrapper="div",
+					   fieldWrapper="div class='controls'",
 					   labelWrapper="",
 					   textAreas="",
 					   booleanSelect=true,
@@ -28,8 +28,10 @@
 					   showRelations=true)#
 	
 	<!--- Submit --->
-	#html.href(href="|entityPlural|",text=html.button(value="Cancel"))#
-	#html.submitButton(value="Save")#
+	<div class="form-actions">
+	#html.href(href="|entityPlural|", text="Cancel", class="btn")#
+	#html.submitButton(value="Save", class="btn btn-primary")#
+	</div>
 
 #html.endForm()#
 </cfoutput>
