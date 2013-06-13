@@ -73,7 +73,7 @@ destinationDir 	= data.event.ide.projectview.resource.xmlAttributes.path;
 						<strong>Downloads</strong> 	: #numberFormat(entries.hits)# <br/>
 						<strong>Hits</strong> 		: #numberFormat(entries.hits)# <br/>
 						<strong>Rating</strong> 	: #numberFormat(entries.entryrating,"_")#/5 <br/>
-						<strong>Updated</strong> 	: #dateFormat(entries.updatedate,"mm/dd/yyyy")#
+						<strong>Updated</strong> 	: <cfif isDate( entries.updatedate )>#dateFormat(entries.updatedate,"mm/dd/yyyy")#<cfelse># entries.updateDate #</cfif>
 					</td>
 					<td width="75">
 						<form name="updateForm#entries.currentRow#" id="updateForm#entries.currentRow#" 
