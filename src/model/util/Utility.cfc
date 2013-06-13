@@ -41,7 +41,8 @@
 		"coldbox:validationManager",
 		"entityService","javaLoader","logBox","logBox:root","logBox:logger:","id",
 		"provider",
-		"wirebox","wirebox:parent","wirebox:eventmanager","wirebox:binder","wirebox:populator","wirebox:properties","wirebox:scope:","wirebox:property:"
+		"wirebox","wirebox:parent","wirebox:eventmanager","wirebox:binder","wirebox:populator","wirebox:properties","wirebox:scope:","wirebox:property:",
+		"cachebox"
 		];
 		arraySort(injectionDSL,"textnocase");
 		return injectionDSL;

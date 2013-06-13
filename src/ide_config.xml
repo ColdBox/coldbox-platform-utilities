@@ -1,17 +1,13 @@
 <application>
 	<name>ColdBox Platform Utilities</name>
 	<author>Ortus Solutions, Corp</author>
-	<email>sanaullah73@gmail.com,info@coldbox.org</email>	
+	<email>info@ortussolutions.com</email>	
 	<description><![CDATA[
 		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 		
-		Version 2.10 <br/>
-		# Included ColdBox Lite Package <br/>
-		# Railo compatibility issues<br/>
-		# ColdBox LITE Additions<br/>
 
 	]]></description>	
-	<version>2.10</version>
+	<version>3.0</version>
 	<license> Copyright since [2009] [Ortus Solutions, Corp - Luis Majano]
 
    Licensed under the Apache License, Version 2.0 (the "License");
