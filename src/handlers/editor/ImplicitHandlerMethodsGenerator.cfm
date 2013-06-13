@@ -21,8 +21,10 @@ if( NOT inputStruct.script ){
 		<cfargument name="event">
 		<cfargument name="action" hint="The intercepted action"/>
 		<cfargument name="eventArguments" hint="The event arguments an event is executed with (if any)"/>
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfscript>
-			var rc = event.getCollection();
+
 		</cfscript>
 	</cffunction>
 	');
@@ -33,8 +35,10 @@ if( NOT inputStruct.script ){
 		<cfargument name="event">
 		<cfargument name="action" 			hint="The intercepted action"/>
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfscript>
-			var rc = event.getCollection();
+
 		</cfscript>
 	</cffunction>
 	');
@@ -45,10 +49,14 @@ if( NOT inputStruct.script ){
 		<cfargument name="event">
 		<cfargument name="targetAction" 	hint="The intercepted action UDF method"/>
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfscript>
-			var rc = event.getCollection();
+
 			// process targeted action
-			argument.targetAction(event,event.getCollection(),event.getCollection(private=true);
+			var results = argument.targetAction(event,rc,prc);
+			
+			if( !isNull( results ) ){ return results; }
 		</cfscript>
 	</cffunction>
 	');
@@ -59,8 +67,10 @@ if( NOT inputStruct.script ){
 		<cfargument name="event" >
 		<cfargument name="missingAction" 	hint="The requested action string"/>
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfscript>
-			var rc = event.getCollection();
+
 		</cfscript>
 	</cffunction>
 	');
@@ -72,6 +82,8 @@ if( NOT inputStruct.script ){
 		<cfargument name="faultAction" 		hint="The action that caused the error"/>
 		<cfargument name="exception"  		hint="The exception structure"/>
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
+		<cfargument name="rc">
+		<cfargument name="prc">
 		<cfscript>	
 			
 		</cfscript>
@@ -85,30 +97,32 @@ if( NOT inputStruct.script ){
 <cfif inputStruct.script>
 <cfsavecontent variable="scriptFunctions">
 	<cfif inputStruct.preHandler>
-	function preHandler(event,action,eventArguments){
-		var rc = event.getCollection();
+	function preHandler(event,action,eventArguments,rc,prc){
+
 	}
 	</cfif>
 	<cfif inputStruct.postHandler>
-	function postHandler(event,action,eventArguments){
-		var rc = event.getCollection();
+	function postHandler(event,action,eventArguments,rc,prc){
+
 	}
 	</cfif>
 	<cfif inputStruct.aroundHandler>
-	function aroundHandler(event,targetAction,eventArguments){
-		var rc 	= event.getCollection();
+	function aroundHandler(event,targetAction,eventArguments,rc,prc){
+
 		// executed targeted action
-		arguments.targetAction(event,event.getCollection(),event.getCollection(private=true));
+		var results = arguments.targetAction(event,rc,prc);
+		
+		if( !isNull( results ) ){ return results; }
 	}
 	</cfif>
 	<cfif inputStruct.onMissingAction>
-	function onMissingAction(event,missingAction,eventArguments){
-		var rc = event.getCollection();
+	function onMissingAction(event,missingAction,eventArguments,rc,prc){
+
 	}
 	</cfif>
 	<cfif inputStruct.onError>
-	function onError(event,faultAction,exception,eventArguments){
-		var rc = event.getCollection();
+	function onError(event,faultAction,exception,eventArguments,rc,prc){
+
 	}
 	</cfif>
 </cfsavecontent>

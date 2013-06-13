@@ -30,7 +30,7 @@ if( NOT inputStruct.script ){
 		<cfargument name="prc">
 		<cfargument name="eventArguments" hint="The event arguments an event is executed with (if any)"/>
 		<cfscript>
-			var rc = event.getCollection();
+			
 		</cfscript>
 	</cffunction>
 	');
@@ -44,7 +44,7 @@ if( NOT inputStruct.script ){
 		<cfargument name="prc">
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
 		<cfscript>
-			var rc = event.getCollection();
+		
 		</cfscript>
 	</cffunction>
 	');
@@ -58,9 +58,11 @@ if( NOT inputStruct.script ){
 		<cfargument name="targetAction" 	hint="The intercepted action UDF method"/>
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
 		<cfscript>
-			var rc = event.getCollection();
+		
 			// process targeted action
-			argument.targetAction(event,event.getCollection(),event.getCollection(private=true));
+			var results = argument.targetAction(event,rc,prc);
+			
+			if( !isNull( results ) ){ return results; }
 		</cfscript>
 	</cffunction>
 	');
@@ -73,23 +75,25 @@ else{
 	if( inputStruct.preHandler ){
 	buffer.append('
 	function pre#action#(event,rc,prc,action,eventArguments){
-		var rc = event.getCollection();
+
 	}
 	');
 	}
 	if( inputStruct.postHandler ){
 	buffer.append('
 	function post#action#(event,rc,prc,action,eventArguments){
-		var rc = event.getCollection();
+
 	}
 	');
 	}
 	if( inputStruct.aroundHandler ){
 	buffer.append('
 	function around#action#(event,rc,prc,targetAction,eventArguments){
-		var rc 	= event.getCollection();
+
 		// executed targeted action
-		arguments.targetAction(event,event.getCollection(),event.getCollection(private=true));
+		var results = arguments.targetAction(event,rc,prc);
+		
+		if( !isNull( results ) ){ return results; }
 	}
 	');
 	}

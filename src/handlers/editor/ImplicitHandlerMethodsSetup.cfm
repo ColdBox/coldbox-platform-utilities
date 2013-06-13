@@ -18,27 +18,27 @@ All handlers receive the following:
 		<dialog width="700" height="500" title="ColdBox Implicit Handler Wizard" image="includes/images/ColdBox_Icon.png">  
 			
 			<!--- Pre Handler --->
-			<input name="preHandler" label="Generate PreHandler()" type="boolean" checked="false" 
+			<input name="preHandler" label="PreHandler()" type="boolean" checked="false" 
 				   tooltip="Generate a preHandler action."
 				   helpmessage="Generate a preHandler action." />
 			
 			<!--- Post Handler --->
-			<input name="postHandler" label="Generate PostHandler()" type="boolean" checked="false" 
+			<input name="postHandler" label="PostHandler()" type="boolean" checked="false" 
 				   tooltip="Generate a postHandler action."
 				   helpmessage="Generate a postHandler action." />
 			
 			<!--- Around Handler --->
-			<input name="aroundHandler" label="Generate AroundHandler()" type="boolean" checked="false" 
+			<input name="aroundHandler" label="AroundHandler()" type="boolean" checked="false" 
 				   tooltip="Generate a aroundHandler action."
 				   helpmessage="Generate a aroundHandler action." />
 			
 			<!--- onMissingACtion --->
-			<input name="onMissingAction" label="Generate onMissingAction()" type="boolean" checked="false" 
+			<input name="onMissingAction" label="onMissingAction()" type="boolean" checked="false" 
 				   tooltip="Generate an onMissingAction() method interceptor."
 				   helpmessage="Generate an onMissingAction() method interceptor" />
 			
 			<!--- OnError --->
-			<input name="onError" label="Generate onError()" type="boolean" checked="false" 
+			<input name="onError" label="onError()" type="boolean" checked="false" 
 				   tooltip="Generate an onError() method interceptor"
 				   helpmessage="Generate an onError() method interceptor" />	   
 			
