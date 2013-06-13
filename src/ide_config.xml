@@ -215,7 +215,7 @@
 			</menu>
 			
 			<!-- ForgeBox Menu -->
-			<menu name="ColdBox ForgeBox">
+			<menu name="ForgeBox">
 				<filters>
 					<filter type="folder" />
 					<filter type="project" />
