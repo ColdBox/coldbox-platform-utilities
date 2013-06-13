@@ -13,7 +13,7 @@ component implements="coldbox.system.aop.MethodInterceptor" accessors="true"|mat
 	/**
 	* The AOP method invocation
 	*/
-	any function invokeMethod(invocation) output=false{
+	any function invokeMethod(required invocation) output=false{
 		
 		// proceed invocation
 		return arguments.invocation.proceed();
