@@ -3,9 +3,7 @@
 	<author>Ortus Solutions, Corp</author>
 	<email>info@ortussolutions.com</email>	
 	<description><![CDATA[
-		A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
-		
-
+		A ColdFusion Builder companion to help build ColdBox Platform and ColdBox LITE Applications.	
 	]]></description>	
 	<version>3.0</version>
 	<license> Copyright since [2009] [Ortus Solutions, Corp - Luis Majano]

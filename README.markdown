@@ -2,7 +2,14 @@ A ColdFusion Builder companion to help build ColdBox Platform applications.<br/>
 
 
 Version 3.0 <br/>
-	
+[CBOXUTILITIES-19] - When inserting a property injection DSL it inserts a double :
+[CBOXUTILITIES-21] - Missing injection DSL contexts
+[CBOXUTILITIES-24] - Aspect generator not generating the required attribute for the invocation argument
+[CBOXUTILITIES-26] - date formatting issues on forgebox installer
+[CBOXUTILITIES-27] - Update scaffolding templates with better HTML and bootstrap goodness
+[CBOXUTILITIES-23] - No longer generate rc = event.getCollection() on unecessary implicit actions as they are passed now
+[CBOXUTILITIES-25] - Update SES rewrite rules
+[CBOXUTILITIES-22] - Update all application templates
 
 Version 2.10 <br/>
 # Included ColdBox Lite Package <br/>
