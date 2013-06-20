@@ -89,7 +89,7 @@ component{
 	function save(event,rc,prc){
 		
 		// get |entity| to persist or update and populate it with incoming form
-		rc.|entity| = populateModel(model=ormService.get( rc.|pk| ),exclude="|pk|");
+		rc.|entity| = populateModel(model=ormService.get( rc.|pk| ), exclude="|pk|", composeRelationships=true);
 		
 		// Do your validations here
 		

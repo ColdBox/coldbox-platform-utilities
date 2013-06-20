@@ -5,7 +5,7 @@
 #getPlugin("MessageBox").renderIt()#
 
 <!--- Create Button --->
-#html.href(href="|entityPlural|.new", text=Create |entity|", class="btn btn-primary")#
+#html.href(href="|entityPlural|.new", text="Create |entity|", class="btn btn-primary")#
 #html.br(2)#
 
 <!--- Listing --->
