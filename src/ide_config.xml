@@ -137,6 +137,13 @@
 						<filters><filter type="folder" /></filters>
 					</action>
 				</menu>
+				
+				<!-- LogBox -->
+				<menu name="LogBox">
+					<action name="New Configuration" 		handlerid="LogBoxGenConfig"		showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
+				</menu>
 			</menu>
 			
 			<!-- ColdBox LITE -->
@@ -321,6 +328,9 @@
 		<handler id="WireBoxGenBinder" 				type="CFM" filename="wirebox/WireBoxGenBinder.cfm" />
 		<handler id="WireBoxProviderMethod" 		type="CFM" filename="wirebox/WireBoxProviderMethod.cfm" />
 		<handler id="wireBoxGenAspect" 				type="CFM" filename="wirebox/WireBoxGenAspect.cfm" />
+		
+		<!-- LogBox -->
+		<handler id="LogBoxGenConfig" 				type="CFM" filename="logbox/LogBoxGenConfig.cfm" />
 		
 		<!-- Views -->
 		<handler id="ViewApiDocs"  type="CFM" filename="views/APIDocs.cfm" />
