@@ -3,7 +3,7 @@
 	<author>Ortus Solutions, Corp</author>
 	<email>info@ortussolutions.com</email>	
 	<description><![CDATA[
-		A ColdFusion Builder companion to help build ColdBox Platform, ColdBox LITE, WireBox and TestBox applications	
+		A ColdFusion Builder companion for ColdBox, WireBox, MockBox, TestBox, CacheBox, LogBox and ForgeBox	
 	]]></description>	
 	<version>4.0</version>
 	<license> Copyright since [2009] [Ortus Solutions, Corp - Luis Majano]
@@ -141,79 +141,6 @@
 				<!-- LogBox -->
 				<menu name="LogBox">
 					<action name="New Configuration" 		handlerid="LogBoxGenConfig"		showResponse="true">
-						<filters><filter type="folder" /></filters>
-					</action>
-				</menu>
-			</menu>
-			
-			<!-- ColdBox LITE -->
-			<menu name="ColdBox LITE">
-				
-				<!-- Global Actions -->
-				<action name="New Application"	handlerid="GenSkeleton"		showResponse="true">
-					<filters>
-						<filter type="project" />
-						<filter type="folder" />
-					</filters>
-				</action>
-				<action name="New Handler" 		handlerid="GenHandler"		showResponse="true">
-					<filters><filter type="folder" /></filters>
-				</action>
-				<action name="New Model" 		handlerid="GenModel"		showResponse="true">
-					<filters><filter type="folder" /></filters>
-				</action>
-				
-				<!-- ORM -->
-				<menu name="ORM">
-					<action name="New ORM Entity" 	handlerid="GenORMEntity"	showResponse="true">
-						<filters><filter type="folder" /></filters>
-					</action>
-					<action name="New ORM Event Handler" 	handlerid="GenORMEventHandler"	showResponse="true">
-						<filters><filter type="folder" /></filters>
-					</action>
-					<action name="New Virtual Entity Service" 	handlerid="GenVirtualEntityService"	showResponse="true">
-						<filters><filter type="folder" /></filters>
-					</action>
-					<action name="New Templated ORM Service" 	handlerid="GenTemplatedEntityService"	showResponse="true">
-						<filters><filter type="folder" /></filters>
-					</action>
-				</menu>
-				
-				<!--Project Only Actions-->
-				<action name="Setup URL Rewrites" 	handlerid="GenRewrites"	showResponse="true">
-					<filters><filter type="project" /></filters>
-				</action>
-				<action name="Setup Project ColdBox LITE Variable Mappings" 	handlerid="GenLITEVariableMappings"	showResponse="true">
-					<filters><filter type="project" /></filters>
-				</action>
-				
-				<!-- Divider -->
-				<action name="----------------------------------"></action>
-				
-				<!-- Resources -->
-				<menu name="Resources">
-					<action name="ColdBox Quick Docs" 	handlerid="ColdBoxQuickDocs"	showResponse="true"></action>
-					<action name="ColdBox Wiki Docs" 	handlerid="ColdBoxDocs"			showResponse="true"></action>
-					<action name="ColdBox Live Search" 	handlerid="ColdBoxSearch"		showResponse="true"></action>
-					<action name="ColdBox Live API" 		handlerid="ColdBoxAPI"			showResponse="true"></action>
-					<action name="Extension Help" 		handlerid="ExtensionHelp"		showResponse="true"></action>
-				</menu>
-				
-				<!--AutoUpdate -->
-				<action name="Check For Extension Updates..." 	handlerid="AutoUpdateCheck"	showResponse="true"></action>
-				
-				<!-- WireBox -->
-				<menu name="WireBox">
-					<action name="Convert ColdSpring To WireBox" 	handlerid="WireBoxCSToWireBox"	showResponse="true">
-						<filters><filter type="file" pattern=".*\.(xml\.cfm|xml)" /></filters>
-					</action>
-					<action name="Convert Legacy Model Mappings To WireBox" 	handlerid="WireBoxMMToWireBox"	showResponse="true">
-						<filters><filter type="file" pattern="modelMappings.cfm" /></filters>
-					</action>
-					<action name="New Binder" 		handlerid="WireBoxGenBinder"		showResponse="true">
-						<filters><filter type="folder" /></filters>
-					</action>
-					<action name="New AOP Aspect" 		handlerid="wireBoxGenAspect"		showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
 				</menu>
