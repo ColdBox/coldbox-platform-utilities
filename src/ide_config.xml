@@ -112,11 +112,11 @@
 				
 				<!-- Resources -->
 				<menu name="Resources">
-					<action name="ColdBox Quick Docs" 	handlerid="ColdBoxQuickDocs"	showResponse="true"></action>
-					<action name="ColdBox Wiki Docs" 	handlerid="ColdBoxDocs"			showResponse="true"></action>
-					<action name="ColdBox Live Search" 	handlerid="ColdBoxSearch"		showResponse="true"></action>
-					<action name="ColdBox Live API" 	handlerid="ColdBoxAPI"			showResponse="true"></action>
-					<action name="Extension Help" 		handlerid="ExtensionHelp"		showResponse="true"></action>
+					<action name="API Docs" 		handlerid="ColdBoxAPI"			showResponse="true"></action>
+					<action name="Extension Help" 	handlerid="ExtensionHelp"		showResponse="true"></action>
+					<action name="Live Search" 		handlerid="ColdBoxSearch"		showResponse="true"></action>
+					<action name="Quick Docs" 		handlerid="ColdBoxQuickDocs"	showResponse="true"></action>
+					<action name="Wiki Docs" 		handlerid="ColdBoxDocs"			showResponse="true"></action>
 				</menu>
 				
 				<!--AutoUpdate -->
