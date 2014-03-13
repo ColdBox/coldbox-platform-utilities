@@ -93,13 +93,6 @@
 					<filters><filter type="project" /></filters>
 				</action>
 				
-				<!-- Resources -->
-				<menu name="Debugger Monitors">
-					<filters><filter type="project" /></filters>
-					<action name="Profile Monitor" 		handlerid="DebuggerProfiler"	showResponse="true"></action>
-					<action name="CacheBox Monitor" 	handlerid="DebuggerCacheBox"	showResponse="true"></action>
-				</menu>
-				
 				<!-- Config Folder Aspects -->
 				<menu name="Setup Aspects">
 					<filters><filter type="folder" pattern="config" /></filters>
@@ -238,10 +231,6 @@
 		<handler id="ColdBoxQuickDocs" 	type="CFM" filename="resources/ColdBoxQuickDocs.cfm" />
 		<handler id="ColdBoxSearch"	 	type="CFM" filename="resources/ColdBoxSearch.cfm" />
 		<handler id="ColdBoxDocs" 		type="CFM" filename="resources/ColdBoxDocs.cfm" />
-		
-		<!-- Debugger -->
-		<handler id="DebuggerProfiler" 	type="CFM" filename="debugger/Profiler.cfm" />
-		<handler id="DebuggerCacheBox" 	type="CFM" filename="debugger/CacheBox.cfm" />
 		
 		<!-- ForgeBox -->
 		<handler id="ForgeBoxInstallCategory" 	type="CFM" filename="forgebox/ForgeBoxInstallCategory.cfm" />
