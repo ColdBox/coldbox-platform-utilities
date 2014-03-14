@@ -169,19 +169,27 @@
 					<action name="Primer BDD" 			handlerid="TestBoxBDDDocs"		showResponse="true"></action>
 					<action name="Primer xUnit" 		handlerid="TestBoxUnitDocs"		showResponse="true"></action>
 				</menu>
+				<!-- Test Spec -->
+				<action name="Run Bundle" handlerid="TestBoxRunBundle" showResponse="true" />
+				<!-- Test Spec -->
+				<action name="Run Directory" handlerid="TestBoxRunDirectory" showResponse="true" />
+				<!-- Execute Runner -->
+				<action name="Run HTML Runner" handlerid="TestBoxRunner" showResponse="true" />
+				
 			</menu>
 		</contribution>
 		
 		<!--  Editor  -->
 		<contribution target="editor">
+			<menu name="ColdBox">
+				<action name="Generate Action" handlerid="GenAction" showResponse="true" />
+				<action name="Generate Implicit Handler Methods" handlerid="GenImplicitHandlerMethods" showResponse="true"></action>
+			</menu>
+			
 			<menu name="WireBox DI">
 				<action name="Property Injection" 	handlerid="WireBoxPropertyInjection"	showResponse="true"></action>
 				<action name="Setter Injection" 	handlerid="WireBoxSetterInjection"		showResponse="true"></action>
 				<action name="Provider Method" 		handlerid="WireBoxProviderMethod"		showResponse="true"></action>
-			</menu>
-			<menu name="ColdBox">
-				<action name="Generate Action" handlerid="GenAction" showResponse="true" />
-				<action name="Generate Implicit Handler Methods" handlerid="GenImplicitHandlerMethods" showResponse="true"></action>
 			</menu>
 		</contribution>
 		
@@ -279,7 +287,9 @@
 		<handler id="TestBoxUnitDocs" 		type="CFM" filename="testbox/unitDocs.cfm" />
 		<handler id="TestBoxBDDDocs" 		type="CFM" filename="testbox/bddDocs.cfm" />
 		<handler id="TestBoxDocs" 			type="CFM" filename="testbox/docs.cfm" />
-		
+		<handler id="TestBoxRunBundle"		type="CFM" filename="testbox/runBundle.cfm" />
+		<handler id="TestBoxRunner"			type="CFM" filename="testbox/runner.cfm" />
+		<handler id="TestBoxRunDirectory"	type="CFM" filename="testbox/runDirectory.cfm" />
 		
 	</handlers>
 

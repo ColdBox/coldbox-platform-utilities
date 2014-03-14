@@ -1,6 +1,14 @@
 <cfcomponent output="false">
 <cfscript>
 
+	function getTestBoxReporters(){
+		var reporters = [
+			"ANTJunit", "CodexWiki", "Console", "Doc", "Dot", "JSON", "JUnit", "Min", "Raw", "Simple", "Tap", "Text", "XML"
+		];
+		arraySort( reporters, "textnocase" );
+		return reporters;
+	}
+
 	function entityPropertyToStruct(str){
 		var x =1;
 		var map = {};
