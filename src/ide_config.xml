@@ -28,7 +28,7 @@
 			<menu name="ColdBox Platform">
 				
 				<!-- Global Actions -->
-				<action name="New Application"	handlerid="GenSkeleton"		showResponse="true">
+				<action name="New Application" handlerid="GenSkeleton" showResponse="true">
 					<filters>
 						<filter type="project" />
 						<filter type="folder" />

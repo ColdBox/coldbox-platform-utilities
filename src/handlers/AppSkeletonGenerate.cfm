@@ -13,7 +13,7 @@ All handlers receive the following:
 ----------------------------------------------------------------------->
 <cfset message = "" />
 <!--- Check if is an event or normal project view location? --->
-<cfif structKeyExists(data.event.ide,"projectview")>
+<cfif structKeyExists( data.event.ide, "projectview" )>
 	<cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path >
 	<cfset projectname		= data.event.ide.projectview.xmlAttributes.projectname>
 <cfelse>
@@ -21,34 +21,34 @@ All handlers receive the following:
 	<cfset projectname		= data.event.ide.eventinfo.xmlAttributes.projectname >
 </cfif>
 <!--- get the zip file under the skeleton location directory. I ignore any but the first one --->
-<cfdirectory action="list" directory="#expandPath('../skeletons/#inputStruct.ApplicationType#')#" filter="*.zip" name="appSkeletonsZip" />
+<cfdirectory action="list" directory="#expandPath( '../skeletons/#inputStruct.ApplicationType#' )#" filter="*.zip" name="appSkeletonsZip" />
 
 <!--- Unzip it --->
 <cfif appSkeletonsZip.recordCount>
 	<cfzip action="unzip" destination="#expandLocation#" file="#appSkeletonsZip.directory#/#appSkeletonsZip.name#" storePath="true" recurse="yes" />
-	<cfset message = listFirst(appSkeletonsZip.name,".") & " application skeleton succesfully generated!" />
+	<cfset message = listFirst( appSkeletonsZip.name, "." ) & " application skeleton succesfully generated!" />
 <cfelse>
 	<cfset message = "No zip file was found in that directory." />
 </cfif>
 
-<!--- Which Application.cfc to use. --->
+
+<!--- Remove non-ineritance cfc --->
 <cfif inputStruct.ApplicationCFCType>
-	<!--- Remove non-ineritance cfc --->
-	<cfif fileExists(expandLocation & "/Application_noinheritance.cfc")>
-		<cfset fileDelete(expandLocation & "/Application_noinheritance.cfc")>
+	<cfif fileExists( expandLocation & "/Application.cfc" )>
+		<cfset fileDelete( expandLocation & "/Application.cfc" )>
 	</cfif>
+	<cfset fileMove( expandLocation & "/Application_inheritance.cfc", expandLocation & "/Application.cfc")>
+<!--- Remove inheritance CFC --->
 <cfelse>
-	<!--- Remove ineritance cfc & rename it --->
-	<cfif fileExists(expandLocation & "/Application_noinheritance.cfc")>
-		<cfset fileDelete(expandLocation & "/Application.cfc")>
-		<cfset fileMove(expandLocation & "/Application_noinheritance.cfc", expandLocation & "/Application.cfc")>
+	<cfif fileExists( expandLocation & "/Application_inheritance.cfc" )>
+		<cfset fileDelete( expandLocation & "/Application_inheritance.cfc" )>
 	</cfif>
 </cfif>
 
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide> 
+<response status="success" showresponse="true">
+<ide>
 	<commands>
 		<command type="refreshfolder" />
 		<command type="refreshproject">
@@ -58,15 +58,11 @@ All handlers receive the following:
 		</command>
 		<command type="openfile">
 			<params>
-				<cfif fileExists(expandLocation & "/config/Coldbox.cfc")>
-					<param key="filename" value="#expandLocation#/config/Coldbox.cfc" />
-				<cfelseif fileExists(expandLocation & "/config/coldbox.xml.cfm")>
-					<param key="filename" value="#expandLocation#/config/coldbox.xml.cfm" />
-				</cfif>
+				<param key="filename" value="#expandLocation#/config/Coldbox.cfc" />
 			</params>
 		</command>
 	</commands>
-	<dialog width="600" height="350" title="ColdBox Application Generator Wizard" image="includes/images/ColdBox_Icon.png"/>  
+	<dialog width="600" height="350" title="ColdBox Application Generator Wizard" image="includes/images/ColdBox_Icon.png"/>
 	<body><![CDATA[
 	<html>
 		<head>
@@ -81,7 +77,7 @@ All handlers receive the following:
 				the <strong>COLDBOX_APP_MAPPING</strong> variable.  This is what your application needs in order to load itself remotely.
 			</p>
 		</body>
-	</html>	
+	</html>
 	]]></body>
 </ide>
 </response>
