@@ -20,7 +20,7 @@ All handlers receive the following:
 	<cfset scriptPrefix = "Script">
 </cfif>
 <!--- Read test template --->
-<cffile action="read" file="#expandPath('/coldboxExtension')#/templates/testing/ModelTestContent#scriptPrefix#.txt" variable="modelTestContent">
+<cffile action="read" file="#expandPath('/cpu')#/templates/testing/ModelTestContent#scriptPrefix#.txt" variable="modelTestContent">
 <cfset modelTestContent = replaceNoCase(modelTestContent,"|modelName|", inputStruct.modelPath, "all") />
 <!--- Write it back out --->
 <cftry>

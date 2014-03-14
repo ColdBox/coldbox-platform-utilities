@@ -13,7 +13,7 @@ All handlers receive the following:
 ----------------------------------------------------------------------->
 <cfscript>
 // Get entries
-forgeBox = createObject("component","coldboxExtension.model.util.ForgeBox").init();
+forgeBox = createObject("component","cpu.model.util.ForgeBox").init();
 entries = forgeBox.getEntries(typeSlug=inputStruct.category,orderBy=inputStruct.orderBy);
 
 // Destination Dir

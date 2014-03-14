@@ -20,8 +20,8 @@ All handlers receive the following:
 	<cfset scriptPrefix = "Script">
 </cfif>
 <!--- Read test template --->
-<cffile action="read" file="#ExpandPath('/coldboxextension')#/templates/testing/InterceptorTestContent#scriptPrefix#.txt" 		variable="interceptorTestContent">
-<cffile action="read" file="#ExpandPath('/coldboxextension')#/templates/testing/InterceptorTestCaseContent#scriptPrefix#.txt" 	variable="interceptorTestCaseContent">
+<cffile action="read" file="#ExpandPath('/cpu')#/templates/testing/InterceptorTestContent#scriptPrefix#.txt" 		variable="interceptorTestContent">
+<cffile action="read" file="#ExpandPath('/cpu')#/templates/testing/InterceptorTestCaseContent#scriptPrefix#.txt" 	variable="interceptorTestCaseContent">
 <!--- Setup test Replacements --->
 <cfset interceptorTestContent = replaceNoCase(interceptorTestContent,"|name|","#inputStruct.interceptorPath#","all") />
 

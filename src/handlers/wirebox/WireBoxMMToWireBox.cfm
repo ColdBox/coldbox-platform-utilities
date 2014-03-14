@@ -15,7 +15,7 @@ All handlers receive the following:
 // MMFile
 mmFile 	= data.event.ide.projectview.resource.XMLAttributes.path;
 wbFile	= getDirectoryFromPath(mmFile) & "/WireBox.cfc";
-converter 		= createObject("component","coldboxExtension.model.util.MMToWireBox").init();
+converter 		= createObject("component","cpu.model.util.MMToWireBox").init();
 // start conversion
 results = converter.convert(mmFile);
 // Create WireBox Binder

@@ -12,7 +12,7 @@ All handlers receive the following:
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
 <cfscript>
-	forgeBox = createObject("component","coldboxExtension.model.util.ForgeBox").init();
+	forgeBox = createObject("component","cpu.model.util.ForgeBox").init();
 	results  = { 
 		error = false, logInfo = "" 
 	};

@@ -270,7 +270,7 @@ CS Converter to WireBox
 	
 	<!--- getUtil --->
 	<cffunction name="getUtil" output="false" access="private" returntype="any" hint="Get the utility object">
-		<cfreturn createObject("component","coldboxExtension.model.util.Utility")>
+		<cfreturn createObject("component","cpu.model.util.Utility")>
 	</cffunction>
 
 </cfcomponent>

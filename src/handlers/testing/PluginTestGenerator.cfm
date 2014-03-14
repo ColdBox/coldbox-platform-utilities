@@ -20,7 +20,7 @@ All handlers receive the following:
 	<cfset scriptPrefix = "Script">
 </cfif>
 <!--- Read test template --->
-<cffile action="read" file="#expandPath('/coldboxExtension')#/templates/testing/PluginTestContent#scriptPrefix#.txt" variable="pluginTestContent">
+<cffile action="read" file="#expandPath('/cpu')#/templates/testing/PluginTestContent#scriptPrefix#.txt" variable="pluginTestContent">
 <cfset pluginTestContent = replaceNoCase(pluginTestContent,"|pluginName|", inputStruct.pluginPath, "all") />
 <!--- Write it back out --->
 <cftry>

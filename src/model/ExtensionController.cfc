@@ -4,7 +4,7 @@
     <cffunction name="init" output="false" access="public" returntype="any" hint="Constructor">
     	<cfargument name="data">
     	<cfscript>
-    		utility = createObject("component","coldboxExtension.model.util.Utility");
+    		utility = createObject("component","cpu.model.util.Utility");
 			
 			variables.data = arguments.data;
 			
@@ -118,7 +118,7 @@
 	
 	<!--- getExtensionLocation --->
     <cffunction name="getExtensionLocation" output="false" access="public" returntype="any" hint="Get the extension location">
-    	<cfreturn expandPath("/coldboxExtension")>
+    	<cfreturn expandPath("/cpu")>
     </cffunction>
 	
 	<!--- getBaseURL --->

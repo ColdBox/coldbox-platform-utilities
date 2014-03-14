@@ -15,7 +15,7 @@ All handlers receive the following:
 // CSFile
 csFile 	= data.event.ide.projectview.resource.XMLAttributes.path;
 wbFile	= getDirectoryFromPath(csFile) & "/WireBox.cfc";
-converter 		= createObject("component","coldboxExtension.model.util.CSToWireBox").init();
+converter 		= createObject("component","cpu.model.util.CSToWireBox").init();
 // start conversion
 results = converter.convert(csFile);
 // Create WireBox Binder

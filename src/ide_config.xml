@@ -53,18 +53,16 @@
 					<filters><filter type="folder" /></filters>
 				</action>
 				
-				<!-- Testing -->
-				<menu name="Testing">
-					<action name="New Integration Test" 	handlerid="GenIntegrationTest"	showResponse="true">
+				<!-- CacheBox -->
+				<menu name="CacheBox">
+					<action name="New Configuration" 		handlerid="CacheBoxGenConfig"		showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
-					<action name="New Model Test" 			handlerid="GenModelTest"	showResponse="true">
-						<filters><filter type="folder" /></filters>
-					</action>
-					<action name="New Interceptor Test" 	handlerid="GenInterceptorTest"	showResponse="true">
-						<filters><filter type="folder" /></filters>
-					</action>
-					<action name="New Plugin Test" 			handlerid="GenPluginTest"	showResponse="true">
+				</menu>
+				
+				<!-- LogBox -->
+				<menu name="LogBox">
+					<action name="New Configuration" 		handlerid="LogBoxGenConfig"		showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
 				</menu>
@@ -85,24 +83,6 @@
 					</action>
 				</menu>
 				
-				<!--Project Only Actions-->
-				<action name="Setup URL Rewrites" 	handlerid="GenRewrites"	showResponse="true">
-					<filters><filter type="project" /></filters>
-				</action>
-				<action name="Setup Project ColdBox Variable Mappings" 	handlerid="GenVariableMappings"	showResponse="true">
-					<filters><filter type="project" /></filters>
-				</action>
-				
-				<!-- Config Folder Aspects -->
-				<menu name="Setup Aspects">
-					<filters><filter type="folder" pattern="config" /></filters>
-					<action name="Setup Deploy Interceptor" 	handlerid="GenDeploy"	showResponse="true"></action>
-					<action name="Setup Security Interceptor" 	handlerid="GenSecurity"	showResponse="true"></action>
-				</menu>
-				
-				<!-- Divider -->
-				<action name="----------------------------------"></action>
-				
 				<!-- Resources -->
 				<menu name="Resources">
 					<action name="API Docs" 		handlerid="ColdBoxAPI"			showResponse="true"></action>
@@ -112,8 +92,28 @@
 					<action name="Wiki Docs" 		handlerid="ColdBoxDocs"			showResponse="true"></action>
 				</menu>
 				
-				<!--AutoUpdate -->
-				<action name="Check For Extension Updates..." 	handlerid="AutoUpdateCheck"	showResponse="true"></action>
+				<!-- Config Folder Aspects -->
+				<menu name="Setup Aspects">
+					<filters><filter type="folder" pattern="config" /></filters>
+					<action name="Setup Deploy Interceptor" 	handlerid="GenDeploy"	showResponse="true"></action>
+					<action name="Setup Security Interceptor" 	handlerid="GenSecurity"	showResponse="true"></action>
+				</menu>
+				
+				<!-- Testing -->
+				<menu name="Testing">
+					<action name="New Integration Test" 	handlerid="GenIntegrationTest"	showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
+					<action name="New Model Test" 			handlerid="GenModelTest"	showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
+					<action name="New Interceptor Test" 	handlerid="GenInterceptorTest"	showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
+					<action name="New Plugin Test" 			handlerid="GenPluginTest"	showResponse="true">
+						<filters><filter type="folder" /></filters>
+					</action>
+				</menu>
 				
 				<!-- WireBox -->
 				<menu name="WireBox">
@@ -131,12 +131,20 @@
 					</action>
 				</menu>
 				
-				<!-- LogBox -->
-				<menu name="LogBox">
-					<action name="New Configuration" 		handlerid="LogBoxGenConfig"		showResponse="true">
-						<filters><filter type="folder" /></filters>
-					</action>
-				</menu>
+				<!--Project Only Actions-->
+				<action name="Setup URL Rewrites" 	handlerid="GenRewrites"	showResponse="true">
+					<filters><filter type="project" /></filters>
+				</action>
+				<action name="Setup Project ColdBox Variable Mappings" 	handlerid="GenVariableMappings"	showResponse="true">
+					<filters><filter type="project" /></filters>
+				</action>
+				
+				<!-- Divider -->
+				<action name="----------------------------------"></action>
+				
+				<!--AutoUpdate -->
+				<action name="Check For Extension Updates..." 	handlerid="AutoUpdateCheck"	showResponse="true"></action>
+				
 			</menu>
 			
 			<!-- ForgeBox Menu -->
@@ -247,6 +255,9 @@
 		
 		<!-- LogBox -->
 		<handler id="LogBoxGenConfig" 				type="CFM" filename="logbox/LogBoxGenConfig.cfm" />
+		
+		<!-- CacheBox -->
+		<handler id="CacheBoxGenConfig" 			type="CFM" filename="cachebox/CacheBoxGenConfig.cfm" />
 		
 		<!-- Views -->
 		<handler id="ViewApiDocs"  type="CFM" filename="views/APIDocs.cfm" />

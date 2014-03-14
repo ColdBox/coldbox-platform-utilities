@@ -1,55 +1,47 @@
-<!-----------------------------------------------------------------------
-********************************************************************************
-Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
-www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
-********************************************************************************
+/**
+* Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
+* www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
+**/
+component{
+	// App Properties
+	this.name				= "CPU_#hash( getCurrentTemplatePath() )#";
+	this.sessionManagement	= true;
 
-Author      :	 Sana Ullah & Luis Majano
-Date        :	08/01/2009
------------------------------------------------------------------------>
-<cfcomponent output="false">
-	
-	<cfscript>
-		this.name				= "ColdBoxCFBuilderExtension_#hash(getCurrentTemplatePath())#";
-		this.sessionManagement	= true;
-		
-		// Local Mappings for Extension
-		this.mappings["/coldboxExtension"] = getDirectoryFromPath(getCurrentTemplatePath()) ;
-	</cfscript>
+	// Local Mappings for Extension
+	this.mappings[ "/cpu" ] = getDirectoryFromPath( getCurrentTemplatePath() );
 
-	<!--- onRequest --->
-	<cffunction name="onRequest">
-		<cfargument name="targetPage">
-		<cfsetting showdebugoutput="false">
-		
-		<!--- Param the incoming ide event info --->
-		<cfparam name="ideeventinfo" default="">
-		<cfparam name="data" 		 default="#structnew()#">
-		
-		<!--- Log Request 
-		<cflog file="ColdBoxCFBuilder" text="Executing #cgi.script_name# #timeFormat(now())#">
-		<cflog file="ColdBoxCFBuilder" text="ideeventinfo: #ideeventinfo.toString()#">
-		--->
-		
-		<!--- Parse incoming event info if available? --->
-		<cfif isXML( ideeventinfo )>
-			<cfset data = xmlParse(ideeventinfo)>
-		</cfif>
-		
-		<!--- place the ExtensionController on scope --->
-		<cfset controller = getExtensionController(data)>
-		<!--- Parse the incoming input values --->
-		<cfset inputStruct = controller.parseInput(data)>
-		
-		<!--- Include page requested --->
-		<cfinclude template="#arguments.targetPage#">
-	</cffunction>
-	
-	<!--- getExtensionController --->
-    <cffunction name="getExtensionController" output="false" access="private" returntype="any" hint="Get the extension controller">
-    	<cfargument name="data">
-    	<cfreturn createObject("component","coldboxExtension.model.ExtensionController").init(arguments.data)>
-    </cffunction>
+	/**
+	* On Request Start
+	*/
+	function onRequest( required targetPage ){
+		param name="ideeventinfo" 	default="";
+		param name="data" 			default="#{}#";
 
-	
-</cfcomponent>
+		//writedump( var="Executing #cgi.script_name# #timeFormat(now())#", output="console" );
+		//writedump( var="ideeventinfo: #ideeventinfo.toString()#", output="console" );
+		//writedump( var="data: #data.toString()#", output="console" );
+
+		// parse incomign event info
+		if( isXML( ideEventInfo ) ){
+			data = xmlParse( ideEventInfo );
+		}
+
+		// place the ExtensionController on scope
+		controller = getExtensionController( data );
+		// Parse the incoming input values
+		inputStruct = controller.parseInput( data );
+
+		include "debug.cfm";
+		include "#arguments.targetPage#";
+	}
+
+	/************************************** PRIVATE *********************************************/
+
+	/**
+	* Build extension controller
+	*/
+	private function getExtensionController( required data ){
+		return new cpu.model.ExtensionController( arguments.data );
+	}
+
+}

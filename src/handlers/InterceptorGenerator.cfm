@@ -27,8 +27,8 @@ All handlers receive the following:
 </cfif>
 
 <!--- Read in Template --->
-<cffile action="read" file="#ExpandPath('/coldboxextension')#/templates/InterceptorContent#scriptPrefix#.txt" variable="interceptorContent">
-<cffile action="read" file="#ExpandPath('/coldboxextension')#/templates/InterceptorMethod#scriptPrefix#.txt" variable="interceptorMethod">
+<cffile action="read" file="#ExpandPath('/cpu')#/templates/InterceptorContent#scriptPrefix#.txt" variable="interceptorContent">
+<cffile action="read" file="#ExpandPath('/cpu')#/templates/InterceptorMethod#scriptPrefix#.txt" variable="interceptorMethod">
 
 <!--- Start Replacings --->
 <cfset interceptorContent = replaceNoCase(interceptorContent,"|Name|",inputstruct.Name,"all") />

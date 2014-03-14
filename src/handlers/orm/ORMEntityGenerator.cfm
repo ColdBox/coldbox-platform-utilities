@@ -19,7 +19,7 @@ scriptPrefix = "";
 if( inputStruct.script ){ scriptPrefix = "Script"; }
 
 // Read in template
-entityContent = fileRead( ExpandPath("/coldboxExtension/templates/orm/Entity#scriptPrefix#.txt") );
+entityContent = fileRead( ExpandPath("/cpu/templates/orm/Entity#scriptPrefix#.txt") );
 // entityName
 entityContent = replaceNoCase( entityContent, "|entityName|", inputStruct.name, "all");
 // table

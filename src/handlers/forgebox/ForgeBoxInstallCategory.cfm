@@ -14,7 +14,7 @@ All handlers receive the following:
 <cfscript>
 function getTypes(){
 	if( NOT structKeyExists(application,"cache-forgebox-types") ){
-		var forgeBox = createObject("component","coldboxExtension.model.util.ForgeBox").init();
+		var forgeBox = createObject("component","cpu.model.util.ForgeBox").init();
 		application["cache-forgebox-types"] = forgeBox.getTypes();
 	}
 	return application["cache-forgebox-types"];
