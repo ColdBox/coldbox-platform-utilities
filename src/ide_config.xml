@@ -157,6 +157,19 @@
 				<!-- ForgeBox -->
 				<action name="Install Entry" 	handlerid="ForgeBoxInstallCategory"	showResponse="true"></action>
 			</menu>
+			
+			<!-- TestBox -->
+			<menu name="TestBox">
+				<!-- Resources -->
+				<menu name="Resources">
+					<action name="API Docs" 			handlerid="ColdBoxAPI"			showResponse="true"></action>
+					<action name="Documentation" 		handlerid="TestBoxDocs"			showResponse="true"></action>
+					<action name="Live Search" 			handlerid="ColdBoxSearch"		showResponse="true"></action>
+					<action name="Quick API Docs" 		handlerid="ColdBoxQuickDocs"	showResponse="true"></action>
+					<action name="Primer BDD" 			handlerid="TestBoxBDDDocs"		showResponse="true"></action>
+					<action name="Primer xUnit" 		handlerid="TestBoxUnitDocs"		showResponse="true"></action>
+				</menu>
+			</menu>
 		</contribution>
 		
 		<!--  Editor  -->
@@ -261,6 +274,13 @@
 		
 		<!-- Views -->
 		<handler id="ViewApiDocs"  type="CFM" filename="views/APIDocs.cfm" />
+		
+		<!-- TestBox -->
+		<handler id="TestBoxUnitDocs" 		type="CFM" filename="testbox/unitDocs.cfm" />
+		<handler id="TestBoxBDDDocs" 		type="CFM" filename="testbox/bddDocs.cfm" />
+		<handler id="TestBoxDocs" 			type="CFM" filename="testbox/docs.cfm" />
+		
+		
 	</handlers>
 
 </application>
