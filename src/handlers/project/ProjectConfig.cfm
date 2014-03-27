@@ -41,7 +41,8 @@ if( !fileExists( settingsLocation ) ){
 		</head>
 		<body>
 			<h2>CPU Config File</h2>
-			<p>You can use the ColdBox Platform Utilities config file to tell the extension where your project is in the server and also what TestBox Runner to use.</p>
+			<p>You can use the ColdBox Platform Utilities config file to tell the extension where your project is in the server, 
+			what TestBox Runner to use and much more configurations.  Just fill out the JSON according to our spec below.</p>
 <div class="consoleLog">
 <pre>
 {

@@ -19,12 +19,16 @@ All handlers receive the following:
 	}
 	// create host + port URL path
 	urlPath = "http://" & data.event.ide.projectview.server.xmlAttributes.hostname & ":" & data.event.ide.projectview.server.xmlAttributes.port;
-	// cleanup the wwwroot from the resource targeted
-	bundlePath = replacenocase( data.event.ide.projectview.resource.XMLAttributes.path,
-								data.event.ide.projectview.server.XMLAttributes.wwwroot,
-								'' );
-	testRunner = urlPath & bundlePath
-	& "?reporter=#inputStruct.reporter#&labels=#inputStruct.labels#&bundles=#arguments.bundles#&directory=#arguments.directory#&recurse=#arguments.directory#";
+	// target runner path
+	target = data.event.ide.projectview.resource.XMLAttributes.path;
+	// test runner URL
+	testRunner = urlPath & inputStruct.runnerURL & "?method=runRemote&reporter=#inputStruct.reporter#&recurse=#inputStruct.recurse#";
+	// Append things that have value
+	if( len( inputStruct.labels ) ){ testRunner &= "&labels=#inputStruct.labels#"; }
+	if( len( inputStruct.bundles) ){ testRunner &= "&bundles=#inputstruct.bundles#"; }
+	if( len( inputStruct.directory) ){ testRunner &= "&directory=#inputstruct.directory#"; }
+	if( len( inputStruct.reportpath) ){ testRunner &= "&directory=#inputstruct.reportpath#"; }
+	// format it
 	testRunner = xmlFormat( testRunner );
 </cfscript>
 <cfheader name="Content-Type" value="text/xml">
@@ -32,12 +36,12 @@ All handlers receive the following:
 <response showresponse="true">
 <cfif inputStruct.createWindow>
 	<ide url="#testRunner#">
-		<view id="testbox_runner" title="TestBox CPU Runner" icon="includes/images/TestBoxIcon.png">
+		<view id="testbox_runner" title="TestBox HTML Runner" icon="includes/images/TestBoxIcon.png">
 		</view>
 	</ide>
 <cfelse>
 	<ide url="#testRunner#">
-		<dialog width="1024" height="800" title="TestBox CPU Runner" image="includes/images/TestBoxLogoSolo.png"/>
+		<dialog width="1024" height="800" title="TestBox HTML Runner" image="includes/images/TestBoxLogoSolo.png"/>
 	</ide>
 </cfif>
 </response>

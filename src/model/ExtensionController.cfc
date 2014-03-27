@@ -152,7 +152,7 @@ component accessors="true"{
 	/**
 	* Must be used from within the project view context: for now.
 	*/
-	function getTestBoxRunner( target ){
+	function getTestBoxRunner(){
 		var projectLocation = replace( getProjectInfo().projectLocation, "\", "/", "all" );
 
 		// case 1: cpu.json -> build runner from global cpu.json file

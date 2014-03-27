@@ -180,6 +180,7 @@
 				</action>
 				<!-- Execute Runner -->
 				<action name="Run HTML Runner" handlerid="TestBoxRunner" showResponse="true" />
+				
 				<!-- Setup Project Config -->
 				<action name="Create/Open CPU Config File" 	handlerid="GenProjectConfig"	showResponse="true" />
 			</menu>

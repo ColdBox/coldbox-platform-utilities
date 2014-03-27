@@ -13,18 +13,19 @@ All handlers receive the following:
 ----------------------------------------------------------------------->
 <cfscript>
 	// target path
-	target = data.event.ide.projectview.resource.XMLAttributes.path;
-	// Verify Bundle
-	if( !fileExists( target ) OR listLast( target, ".") neq "cfm" ){
-		writedump( "You must choose a valid TestBox Runner cfm template!" );abort;
-	}
+	runnerURL = controller.getTestBoxRunner();
 </cfscript>
 <!--- Output --->
 <cfheader name="Content-Type" value="text/xml">
 <cfoutput>
 <response status="success" type="default">
-	<ide handlerfile="testbox/runBundleWindow.cfm">
-		<dialog width="550" height="400" title="TestBox Bundle Runner" image="includes/images/TestBoxLogoSolo.png">
+	<ide handlerfile="testbox/runnerWindow.cfm">
+		<dialog width="550" height="500" title="TestBox HTML Runner" image="includes/images/TestBoxLogoSolo.png">
+
+			<input name="runnerURL" label="Runner"
+				   tooltip="The HTML runner to execute"
+				   type="string"
+				   default="#runnerURL#" />
 
 			<input name="bundles" label="Bundles"
 				   tooltip="The bundle(s) paths to test, leave blank for runner to use defaults"
@@ -32,7 +33,7 @@ All handlers receive the following:
 				   checked="false" />
 
 			<input name="directory" label="Directory"
-				   tooltip="The directory instantiation path"
+				   tooltip="The directory instantiation path, leave blank for defaults"
 				   type="string"
 				   checked="false" />
 
@@ -56,6 +57,11 @@ All handlers receive the following:
 				   tooltip="Labels to apply for this execution"
 				   type="string"
 				   checked="false" />
+
+			<input name="reportPath" label="Report Path"
+				   tooltip="Where to store reports, leave blank for defaults"
+				   type="dir"
+				   />
 		</dialog>
 	</ide>
 </response>
