@@ -3,33 +3,16 @@
 Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
 www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
 ********************************************************************************
-
-Author      :	Sana Ullah & Luis Majano
-Date        :	08/01/2009
-
-All handlers receive the following:
-- data 		  : The data parsed
-- inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
 <cfscript>
-	// target path
+	// target CFC path
 	target = data.event.ide.projectview.resource.XMLAttributes.path;
-	// Verify Bundle
+	// Verify Bundle is a CFC
 	if( !fileExists( target ) OR listLast( target, ".") neq "cfc" ){
 		writedump( "You must choose a valid Test Bundle CFC!" );abort;
 	}
-	// create host + port URL path if server exists, else leave blank for user to add
-	if( structKeyExists( data.event.ide.projectview, "server" ) ){
-		// create host + port URL path
-		urlPath = "http://" & data.event.ide.projectview.server.xmlAttributes.hostname & ":" & data.event.ide.projectview.server.xmlAttributes.port;
-		// cleanup the wwwroot from the resource targeted
-		bundlePath = replacenocase( target,
-									data.event.ide.projectview.server.XMLAttributes.wwwroot,
-									'' );
-		testRunner = urlPath & bundlePath;
-	} else {
-		testRunner = "http://#getFileFromPath( target )#";
-	}
+	// Get the runner URL to use
+	runnerURL = controller.getBundleURL( target );
 </cfscript>
 <!--- Output --->
 <cfheader name="Content-Type" value="text/xml">
@@ -42,7 +25,7 @@ All handlers receive the following:
 				   tooltip="The bundle URL to execute"
 				   type="projectfile"
 				   required="true"
-				   default="#testRunner#" />
+				   default="#runnerURL#" />
 
 			<input name="reporter" label="Reporter" type="list" default="simple">
 			<cfloop array="#controller.getUtility().getTestBoxReporters()#" index="i">
