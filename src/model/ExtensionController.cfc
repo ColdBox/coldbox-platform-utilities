@@ -156,7 +156,7 @@ component accessors="true"{
 		var projectLocation = replace( getProjectInfo().projectLocation, "\", "/", "all" );
 
 		// case 1: cpu.json -> build runner from global cpu.json file
-		if( !fileExists( projectLocation & "/cpu.json" ) ){
+		if( fileExists( projectLocation & "/cpu.json" ) ){
 			var cpudata 	= deserializeJSON( fileRead( projectLocation & "/cpu.json" ) );
 			if( structKeyExists( cpudata, "testbox" ) && structKeyExists( cpudata.testbox, "runnerURL" ) ){
 				return cpudata.testbox.runnerURL;
@@ -168,11 +168,11 @@ component accessors="true"{
 		if( structKeyExists( variables.data.event.ide.projectview, "server" ) ){
 			var serverInfo = getProjectServerInfo();
 			// create host + port URL path
-			return "http://" & serverInfo.hostname & ":" & serverInfo.port & "/coldbox/system/testing/TestBox.cfc?method=runRemote";
+			return "http://" & serverInfo.hostname & ":" & serverInfo.port & "/coldbox/system/testing/TestBox.cfc";
 		}
 
 		// case 3: Default via locations, up to user to correct.
-		return "http://localhost/coldbox/system/testing/TestBox.cfc?method=runRemote";
+		return "http://localhost/coldbox/system/testing/TestBox.cfc";
 	}
 
 }

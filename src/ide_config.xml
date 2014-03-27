@@ -138,6 +138,7 @@
 				<action name="Setup Project ColdBox Variable Mappings" 	handlerid="GenVariableMappings"	showResponse="true">
 					<filters><filter type="project" /></filters>
 				</action>
+				<action name="Create/Open CPU Config File" 	handlerid="GenProjectConfig"	showResponse="true" />
 				
 				<!-- Divider -->
 				<action name="----------------------------------"></action>
@@ -170,12 +171,17 @@
 					<action name="Primer xUnit" 		handlerid="TestBoxUnitDocs"		showResponse="true"></action>
 				</menu>
 				<!-- Test Spec -->
-				<action name="Run Bundle" handlerid="TestBoxRunBundle" showResponse="true" />
+				<action name="Run Bundle" handlerid="TestBoxRunBundle" showResponse="true">
+					<filters><filter type="file" pattern=".*\.cfc" /></filters>
+				</action>
 				<!-- Test Spec -->
-				<action name="Run Directory" handlerid="TestBoxRunDirectory" showResponse="true" />
+				<action name="Run Directory" handlerid="TestBoxRunDirectory" showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
 				<!-- Execute Runner -->
 				<action name="Run HTML Runner" handlerid="TestBoxRunner" showResponse="true" />
-				
+				<!-- Setup Project Config -->
+				<action name="Create/Open CPU Config File" 	handlerid="GenProjectConfig"	showResponse="true" />
 			</menu>
 		</contribution>
 		
@@ -235,6 +241,7 @@
 		<handler id="GenRewrites"				type="CFM" filename="project/RewriteSetup.cfm" />
 		<handler id="GenVariableMappings"		type="CFM" filename="project/VariableMappings.cfm" />
 		<handler id="GenLITEVariableMappings"	type="CFM" filename="project/LITEVariableMappings.cfm" />
+		<handler id="GenProjectConfig"			type="CFM" filename="project/ProjectConfig.cfm" />
 		
 		<!-- Editor Handlers -->
 		<handler id="GenImplicitHandlerMethods"		type="CFM" filename="editor/ImplicitHandlerMethodsSetup.cfm" />
