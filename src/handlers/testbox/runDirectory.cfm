@@ -3,20 +3,29 @@
 Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
 www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
 ********************************************************************************
-
-Author      :	Sana Ullah & Luis Majano
-Date        :	08/01/2009
-
-All handlers receive the following:
-- data 		  : The data parsed
-- inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
 <cfscript>
+
 	// target path
-	target = data.event.ide.projectview.resource.XMLAttributes.path;
-	// Verify Bundle
+	target = controller.getProjectResource().path;
+	// Verify Directory Exists
 	if( !directoryExists( target ) ){
-		writedump( "You must choose a valid directory to test! #target# is not a directory" );abort;
+		writedump( "You must choose a valid directory to tests. The directory '#target#' does not exist or is not a directory" );abort;
+	}
+	// Get directory runner.
+	runnerURL = controller.getTestBoxRunner();
+	// Discover directory instanation path
+	if( structKeyExists( data.event.ide.projectview, "server" ) ){
+		// cleanup the wwwroot from the resource targeted
+		dirPath = replacenocase( target,
+							 	 data.event.ide.projectview.server.XMLAttributes.wwwroot,
+							 	 '' );
+		dirPath = rereplace( reReplace( dirPath, "(\/|\\)", ".", "all" ), "^.", "" );
+	} else {
+		dirPath = replacenocase( target,
+							 	 data.event.ide.projectview.XMLAttributes.projectLocation,
+							 	 '' );
+		dirPath = rereplace( reReplace( target, "(\/|\\)", ".", "all" ), "^.", "" );
 	}
 </cfscript>
 <!--- Output --->
@@ -24,17 +33,24 @@ All handlers receive the following:
 <cfoutput>
 <response status="success" type="default">
 	<ide handlerfile="testbox/runDirectoryWindow.cfm">
-		<dialog width="550" height="300" title="TestBox Directory Runner" image="includes/images/TestBoxLogoSolo.png">
+		<dialog width="800" height="400" title="TestBox Bundle Runner" image="includes/images/TestBoxLogoSolo.png">
 
 			<input name="directory" label="Directory"
-				   tooltip="The directory to test"
-				   type="dir"
-				   default="#target#" />
+				   tooltip="The Directory instantation path to execute"
+				   type="string"
+				   required="true"
+				   default="#dirPath#" />
 
 			<input name="recurse" label="Recurse"
-				   tooltip="Recursive test execution"
+				   tooltip="Recurse execution or not"
 				   type="Boolean"
 				   checked="true" />
+
+			<input name="directoryRunner" label="Runner URL"
+				   tooltip="The URL of the runner to use"
+				   type="string"
+				   required="true"
+				   default="#runnerURL#" />
 
 			<input name="reporter" label="Reporter" type="list" default="simple">
 			<cfloop array="#controller.getUtility().getTestBoxReporters()#" index="i">

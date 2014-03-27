@@ -12,18 +12,7 @@ All handlers receive the following:
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
 <cfscript>
-	// verify server
-	if( !structKeyExists( data.event.ide.projectview, "server" ) ){
-		writedump( "You must have a server defined in your project settings, define one now please.
-					Right click on your project > Properties > ColdFusion Server Settings" );abort;
-	}
-	// create host + port URL path
-	urlPath = "http://" & data.event.ide.projectview.server.xmlAttributes.hostname & ":" & data.event.ide.projectview.server.xmlAttributes.port;
-	// cleanup the wwwroot from the resource targeted
-	directoryPath = replacenocase( data.event.ide.projectview.resource.XMLAttributes.path,
-								   data.event.ide.projectview.server.XMLAttributes.wwwroot,
-								   '' );
-	testRunner = urlPath & bundlePath & "?method=runRemote&reporter=#inputStruct.reporter#&labels=#inputStruct.labels#";
+	testRunner = inputStruct.directoryRunner & "?method=runRemote&reporter=#inputStruct.reporter#&labels=#inputStruct.labels#&directory=#inputStruct.directory#&recurse=#inputStruct.recurse#";
 	testRunner = xmlFormat( testRunner );
 </cfscript>
 <cfheader name="Content-Type" value="text/xml">
