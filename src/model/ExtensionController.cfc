@@ -115,13 +115,18 @@ component accessors="true"{
 	/**
 	* Must be used from within the project view context
 	*/
-	function getBundleURL( required target ){
-		var projectLocation = replace( getProjectInfo().projectLocation, "\", "/", "all" );
+	function getBundleURL( required target, projectLocation="" ){
+
+		if( !len( arguments.projectLocation ) ){
+			arguments.projectLocation = getProjectInfo().projectLocation;
+		}
+
+		var pLocation = replace( arguments.projectLocation, "\", "/", "all" );
 
 		// case 1: cpu.json -> build runner from global cpu.json file
-		if( fileExists( projectLocation & "/cpu.json" ) ){
-			var cpudata 	= deserializeJSON( fileRead( projectLocation & "/cpu.json" ) );
-			var bundlePath 	= reReplace( replacenocase( arguments.target, projectLocation, '' ), "^/", "" );
+		if( fileExists( pLocation & "/cpu.json" ) ){
+			var cpudata 	= deserializeJSON( fileRead( pLocation & "/cpu.json" ) );
+			var bundlePath 	= reReplace( replacenocase( arguments.target, pLocation, '' ), "^/", "" );
 
 			if( structKeyExists( cpudata, "projectURL" ) ){
 				// cleanup
@@ -143,10 +148,10 @@ component accessors="true"{
 			return urlPath & bundlePath;
 		}
 
-		var bundlePath = replacenocase( arguments.target, projectLocation, '' );
+		var bundlePath = replacenocase( arguments.target, pLocation, '' );
 
 		// case 3: Default via locations, up to user to correct.
-		return "http://localhost/#listLast( projectLocation, "/")##bundlePath#";
+		return "http://localhost/#listLast( pLocation, "/")##bundlePath#";
 	}
 
 	/**

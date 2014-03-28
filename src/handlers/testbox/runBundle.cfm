@@ -6,13 +6,20 @@ www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
 ----------------------------------------------------------------------->
 <cfscript>
 	// target CFC path
-	target = data.event.ide.projectview.resource.XMLAttributes.path;
+	if( structKeyExists( data.event.ide, "projectview") ){
+		target = data.event.ide.projectview.resource.XMLAttributes.path;
+		projectLocation = "";
+	} else {
+		// editor view
+		target = data.event.ide.editor.file.XMLAttributes.location;
+		projectLocation = data.event.ide.editor.file.XMLAttributes.projectLocation;
+	}
 	// Verify Bundle is a CFC
 	if( !fileExists( target ) OR listLast( target, ".") neq "cfc" ){
 		writedump( "You must choose a valid Test Bundle CFC!" );abort;
 	}
 	// Get the runner URL to use
-	runnerURL = controller.getBundleURL( target );
+	runnerURL = controller.getBundleURL( target, projectLocation );
 </cfscript>
 <!--- Output --->
 <cfheader name="Content-Type" value="text/xml">

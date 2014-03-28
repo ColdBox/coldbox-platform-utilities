@@ -206,9 +206,7 @@
 			</menu>
 			<!-- TestBox Actions -->
 			<menu name="TestBox">
-				<action name="Run Bundle" handlerid="TestBoxRunBundle" showResponse="true">
-					<filters><filter type="file" pattern=".*\.cfc" /></filters>
-				</action>
+				<action name="Run Bundle" handlerid="TestBoxRunBundle" showResponse="true" />
 			</menu>
 			<!-- WireBox DI -->
 			<menu name="WireBox DI">
