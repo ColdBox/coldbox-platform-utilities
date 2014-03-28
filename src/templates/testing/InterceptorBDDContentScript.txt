@@ -3,7 +3,7 @@
 * and then create it, prepare it for mocking, and then place it in the variables scope as 'interceptor'. It is your
 * responsibility to update the interceptor annotation instantiation path.
 */
-component extends="coldbox.system.testing.BaseInterceptorTest" interceptor="Security"{
+component extends="coldbox.system.testing.BaseInterceptorTest" interceptor="|name|"{
 	
 	/*********************************** LIFE CYCLE Methods ***********************************/
 
@@ -22,33 +22,13 @@ component extends="coldbox.system.testing.BaseInterceptorTest" interceptor="Secu
 	
 	function run(){
 
-		describe( "Security", function(){
+		describe( "|name|", function(){
 			
 			it( "should configure correctly", function(){
 				interceptor.configure();
 			});
 			
-			it( "should execute onLogout", function(){
-				// mocks
-				var mockEvent = getMockRequestContext();
-				var mockData  = {};
-				
-				// execute onLogout
-				interceptor.onLogout(mockEvent,mockData);
-				
-				// expectations here
-				
-			});			it( "should execute preProcess", function(){
-				// mocks
-				var mockEvent = getMockRequestContext();
-				var mockData  = {};
-				
-				// execute preProcess
-				interceptor.preProcess(mockEvent,mockData);
-				
-				// expectations here
-				
-			});			
+|TestCases|			
 		});
 
 	}

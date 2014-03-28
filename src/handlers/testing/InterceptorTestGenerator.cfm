@@ -14,14 +14,25 @@ All handlers receive the following:
 <cfset message 				= "" />
 <cfset scriptPrefix 		= "">
 <cfset expandLocation		= data.event.ide.projectview.resource.xmlAttributes.path />
-<cfset testName				= listLast(inputStruct.interceptorPath,".")>
+<cfset testName				= listLast( inputStruct.interceptorPath, "." )>
+
+<!--- Style Script Check, BDD is only script --->
+<cfif inputStruct.style eq "BDD">
+	<cfset inputStruct.script = true>
+	<cfset style = "BDD">
+<cfelse>
+	<cfset style = "Test">
+</cfif>
+
 <!--- Script? --->
 <cfif inputStruct.Script>
 	<cfset scriptPrefix = "Script">
 </cfif>
+
 <!--- Read test template --->
-<cffile action="read" file="#ExpandPath('/cpu')#/templates/testing/InterceptorTestContent#scriptPrefix#.txt" 		variable="interceptorTestContent">
-<cffile action="read" file="#ExpandPath('/cpu')#/templates/testing/InterceptorTestCaseContent#scriptPrefix#.txt" 	variable="interceptorTestCaseContent">
+<cffile action="read" file="#ExpandPath('/cpu')#/templates/testing/Interceptor#style#Content#scriptPrefix#.txt" 		variable="interceptorTestContent">
+<cffile action="read" file="#ExpandPath('/cpu')#/templates/testing/Interceptor#style#CaseContent#scriptPrefix#.txt" 	variable="interceptorTestCaseContent">
+
 <!--- Setup test Replacements --->
 <cfset interceptorTestContent = replaceNoCase(interceptorTestContent,"|name|","#inputStruct.interceptorPath#","all") />
 
@@ -29,7 +40,7 @@ All handlers receive the following:
 <cfif len(inputstruct.InterceptionPoints)>
 	<cfset allTestsCases = "">
 	<cfset thisTestCase  = "">
-	
+
 	<!--- Loop Over test actions generating their functions --->
 	<cfloop list="#inputStruct.InterceptionPoints#" index="thisPoint">
 		<cfset thisTestCase = replaceNoCase(interceptorTestCaseContent,"|point|",trim(thisPoint),"all")>
@@ -37,9 +48,9 @@ All handlers receive the following:
 	</cfloop>
 
 	<!--- Replace all test cases --->
-	<cfset interceptorTestContent = replaceNoCase(interceptorTestContent,"|TestCases|",allTestsCases,"all") />	
+	<cfset interceptorTestContent = replaceNoCase(interceptorTestContent,"|TestCases|",allTestsCases,"all") />
 <cfelse>
-	<cfset interceptorTestContent = replaceNoCase(interceptorTestContent,"|TestCases|",'',"all") />	
+	<cfset interceptorTestContent = replaceNoCase(interceptorTestContent,"|TestCases|",'',"all") />
 </cfif>
 
 <!--- Write it back out --->
@@ -51,10 +62,10 @@ All handlers receive the following:
 	</cfcatch>
 </cftry>
 
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide>  
+<response status="success" showresponse="false">
+<ide>
 	<commands>
 		<command type="RefreshProject">
 			<params>
@@ -67,21 +78,6 @@ All handlers receive the following:
 			</params>
 		</command>
 	</commands>
-	<dialog width="550" height="350" title="ColdBox Interceptor Test Wizard" image="includes/images/ColdBox_Icon.png"/>  
-	<body>
-	<![CDATA[
-	<html>
-		<head>
-			<base href="#controller.getBaseURL()#" />
-			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
-			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
-		</head>
-		<body>
-			<div class="messagebox-green">#message#</div>
-		</body>
-	</html>	
-	]]>
-	</body>
 </ide>
 </response>
 </cfoutput>
