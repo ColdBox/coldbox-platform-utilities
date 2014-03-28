@@ -17,7 +17,7 @@ All handlers receive the following:
 <cfheader name="Content-Type" value="text/xml">
 <cfoutput>
 <response showresponse="true">
-<ide url="#browserURL#">
+<ide url="#browserURL#?cpu=true">
 	<view id="testbox_browser" title="TestBox Browser" icon="includes/images/TestBoxIcon.png">
 	</view>
 </ide>

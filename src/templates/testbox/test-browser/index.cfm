@@ -1,3 +1,4 @@
+<cfsetting showdebugoutput="false" >
 <!--- SETUP THE ROOTS OF THE BROWSER RIGHT HERE --->
 <cfset rootMapping 	= "/coldbox/testing">
 <cfif directoryExists( rootMapping )>
@@ -171,7 +172,7 @@
 				+<a href="index.cfm?path=#dirPath#">#qResults.name#</a><br/>
 			<cfelseif listLast( qresults.name, ".") eq "cfm">
 				<a href="#executePath & qResults.name#" target="_blank">#qResults.name#</a><br/>
-			<cfelseif listLast( qresults.name, ".") eq "cfc" and findNoCase( "Test", qResults.name )>
+			<cfelseif listLast( qresults.name, ".") eq "cfc">
 				<a class="test" href="#executePath & qResults.name#?method=runRemote" target="_blank"><button type="button">#qResults.name#</button></a><br/>
 			<cfelse>
 				#qResults.name#<br/>

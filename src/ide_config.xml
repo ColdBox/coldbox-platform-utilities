@@ -178,10 +178,11 @@
 				<action name="Generate Test Harness" handlerid="TestBoxHarness" showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
-				<!-- Test Browser -->
+				<!-- Test Browser 
 				<action name="Generate Test Browser" handlerid="TestBoxBrowser" showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
+				-->
 				<!-- New Bundle -->
 				<action name="Generate BDD Bundle" handlerid="TestBoxBDDBundle" showResponse="true">
 					<filters><filter type="folder" /></filters>
@@ -190,6 +191,10 @@
 				<action name="Generate xUnit Bundle" handlerid="TestBoxUnitBundle" showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
+				
+				<!-- Divider -->
+				<action name="----------------------------------"></action>
+				
 				<!-- Test Spec -->
 				<action name="Run Bundle" handlerid="TestBoxRunBundle" showResponse="true">
 					<filters><filter type="file" pattern=".*\.cfc" /></filters>
@@ -200,8 +205,9 @@
 				</action>
 				<!-- Execute Runner -->
 				<action name="Run Project HTML Runner" handlerid="TestBoxRunner" showResponse="true" />
-				<!-- Open Browser -->
+				<!-- Open Browser 
 				<action name="Run Project Test Browser" handlerid="TestBoxOpenBrowser" showResponse="true" />
+				-->
 				
 			</menu>
 		</contribution>

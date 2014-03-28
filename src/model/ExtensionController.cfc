@@ -116,11 +116,11 @@ component accessors="true"{
 	* Must be used from within the project view context
 	*/
 	function getBundleURL( required target, projectLocation="" ){
-
+		// are we sending a project location or do we discover it?
 		if( !len( arguments.projectLocation ) ){
 			arguments.projectLocation = getProjectInfo().projectLocation;
 		}
-
+		// clean it up
 		var pLocation = replace( arguments.projectLocation, "\", "/", "all" );
 
 		// case 1: cpu.json -> build runner from global cpu.json file
@@ -138,7 +138,7 @@ component accessors="true"{
 
 		// case 2: server info -> build runner URL from server information
 		// create host + port URL path if server exists, else leave blank for user to add
-		if( structKeyExists( variables.data.event.ide.projectview, "server" ) ){
+		if( structKeyExists( variables.data.event.ide, "projectview" ) ){
 			// create host + port URL path
 			var urlPath = "http://" & variables.data.event.ide.projectview.server.xmlAttributes.hostname & ":" & variables.data.event.ide.projectview.server.xmlAttributes.port;
 			// cleanup the wwwroot from the resource targeted
