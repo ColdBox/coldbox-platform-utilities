@@ -12,23 +12,27 @@ All handlers receive the following:
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
 
-<cfheader name="Content-Type" value="text/xml">  
-<cfoutput>  
-<response status="success" type="default">  
-	<ide handlerfile="testing/ModelTestGenerator.cfm"> 
-		<dialog width="600" height="400" title="ColdBox Model Test Wizard" image="includes/images/ColdBox_Icon.png">  
-			
-			<input name="modelPath" label="Instantiation Path" required="true"  type="string" default="" 
+<cfheader name="Content-Type" value="text/xml">
+<cfoutput>
+<response status="success" type="default">
+	<ide handlerfile="testing/ModelTestGenerator.cfm">
+		<dialog width="600" height="400" title="ColdBox Model Test Wizard" image="includes/images/ColdBox_Icon.png">
+
+			<input name="modelPath" label="Instantiation Path" required="true"  type="string" default=""
 				   tooltip="Enter the full instantiation path of the model object to test."
 				   helpmessage="Enter the full instantiation path of the model object to test." />
-		
-			<input name="Script" label="Script Based CFC" type="boolean" checked="false" 
+
+			<input name="style" label="Test Style" type="list" default="BDD" tooltip="The testing style to generate">
+				<option value="BDD" />
+				<option value="xUnit" />
+			</input>
+
+			<input name="Script" label="Script Based CFC" type="boolean" checked="true"
 				   tooltip="Choose whether to create the cfc in pure script or not."
 				   helpmessage="Choose whether to create the cfc in pure script or not." />
-				   
+
 		</dialog>
 	</ide>
-</response>  
+</response>
 </cfoutput>
 
- 
