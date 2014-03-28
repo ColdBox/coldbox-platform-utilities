@@ -12,31 +12,35 @@ All handlers receive the following:
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
 
-<cfheader name="Content-Type" value="text/xml">  
-<cfoutput>  
-<response status="success" type="default">  
-	<ide handlerfile="testing/IntegrationTestGenerator.cfm"> 
-		<dialog width="600" height="400" title="ColdBox Integration Test Wizard" image="includes/images/ColdBox_Icon.png">  
-			
-			<input name="Name" label="Name of Handler To Test" required="true"  type="string" default="" 
+<cfheader name="Content-Type" value="text/xml">
+<cfoutput>
+<response status="success" type="default">
+	<ide handlerfile="testing/IntegrationTestGenerator.cfm">
+		<dialog width="600" height="400" title="ColdBox Integration Test Wizard" image="includes/images/ColdBox_Icon.png">
+
+			<input name="Name" label="Name of Handler To Test" required="true"  type="string" default=""
 				   tooltip="Enter the name of the handler to test without .cfc"
 				   helpmessage="Enter the name of the handler to test without .cfc" />
-		
-			<input name="Script" label="Script Based CFC" type="boolean" checked="false" 
+
+			<input name="style" label="Test Style" type="list" default="BDD" tooltip="The testing style to generate">
+				<option value="BDD" />
+				<option value="xUnit" />
+			</input>
+
+			<input name="Script" label="Script Based CFC" type="boolean" checked="true"
 				   tooltip="Choose whether to create the cfc in pure script or not."
 				   helpmessage="Choose whether to create the cfc in pure script or not." />
-			
-			<input name="Actions" label="Actions To Test (comma delimmitted)" type="string" default="" 
+
+			<input name="Actions" label="Actions To Test (comma delimmitted)" type="string" default=""
 				   tooltip="Enter a list of actions to generate tests for, can be separated by a comma"
 				   helpmessage="Enter a list of actions to generate tests for, can be separated by a comma"/>
-			
+
 			<input name="AppMapping" label="AppMapping" type="string" default="/" required="true"
 				   tooltip="The root location of the application on the server: ex: /MyApp or / if in the root"
 				   helpmessage="The root location of the application on the server: ex: /MyApp or / if in the root" />
-				   
+
 		</dialog>
 	</ide>
-</response>  
+</response>
 </cfoutput>
 
- 

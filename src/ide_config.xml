@@ -106,10 +106,10 @@
 					<action name="New Integration Test" 	handlerid="GenIntegrationTest"	showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
-					<action name="New Model Test" 			handlerid="GenModelTest"	showResponse="true">
+					<action name="New Interceptor Test" 	handlerid="GenInterceptorTest"	showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
-					<action name="New Interceptor Test" 	handlerid="GenInterceptorTest"	showResponse="true">
+					<action name="New Model Test" 			handlerid="GenModelTest"	showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
 					<action name="New Plugin Test" 			handlerid="GenPluginTest"	showResponse="true">

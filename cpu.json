@@ -1,0 +1,7 @@
+{
+	"projectURL" : "http://cf10cboxdev.jfetmac/coldbox-platform-utilities/",
+	"testbox" : {
+		"runnerURL" 	: "http://cf10cboxdev.jfetmac/coldbox-platform-utilities/tmp/test-harness/runner.cfm",
+		"browserURL" 	: "http://cf10cboxdev.jfetmac/coldbox-platform-utilities/tmp/test-browser/index.cfm" 	
+	}
+}

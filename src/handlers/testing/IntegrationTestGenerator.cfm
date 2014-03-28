@@ -12,48 +12,57 @@ All handlers receive the following:
 - inputStruct : A parsed input structure
 ----------------------------------------------------------------------->
 <!--- Setup Variables --->
-<cfset message				= "" /> 
+<cfset message				= "" />
 <cfset expandLocation	= data.event.ide.projectview.resource.xmlAttributes.path />
 <cfset projectname		= data.event.ide.projectview.xmlAttributes.projectname>
-<cfset handlerName		= trim(inputstruct.Name) />
+<cfset handlerName		= trim( inputstruct.Name ) />
+
+<!--- Style Script Check, BDD is only script --->
+<cfif inputStruct.style eq "BDD">
+	<cfset inputStruct.script = true>
+	<cfset style = "BDD">
+<cfelse>
+	<cfset style = "Test">
+</cfif>
 
 <!--- Script? --->
-<cfset scriptPrefix 		= "">
+<cfset scriptPrefix = "">
 <cfif inputStruct.Script>
 	<cfset scriptPrefix 	= "Script">
 </cfif>
 
 <!--- Read in Templates --->
-<cffile action="read" file="#expandPath('/cpu')#/templates/testing/HandlerTestContent#scriptPrefix#.txt"     variable="handlerTestContent">
-<cffile action="read" file="#expandPath('/cpu')#/templates/testing/HandlerTestCaseContent#scriptPrefix#.txt" variable="handlerTestCaseContent">
+<cffile action="read" file="#expandPath( '/cpu' )#/templates/testing/Handler#style#Content#scriptPrefix#.txt"     variable="handlerTestContent">
+<cffile action="read" file="#expandPath( '/cpu' )#/templates/testing/Handler#style#CaseContent#scriptPrefix#.txt" variable="handlerTestCaseContent">
 
 <!--- Start text replacements --->
-<cfset handlerTestContent = replaceNoCase(handlerTestContent,"|appMapping|",inputstruct.appMapping,"all") />
+<cfset handlerTestContent = replaceNoCase( handlerTestContent, "|appMapping|", inputstruct.appMapping, "all" ) />
+<cfset handlerTestContent = replaceNoCase( handlerTestContent, "|handlerName|", handlerName, "all" ) />
 
 <!--- Handle Test Actions if passed --->
 <cfif len(inputstruct.Actions)>
 	<cfset allTestsCases = "">
 	<cfset thisTestCase  = "">
-	
+
 	<!--- Loop Over test actions generating their functions --->
 	<cfloop list="#inputStruct.Actions#" index="thisAction">
-		<cfset thisTestCase = replaceNoCase(handlerTestCaseContent,"|action|",trim(thisAction),"all")>
-		<cfset thisTestCase = replaceNoCase(thisTestCase,"|event|", handlerName & "." & trim(thisAction),"all")>
+		<cfset thisTestCase = replaceNoCase( handlerTestCaseContent,"|action|",trim( thisAction ),"all")>
+		<cfset thisTestCase = replaceNoCase( thisTestCase,"|event|", handlerName & "." & trim( thisAction ),"all")>
 		<cfset allTestsCases = allTestsCases & thisTestCase & chr(13) & chr(13)/>
 	</cfloop>
-	
-	<cfset handlerTestContent = replaceNoCase(handlerTestContent,"|TestCases|",allTestsCases,"all") />	
+
+	<cfset handlerTestContent = replaceNoCase( handlerTestContent, "|TestCases|", allTestsCases, "all") />
 <cfelse>
-	<cfset handlerTestContent = replaceNoCase(handlerTestContent,"|TestCases|",'',"all") />	
+	<cfset handlerTestContent = replaceNoCase( handlerTestContent, "|TestCases|", '', "all") />
 </cfif>
 
 <!--- Write out the files --->
 <cffile action="write" file="#expandLocation#/#handlerName#Test.cfc" mode ="777" output="#handlerTestContent#">
 
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide>  
+<response status="success" showresponse="false">
+<ide>
 	<commands>
 		<command type="refreshfolder" />
 		<command type="refreshproject">
@@ -67,22 +76,6 @@ All handlers receive the following:
 			</params>
 		</command>
 	</commands>
-	<dialog width="550" height="350" title="ColdBox Integration Test Wizard" image="includes/images/ColdBox_Icon.png"/>  
-	<body><![CDATA[
-	<html>
-		<head>
-			<base href="#controller.getBaseURL()#" />
-			<link href="includes/css/styles.css" type="text/css" rel="stylesheet">
-			<script type="text/javascript" src="includes/js/jquery.latest.min.js"></script>
-		</head>
-		<body>
-			<div class="messagebox-green">Generated New Integration Test!</div>
-			<p>
-			Generated new integration test called: #handlerName#Test.cfc
-			</p>
-		</body>
-	</html>	
-	]]></body>
 </ide>
 </response>
 </cfoutput>
