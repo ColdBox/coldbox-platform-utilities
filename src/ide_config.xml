@@ -26,6 +26,8 @@
 		<contribution target="projectview">
 			<!--  ColdBox Platform Menu -->
 			<menu name="ColdBox Platform">
+				<!-- Create CPU Config -->
+				<action name="Create/Open CPU Config File" 	handlerid="GenProjectConfig"	showResponse="true" />
 				
 				<!-- Global Actions -->
 				<action name="New Application" handlerid="GenSkeleton" showResponse="true">
@@ -138,7 +140,6 @@
 				<action name="Setup Project ColdBox Variable Mappings" 	handlerid="GenVariableMappings"	showResponse="true">
 					<filters><filter type="project" /></filters>
 				</action>
-				<action name="Create/Open CPU Config File" 	handlerid="GenProjectConfig"	showResponse="true" />
 				
 				<!-- Divider -->
 				<action name="----------------------------------"></action>
@@ -179,6 +180,14 @@
 				</action>
 				<!-- Test Browser -->
 				<action name="Generate Test Browser" handlerid="TestBoxBrowser" showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
+				<!-- New Bundle -->
+				<action name="Generate BDD Bundle" handlerid="TestBoxBDDBundle" showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
+				<!-- New xUnit Bundle -->
+				<action name="Generate xUnit Bundle" handlerid="TestBoxUnitBundle" showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
 				<!-- Test Spec -->
@@ -317,6 +326,9 @@
 		<handler id="TestBoxHarness"		type="CFM" filename="testbox/generateHarness.cfm" />
 		<handler id="TestBoxBrowser"		type="CFM" filename="testbox/generateBrowser.cfm" />
 		<handler id="TestBoxOpenBrowser"	type="CFM" filename="testbox/openBrowser.cfm" />
+		<handler id="TestBoxBDDBundle"		type="CFM" filename="testbox/BDDBundle.cfm" />
+		<handler id="TestBoxUnitBundle"		type="CFM" filename="testbox/UnitBundle.cfm" />
+		
 		
 	</handlers>
 
