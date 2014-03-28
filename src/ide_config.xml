@@ -170,6 +170,13 @@
 					<action name="Primer BDD" 			handlerid="TestBoxBDDDocs"		showResponse="true"></action>
 					<action name="Primer xUnit" 		handlerid="TestBoxUnitDocs"		showResponse="true"></action>
 				</menu>
+				
+				<!-- Setup Project Config -->
+				<action name="Create/Open CPU Config File" 	handlerid="GenProjectConfig"	showResponse="true" />
+				<!-- Test Spec -->
+				<action name="Generate Test Harness" handlerid="TestBoxHarness" showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
 				<!-- Test Spec -->
 				<action name="Run Bundle" handlerid="TestBoxRunBundle" showResponse="true">
 					<filters><filter type="file" pattern=".*\.cfc" /></filters>
@@ -181,18 +188,24 @@
 				<!-- Execute Runner -->
 				<action name="Run HTML Runner" handlerid="TestBoxRunner" showResponse="true" />
 				
-				<!-- Setup Project Config -->
-				<action name="Create/Open CPU Config File" 	handlerid="GenProjectConfig"	showResponse="true" />
+				
 			</menu>
 		</contribution>
 		
 		<!--  Editor  -->
 		<contribution target="editor">
+			<!-- ColdBox Actions -->
 			<menu name="ColdBox">
 				<action name="Generate Action" handlerid="GenAction" showResponse="true" />
 				<action name="Generate Implicit Handler Methods" handlerid="GenImplicitHandlerMethods" showResponse="true"></action>
 			</menu>
-			
+			<!-- TestBox Actions -->
+			<menu name="TestBox">
+				<action name="Run Bundle" handlerid="TestBoxRunBundle" showResponse="true">
+					<filters><filter type="file" pattern=".*\.cfc" /></filters>
+				</action>
+			</menu>
+			<!-- WireBox DI -->
 			<menu name="WireBox DI">
 				<action name="Property Injection" 	handlerid="WireBoxPropertyInjection"	showResponse="true"></action>
 				<action name="Setter Injection" 	handlerid="WireBoxSetterInjection"		showResponse="true"></action>
@@ -298,6 +311,7 @@
 		<handler id="TestBoxRunBundle"		type="CFM" filename="testbox/runBundle.cfm" />
 		<handler id="TestBoxRunner"			type="CFM" filename="testbox/runner.cfm" />
 		<handler id="TestBoxRunDirectory"	type="CFM" filename="testbox/runDirectory.cfm" />
+		<handler id="TestBoxHarness"		type="CFM" filename="testbox/generateHarness.cfm" />
 		
 	</handlers>
 
