@@ -173,8 +173,12 @@
 				
 				<!-- Setup Project Config -->
 				<action name="Create/Open CPU Config File" 	handlerid="GenProjectConfig"	showResponse="true" />
-				<!-- Test Spec -->
+				<!-- Test Harness -->
 				<action name="Generate Test Harness" handlerid="TestBoxHarness" showResponse="true">
+					<filters><filter type="folder" /></filters>
+				</action>
+				<!-- Test Browser -->
+				<action name="Generate Test Browser" handlerid="TestBoxBrowser" showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
 				<!-- Test Spec -->
@@ -312,6 +316,7 @@
 		<handler id="TestBoxRunner"			type="CFM" filename="testbox/runner.cfm" />
 		<handler id="TestBoxRunDirectory"	type="CFM" filename="testbox/runDirectory.cfm" />
 		<handler id="TestBoxHarness"		type="CFM" filename="testbox/generateHarness.cfm" />
+		<handler id="TestBoxBrowser"		type="CFM" filename="testbox/generateBrowser.cfm" />
 		
 	</handlers>
 

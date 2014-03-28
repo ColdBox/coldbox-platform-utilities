@@ -41,14 +41,15 @@ if( !fileExists( settingsLocation ) ){
 		</head>
 		<body>
 			<h2>CPU Config File</h2>
-			<p>You can use the ColdBox Platform Utilities config file to tell the extension where your project is in the server, 
+			<p>You can use the ColdBox Platform Utilities config file to tell the extension where your project is in the server,
 			what TestBox Runner to use and much more configurations.  Just fill out the JSON according to our spec below.</p>
 <div class="consoleLog">
 <pre>
 {
   "projectURL" : "http://cf10presso.jfetmac/cbTraining/",
   "testbox" : {
-    "runnerURL" : "http://cf10presso.jfetmac/cbTraining/test/runner.cfm"
+    "runnerURL" : "http://cf10presso.jfetmac/cbTraining/test/runner.cfm",
+    "browserURL" : "http://cf10presso.jfetmac/cbTraining/test-browser/index.cfm"
   }
 }
 </pre>
