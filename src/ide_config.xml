@@ -190,8 +190,9 @@
 					<filters><filter type="folder" /></filters>
 				</action>
 				<!-- Execute Runner -->
-				<action name="Run HTML Runner" handlerid="TestBoxRunner" showResponse="true" />
-				
+				<action name="Run Project HTML Runner" handlerid="TestBoxRunner" showResponse="true" />
+				<!-- Open Browser -->
+				<action name="Run Project Test Browser" handlerid="TestBoxOpenBrowser" showResponse="true" />
 				
 			</menu>
 		</contribution>
@@ -317,6 +318,7 @@
 		<handler id="TestBoxRunDirectory"	type="CFM" filename="testbox/runDirectory.cfm" />
 		<handler id="TestBoxHarness"		type="CFM" filename="testbox/generateHarness.cfm" />
 		<handler id="TestBoxBrowser"		type="CFM" filename="testbox/generateBrowser.cfm" />
+		<handler id="TestBoxOpenBrowser"	type="CFM" filename="testbox/openBrowser.cfm" />
 		
 	</handlers>
 

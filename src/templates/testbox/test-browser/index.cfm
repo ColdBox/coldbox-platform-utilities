@@ -1,6 +1,6 @@
 <!--- SETUP THE ROOTS OF THE BROWSER RIGHT HERE --->
 <cfset rootMapping 	= "/coldbox/testing">
-<cfif isDirectory( rootMapping )>
+<cfif directoryExists( rootMapping )>
 	<cfset rootPath = rootMapping>
 <cfelse>
 	<cfset rootPath = expandPath( rootMapping )>

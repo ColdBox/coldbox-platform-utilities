@@ -175,4 +175,21 @@ component accessors="true"{
 		return "http://localhost/coldbox/system/testing/TestBox.cfc";
 	}
 
+	/**
+	* Must be used from within the project view context: for now.
+	*/
+	function getTestBoxBrowserURL(){
+		var projectLocation = replace( getProjectInfo().projectLocation, "\", "/", "all" );
+
+		// case 1: cpu.json -> build runner from global cpu.json file
+		if( fileExists( projectLocation & "/cpu.json" ) ){
+			var cpudata 	= deserializeJSON( fileRead( projectLocation & "/cpu.json" ) );
+			if( structKeyExists( cpudata, "testbox" ) && structKeyExists( cpudata.testbox, "browserURL" ) ){
+				return cpudata.testbox.browserURL;
+			}
+		}
+		// default location
+		return "http://localhost/test-browser/index.cfm";
+	}
+
 }
