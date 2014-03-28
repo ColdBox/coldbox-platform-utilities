@@ -7,8 +7,8 @@ Author      :	 Sana Ullah & Luis Majano
 ----------------------------------------------------------------------->
 <cfscript>
 // target + harness location
-target = data.event.ide.projectview.resource.XMLAttributes.path & "/testbox-runner";
-harnessLocation = expandPath( "/cpu/templates/testbox/harness");
+target = data.event.ide.projectview.resource.XMLAttributes.path & "/test-harness";
+harnessLocation = expandPath( "/cpu/templates/testbox/test-harness");
 // generate it
 controller.getUtility()
 	.directoryCopy( harnessLocation, target );
