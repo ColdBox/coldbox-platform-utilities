@@ -51,9 +51,6 @@
 				<action name="New Module" 	handlerid="GenModule"	showResponse="true">
 					<filters><filter type="folder" /></filters>
 				</action>
-				<action name="New Plugin" 		handlerid="GenPlugin"		showResponse="true">
-					<filters><filter type="folder" /></filters>
-				</action>
 				
 				<!-- CacheBox -->
 				<menu name="CacheBox">
@@ -110,9 +107,6 @@
 						<filters><filter type="folder" /></filters>
 					</action>
 					<action name="New Model Test" 			handlerid="GenModelTest"	showResponse="true">
-						<filters><filter type="folder" /></filters>
-					</action>
-					<action name="New Plugin Test" 			handlerid="GenPluginTest"	showResponse="true">
 						<filters><filter type="folder" /></filters>
 					</action>
 				</menu>
@@ -252,7 +246,6 @@
 	<handlers>		
 		<!-- Global Generators -->
 		<handler id="GenHandler"			type="CFM" filename="HandlerSetup.cfm" />
-		<handler id="GenPlugin"				type="CFM" filename="PluginSetup.cfm" />
 		<handler id="GenSkeleton"			type="CFM" filename="AppSkeleton.cfm" />
 		<handler id="GenModel"	    		type="CFM" filename="ModelSetup.cfm" />
 		<handler id="GenInterceptor"		type="CFM" filename="InterceptorSetup.cfm" />
@@ -263,7 +256,6 @@
 		<handler id="GenIntegrationTest" 	type="CFM" filename="testing/IntegrationTestSetup.cfm" />
 		<handler id="GenModelTest"		 	type="CFM" filename="testing/ModelTestSetup.cfm" />
 		<handler id="GenInterceptorTest" 	type="CFM" filename="testing/InterceptorTestSetup.cfm" />
-		<handler id="GenPluginTest" 		type="CFM" filename="testing/PluginTestSetup.cfm" />
 		
 		<!-- Config Folder Aspects -->
 		<handler id="GenDeploy"	    		type="CFM" filename="DeploySetup.cfm" />
