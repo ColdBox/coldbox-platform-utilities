@@ -1,5 +1,25 @@
 A ColdFusion Builder companion to help build ColdBox Platform applications.<br/><br/>
 
+Version 4.0 <br>
+Bug
+[CBOXUTILITIES-28] - Crud generator fixes bombs with extra quotes
+[CBOXUTILITIES-29] - Enable CRUD composition of relationships
+Improvement
+[CBOXUTILITIES-31] - Update all app templates
+[CBOXUTILITIES-35] - Update Help documentation
+[CBOXUTILITIES-36] - Rename resources to shorter names
+[CBOXUTILITIES-37] - Update embedded google search engine
+[CBOXUTILITIES-40] - Menu ordering and cleanups
+[CBOXUTILITIES-41] - Make Application.cfc with non-inheritance default
+New Feature
+[CBOXUTILITIES-30] - Create config file for LogBox
+[CBOXUTILITIES-32] - Update all testing classes to TestBox Style
+[CBOXUTILITIES-33] - CacheBox -> New Configuration
+[CBOXUTILITIES-34] - TestBox Support
+[CBOXUTILITIES-42] - Added global CPU configuration file for project URL and TestBox config
+Task
+[CBOXUTILITIES-38] - Remove debugger monitors, no longer needed
+[CBOXUTILITIES-39] - Remove ColdBox LITE references
 
 Version 3.0 <br/>
 [CBOXUTILITIES-19] - When inserting a property injection DSL it inserts a double :
