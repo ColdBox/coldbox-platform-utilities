@@ -18,9 +18,9 @@ All handlers receive the following:
 
 <!--- Script? --->
 <cfif inputStruct.Script>
-	<cfset scriptPrefix = "Script">	
-</cfif>		
-		
+	<cfset scriptPrefix = "Script">
+</cfif>
+
 <!--- Read in Module Config --->
 <cffile action="read" file="#ExpandPath('../')#/templates/modules/ModuleConfig#scriptPrefix#.cfc" variable="moduleConfig">
 
@@ -30,11 +30,14 @@ All handlers receive the following:
 <cfset moduleConfig = replaceNoCase(moduleConfig,"@authorURL@",inputStruct.authorURL,"all") />
 <cfset moduleConfig = replaceNoCase(moduleConfig,"@description@",inputStruct.description,"all") />
 <cfset moduleConfig = replaceNoCase(moduleConfig,"@version@",inputStruct.version,"all") />
+<cfset moduleConfig = replaceNoCase(moduleConfig,"@CFMapping@",inputStruct.CFMapping,"all") />
+<cfset moduleConfig = replaceNoCase(moduleConfig,"@ModelNamespace@",inputStruct.ModelNamespace,"all") />
+<cfset moduleConfig = replaceNoCase(moduleConfig,"@AutoMapModels@",inputStruct.AutoMapModels,"all") />
 
 <cftry>
-	<!--- Copy module template --->	
+	<!--- Copy module template --->
 	<cfset controller.getUtility().directoryCopy("#ExpandPath('../')#/templates/modules/", expandLocation & "/#moduleName#")>
-	
+
 	<!--- Clean Files Out --->
 	<cfif inputStruct.Script>
 		<cfset fileDelete(expandLocation & "/#moduleName#/handlers/Home.cfc")>
@@ -43,21 +46,21 @@ All handlers receive the following:
 		<cfset fileDelete(expandLocation & "/#moduleName#/handlers/HomeScript.cfc")>
 	</cfif>
 	<cfset fileDelete(expandLocation & "/#moduleName#/ModuleConfigScript.cfc")>
-		
+
 	<!--- Write Out the New Config --->
 	<cfset fileWrite(expandLocation & "/#moduleName#/ModuleConfig.cfc",moduleConfig)>
-	
+
 	<cfset message = "Generated new module: #moduleName# in your application"/>
-	
+
 	<cfcatch type="any">
 		<cfset message = "There was problem creating the module: #cfcatch.message# #cfcatch.detail#" />
 	</cfcatch>
 </cftry>
 
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide>  
+<response status="success" showresponse="true">
+<ide>
 	<commands>
 		<command type="RefreshProject">
 			<params>
@@ -70,7 +73,7 @@ All handlers receive the following:
 			</params>
 		</command>
 	</commands>
-	<dialog width="550" height="350" title="ColdBox Module Wizard" image="includes/images/ColdBox_Icon.png"/>  
+	<dialog width="550" height="350" title="ColdBox Module Wizard" image="includes/images/ColdBox_Icon.png"/>
 	<body>
 	<![CDATA[<p style="font-size:12px;"><cfoutput>#message#</cfoutput></p>]]>
 	</body>
