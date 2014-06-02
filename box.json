@@ -1,0 +1,25 @@
+{
+	"name" 				: "ColdBox Platform Utilities",
+	"version"			: "4.1.0",
+	"author" 			: "Ortus Solutions <info@ortussolutions.com>",
+	"slug"				: "coldbox-platform-utilities",
+	"type"				: "cfbuilder-extensions",
+	"keywords"			: "coldbox,testbox,wirebox,cachebox,logbox,cfbuilder",
+	"directory"			: "/",
+	"homepage"			: "http://www.coldbox.org",
+	"documentation"		: "http://wiki.coldbox.org/wiki/CFBuilderExtensions.cfm",
+	"repository"		: { "type" : "git", "url" : "http://github.com/ColdBox/coldbox-platform-utilities" },
+	"bugs"				: "https://ortussolutions.atlassian.net/browse/CBOXUTILITIES",
+	"shortDescription"	: "A ColdFusion Builder extension for helping you build ColdBox, TestBox and more applicaitons.",
+	"engines"			: [
+		{ "type" : "railo", "version" : ">4.1" },
+		{ "type" : "adobe", "version" : ">9.0.2" }
+	],
+	"license"			: [ 
+		{ "type" : "Apache2", "url" : "http://www.apache.org/licenses/LICENSE-2.0.html" } 
+	],
+	"contributors"		: [
+		"Sana Ullah <sanaullah73@gmail.com>"
+	],
+	"ignore"			: []
+}

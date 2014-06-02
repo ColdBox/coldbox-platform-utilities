@@ -1,59 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="ColdboxPlatformUtilities.build" default="ftp.deploy" basedir=".">
-
-	<description>ColdBoxPlatformUtilities Release Build</description>
+<project name="ColdboxPlatformUtilities.build" default="distribute" basedir=".">
+	<description>ColdBox Platform Utilities Build</description>
 	
-	<!-- Properties -->
-	<property name="dir.userlocation"	value="/Users/lmajano" />
-	<property name="dir.exports"		value="${dir.userlocation}/exports" />
-	<property name="src.dir" 			value="src" />
-	<property name="build.dir" 			value="build" />
-	<property name="dist.dir" 			value="${dir.exports}/coldbox-platform-utilities" />
-	<property name="ftp.server"  		value="ftp.coldbox.org" />
-	<property name="ftp.remotedir" 		value="/httpdocs/downloads" />
-		
-	<!-- dynamic values for build -->
+	<!-- Version: UPDATE ON EACH RELEASE AS NEEDED -->
+	<property name="cpu.version"	value="4.1.0"/>
+	<property name="cpu.slug"		value="coldbox-platform-utilities"/>
+	
+	<!-- Build Labels -->
 	<tstamp prefix="start"/>
+	<!-- Load Contrib Tasks -->
+	<path id="cp">
+		<fileset dir="ant/lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<!-- Define Tasks -->
+	<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="cp" />
+
+	<!-- Init Build -->	
+	<target name="init" description="Initializes a project and all relevant data">
+		<!-- Default environment check, if not passed via -Denvironment -->
+    	<condition property="environment" value="local">
+    		<not><isset property="environment" /></not>
+    	</condition>
+    	<echo>Loading from environment: ${environment}</echo>
+		<!-- Load env properties -->
+		<loadproperties srcFile="build-${environment}.properties"/>
+		<!-- Build Number -->
+		<propertyfile file="build.number" comment="Build Number for ANT. Edit not!">
+			<entry key="build.number" 
+					type="int" 
+			     	operation="+"
+					pattern="00000"
+			     	default="1" />
+		</propertyfile>
+		<property file="build.number"/>
+		<!-- Build Label -->
+		<property name="build.label" value="${cpu.slug_{cpu.version}.${build.number}-${start.DSTAMP}${start.TSTAMP}"/>
+		<!-- Cleanup + Init -->
+		<delete dir="${dir.build}" />
+		<mkdir dir="${dir.build}"/>
+		<chmod file="${dir.build}/**" perm="g+wxrs" type="both" />
+	</target>
 	
-	<target name="init" description="Initializes a project and all relevant data" depends="clean">
-		<input addproperty="build.version" message="Build Version" />
-		<mkdir dir="${build.dir}"/>
-		<mkdir dir="${dist.dir}"/>
-	</target>
-
-	<target name="clean" description="Remove all directories">
-		<delete dir="${build.dir}" verbose="true"/> 
-		<delete dir="${dist.dir}" verbose="true"/> 
-	</target>
-
+	<!-- Build CPU -->
 	<target name="build" depends="init" description="Copies fileset from source to build directory, adding a label file">
+		<!-- Copy Src -->
 		<copy todir="${build.dir}">
-			<fileset dir="${src.dir}" />
+			<fileset dir="${dir.src}" />
 		</copy>		
-		<!--Build Stuff -->	
-		<concat destfile="${build.dir}\${build.version}.txt">Built on ${start.TODAY}</concat>
-	</target>
-		
-	<target name="distribute" depends="build" description="Creates a zip archive of site for (re)distribution">
-		
-		<zip destfile="${dist.dir}/ColdboxPlatformUtilities.zip"
-			 basedir="${build.dir}"
-			 update="true"/>
-		
-		<delete dir="${build.dir}" />
-		
+		<!-- Copy Assets -->
+		<copy todir="${build.dir}">
+			<fileset file="box.json" />
+			<fileset file="README.markdown" />
+		</copy>	
+		<!-- Replace Build Numbers -->
+		<replaceregexp match='@build.number@' replace="${build.number}" flags="ig" byline="true">
+		  <fileset dir="${dir.build}">
+		  </fileset>
+		</replaceregexp>
+		<!-- Copy build ID -->
+		<concat destfile="${dir.build}/${build.label}">Built on ${start.TODAY}</concat>
 	</target>
 	
-	<target name="ftp.deploy" depends="distribute" >
-		<input message="Please enter ftp server username:" addproperty="ftp.username" />
-		<input message="Please enter fpt server password:" addproperty="ftp.password" />
-		
-		<ftp action="send" server="${ftp.server}" userid="${ftp.username}" password="${ftp.password}" 
-			remotedir="${ftp.remotedir}" passive="yes" verbose="yes">
-			<fileset dir="${dist.dir}" />
-		</ftp>
-		
-		<delete dir="${dist.dir}" />
+	<!-- Build Distribution -->
+	<target name="distribute" depends="build" description="Creates a zip archive of site for (re)distribution">
+		<!-- Create Build File -->
+		<zip destfile="${dir.exports}/${cpu.slug}_${cpu.version}.zip"
+			 basedir="${build.dir}"
+			 update="false"/>
+		<!-- Build Checksums -->
+		<checksum file="${dir.exports}/${cpu.slug}_${cpu.version}.zip" forceoverwrite="true" fileext=".md5"/>
+		<checksum file="${dir.exports}/${cpu.slug}_${cpu.version}.zip" forceoverwrite="true" fileext=".sha1" algorithm="sha"/>
+		<!-- Cleanup -->
+		<delete dir="${build.dir}" />
 	</target>
 	
 </project>
