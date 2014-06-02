@@ -69,9 +69,8 @@
 		<zip destfile="${dir.exports}/${cpu.slug}_${cpu.version}.zip"
 			 basedir="${build.dir}"
 			 update="false"/>
-		<!-- Build Checksums -->
+		<!-- Build Checksum -->
 		<checksum file="${dir.exports}/${cpu.slug}_${cpu.version}.zip" forceoverwrite="true" fileext=".md5"/>
-		<checksum file="${dir.exports}/${cpu.slug}_${cpu.version}.zip" forceoverwrite="true" fileext=".sha1" algorithm="sha"/>
 		<!-- Cleanup -->
 		<delete dir="${build.dir}" />
 	</target>
