@@ -51,7 +51,17 @@ Description :
 		};
 		
 		// Map Bindings below
-		
+		map("UserManager").to("common.ourdomain.security.UserManager")
+			.asSingleton()
+			.noAutowire();
+		map("anonBean:8DFEE45744").toFactoryMethod(factory="EnvironmentService",method="getProductionDSN")
+			.asSingleton()
+			.noAutowire();
+		map("UserManager").to("common.ourdomain.security.UserManager")
+			.initArg(name="productionDSN",ref="anonBean:8DFEE45744")
+			.initArg(name="PaymentService",ref="PaymentService")
+			.asSingleton()
+			.noAutowire();
 
 	}	
 </cfscript>
