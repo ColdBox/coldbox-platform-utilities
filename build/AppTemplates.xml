@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="ColdboxPlatformUtilities.CopyAppTemplates" default="copy" basedir=".">
-
-	<description>App Template Copies</description>
+<project name="CopyAppTemplates" default="copy" basedir="../">
+	<description>App Template Copies From Core</description>
 	
 	<!-- Properties -->
 	<property name="target.dir" 		value="src/skeletons" />
 	<property name="src.dir" 			value="/Users/lmajano/Sites/cboxdev/core/coldbox/ApplicationTemplates" />
 		
-	<!-- dynamic values for build -->
-	<tstamp prefix="start"/>
-	
 	<target name="clean" description="Remove all directories">
 		<delete verbose="true">
 			<fileset dir="${target.dir}" includes="**/*.zip" />

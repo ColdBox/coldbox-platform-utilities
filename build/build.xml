@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     ColdBox Platform Utilities (www.coldbox.org)                                                               
+     ====================================================================== -->
+<project name="CPU.build" default="build.all" basedir="../">
+	<description>
+		ColdBox Platform Utilities Build
+	</description>
+	
+	<!-- Version: UPDATE ON EACH RELEASE AS NEEDED -->
+	<property name="groupID"		value="ortussolutions" />
+	<property name="cpu.version"	value="5.0.0"/>
+	<property name="cpu.slug"		value="coldbox-platform-utilities"/>
+	
+	<!-- Build Labels -->
+	<tstamp prefix="start"/>
+	<!-- Load Contrib Tasks -->
+	<path id="cp">
+		<fileset dir="build/lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<!-- Define Tasks -->
+	<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="cp" />
+	<!-- Import Box-Repo Tasks -->
+	<import><url url="https://raw.githubusercontent.com/Ortus-Solutions/box-tasks/master/box-repo.xml"/></import>
+	 	
+	<!-- Init Build -->	
+	<target name="init" description="Initializes a project and all relevant data" unless="src.isInit">
+		<!-- Default environment check, if not passed via -Denvironment -->
+		<condition property="environment" value="local">
+			<not><isset property="environment" /></not>
+		</condition>
+		<if>
+			<available file="build/build-${environment}.properties" />
+			<then>
+				<!-- Load env properties -->
+				<echo>Loading properties from environment: ${environment}</echo>
+				<loadproperties srcFile="build/build-${environment}.properties"/>
+			</then>
+		</if>
+		<!-- Load root properties -->
+		<echo>Loading base properties</echo>
+		<loadproperties srcFile="build/build.properties"/>
+		
+		<!-- Build Number -->
+		<propertyfile file="build/build.number" comment="Build Number for ANT. Edit not!">
+			<entry key="build.number" 
+					type="int" 
+			     	operation="+"
+					pattern="00000"
+			     	default="1" />
+		</propertyfile>
+		<property file="build/build.number"/>
+		
+		<!-- Build Label -->
+		<property name="build.label" value="${cpu.slug}-${cpu.version}.${build.number}-${start.DSTAMP}${start.TSTAMP}"/>
+		<!-- Cleanup + Init -->
+		<delete dir="${dir.build}" />
+		<delete verbose="true" failonerror="false">
+			<fileset dir="${dir.exports}" />
+		</delete>
+		<mkdir dir="${dir.build}"/>
+		<chmod file="${dir.build}/**" perm="g+wxrs" type="both" />
+		
+		<!-- Mark as init -->
+		<property name="src.isInit" value="true" />
+	</target>
+	
+	<!-- update permissions on reports -->
+	<target name="update.permissions" description="Update staging server permissions">
+		<!-- Integration permissions -->
+		<if>
+			<equals arg1="${environment}" arg2="auto" />
+			<then>
+				<chmod file="${dir.build}/**" perm="go+wrs" type="both" verbose="true" />
+				<chown owner="stg-ortus" verbose="true">
+					<fileset dir="${dir.build}" />
+				</chown>
+			</then>
+			<else>
+			</else>
+		</if>
+	</target>
+	
+	<!-- Build CPU -->
+	<target name="build.cpu" depends="init" description="Copies fileset from source to build directory, adding a label file">
+		<!-- Copy Src -->
+		<copy todir="${dir.build}">
+			<fileset dir="${dir.src}" />
+		</copy>		
+		<!-- Copy Assets -->
+		<copy todir="${dir.build}">
+			<fileset file="box.json" />
+			<fileset file="README.markdown" />
+		</copy>	
+		<!-- Replace Build Numbers -->
+		<replaceregexp match='@build.number@' replace="${build.number}" flags="ig" byline="true">
+		  <fileset dir="${dir.build}">
+		  </fileset>
+		</replaceregexp>
+		<!-- Copy build ID -->
+		<concat destfile="${dir.build}/${build.label}">Built on ${start.TODAY}</concat>
+	</target>
+	
+	<!-- Build Distribution -->
+	<target name="build.all" depends="build.cpu" description="Builds Distribution">
+		<!-- Create Build File -->
+		<zip destfile="${dir.exports}/${cpu.slug}-${cpu.version}.zip"
+			 basedir="${dir.build}"
+			 update="false"/>
+		<!-- Build Checksum -->
+		<checksum file="${dir.exports}/${cpu.slug}-${cpu.version}.zip" forceoverwrite="true" fileext=".md5"/>
+		<!-- Create Box Repo From macrodef -->
+		<box-repo location="${dir.artifacts}/${cpu.slug}" 
+				  artifactID="${cpu.slug}"
+				  buildID="${build.number}"
+				  groupID="ortussolutions"
+				  latest="${cpu.version}"
+				  classifiers=""/>
+		<!-- Cleanup -->
+		<delete dir="${dir.build}" />
+	</target>
+	
+</project>
