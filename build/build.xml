@@ -86,16 +86,16 @@
 	<!-- Build CPU -->
 	<target name="build.cpu" depends="init" description="Copies fileset from source to build directory, adding a label file">
 		<!-- Copy Src -->
-		<copy todir="${dir.build}">
+		<copy todir="${dir.build}" encoding="UTF-8">
 			<fileset dir="${dir.src}" />
 		</copy>		
 		<!-- Copy Assets -->
-		<copy todir="${dir.build}">
+		<copy todir="${dir.build}" encoding="UTF-8">
 			<fileset file="box.json" />
 			<fileset file="README.markdown" />
 		</copy>	
 		<!-- Replace Build Numbers -->
-		<replaceregexp match='@build.number@' replace="${build.number}" flags="ig" byline="true">
+		<replaceregexp match='@build.number@' replace="${build.number}" flags="ig" byline="true" encoding="UTF-8">
 		  <fileset dir="${dir.build}">
 		  </fileset>
 		</replaceregexp>
