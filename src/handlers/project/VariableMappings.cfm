@@ -15,7 +15,7 @@ mappings = {
 	cacheBox = "coldbox.system.cache.CacheFactory",
 	binder = "coldbox.system.ioc.config.Binder",
 	wirebox = "coldbox.system.ioc.Injector",
-	html	= "coldbox.system.plugins.HTMLHelper"
+	html	= "coldbox.system.core.dynamic.HTMLHelper"
 };
 
 // Destinations
@@ -43,10 +43,10 @@ fileWrite(settingsLocation, controller.getUtility().prettifyXML(settingsXML));
 
 </cfscript>
 
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide>  
+<response status="success" showresponse="true">
+<ide>
 	<commands>
 		<command type="RefreshProject">
 			<params>
@@ -54,7 +54,7 @@ fileWrite(settingsLocation, controller.getUtility().prettifyXML(settingsXML));
 			</params>
 		</command>
 	</commands>
-	<dialog width="650" height="450" title="ColdBox Variable Mappings" image="includes/images/ColdBox_Icon.png"/>  
+	<dialog width="650" height="450" title="ColdBox Variable Mappings" image="includes/images/ColdBox_Icon.png"/>
 	<body><![CDATA[
 	<html>
 		<head>
@@ -64,7 +64,7 @@ fileWrite(settingsLocation, controller.getUtility().prettifyXML(settingsXML));
 		</head>
 		<body>
 			<div class="messagebox-green">CFBuilder settings.xml Modified!</div>
-			
+
 			<h2>ColdBox Project Variable Mappings</h2>
 			<div class="consoleLog">
 				<p>
@@ -85,8 +85,8 @@ fileWrite(settingsLocation, controller.getUtility().prettifyXML(settingsXML));
 				</p>
 			</div>
 		</body>
-	</html>	
-	
+	</html>
+
 	]]></body>
 </ide>
 </cfoutput>
