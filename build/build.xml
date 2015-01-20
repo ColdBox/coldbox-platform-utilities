@@ -54,7 +54,7 @@
 		<property file="build/build.number"/>
 		
 		<!-- Build Label -->
-		<property name="build.label" value="${cpu.slug}-${cpu.version}.${build.number}-${start.DSTAMP}${start.TSTAMP}"/>
+		<property name="build.label" value="${cpu.slug}-${cpu.version}+${build.number}-${start.DSTAMP}${start.TSTAMP}"/>
 		<!-- Cleanup + Init -->
 		<delete dir="${dir.build}" />
 		<delete verbose="true" failonerror="false">
@@ -92,7 +92,7 @@
 		<!-- Copy Assets -->
 		<copy todir="${dir.build}" encoding="UTF-8">
 			<fileset file="box.json" />
-			<fileset file="README.markdown" />
+			<fileset file="readme.md" />
 		</copy>	
 		<!-- Replace Build Numbers -->
 		<replaceregexp match='@build.number@' replace="${build.number}" flags="ig" byline="true" encoding="UTF-8">

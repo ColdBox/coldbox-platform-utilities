@@ -5,7 +5,7 @@
 	<description><![CDATA[
 		A ColdFusion Builder companion for ColdBox, WireBox, MockBox, TestBox, CacheBox, LogBox and ForgeBox	
 	]]></description>	
-	<version>4.1.0.@build.version@</version>
+	<version>5.0.0+@build.version@</version>
 	<license> Copyright since [2009] [Ortus Solutions, Corp - Luis Majano]
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -326,7 +326,6 @@
 		<handler id="TestBoxOpenBrowser"	type="CFM" filename="testbox/openBrowser.cfm" />
 		<handler id="TestBoxBDDBundle"		type="CFM" filename="testbox/BDDBundle.cfm" />
 		<handler id="TestBoxUnitBundle"		type="CFM" filename="testbox/UnitBundle.cfm" />
-		
 		
 	</handlers>
 

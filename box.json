@@ -1,6 +1,6 @@
 {
 	"name" 				: "ColdBox Platform Utilities",
-	"version"			: "4.1.0",
+	"version"			: "5.0.0",
 	"author" 			: "Ortus Solutions <info@ortussolutions.com>",
 	"slug"				: "coldbox-platform-utilities",
 	"type"				: "cfbuilder-extensions",
