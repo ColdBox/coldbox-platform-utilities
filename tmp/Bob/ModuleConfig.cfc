@@ -9,16 +9,8 @@ this.viewParentLookup   = (true) [boolean] (Optional) // If true, checks for vie
 this.layoutParentLookup = (true) [boolean] (Optional) // If true, checks for layouts in the parent first, then it the module.If false, then modules first, then parent.
 this.entryPoint  		= "" (Optional) // If set, this is the default event (ex:forgebox:manager.index) or default route (/forgebox) the framework
 									       will use to create an entry link to the module. Similar to a default event.
-// Execution Aliases
-this.aliases			= [];
-// Auto Map Models Directory
-this.autoMapModels		= @autoMapModels@;
-// Model Namespace
-this.modelNamespace		= "@modelNamespace@";
-// CF Mapping
-this.cfmapping			= "@cfmapping@";
-// Module Dependencies
-this.dependencies 		= [];
+this.cfmapping			= "The CF mapping to create";
+this.modelNamespace		= "The namespace to use for registered models, if blank it uses the name of the module."
 
 structures to create for configuration
 - parentSettings : struct (will append and override parent)
@@ -40,10 +32,10 @@ Available objects in variable scope
 - binder (The wirebox configuration binder)
 - wirebox (The wirebox injector)
 
-Configuration Method
-- configure() : The method ColdBox calls to configure the module upon framework initialization
+Required Methods
+- configure() : The method ColdBox calls to configure the module.
 
-Life Cycle Methods
+Optional Methods
 - onLoad() 		: If found, it is fired once the module is fully loaded
 - onUnload() 	: If found, it is fired once the module is unloaded
 
@@ -51,27 +43,23 @@ Life Cycle Methods
 component {
 
 	// Module Properties
-	this.title 				= "@title@";
-	this.author 			= "@author@";
-	this.webURL 			= "@authorURL@";
-	this.description 		= "@description@";
-	this.version			= "@version@";
+	this.title 				= "Bob";
+	this.author 			= "Test";
+	this.webURL 			= "http://test";
+	this.description 		= "test";
+	this.version			= "1.0.0";
 	// If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
 	this.viewParentLookup 	= true;
 	// If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
 	this.layoutParentLookup = true;
 	// Module Entry Point
-	this.entryPoint			= "@title@";
-	// Execution Aliases
-	this.aliases			= [];
-	// Auto Map Models Directory
-	this.autoMapModels		= @autoMapModels@;
+	this.entryPoint			= "Bob";
 	// Model Namespace
-	this.modelNamespace		= "@modelNamespace@";
+	this.modelNamespace		= "";
+	// Auto Map Models Directory
+	this.autoMapModels		= true;
 	// CF Mapping
-	this.cfmapping			= "@cfmapping@";
-	// Module Dependencies
-	this.dependencies 		= [];
+	this.cfmapping			= "";
 
 	function configure(){
 

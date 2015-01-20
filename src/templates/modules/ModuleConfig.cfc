@@ -11,8 +11,16 @@ this.viewParentLookup   = (true) [boolean] (Optional) // If true, checks for vie
 this.layoutParentLookup = (true) [boolean] (Optional) // If true, checks for layouts in the parent first, then it the module.If false, then modules first, then parent.
 this.entryPoint  		= "" (Optional) // If set, this is the default event (ex:forgebox:manager.index) or default route (/forgebox) the framework
 									       will use to create an entry link to the module. Similar to a default event.
-this.cfmapping			= "The CF mapping to create";
-this.modelNamespace		= "The namespace to use for registered models, if blank it uses the name of the module."
+// Execution Aliases
+this.aliases			= [];
+// Auto Map Models Directory
+this.autoMapModels		= @autoMapModels@;
+// Model Namespace
+this.modelNamespace		= "@modelNamespace@";
+// CF Mapping
+this.cfmapping			= "@cfmapping@";
+// Module Dependencies
+this.dependencies 		= [];
 
 structures to create for configuration
 - parentSettings : struct (will append and override parent)
@@ -34,10 +42,10 @@ Available objects in variable scope
 - binder (The wirebox configuration binder)
 - wirebox (The wirebox injector)
 
-Required Methods
-- configure() : The method ColdBox calls to configure the module.
+Configuration Method
+- configure() : The method ColdBox calls to configure the module upon framework initialization
 
-Optional Methods
+Life Cycle Methods
 - onLoad() 		: If found, it is fired once the module is fully loaded
 - onUnload() 	: If found, it is fired once the module is unloaded
 
@@ -55,12 +63,16 @@ Optional Methods
 	this.layoutParentLookup = true;
 	// Module Entry Point
 	this.entryPoint			= "@title@";
-	// Model Namespace
-	this.modelNamespace		= "@modelNamespace@";
+	// Execution Aliases
+	this.aliases			= [];
 	// Auto Map Models Directory
 	this.autoMapModels		= @autoMapModels@;
+	// Model Namespace
+	this.modelNamespace		= "@modelNamespace@";
 	// CF Mapping
 	this.cfmapping			= "@cfmapping@";
+	// Module Dependencies
+	this.dependencies 		= [];
 
 	function configure(){
 
