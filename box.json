@@ -6,6 +6,7 @@
 	"type"				: "cfbuilder-extensions",
 	"keywords"			: "coldbox,testbox,wirebox,cachebox,logbox,cfbuilder",
 	"directory"			: "/",
+	"createPackageDirectory" : false,
 	"homepage"			: "http://www.coldbox.org",
 	"documentation"		: "http://wiki.coldbox.org/wiki/CFBuilderExtensions.cfm",
 	"repository"		: { "type" : "git", "url" : "http://github.com/ColdBox/coldbox-platform-utilities" },
@@ -19,7 +20,8 @@
 		{ "type" : "Apache2", "url" : "http://www.apache.org/licenses/LICENSE-2.0.html" } 
 	],
 	"contributors"		: [
-		"Sana Ullah <sanaullah73@gmail.com>"
+		"Sana Ullah <sanaullah73@gmail.com>",
+		"Brad Wood <bdw429s@gmail.com>"
 	],
-	"ignore"			: []
+	"ignore"			: [ "tests/*" ]
 }
