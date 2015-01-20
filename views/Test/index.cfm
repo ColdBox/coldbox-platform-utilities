@@ -1,0 +1,1 @@
+<cfoutput><h1>Test.index</h1></cfoutput>

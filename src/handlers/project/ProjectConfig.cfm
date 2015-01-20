@@ -48,7 +48,7 @@ if( !fileExists( settingsLocation ) ){
 {
   "projectURL" : "http://cf10presso.jfetmac/cbTraining/",
   "testbox" : {
-    "runnerURL" : "http://cf10presso.jfetmac/cbTraining/test/runner.cfm",
+    "runnerURL" : "http://cf10presso.jfetmac/cbTraining/tests/runner.cfm",
     "browserURL" : "http://cf10presso.jfetmac/cbTraining/test-browser/index.cfm"
   }
 }
