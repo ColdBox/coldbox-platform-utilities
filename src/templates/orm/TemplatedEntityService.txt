@@ -1,7 +1,7 @@
 /**
 * A ColdBox Enabled Templated entity service
 */
-component extends="coldbox.system.orm.hibernate.BaseORMService" singleton{
+component extends="cborm.models.BaseORMService" singleton{
 	
 	/**
 	* Constructor

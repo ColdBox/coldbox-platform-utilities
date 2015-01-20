@@ -30,7 +30,7 @@ entityContent = replaceNoCase( entityContent, "|table|", inputStruct.table,"all"
 
 // Active Entity
 if( inputStruct.activeEntity ){
-	entityContent = replaceNoCase( entityContent, "|activeEntity|",' extends="coldbox.system.orm.hibernate.ActiveEntity"',"all" );
+	entityContent = replaceNoCase( entityContent, "|activeEntity|",' extends="cborm.models.ActiveEntity"',"all" );
 	entityContent = replaceNoCase( entityContent, "|activeEntityInit|",'super.init(useQueryCaching="false");',"all" );
 }
 else{
