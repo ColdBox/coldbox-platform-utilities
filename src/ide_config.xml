@@ -318,9 +318,9 @@
 		<handler id="ViewApiDocs"  type="CFM" filename="views/APIDocs.cfm" />
 		
 		<!-- TestBox -->
-		<handler id="TestBoxUnitDocs" 		type="CFM" filename="testbox/unitDocs.cfm" />
-		<handler id="TestBoxBDDDocs" 		type="CFM" filename="testbox/bddDocs.cfm" />
-		<handler id="TestBoxDocs" 			type="CFM" filename="testbox/docs.cfm" />
+		<handler id="TestBoxUnitDocs" 		type="CFM" filename="resources/TestBoxUnitDocs.cfm" />
+		<handler id="TestBoxBDDDocs" 		type="CFM" filename="resources/TestBoxBDDDocs.cfm" />
+		<handler id="TestBoxDocs" 			type="CFM" filename="resources/TestBoxDocs.cfm" />
 		<handler id="TestBoxRunBundle"		type="CFM" filename="testbox/runBundle.cfm" />
 		<handler id="TestBoxRunner"			type="CFM" filename="testbox/runner.cfm" />
 		<handler id="TestBoxRunDirectory"	type="CFM" filename="testbox/runDirectory.cfm" />
