@@ -84,11 +84,12 @@
 				
 				<!-- Resources -->
 				<menu name="Resources">
-					<action name="API Docs" 		handlerid="ColdBoxAPI"			showResponse="true"></action>
-					<action name="Extension Help" 	handlerid="ExtensionHelp"		showResponse="true"></action>
-					<action name="Live Search" 		handlerid="ColdBoxSearch"		showResponse="true"></action>
+					<action name="Latest API Docs" 	handlerid="ColdBoxAPI"			showResponse="true"></action>
+					<action name="Official Manual" 	handlerid="ColdBoxDocs"			showResponse="true"></action>
+					<action name="Wiki Docs" 		handlerid="ColdBoxWikiDocs"		showResponse="true"></action>
 					<action name="Quick Docs" 		handlerid="ColdBoxQuickDocs"	showResponse="true"></action>
-					<action name="Wiki Docs" 		handlerid="ColdBoxDocs"			showResponse="true"></action>
+					<action name="Live Search" 		handlerid="ColdBoxSearch"		showResponse="true"></action>
+					<action name="Extension Help" 	handlerid="ExtensionHelp"		showResponse="true"></action>
 				</menu>
 				
 				<!-- Config Folder Aspects -->
@@ -158,7 +159,7 @@
 			<menu name="TestBox">
 				<!-- Resources -->
 				<menu name="Resources">
-					<action name="API Docs" 			handlerid="ColdBoxAPI"			showResponse="true"></action>
+					<action name="Latest API Docs" 		handlerid="TestBoxAPI"			showResponse="true"></action>
 					<action name="Documentation" 		handlerid="TestBoxDocs"			showResponse="true"></action>
 					<action name="Live Search" 			handlerid="ColdBoxSearch"		showResponse="true"></action>
 					<action name="Quick API Docs" 		handlerid="ColdBoxQuickDocs"	showResponse="true"></action>
@@ -288,9 +289,11 @@
 		<!-- Resources -->
 		<handler id="ExtensionHelp" 	type="CFM" filename="resources/ExtensionHelp.cfm" />
 		<handler id="ColdBoxAPI" 		type="CFM" filename="resources/ColdBoxAPI.cfm" />
+		<handler id="TestBoxAPI" 		type="CFM" filename="resources/TestBoxAPI.cfm" />
 		<handler id="ColdBoxQuickDocs" 	type="CFM" filename="resources/ColdBoxQuickDocs.cfm" />
 		<handler id="ColdBoxSearch"	 	type="CFM" filename="resources/ColdBoxSearch.cfm" />
 		<handler id="ColdBoxDocs" 		type="CFM" filename="resources/ColdBoxDocs.cfm" />
+		<handler id="ColdBoxWikiDocs" 	type="CFM" filename="resources/ColdBoxWikiDocs.cfm" />
 		
 		<!-- ForgeBox -->
 		<handler id="ForgeBoxInstallCategory" 	type="CFM" filename="forgebox/ForgeBoxInstallCategory.cfm" />
