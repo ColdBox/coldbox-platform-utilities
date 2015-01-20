@@ -21,10 +21,10 @@ content = fileRead("#ExpandPath('../../')#/templates/orm/ORMEventHandler.txt");
 fileWrite("#expandLocation#/#objectName#.cfc", content);
 </cfscript>
 
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide>  
+<response status="success" showresponse="true">
+<ide>
 	<commands>
 		<command type="RefreshProject">
 			<params>
@@ -44,7 +44,7 @@ fileWrite("#expandLocation#/#objectName#.cfc", content);
 		</command>
 		</cfif>
 	</commands>
-	<dialog width="600" height="600" title="ColdBox ORM Event Handler Wizard" image="includes/images/ColdBox_Icon.png"/>  
+	<dialog width="600" height="600" title="ColdBox ORM Event Handler Wizard" image="includes/images/ColdBox_Icon.png"/>
 	<body>
 <![CDATA[
 <html>
@@ -56,10 +56,10 @@ fileWrite("#expandLocation#/#objectName#.cfc", content);
 	<body>
 		<div class="messagebox-green">ORM Event Handler Created!</div>
 		<h2>Important</h2>
-		<p>Please add the following code to your Application.cfc in the ORMSettings configuration structure in order to enable hibernate event handling.
+		<p>Please add the following code to your <code>Application.cfc</code> in the <code>ORMSettings</code> configuration structure in order to enable hibernate event handling.
 		Please also update the path to the created newly created ORM Event Handler below:
 		</p>
-		
+
 		<code>
 		<pre>
 this.ormSettings = {
@@ -68,29 +68,26 @@ this.ormSettings = {
 };
 		</pre>
 		</code>
-		
+
 		<h2>Entity Injector</h2>
 		<p>
-		If you would like to enable the entity injector you will need to activate it via the Autowire interceptor in your ColdBox configuration file.
-		Below are the typical properties for this interceptor:
+		If you would like to enable the entity injector you will need to activate it via your <code>ColdBox.cfc</code> configuration file:
 		</p>
-		
+
 		<code>
 		<pre>
-interceptors = [
-	{class="coldbox.system.interceptors.Autowire",
-	 properties={
-	 	entityInjection = true,
-		entityInclude   = "",
-		entityExclude   = ""
-	 }
+// ORM
+orm = {
+	// Enable Injection
+	injection = {
+		enabled = true
 	}
-]
+};
 		</pre>
 		</code>
-		
+
 	</body>
-</html>	
+</html>
 	]]>
 	</body>
 </ide>
