@@ -20,7 +20,7 @@ All handlers receive the following:
 <cfoutput>
 <response status="success" type="default">
 	<ide handlerfile="AppSkeletonGenerate.cfm">
-		<dialog width="500" height="450" title="ColdBox Application Generator" image="includes/images/ColdBox_Icon.png">
+		<dialog width="500" height="300" title="ColdBox Application Generator" image="includes/images/ColdBox_Icon.png">
 			<input name="ApplicationType" label="Application To Generate" type="list">
 			<cfloop query="appSkeletons">
 				<cfif left(appSkeletons.name,1) neq ".">
@@ -28,10 +28,6 @@ All handlers receive the following:
 				</cfif>
 			</cfloop>
 			</input>
-			<input name="ApplicationCFCType" label="Application.cfc using inheritance"
-				   tooltip="Whether to create the Application.cfc with inheritance or not"
-				   type="Boolean"
-				   checked="false" />
 		</dialog>
 	</ide>
 </response>

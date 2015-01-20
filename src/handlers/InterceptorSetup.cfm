@@ -27,7 +27,7 @@ All handlers receive the following:
 				   helpmessage="Generate the unit test component" />
 
 			<input name="TestsDirectory" label="Unit Tests Directory" type="projectdir"
-				   default="#data.event.ide.projectview.xmlattributes.projectlocation#/tests/unit"
+				   default="#data.event.ide.projectview.xmlattributes.projectlocation#/tests/specs/unit"
 				   tooltip="Your unit tests directory"
 				   helpmessage="Your unit tests directory" />
 		</dialog>

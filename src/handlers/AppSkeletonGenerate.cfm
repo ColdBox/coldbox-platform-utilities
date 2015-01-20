@@ -31,20 +31,6 @@ All handlers receive the following:
 	<cfset message = "No zip file was found in that directory." />
 </cfif>
 
-
-<!--- Remove non-ineritance cfc --->
-<cfif inputStruct.ApplicationCFCType>
-	<cfif fileExists( expandLocation & "/Application.cfc" )>
-		<cfset fileDelete( expandLocation & "/Application.cfc" )>
-	</cfif>
-	<cfset fileMove( expandLocation & "/Application_inheritance.cfc", expandLocation & "/Application.cfc")>
-<!--- Remove inheritance CFC --->
-<cfelse>
-	<cfif fileExists( expandLocation & "/Application_inheritance.cfc" )>
-		<cfset fileDelete( expandLocation & "/Application_inheritance.cfc" )>
-	</cfif>
-</cfif>
-
 <cfheader name="Content-Type" value="text/xml">
 <cfoutput>
 <response status="success" showresponse="true">

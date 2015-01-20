@@ -52,7 +52,7 @@ All handlers receive the following:
 				   helpmessage="The root location of the application on the server: ex: /MyApp or / if in the root" />
 
 			<input name="TestsDirectory" label="Integration Tests Directory" type="projectdir"
-				   default="#data.event.ide.projectview.xmlattributes.projectlocation#/tests/integration"
+				   default="#data.event.ide.projectview.xmlattributes.projectlocation#/tests/specs/integration"
 				   tooltip="Your integration tests directory"
 				   helpmessage="Your integration tests directory" />
 
