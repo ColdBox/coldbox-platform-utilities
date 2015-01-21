@@ -1,0 +1,1128 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ValidationError</title>
+	<meta name="keywords" content="cbvalidation.result.concurrent.Callable interface">
+	<!-- common assets -->
+	
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel ="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.min.css">
+<link rel ="stylesheet" type="text/css" href="../../stylesheet.css">
+	
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,700,700italic|Ubuntu+Mono' rel='stylesheet' type='text/css' />
+	
+<script src="../../bootstrap/js/jquery-2.1.0.min.js" type="text/javascript"></script>
+<script src="../../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+<script>
+$(document).ready(function() {
+	// Global Tool Tip Settings
+	$( '[title]' ).tooltip({
+		 animation: 'slide',
+		 delay: { show: 250, hide: 250 }
+	});
+});
+</script>
+	<!-- syntax highlighter -->
+	<link type="text/css" rel="stylesheet" href="../../highlighter/styles/shCoreDefault.css">
+	<script src="../../highlighter/scripts/shCore.js"></script>
+	<script src="../../highlighter/scripts/shBrushColdFusion.js"></script>
+	<script src="../../highlighter/scripts/shBrushXml.js"></script>
+	<script src="../../highlighter/scripts/shBrushSql.js"></script>
+	<script src="../../highlighter/scripts/shBrushJScript.js"></script>
+	<script src="../../highlighter/scripts/shBrushJava.js"></script>
+	<script src="../../highlighter/scripts/shBrushCss.js"></script>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body class="withNavbar">
+
+
+
+
+
+
+<!-- ========= START OF NAVBAR ======= -->
+<a name="navbar_top"></a>
+<a href="#skip-navbar_top" title="skip navigation links"></a>	
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+    
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#class-navigation">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><strong>ColdBox Validation v1.0.0</strong></a>
+		</div>
+
+	    <div class="collapse navbar-collapse" id="class-navigation">
+	    	<ul class="nav navbar-nav">
+				
+					
+					<li><a href="../../overview-summary.html"><i class="glyphicon glyphicon-plane"></i> overview</a></li>
+					
+				
+
+				
+					<li><a href="package-summary.html"><i class="glyphicon glyphicon-folder-open"></i> &nbsp;package</a></li>
+				
+
+			  	
+					<li class="dropdown active">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-file"></i> class <b class="caret"></b></a>
+
+						<ul class="dropdown-menu">
+							<li><a href="#class">Class Definition</a></li>
+							<li><a href="#constructor_summary">Constructor Summary</a></li>
+							<li><a href="#constructor_detail">Constructor Detail</a></li>
+							<li><a href="#inherited_methods">Inherited Methods</a></li>
+							<li><a href="#method_summary">Method Summary</a></li>
+							<li><a href="#method_detail">Method Detail</a></li>
+							<li><a href="#property_summary">Property Summary</a></li>
+							<li><a href="#property_detail">Property Detail</a></li>
+							
+						</ul>
+					</li>
+				
+	      	</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="../../index.html?cbvalidation/result/ValidationError.html" target="_top">
+					<i class="glyphicon glyphicon-fullscreen"></i> Frames
+					</a>
+				</li>
+			</ul>
+	    </div>
+
+	</div>
+</nav>	
+
+<a name="skip-navbar_top"></a>
+<!-- ========= END OF NAVBAR ========= -->
+
+<!-- ======== start of class data ======== -->
+<a name="class"><!-- --></a>
+
+<!-- Package -->
+<div class="pull-right">
+	<a href="package-summary.html" title="Package: cbvalidation.result"><span class="label label-success">cbvalidation.result</span></a>
+</div>
+
+<h2>
+
+Class
+
+ ValidationError</h2>
+
+
+
+
+
+
+
+
+	
+		
+	
+	
+
+	
+		
+		
+			
+		
+	
+	
+
+
+<!-- Inheritance Tree-->
+<pre>railo-context.Component
+        <img src="../../resources/inherit.gif" alt="extended by ">cbvalidation.result.ValidationError
+</pre>
+
+<div class="panel panel-default">
+	<div class="panel-heading"><strong>Class Attributes:</strong></div>
+		<div class="panel-body">
+		
+		
+			
+		
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				synchronized 
+				
+				: false		
+				
+			</li>
+			&nbsp;
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				accessors 
+				
+				: true		
+				
+			</li>
+			&nbsp;
+			
+		
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				persistent 
+				
+				: false		
+				
+			</li>
+			&nbsp;
+			
+		
+			
+		
+			
+		
+		
+	</div>
+</div>
+
+
+	
+	
+		<div class="panel panel-default">
+			<div class="panel-heading"><strong>All Implemented Interfaces:</strong></div>
+  			<div class="panel-body">
+			
+			
+				
+				
+				cbvalidation.models.result.IValidationError
+			
+			</div>
+		</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+	<a name="constructor_summary"><!-- --></a>
+	<table class="table table-bordered table-hover">
+		<tr class="info">
+			<th align="left" colspan="2">
+				<strong>Constructor Summary</strong>
+			</th>
+		</tr>
+		<tr>
+			
+			<td>
+				<strong><a href="ValidationError.html#init()">init</A></strong>()
+				<br>
+				
+			</td>
+		</tr>
+	</table>
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+
+<a name="method_summary"><!-- --></a>
+<table class="table table-bordered table-hover">
+	<tr class="info">
+		<th align="left" colspan="2">
+			<strong>Method Summary</strong>
+		</th>
+	</tr>
+
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code><a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a></code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#configure()">configure</A></strong>(string message, string field, [string rejectedValue], [string validationType], [any validationData])
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configure method, which can do setters for all required error params.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code>struct</code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#getErrorMetadata()">getErrorMetadata</A></strong>()
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the error metadata.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code>string</code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#getField()">getField</A></strong>()
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the error field.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code>struct</code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#getMemento()">getMemento</A></strong>()
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the error representation.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code>string</code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#getMessage()">getMessage</A></strong>()
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the error message.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code>any</code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#getRejectedValue()">getRejectedValue</A></strong>()
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the rejected value.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code>string</code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#getValidationData()">getValidationData</A></strong>()
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the error validation data.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code>string</code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#getValidationType()">getValidationType</A></strong>()
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the error validation type.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code><a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a></code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#setErrorMetadata()">setErrorMetadata</A></strong>(any data)
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set error metadata that can be used in i18n message replacements or in views.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code><a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a></code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#setField()">setField</A></strong>(string field)
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the field.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code><a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a></code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#setMessage()">setMessage</A></strong>(string message)
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the error message.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code><a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a></code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#setRejectedValue()">setRejectedValue</A></strong>(any value)
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the rejected value.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code><a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a></code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#setValidationData()">setValidationData</A></strong>(any data)
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the validator data.
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code><a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a></code>
+		</td>
+		<td>
+			<strong><a href="ValidationError.html#setValidationType()">setValidationType</A></strong>(any validationType)
+			<br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the validator type name that rejected.
+			
+		</td>
+	</tr>
+	
+</table>
+
+
+
+<a name="inherited_methods"><!-- --></a>
+
+
+	
+
+	
+
+	&nbsp;
+	<a name="methods_inherited_from_class_railo-context.Component"><!-- --></a>
+	<table class="table table-hover table-bordered">
+		<tr class="info">
+			<th align="left">
+				<strong>Methods inherited from class <kbd>railo-context.Component</kbd></strong>
+			</th>
+		</tr>
+		<tr>
+			<td>
+				
+				
+				
+				
+				
+					<span class="label label-warning"><em>None</em></span>
+				
+			</td>
+		</tr>
+	</table>
+
+
+<hr>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+	<a name="constructor_detail"><!-- --></a>
+	<table class="table table-bordered">
+		<tr class="info">
+			<th colspan="1" align="left">
+				<strong>Constructor Detail</strong>
+			</th>
+		</tr>
+	</table>
+
+	<a name="init()"><!-- --></a><h3>
+	init</h3>
+	<kbd>public <strong>init</strong>()</kbd>
+
+	<br><br>
+
+	
+
+	
+	<hr>
+
+
+<!-- ============ PROPERTY DETAIL ========== -->
+
+
+
+
+
+
+
+
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<a name="method_detail"><!-- --></a>
+<table class="table table-bordered">
+	<tr class="info">
+		<th colspan="1" align="left">
+			<strong>Method Detail</strong>
+		</th>
+	</tr>
+</table>
+
+
+	
+	<a name="configure()"><!-- --></a>
+	<h3>configure</h3>
+	
+	<kbd>public <a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a> <strong>configure</strong>(string message, string field, [string rejectedValue], [string validationType], [any validationData])</kbd>
+	
+	<br><br>
+
+	
+		<p>Configure method, which can do setters for all required error params</p>
+	
+
+	
+		
+		
+	
+
+	
+	
+
+	
+		<dl>
+		<dt><strong>Parameters:</strong></dt>
+		
+		<dd><code>message</code> - The required error message</dd>
+		
+		<dd><code>field</code> - The required field that case the exception</dd>
+		
+		<dd><code>rejectedValue</code> - The optional rejected value</dd>
+		
+		<dd><code>validationType</code> - The name of the rejected validator</dd>
+		
+		<dd><code>validationData</code></dd>
+		
+		</dl>
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="getErrorMetadata()"><!-- --></a>
+	<h3>getErrorMetadata</h3>
+	
+	<kbd>public struct <strong>getErrorMetadata</strong>()</kbd>
+	
+	<br><br>
+
+	
+		<p>Get the error metadata</p>
+	
+
+	
+		
+		
+	
+
+	
+	
+
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="getField()"><!-- --></a>
+	<h3>getField</h3>
+	
+	<kbd>public string <strong>getField</strong>()</kbd>
+	
+	<br><br>
+
+	
+		<p>Get the error field</p>
+	
+
+	
+		
+		
+			<dl>
+				<dt><strong>Specified by:</strong></dt>
+				<dd>
+				<code>
+				<a href="../..//cbvalidation/models/result/IValidationError.html#getField()">getField</a></code>
+				in interface
+				<code>
+					cbvalidation.models.result.IValidationError
+				</code>
+				</dd>
+			</dl>
+		
+	
+
+	
+	
+
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="getMemento()"><!-- --></a>
+	<h3>getMemento</h3>
+	
+	<kbd>public struct <strong>getMemento</strong>()</kbd>
+	
+	<br><br>
+
+	
+		<p>Get the error representation</p>
+	
+
+	
+		
+		
+	
+
+	
+	
+
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="getMessage()"><!-- --></a>
+	<h3>getMessage</h3>
+	
+	<kbd>public string <strong>getMessage</strong>()</kbd>
+	
+	<br><br>
+
+	
+		<p>Get the error message</p>
+	
+
+	
+		
+		
+			<dl>
+				<dt><strong>Specified by:</strong></dt>
+				<dd>
+				<code>
+				<a href="../..//cbvalidation/models/result/IValidationError.html#getMessage()">getMessage</a></code>
+				in interface
+				<code>
+					cbvalidation.models.result.IValidationError
+				</code>
+				</dd>
+			</dl>
+		
+	
+
+	
+	
+
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="getRejectedValue()"><!-- --></a>
+	<h3>getRejectedValue</h3>
+	
+	<kbd>public any <strong>getRejectedValue</strong>()</kbd>
+	
+	<br><br>
+
+	
+		<p>Get the rejected value</p>
+	
+
+	
+		
+		
+			<dl>
+				<dt><strong>Specified by:</strong></dt>
+				<dd>
+				<code>
+				<a href="../..//cbvalidation/models/result/IValidationError.html#getRejectedValue()">getRejectedValue</a></code>
+				in interface
+				<code>
+					cbvalidation.models.result.IValidationError
+				</code>
+				</dd>
+			</dl>
+		
+	
+
+	
+	
+
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="getValidationData()"><!-- --></a>
+	<h3>getValidationData</h3>
+	
+	<kbd>public string <strong>getValidationData</strong>()</kbd>
+	
+	<br><br>
+
+	
+		<p>Get the error validation data</p>
+	
+
+	
+		
+		
+			<dl>
+				<dt><strong>Specified by:</strong></dt>
+				<dd>
+				<code>
+				<a href="../..//cbvalidation/models/result/IValidationError.html#getValidationData()">getValidationData</a></code>
+				in interface
+				<code>
+					cbvalidation.models.result.IValidationError
+				</code>
+				</dd>
+			</dl>
+		
+	
+
+	
+	
+
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="getValidationType()"><!-- --></a>
+	<h3>getValidationType</h3>
+	
+	<kbd>public string <strong>getValidationType</strong>()</kbd>
+	
+	<br><br>
+
+	
+		<p>Get the error validation type</p>
+	
+
+	
+		
+		
+			<dl>
+				<dt><strong>Specified by:</strong></dt>
+				<dd>
+				<code>
+				<a href="../..//cbvalidation/models/result/IValidationError.html#getValidationType()">getValidationType</a></code>
+				in interface
+				<code>
+					cbvalidation.models.result.IValidationError
+				</code>
+				</dd>
+			</dl>
+		
+	
+
+	
+	
+
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="setErrorMetadata()"><!-- --></a>
+	<h3>setErrorMetadata</h3>
+	
+	<kbd>public <a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a> <strong>setErrorMetadata</strong>(any data)</kbd>
+	
+	<br><br>
+
+	
+		<p>Set error metadata that can be used in i18n message replacements or in views</p>
+	
+
+	
+		
+		
+	
+
+	
+	
+
+	
+		<dl>
+		<dt><strong>Parameters:</strong></dt>
+		
+		<dd><code>data</code> - The name-value pairs of data to store in this error.</dd>
+		
+		</dl>
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="setField()"><!-- --></a>
+	<h3>setField</h3>
+	
+	<kbd>public <a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a> <strong>setField</strong>(string field)</kbd>
+	
+	<br><br>
+
+	
+		<p>Set the field</p>
+	
+
+	
+		
+		
+			<dl>
+				<dt><strong>Specified by:</strong></dt>
+				<dd>
+				<code>
+				<a href="../..//cbvalidation/models/result/IValidationError.html#setField()">setField</a></code>
+				in interface
+				<code>
+					cbvalidation.models.result.IValidationError
+				</code>
+				</dd>
+			</dl>
+		
+	
+
+	
+	
+
+	
+		<dl>
+		<dt><strong>Parameters:</strong></dt>
+		
+		<dd><code>field</code></dd>
+		
+		</dl>
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="setMessage()"><!-- --></a>
+	<h3>setMessage</h3>
+	
+	<kbd>public <a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a> <strong>setMessage</strong>(string message)</kbd>
+	
+	<br><br>
+
+	
+		<p>Set the error message</p>
+	
+
+	
+		
+		
+			<dl>
+				<dt><strong>Specified by:</strong></dt>
+				<dd>
+				<code>
+				<a href="../..//cbvalidation/models/result/IValidationError.html#setMessage()">setMessage</a></code>
+				in interface
+				<code>
+					cbvalidation.models.result.IValidationError
+				</code>
+				</dd>
+			</dl>
+		
+	
+
+	
+	
+
+	
+		<dl>
+		<dt><strong>Parameters:</strong></dt>
+		
+		<dd><code>message</code> - The error message</dd>
+		
+		</dl>
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="setRejectedValue()"><!-- --></a>
+	<h3>setRejectedValue</h3>
+	
+	<kbd>public <a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a> <strong>setRejectedValue</strong>(any value)</kbd>
+	
+	<br><br>
+
+	
+		<p>Set the rejected value</p>
+	
+
+	
+		
+		
+			<dl>
+				<dt><strong>Specified by:</strong></dt>
+				<dd>
+				<code>
+				<a href="../..//cbvalidation/models/result/IValidationError.html#setRejectedValue()">setRejectedValue</a></code>
+				in interface
+				<code>
+					cbvalidation.models.result.IValidationError
+				</code>
+				</dd>
+			</dl>
+		
+	
+
+	
+	
+
+	
+		<dl>
+		<dt><strong>Parameters:</strong></dt>
+		
+		<dd><code>value</code> - The rejected value</dd>
+		
+		</dl>
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="setValidationData()"><!-- --></a>
+	<h3>setValidationData</h3>
+	
+	<kbd>public <a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a> <strong>setValidationData</strong>(any data)</kbd>
+	
+	<br><br>
+
+	
+		<p>Set the validator data</p>
+	
+
+	
+		
+		
+			<dl>
+				<dt><strong>Specified by:</strong></dt>
+				<dd>
+				<code>
+				<a href="../..//cbvalidation/models/result/IValidationError.html#setValidationData()">setValidationData</a></code>
+				in interface
+				<code>
+					cbvalidation.models.result.IValidationError
+				</code>
+				</dd>
+			</dl>
+		
+	
+
+	
+	
+
+	
+		<dl>
+		<dt><strong>Parameters:</strong></dt>
+		
+		<dd><code>data</code> - The data of the validator</dd>
+		
+		</dl>
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="setValidationType()"><!-- --></a>
+	<h3>setValidationType</h3>
+	
+	<kbd>public <a href="../../cbvalidation/result/IValidationError.html" title="interface in cbvalidation.result">IValidationError</a> <strong>setValidationType</strong>(any validationType)</kbd>
+	
+	<br><br>
+
+	
+		<p>Set the validator type name that rejected</p>
+	
+
+	
+		
+		
+			<dl>
+				<dt><strong>Specified by:</strong></dt>
+				<dd>
+				<code>
+				<a href="../..//cbvalidation/models/result/IValidationError.html#setValidationType()">setValidationType</a></code>
+				in interface
+				<code>
+					cbvalidation.models.result.IValidationError
+				</code>
+				</dd>
+			</dl>
+		
+	
+
+	
+	
+
+	
+		<dl>
+		<dt><strong>Parameters:</strong></dt>
+		
+		<dd><code>validationType</code> - The name of the rejected validator</dd>
+		
+		</dl>
+	
+
+	
+
+	</dl>
+	<hr>
+
+
+
+
+</body>
+</html>
+

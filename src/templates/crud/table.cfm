@@ -11,7 +11,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		%cfloop array="##rc.#inputStruct.pluralName###" index="thisRecord">
+		%cfloop array="##prc.#inputStruct.pluralName###" index="thisRecord">
 		<tr>
 			<cfloop array="#metadata.properties#" index="thisProp">
 				<cfif compareNoCase(thisProp.fieldType,"column") EQ 0>

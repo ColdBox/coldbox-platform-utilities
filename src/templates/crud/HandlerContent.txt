@@ -15,100 +15,77 @@ component{
 	/**
 	* preHandler()
 	*/
-	function preHandler(event,rc,prc){
-		event.paramValue("format","html");
+	function preHandler( event, rc, prc ){
+		event.paramValue( "format", "html" );
 	}
 		
 	/**
 	* Listing
 	*/
-	function index(event,rc,prc){
+	function index( event, rc, prc ){
 		// Get all |entityPlural|
-		rc.|entityPlural| = ormService.getAll();
-		
-		// RESTful Switch
-		switch(rc.format){
-			// xml,json,jsont,wddx are by default.  Add your own or remove
-			case "xml" : case "json" : case "jsont" : case "wddx" :{
-				event.renderData(data=rc.|entityPlural|,type=rc.format);
-				break;
-			}
-			// HTML
-			default:{
-				event.setView("|entityPlural|/index");
-			}
-		}
+		prc.|entityPlural| = ormService.getAll();
+		// Multi-format rendering
+		event.renderData( data=prc.|entityPlural|, formats="xml,json,html,pdf" );
 	}	
 	
 	/**
 	* New Form
 	*/
-	function new(event,rc,prc){
-		
+	function new( event, rc, prc ){
 		// get new |entity|
-		rc.|entity| = ormService.new();
+		prc.|entity| = ormService.new();
 		
-		event.setView("|entityPlural|/new");
+		event.setView( "|entityPlural|/new" );
 	}	
 
 	/**
 	* Edit Form
 	*/
-	function edit(event,rc,prc){
-		
+	function edit( event, rc, prc ){
 		// get persisted |entity|
-		rc.|entity| = ormService.get( rc.|pk| );
+		prc.|entity| = ormService.get( rc.|pk| );
 		
-		event.setView("|entityPlural|/edit");
+		event.setView( "|entityPlural|/edit" );
 	}	
 	
 	/**
 	* View |entity| mostly used for RESTful services only.
 	*/
-	function show(event,rc,prc){
-		
+	function show( event, rc, prc ){
+		// Default rendering.
+		event.paramValue( "format", "json" );
 		// Get requested entity by id
-		rc.|entity| = ormService.get( rc.|pk| );
-		
-		switch(rc.format){
-			// xml,json,jsont,wddx are by default.  Add your own or remove
-			case "xml" : case "json" : case "jsont" : case "wddx" :{
-				event.renderData(data=rc.|entity|,type=rc.format);
-				break;
-			}
-			// HTML
-			default:{
-				setNextEvent('|entityPlural|');
-			}
-		}
+		prc.|entity| = ormService.get( rc.|pk| );
+		// Multi-format rendering
+		event.renderData( data=prc.|entity|, formats="xml,json" );
 	}
 
 	/**
 	* Save and Update
 	*/
-	function save(event,rc,prc){
-		
+	function save( event, rc, prc ){
 		// get |entity| to persist or update and populate it with incoming form
-		rc.|entity| = populateModel(model=ormService.get( rc.|pk| ), exclude="|pk|", composeRelationships=true);
+		prc.|entity| = populateModel( model=ormService.get( rc.|pk| ), exclude="|pk|", composeRelationships=true );
 		
 		// Do your validations here
 		
 		// Save it
-		ormService.save( rc.|entity| );
+		ormService.save( prc.|entity| );
 		
 		// RESTful Handler
 		switch(rc.format){
-			// xml,json,jsont,wddx are by default.  Add your own or remove
-			case "xml" : case "json" : case "jsont" : case "wddx" :{
-				event.renderData(data=rc.|entity|,type=rc.format,location="/|entityPlural|/show/#rc.|entity|.get|pk|()#");
+			// xml,json,jsont are by default.  Add your own or remove
+			case "xml" : case "json" : case "jsont" :{
+				event.renderData( data=prc.|entity|, type=rc.format, location="/|entityPlural|/show/#prc.|entity|.get|pk|()#" );
 				break;
 			}
 			// HTML
 			default:{
-				// Show a nice messagebox
-				getplugin("MessageBox").info("|entity| Created!");
+				// Show a nice notice
+				flash.put( "notice", { message="|entity| Created", type="success" } );
 				// Redirect to listing
-				setNextEvent('|entityPlural|');
+				setNextEvent( '|entityPlural|' );
 			}
 		}
 	}	
@@ -116,25 +93,24 @@ component{
 	/**
 	* Delete
 	*/
-	function delete(event,rc,prc){
-		
+	function delete( event, rc, prc ){
 		// Delete record by ID
-		var removed = ormService.deleteById( rc.|pk| );
+		var removed = ormService.delete( ormService.get( rc.|pk| ) );
 		
 		// RESTful Handler
-		switch(rc.format){
-			// xml,json,jsont,wddx are by default.  Add your own or remove
-			case "xml" : case "json" : case "jsont" : case "wddx" :{
-				var restData = {deleted=removed};
-				event.renderData(data=restData,type=rc.format);
+		switch( rc.format ){
+			// xml,json,jsont are by default.  Add your own or remove
+			case "xml" : case "json" : case "jsont" :{
+				var restData = { "deleted" = removed };
+				event.renderData( data=restData, type=rc.format );
 				break;
 			}
 			// HTML
 			default:{
-				// Show a nice messagebox
-				getplugin("MessageBox").warn("|entity| Poofed!");
+				// Show a nice notice
+				flash.put( "notice", { message="|entity| Poofed!", type="success" } );
 				// Redirect to listing
-				setNextEvent('|entityPlural|');
+				setNextEvent( '|entityPlural|' );
 			}
 		}
 	}	
