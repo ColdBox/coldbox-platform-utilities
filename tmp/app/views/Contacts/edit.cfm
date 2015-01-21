@@ -1,1 +1,0 @@
-<cfoutput>#renderView(view="Contacts/editor", args={title="Update Contact"})#</cfoutput>
