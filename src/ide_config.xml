@@ -92,13 +92,6 @@
 					<action name="Extension Help" 	handlerid="ExtensionHelp"		showResponse="true"></action>
 				</menu>
 				
-				<!-- Config Folder Aspects -->
-				<menu name="Setup Aspects">
-					<filters><filter type="folder" pattern="config" /></filters>
-					<action name="Setup Deploy Interceptor" 	handlerid="GenDeploy"	showResponse="true"></action>
-					<action name="Setup Security Interceptor" 	handlerid="GenSecurity"	showResponse="true"></action>
-				</menu>
-				
 				<!-- Testing -->
 				<menu name="Testing">
 					<action name="New Integration Test" 	handlerid="GenIntegrationTest"	showResponse="true">
@@ -258,10 +251,6 @@
 		<handler id="GenModelTest"		 	type="CFM" filename="testing/ModelTestSetup.cfm" />
 		<handler id="GenInterceptorTest" 	type="CFM" filename="testing/InterceptorTestSetup.cfm" />
 		
-		<!-- Config Folder Aspects -->
-		<handler id="GenDeploy"	    		type="CFM" filename="DeploySetup.cfm" />
-		<handler id="GenSecurity"    		type="CFM" filename="SecuritySetup.cfm" />		
-				
 		<!-- Project Handlers -->
 		<handler id="GenRewrites"				type="CFM" filename="project/RewriteSetup.cfm" />
 		<handler id="GenVariableMappings"		type="CFM" filename="project/VariableMappings.cfm" />
