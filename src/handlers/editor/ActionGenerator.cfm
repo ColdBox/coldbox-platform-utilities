@@ -22,8 +22,8 @@ if( NOT inputStruct.script ){
 		<cfargument name="rc">
 		<cfargument name="prc">
 		<cfscript>
-			
-			
+
+
 		</cfscript>
 	</cffunction>
 	');
@@ -31,12 +31,12 @@ if( NOT inputStruct.script ){
 
 // Create View
 if( inputStruct.generateViews ){
-	
+
 	// directory exists?
 	if( NOT directoryExists(inputStruct.viewsDirectory) ){
 		controller.getUtility().createDirectory( inputStruct.viewsDirectory );
 	}
-		
+
 	fileName = inputStruct.viewsDirectory & "/#inputStruct.name#.cfm";
 	fileWrite( fileName , "<h1>View: #inputStruct.name#</h1>");
 }
@@ -49,29 +49,29 @@ if( inputStruct.generateViews ){
 	/**
 	* #inputStruct.name#
 	*/
-	function #inputStruct.name#(event,rc,prc){
-	
+	function #inputStruct.name#( event, rc, prc ){
+
 	}
 </cfoutput>
 </cfsavecontent>
 </cfif>
 
 <!--- Display --->
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide>  
-	<commands> 
-		<command type="inserttext"> 
-			<params> 
-				<param key="text" > 
-				<![CDATA[ 
+<response status="success" showresponse="true">
+<ide>
+	<commands>
+		<command type="inserttext">
+			<params>
+				<param key="text" >
+				<![CDATA[
 <cfif inputStruct.Script>#scriptFunctions#<cfelse>#buffer.toString()#</cfif>
-				 ]]> 
-				</param> 
-			</params> 
-		</command> 
-	</commands> 
+				 ]]>
+				</param>
+			</params>
+		</command>
+	</commands>
 </ide>
 </response>
 </cfoutput>

@@ -55,7 +55,7 @@ if( NOT inputStruct.script ){
 
 			// process targeted action
 			var results = argument.targetAction(event,rc,prc);
-			
+
 			if( !isNull( results ) ){ return results; }
 		</cfscript>
 	</cffunction>
@@ -84,8 +84,22 @@ if( NOT inputStruct.script ){
 		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
 		<cfargument name="rc">
 		<cfargument name="prc">
-		<cfscript>	
-			
+		<cfscript>
+
+		</cfscript>
+	</cffunction>
+	');
+	}
+	if( inputStruct.onInvalidHTTP ){
+	buffer.append('
+	<cffunction name="onInvalidHTTPMethod" output="false" hint="Executes if an action is called with an invalid HTTP Method">
+		<cfargument name="faultAction" 		hint="The action that caused the error"/>
+		<cfargument name="event">
+		<cfargument name="rc">
+		<cfargument name="prc">
+		<cfargument name="eventArguments" 	hint="The event arguments an event is executed with (if any)"/>
+		<cfscript>
+
 		</cfscript>
 	</cffunction>
 	');
@@ -97,31 +111,36 @@ if( NOT inputStruct.script ){
 <cfif inputStruct.script>
 <cfsavecontent variable="scriptFunctions">
 	<cfif inputStruct.preHandler>
-	function preHandler(event,action,eventArguments,rc,prc){
+	function preHandler( event, action, eventArguments, rc, prc ){
 
 	}
 	</cfif>
 	<cfif inputStruct.postHandler>
-	function postHandler(event,action,eventArguments,rc,prc){
+	function postHandler( event, action, eventArguments, rc, prc ){
 
 	}
 	</cfif>
 	<cfif inputStruct.aroundHandler>
-	function aroundHandler(event,targetAction,eventArguments,rc,prc){
+	function aroundHandler( event, targetAction, eventArguments, rc, prc ){
 
 		// executed targeted action
 		var results = arguments.targetAction(event,rc,prc);
-		
+
 		if( !isNull( results ) ){ return results; }
 	}
 	</cfif>
 	<cfif inputStruct.onMissingAction>
-	function onMissingAction(event,missingAction,eventArguments,rc,prc){
+	function onMissingAction( event, missingAction, eventArguments, rc, prc ){
 
 	}
 	</cfif>
 	<cfif inputStruct.onError>
-	function onError(event,faultAction,exception,eventArguments,rc,prc){
+	function onError( event, faultAction, exception, eventArguments, rc, prc ){
+
+	}
+	</cfif>
+	<cfif inputstruct.onInvalidHTTP>
+	function onInvalidHTTPMethod( faultAction, event, rc, prc, eventArguments ){
 
 	}
 	</cfif>
@@ -129,21 +148,21 @@ if( NOT inputStruct.script ){
 </cfif>
 
 <!--- Display --->
-<cfheader name="Content-Type" value="text/xml">  
+<cfheader name="Content-Type" value="text/xml">
 <cfoutput>
-<response status="success" showresponse="true">  
-<ide>  
-	<commands> 
-		<command type="inserttext"> 
-			<params> 
-				<param key="text" > 
-				<![CDATA[ 
+<response status="success" showresponse="true">
+<ide>
+	<commands>
+		<command type="inserttext">
+			<params>
+				<param key="text" >
+				<![CDATA[
 <cfif inputStruct.Script>#scriptFunctions#<cfelse>#buffer.toString()#</cfif>
-				 ]]> 
-				</param> 
-			</params> 
-		</command> 
-	</commands> 
+				 ]]>
+				</param>
+			</params>
+		</command>
+	</commands>
 </ide>
 </response>
 </cfoutput>
