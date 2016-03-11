@@ -60,7 +60,7 @@ CS Converter to WireBox
     <cffunction name="toWireBox" output="false" access="public" returntype="any" hint="Convert to wirebox">
     	<cfargument name="beanData"/>
 		<cfscript>
-			var buf = createObject("java","java.lang.StringBuffer").init('');
+			var buf = createObject("java","java.lang.StringBuilder").init('');
 			var cr  = chr(13) & chr(10);
 			var tab = repeatString(chr(9),3);
 			var beans = arguments.beanData;
